@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_item_imagen">
+        <div class="product">
+            <a t-att-href="product_href">
+                <figure>
+                    <span t-field="product.image_1920"
+                          t-options="{'widget': 'image', 'class': 'product-img', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                    />
+                </figure>
+                <div class="product-data">
+                    <div class="product-info">
+                        <p class="name-product" t-esc="product.name"></p>
+                        <p class="price-product">
+                            <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                            <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                        </p>
+                    </div>
+                    <div class="product-link">
+                        <form class="form-add-cart hvr-pulse-grow" action="/shop/cart/update" method="post"
+                              t-att-data-publish="product.website_published and 'on' or 'off'"
+                              itemscope="itemscope" itemtype="http://schema.org/Product">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                            <t t-if="product_variant_id">
+                                <a class="a-add-cart a-submit" role="button" href="#" aria-label="Agregar al carrito" title="Agregar al carrito">
+                                    <img class="img-add-cart" src="/sitio_imagen/static/src/img/cart-white.png" alt=""/>
+                                </a>
+                            </t>
+                        </form>
+                        <!--
+                        <a class="a-view-detail" href="#">
+                            <img class="img-view-detail" src="img/view.png" alt="Ver detalle">
+                        </a>
+                        -->
+                    </div>
+                </div>
+            </a>
+        </div>
+    </template>
+
+    <template id="product_list_imagen">
+        <div class="shop-page">
+            <div class="container">
+                <div class="description-page">
+                    <div class="row">
+                        <div class="col-12 text-center col-hidden-movil pb-3">
+                            <img width="90" src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <h4 class="title-page-year">0 - 1 AÑOS</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <h4 class="title-page-shop hvr-bob">MIS LECTURAS DE RECHUPETE</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-2 col-xl-2 pb-3 text-right col-hidden-browser">
+                            <img width="90" src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                        </div>
+                        <div class="col-12 col-md-8 col-xl-8 p-3 text-justify">
+                            <p class="description-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-products">
+                    <t t-foreach="products" t-as="product">
+                        <t t-set="product_href" t-value="keep(product.website_url, page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" />
+                        <t t-set="combination_info" t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+
+                        <t t-call="sitio_imagen.product_item_imagen"/>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

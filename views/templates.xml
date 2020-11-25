@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Recursos CSS y JS -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="link[last()]" position="after">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/js/slick/slick.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/js/slick/slick-theme.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-responsive.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/animation-shop.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-nav.scss"/>
+        </xpath>
+        <xpath expr="script[last()]" position="after">
+            <script type="text/javascript" src="/sitio_imagen/static/src/js/slick/slick.js"></script>
+            <script type="text/javascript" src="/sitio_imagen/static/src/js/shop.js"></script>
+            <script type="text/javascript" src="/sitio_imagen/static/src/js/bodymovin.js"></script>
+            <script type="text/javascript" src="/sitio_imagen/static/src/js/shop_utils.js"></script>
+        </xpath>
+    </template>
+
+    <!-- Encabezado personalizado para empresa imagen -->
+    <template id="header_imagen" inherit_id="website.layout" name="Header Imagen">
+        <!-- ID -->
+        <xpath expr="//div[@id='wrapwrap']/header" position="attributes">
+            <attribute name="id">header_imagen</attribute>
+        </xpath>
+
+        <!--Reemplazamos el menu-->
+        <xpath expr="//div[@id='wrapwrap']/header" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <nav class="nav-imagen">
+                    <t t-call="sitio_imagen.mobil_header"/>
+
+                    <!--http://chicosimagen.com/shop-->
+                    <t t-if="request.httprequest.url == 'http://chicosimagen.com/shop'">
+                        <div id="bm-body"></div>
+                        <div class="nav-browser">
+                            <t t-call="sitio_imagen.shop_header"/>
+                        </div>
+                    </t>
+                    <t t-elif="('/shop/product' in request.httprequest.url) or ('/shop/cart' in request.httprequest.url) or ('/shop/address' in request.httprequest.url) or ('/shop/checkout' in request.httprequest.url) or ('/shop/payment' in request.httprequest.url)">
+                        <div class="nav-browser">
+                            <t t-call="sitio_imagen.other_header"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <!--<p t-esc="request.httprequest.url"></p>-->
+                    </t>
+                </nav>
+
+                <!--Nab book-->
+                <t t-call="sitio_imagen.nav_book_page"/>
+                <!--Nab cart-->
+                <t t-call="sitio_imagen.nav_cart_page"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!--Encabezado personalizado para empresa imagen-->
+    <template id="customize_footer_imagen" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']/footer" position="attributes">
+			<attribute name="id">footer_imagen</attribute>
+		</xpath>
+
+        <xpath expr="//div[@id='wrapwrap']/footer" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.footer_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!--Listado de productos personalizado-->
+    <template id="customize_product_list_imagen" inherit_id="website_sale.products">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.product_list_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!--Productos recomendados-->
+    <template id="recommended_products_imagen">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="h-relations-product">PRODUCTOS RELACIONADOS</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="r_products_imagen">
+                    <div class="slider-related-product slider">
+                        <t t-foreach="product.alternative_product_ids" t-as="alt_product">
+                            <t t-set="combination_info" t-value="alt_product._get_combination_info()"/>
+                            <t t-set="product_variant" t-value="alt_product.env['product.product'].browse(combination_info['product_id'])"/>
+                            <div class="item-slider">
+                                <div class="related-product">
+                                    <a t-att-href="alt_product.website_url">
+                                        <figure>
+                                            <img class="related-product-img" src="/sitio_imagen/static/src/img/products/botecitos4.jpg" alt=""/>
+                                        </figure>
+                                        <div class="related-product-data">
+                                            <div class="related-product-info">
+                                                <p class="related-name-product" t-esc="alt_product.name"></p>
+                                                <p class="related-price-product">
+                                                    <span t-esc="combination_info['list_price']"
+                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                    />
+                                                </p>
+                                            </div>
+                                            <div class="related-product-link">
+                                                <form class="related-form-add-cart hvr-pulse-grow" t-if="alt_product._is_add_to_cart_possible()" action="/shop/cart/update" method="POST">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                                    <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
+                                                    <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
+                                                    <a class="related-a-add-cart" href="#">
+                                                        <img class="related-img-add-cart" src="/sitio_imagen/static/src/img/cart-white.png" alt=""/>
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!--Customización de pagina carrito de compras-->
+    <template id="customize_cart_imagen" inherit_id="website_sale.cart">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.cart_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!--Customización de proceso de pago para imagen-->
+    <template id="customize_address_imagen" inherit_id="website_sale.address">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.address_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!--Personalización de checkout-->
+    <template id="customize_checkout_imagen" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.checkout_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="customize_payment_imagen" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.payment_imagen"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="customize_payment_confirmation_status_imagen" inherit_id="website_sale.confirmation">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <t t-call="sitio_imagen.confirmation_imagen"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

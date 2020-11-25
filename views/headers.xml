@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Barra de navegación para mobil -->
+    <template id="mobil_header">
+        <div class="nav-mobil bg-first">
+            <a class="a-linea-m" href="#">
+                <img class="img-linea-m" src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+            </a>
+            <a class="a-logo-m" href="/shop">
+                <img class="img-logo-m" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de Imagen"/>
+            </a>
+            <a class="a-cart-m cart-mobil" href="#">
+                <img class="img-cart-m" src="/sitio_imagen/static/src/img/cart.png" alt="Carrito de compras"/>
+            </a>
+        </div>
+    </template>
+
+    <!-- Barra de navegación para pagina shop -->
+    <template id="shop_header">
+        <div class="container-fluid">
+            <div class="menu-scrollable">
+                <div class="row bg-first">
+                    <div class="col-md-1 col-xl-1 text-left pt-2">
+                        <a class="a-img-linea" href="#">
+                            <img src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+                        </a>
+                    </div>
+                    <div class="col-md-10 col-xl-10 text-center pt-4">
+                        <a href="/shop">
+                            <img class="img-logo" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                        </a>
+                    </div>
+                    <div class="col-md-1 col-xl-1 text-right pt-2" id="col-button-header">
+                        <a class="a-search-top" href="#">
+                            <img src="/sitio_imagen/static/src/img/lupa.png" alt=""/>
+                        </a>
+                        <a class="a-cart-top cart-scrollable" href="#">
+                            <img src="/sitio_imagen/static/src/img/cart.png" alt=""/>
+                        </a>
+                    </div>
+                </div>
+                <div class="row bg-first">
+                    <div class="col-md-12 col-xl-12 text-center pt-1">
+                        <h5 class="text-slogan">Libros Recreativos</h5>
+                    </div>
+                </div>
+                <div class="row bg-second pb-2 hidden-nav-scrollable">
+                    <div class="col-md-12 col-xl-12 text-center mt-3 bg-nav">
+                        <div class="container childrens">
+                            <div class="row">
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="/shop" data-toggle="tooltip" data-placement="top" title="Mis lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">0 - 1</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                                <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">2 - 4</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                                <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">4 - 5</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mi orgullo de leer">
+                                                <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">6 - 7</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mi club de lectura">
+                                                <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">8 - 9</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Soy deboradora de libros">
+                                                <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <p class="title-children">10 - 12</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-scrollable-fixed">
+                <div class="row bg-second">
+                    <div class="col-md-2 col-xl-2">
+                        <div class="row">
+                            <div class="col-md-4 col-xl-2 text-center">
+                                <a class="a-img-linea-nav-hidden ml-xl-2 ml-mb-2" href="#">
+                                    <img src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+                                </a>
+                            </div>
+                            <div class="col-md-8 col-xl-10">
+                                <div class="row">
+                                    <div class="col-md-12 col-xl-12">
+                                        <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="index.html">
+                                            <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-xl-12 mb-xl-1 ml-xl-2 pl-xl-4">
+                                        <p class="text-slogan-small ml-xl-2">Libros Recreativos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xl-9">
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 text-center mt-xl-3 mt-md-3">
+                                <div class="container childrens">
+                                    <div class="row">
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mis lecturas de rechupete">
+                                                        <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">0 - 1</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                                        <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">2 - 4</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                                        <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">4 - 5</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mi orgullo de leer">
+                                                        <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">6 - 7</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mi club de lectura">
+                                                        <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">8 - 9</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xl-2 text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xl-3">
+                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Soy deboradora de libros">
+                                                        <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-9 col-xl-9">
+                                                    <p class="title-children">10 - 12</p>
+                                                    <p class="title-children">años</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-xl-1 text-left pt-xl-4 pt-md-4">
+                        <a class="a-search-top" href="#">
+                            <img src="/sitio_imagen/static/src/img/lupa.png" alt=""/>
+                        </a>
+                        <a class="a-cart-top a-cart-top-fixed" href="#">
+                            <img src="/sitio_imagen/static/src/img/cart.png" alt=""/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Barra de navegación efecto-libro -->
+    <template id="nav_book_page">
+        <div class="nav-book">
+            <div class="col-menu-book">
+                <div class="div-close">
+                    <a class="a-close-book" href="#">
+                        <img class="img-close-book" src="/sitio_imagen/static/src/img/close.png" alt="Cerrar libro"/>
+                    </a>
+                </div>
+                <div class="div-list-menu">
+                    <ul class="list-menu-book">
+                        <li>
+                            <a href="#">
+                                <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/home.png" alt="Inicio"/>
+                                <p>INICIO</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/shop">
+                                <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/shop.png" alt="Tienda"/>
+                                <p>TIENDA</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="a-contact" href="#">
+                                <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/contact.png" alt="Contactanos"/>
+                                <p id="p-contact">CONTACTANOS</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-rrss">
+                        <li>
+                            <a class="hvr-wobble-vertical" href="https://www.facebook.com/ChicosJuguetesEducativos" target="_blank">
+                                <img src="/sitio_imagen/static/src/img/facebook.png" alt="Facebook"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="hvr-wobble-vertical" href="https://instagram.com/chicosjugueteseducativos?igshid=10rk64rcdh4q" target="_blank">
+                                <img src="/sitio_imagen/static/src/img/instagram.png" alt="Instagram"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-menu-category">
+                <div class="div-title-etapas">
+                    <h3>ETAPAS LECTORAS</h3>
+                </div>
+                <div class="div-etapas">
+                    <ul class="list-etapas">
+                        <li>
+                            <a href="/shop">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/0-1.png" alt="Mis lecturas de rechupete"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">0 - 1 AÑOS</p>
+                                    <p class="description-etapa">MIS LECTURAS DE RECHUPETE</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/2-4.png" alt="Leeme, releeme y vuelveme a leer"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">2 - 4 AÑOS</p>
+                                    <p class="description-etapa">LEEME, RELEEME Y VUELVEME A LEER</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/4-5.png" alt="Mis historias con varios finales"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">4 - 5 AÑOS</p>
+                                    <p class="description-etapa">MIS HISTORIAS CON VARIOS FINALES</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/6-7.png" alt="Mi orgullo de leer"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">6 - 7 AÑOS</p>
+                                    <p class="description-etapa">MI ORGULLO DE LEER</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/8-9.png" alt="Mi club de lecturas"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">8 - 9 AÑOS</p>
+                                    <p class="description-etapa">MI CLUB DE LECTURA</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="div-img-etapa">
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/10-12.png" alt="Soy deboradora de libros"/>
+                                </div>
+                                <div class="div-data-etapa">
+                                    <p class="name-etapa">10 - 12 AÑOS</p>
+                                    <p class="description-etapa">SOY DEBORADORA DE LIBROS</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Barra detalle de carrito de compra -->
+    <template id="nav_cart_page">
+        <div class="nav-cart">
+            <div class="div-transparent"></div>
+            <div class="detail-cart">
+
+            </div>
+        </div>
+    </template>
+
+    <template id="other_header">
+        <div class="row bg-second pl-1">
+            <div class="col-md-2 col-xl-2">
+                <div class="row">
+                    <div class="col-md-4 col-xl-2 text-center">
+                        <a class="a-img-linea-nav-hidden ml-xl-2 ml-mb-2" href="#">
+                            <img src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-xl-10">
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12">
+                                <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="/shop">
+                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 mb-xl-1 ml-xl-2 pl-xl-4">
+                                <p class="text-slogan-small ml-xl-2">Libros Recreativos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-xl-9">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12 text-center mt-xl-3 mt-md-3">
+                        <div class="container childrens">
+                            <div class="row">
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">0 - 1</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">2 - 4</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">4 - 5</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">6 - 7</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">8 - 9</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xl-2 text-center">
+                                    <div class="row">
+                                        <div class="col-md-3 col-xl-3">
+                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                                <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 col-xl-9">
+                                            <p class="title-children">10 - 12</p>
+                                            <p class="title-children">años</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-xl-1 text-left pt-xl-4 pt-md-4">
+                <a class="a-search-top" href="#">
+                    <img src="/sitio_imagen/static/src/img/lupa.png" alt=""/>
+                </a>
+                <a class="a-cart-top cart-other-page" href="#">
+                    <img src="/sitio_imagen/static/src/img/cart.png" alt=""/>
+                </a>
+            </div>
+        </div>
+
+    </template>
+
+    <template id="cart_slide">
+        <div class="detail-header">
+            <h5 class="h-title-cart">Mi carrito</h5>
+        </div>
+        <div class="detail-body">
+            <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="alert alert-info">
+                <p class="text-center text-empty-cart">Tu carrito está vacio.</p>
+                <p class="text-center text-animation-cart">Atrévete a comprar nuestros productos.</p>
+            </div>
+            <t t-if="website_sale_order and website_sale_order.website_order_line">
+                <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                    <div class="item-product">
+                        <div class="item-img">
+                            <span t-field="line.product_id.image_128"
+                                  t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max mb-2'}" />
+                        </div>
+                        <div class="item-description">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="a-product-name" href="#description-product" data-toggle="collapse" aria-expanded="false" aria-controls="description-product">
+                                        <span t-esc="line.name_short"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="sr-only">Four out of Five Stars</span>
+                                    <i class="fas fa-star bg-start-span start-i"></i>
+                                    <i class="fas fa-star bg-start-span start-i"></i>
+                                    <i class="fas fa-star bg-start-span start-i"></i>
+                                    <i class="fas fa-star bg-start-span start-i"></i>
+                                    <i class="far fa-star bg-start-span start-i"></i>
+                                    <span class="label label-success label-start-number">(61)</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="product-price">
+                                        <span t-esc="line.price_total"
+                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                        />
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p id="description-product" class="description-product text-justify collapse" t-esc="line.product_template_id.intro_text">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <div class="text-center">
+                    <span class="h6">
+                        <t t-call="website_sale.total">
+                            <t t-set='hide_coupon'>True</t>
+                        </t>
+                    </span>
+                    <a role="button" class="btn btn-primary" href="/shop/cart">
+                       Ver carrito (<t t-esc="website_sale_order.cart_quantity" /> productos)
+                     </a>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

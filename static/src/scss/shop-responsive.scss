@@ -1,0 +1,1049 @@
+@media (max-width: 318px) {
+  .list-rrss li a img {
+    width: 30px !important;
+  }
+
+  .item-product-image img  {
+    width: 250px !important;
+  }
+}
+
+/*
+  se ejecutará sólo cuando la anchura de la
+  ventana del navegador sea menor de 320 píxeles.
+*/
+@media (max-width:319px){
+  .nav-browser {
+    display: none;
+  }
+
+  .nav-mobil {
+    display: flex;
+  }
+
+  .img-linea-m {
+    width: 48px !important;
+  }
+
+  .img-logo-m {
+    width: 86px !important;
+    margin-top: 6px !important;
+  }
+
+  .img-cart-m {
+    width: 38px !important;
+    padding-top: 13px !important;
+    padding-right: 11px !important;
+  }
+
+  .a-close-book {
+    padding-left: 5px !important;
+    padding-top: 5px !important;
+  }
+
+  .img-close-book {
+    width: 18px !important;
+  }
+
+  .list-menu-book {
+    margin-left: -19px !important;
+  }
+
+  .list-menu-book li {
+    margin-top: 30px !important;
+  }
+
+  .list-menu-book li a img {
+    width: 50px !important;
+  }
+
+  .list-menu-book li a p {
+    font-size: 12px !important;
+  }
+
+  #p-contact {
+    margin-left: -2px !important;
+  }
+
+  .list-rrss {
+    margin-top: 48px !important;
+    margin-left: -23px !important;
+  }
+
+  .list-rrss li {
+    margin-left: 8px !important;
+  }
+
+  .list-rrss li a img {
+    width: 35px !important;
+  }
+
+  .div-title-etapas h3 {
+    font-size: 13px !important;
+    margin-top: 15px !important;
+  }
+
+  .list-etapas {
+    margin-left: -21px !important;
+  }
+
+  .list-etapas li {
+    margin-bottom: 14px !important
+  }
+
+  .list-etapas li a img {
+    width: 52px !important;
+  }
+
+  .div-img-etapa, .div-data-etapa {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .name-etapa {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+  }
+
+  .description-etapa {
+    font-size: 10px !important;
+    line-height: 12px !important;
+  }
+
+  /* LISTADO DE PRODUCTOS */
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 202px !important;
+    height: 202px !important;
+    margin-left: 25px !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .col-hidden-browser {
+    display: none;
+  }
+
+  .col-hidden-movil {
+    display: block;
+  }
+
+  .shop-page {
+    padding-top: 5.5rem !important;
+  }
+}
+
+
+/*
+  se mostrarán los estilos CSS cuando la anchura de la ventana del navegador
+  sea entre 320 pixeles y 480 pixeles
+*/
+@media (min-width:320px) and (max-width:480px) {
+  .nav-browser {
+    display: none;
+  }
+
+  .nav-mobil {
+    display: flex;
+  }
+
+  .img-linea-m {
+    width: 60px !important;
+  }
+
+  .img-logo-m {
+    width: 112px !important;
+    margin-top: 6px !important;
+  }
+
+  .img-cart-m {
+    width: 51px !important;
+    padding-top: 13px !important;
+    padding-right: 11px !important;
+  }
+
+  .a-close-book {
+    padding-left: 7px !important;
+    padding-top: 7px !important;
+  }
+
+  .img-close-book {
+    width: 27px !important;
+  }
+
+  .list-menu-book {
+    margin-left: -19px !important;
+  }
+
+  .list-menu-book li {
+    margin-top: 30px !important;
+  }
+
+  .list-menu-book li a img {
+    width: 55px !important;
+  }
+
+  .list-menu-book li a p {
+    font-size: 14px !important;
+  }
+
+  #p-contact {
+    margin-left: -9px !important;
+  }
+
+  .a-contact img {
+    margin-left: 7px;
+  }
+
+  .list-rrss {
+    margin-top: 48px !important;
+    margin-left: -25px !important;
+  }
+
+  .list-rrss li {
+    margin-left: 10px !important;
+  }
+
+  .list-rrss li a img {
+    width: 45px !important;
+  }
+
+  .div-title-etapas h3 {
+    font-size: 13px !important;
+    margin-top: 15px !important;
+  }
+
+  .list-etapas {
+    margin-left: -21px !important;
+  }
+
+  .list-etapas li {
+    margin-bottom: 18px !important
+  }
+
+  .list-etapas li a img {
+    width: 52px !important;
+  }
+
+  .div-img-etapa, .div-data-etapa {
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .name-etapa {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+  }
+
+  .description-etapa {
+    font-size: 10px !important;
+    line-height: 12px !important;
+  }
+
+  /* LISTADO DE PRODUCTOS */
+
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 237px !important;
+    height: 237px !important;
+    margin-left: auto !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 235px !important;
+    height: 235px !important;
+  }
+
+  .name-product, .price-product {
+    font-size: 12px !important;
+  }
+
+  .a-add-cart img {
+      width: 30px !important;
+  }
+
+  /*Detalle producto*/
+  .item-product-image img {
+    width: 243px !important;
+  }
+
+  .d-name-product {
+    font-size: 22px !important;
+    margin-top: 1.5rem !important
+  }
+
+  .col-qty, .col-add-cart {
+    width: 50% !important;
+    display: inline-block;
+  }
+
+  .col-buy-now {
+    width: 50% !important;
+    display: inline-block;
+    padding-left: 1rem !important;
+  }
+
+  .detail-product {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .col-hidden-browser {
+    display: none;
+  }
+
+  .col-hidden-movil {
+    display: block;
+  }
+
+  .shop-page {
+    padding-top: 5.5rem !important;
+  }
+}
+
+/*
+  se mostrarán los estilos CSS cuando la anchura de la ventana del navegador
+  sea entre 481 pixeles y 920 pixeles
+*/
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-browser {
+    display: none;
+  }
+
+  .nav-mobil {
+    display: flex;
+  }
+
+  .img-linea-m {
+    width: 60px !important;
+  }
+
+  .img-logo-m {
+    width: 112px !important;
+    margin-top: 6px !important;
+  }
+
+  .img-cart-m {
+    width: 51px !important;
+    padding-top: 13px !important;
+    padding-right: 11px !important;
+  }
+
+  .a-close-book {
+    padding-left: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .img-close-book {
+    width: 33px !important;
+  }
+
+  .list-menu-book {
+    margin-left: -19px !important;
+  }
+
+  .list-menu-book li {
+    margin-top: 40px !important;
+  }
+
+  .list-menu-book li a img {
+    width: 70px !important;
+  }
+
+  .list-menu-book li a p {
+    font-size: 13px !important;
+  }
+
+  #p-contact {
+    margin-left: -9px !important;
+  }
+
+  .a-contact img {
+    margin-left: 7px;
+  }
+
+  .list-rrss {
+    margin-top: 48px !important;
+    margin-left: -30px !important;
+  }
+
+  .list-rrss li {
+    margin-left: 16px !important;
+  }
+
+  .list-rrss li a img {
+    width: 50px !important;
+  }
+
+  .div-title-etapas h3 {
+    font-size: 13px !important;
+    margin-top: 15px !important;
+  }
+
+  .list-etapas {
+    margin-left: auto !important;
+  }
+
+  .list-etapas li {
+    margin-bottom: 25px !important;
+    text-align: left !important;
+    padding-left: 12px !important;
+  }
+
+  .list-etapas li a img {
+    width: 52px !important;
+  }
+
+  .div-img-etapa {
+    width: auto !important;
+  }
+
+  .div-data-etapa {
+    width: 70% !important;
+    padding-left: 5px !important;
+  }
+
+  .div-img-etapa, .div-data-etapa {
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+
+  .name-etapa {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+  }
+
+  .description-etapa {
+    font-size: 10px !important;
+    line-height: 12px !important;
+  }
+
+  /* LISTADO DE PRODUCTOS */
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 237px !important;
+    height: 237px !important;
+    margin-left: 25px !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 235px !important;
+    height: 235px !important;
+  }
+
+  .name-product, .price-product {
+    font-size: 10px !important;
+  }
+
+  .a-add-cart img {
+      width: 25px !important;
+  }
+
+  /* Detalle de producto */
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 247px !important;
+    height: 247px !important;
+  }
+
+  .related-product a figure img  {
+    width: 245px !important;
+    height: 245px !important;
+  }
+
+  .detail-product {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .d-name-product {
+    font-size: 22px !important;
+    margin-top: 1.5rem !important
+  }
+
+  .col-hidden-browser {
+    display: none;
+  }
+
+  .col-hidden-movil {
+    display: block;
+  }
+
+  .shop-page {
+    padding-top: 5.5rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-browser {
+    display: none;
+  }
+
+  .nav-mobil {
+    display: flex;
+  }
+
+  .img-linea-m {
+    width: 60px !important;
+  }
+
+  .img-logo-m {
+    width: 112px !important;
+    margin-top: 6px !important;
+  }
+
+  .img-cart-m {
+    width: 51px !important;
+    padding-top: 13px !important;
+    padding-right: 11px !important;
+  }
+
+  .a-close-book {
+    padding-left: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .img-close-book {
+    width: 33px !important;
+  }
+
+  .list-menu-book {
+    margin-left: -19px !important;
+  }
+
+  .list-menu-book li {
+    margin-top: 40px !important;
+  }
+
+  .list-menu-book li a img {
+    width: 70px !important;
+  }
+
+  .list-menu-book li a p {
+    font-size: 19px !important;
+  }
+
+  #p-contact {
+    margin-left: -9px !important;
+  }
+
+  .a-contact img {
+    margin-left: 7px;
+  }
+
+  .list-rrss {
+    margin-top: 48px !important;
+    margin-left: -30px !important;
+  }
+
+  .list-rrss li {
+    margin-left: 16px !important;
+  }
+
+  .list-rrss li a img {
+    width: 50px !important;
+  }
+
+  .div-etapas {
+    padding-left: 32px !important;
+  }
+
+  .div-title-etapas h3 {
+    font-size: 24px !important;
+    margin-top: 15px !important;
+  }
+
+  .list-etapas {
+    margin-left: auto !important;
+    padding-top: 12px !important;
+  }
+
+  .list-etapas li {
+    margin-bottom: 30px !important;
+    text-align: left;
+
+  }
+
+  .list-etapas li a img {
+    width: 64px !important;
+  }
+
+  .div-img-etapa {
+    width: auto !important;
+  }
+
+  .div-data-etapa {
+    width: 74% !important;
+  }
+
+  .div-img-etapa, .div-data-etapa {
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  .name-etapa {
+    font-size: 14px !important;
+    margin-top: 2px !important;
+  }
+
+  .description-etapa {
+    font-size: 14px !important;
+    line-height: 18px !important;
+  }
+
+  .shop-page {
+    padding-top: 5.5rem !important;
+  }
+}
+
+/* responsive detail product*/
+@media (min-width: 200px) and (max-width: 361px) {
+  .col-qty, .col-add-cart, .col-buy-now {
+    width: 100% !important;
+    display: block;
+    padding-left: 1rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .item-product-image img {
+    width: 160px !important;
+  }
+
+  .slider-product-images .slick-prev, .slick-next {
+    top: 19% !important;
+  }
+
+  .col-qty, .col-add-cart {
+    width: 50% !important;
+    display: inline-block;
+  }
+
+  .col-buy-now {
+    width: 35% !important;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .item-product-image img {
+    width: 245px !important;
+  }
+}
+
+/* responsive para related product */
+
+@media (max-width: 480px) {
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 247px !important;
+    height: 247px !important;
+  }
+
+  .related-product a figure img  {
+    width: 245px !important;
+    height: 245px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 520px) {
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 202px !important;
+    height: 202px !important;
+  }
+
+  .related-product a figure img  {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 521px) and (max-width: 600px) {
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 212px !important;
+    height: 212px !important;
+  }
+
+  .related-product a figure img  {
+    width: 210px !important;
+    height: 210px !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 780px) {
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 232px !important;
+    height: 232px !important;
+  }
+
+  .related-product a figure img  {
+    width: 230px !important;
+    height: 230px !important;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 1199px) {
+  .related-product {
+    margin-left: auto;
+    margin-right: auto;
+    width: 202px !important;
+    height: 202px !important;
+  }
+
+  .related-product a figure img  {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* RESPONSIVE PARA LISTADO DE PRODUCTOS */
+@media (min-width: 481px) and (max-width: 553px) {
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 202px !important;
+    height: 202px !important;
+    margin-left: 25px !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 227px !important;
+    height: 227px !important;
+    margin-left: 25px !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 225px !important;
+    height: 225px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .list-products {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  .product {
+    width: 303px !important;
+    height: 303px !important;
+    margin-left: 25px !important;
+    margin-right: auto;
+  }
+
+  .product a figure img {
+    width: 301px !important;
+    height: 301px !important;
+  }
+}
+
+/* RESPONSIVE DETAIL CART */
+@media (max-width:319px) {
+  .div-transparent {
+    width: 0% !important;
+  }
+
+  .detail-cart  {
+    width: 100% !important;
+  }
+
+  .item-img {
+    margin-top: 16px !important;
+  }
+
+  .item-img img {
+    width: 50px !important;
+  }
+
+  .a-product-name {
+    font-size: 10px !important;
+  }
+
+  .start-i {
+    font-size: 8px !important;
+  }
+
+  .label-start-number {
+    font-size: 10px !important;
+  }
+
+  .product-price {
+    font-size: 10px !important;
+  }
+}
+@media (min-width:320px) and (max-width:480px) {
+  .div-transparent {
+    width: 0% !important;
+  }
+
+  .detail-cart  {
+    width: 100% !important;
+  }
+
+  .item-img {
+    margin-top: 16px !important;
+  }
+
+  .item-img img {
+    width: 50px !important;
+  }
+
+  .a-product-name {
+    font-size: 14px !important;
+  }
+
+  .start-i {
+    font-size: 10px !important;
+  }
+
+  .label-start-number {
+    font-size: 10px !important;
+  }
+
+  .product-price {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width:481px) and (max-width:720px) {
+  .div-transparent {
+    width:75% !important;
+  }
+
+  .detail-cart  {
+    width: 100% !important;
+  }
+
+  .item-img {
+    margin-top: 16px !important;
+  }
+
+  .item-img img {
+    width: 50px !important;
+  }
+
+  .a-product-name {
+    font-size: 14px !important;
+  }
+
+  .start-i {
+    font-size: 10px !important;
+  }
+
+  .label-start-number {
+    font-size: 10px !important;
+  }
+
+  .product-price {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width:721px) and (max-width:1200px) {
+  .div-transparent {
+    width:75% !important;
+  }
+
+  .detail-cart  {
+    width: 40% !important;
+  }
+
+  .item-img {
+    margin-top: 16px !important;
+  }
+
+  .item-img img {
+    width: 50px !important;
+  }
+
+  .a-product-name {
+    font-size: 14px !important;
+  }
+
+  .start-i {
+    font-size: 10px !important;
+  }
+
+  .label-start-number {
+    font-size: 10px !important;
+  }
+
+  .product-price {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width:1201px) and (max-width:1567px) {
+  .div-transparent {
+    width:75% !important;
+  }
+
+  .detail-cart  {
+    width: 40% !important;
+  }
+
+  .item-img {
+    margin-top: 6px !important;
+  }
+
+  .item-img img {
+    width: 70px !important;
+  }
+
+  .a-product-name {
+    font-size: 14px !important;
+  }
+
+  .start-i {
+    font-size: 10px !important;
+  }
+
+  .label-start-number {
+    font-size: 10px !important;
+  }
+
+  .product-price {
+    font-size: 14px !important;
+  }
+}
+
+/* RESPONSIVE CART */
+@media (max-width:477px) {
+  .product-img-cart {
+    width: 80px !important;
+  }
+
+  .item-product-cart {
+    padding: 0px !important
+  }
+
+  .product-name-cart {
+    font-size: 15px !important;
+  }
+
+  .product-description-cart {
+    font-size: 12px !important;
+  }
+
+  .product-price-cart {
+    font-size: 10px !important;
+  }
+
+  .control-qty input {
+    width: 60% !important;
+  }
+
+  .label-start-number-cart, .start-i-cart {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 478px) and (max-width: 720px) {
+  .product-img-cart {
+    width: 90px !important;
+  }
+
+  .item-product-cart {
+    padding: 0px !important
+  }
+
+  .product-name-cart {
+    font-size: 15px !important;
+  }
+
+  .product-description-cart {
+    font-size: 12px !important;
+  }
+
+  .product-price-cart {
+    font-size: 12px !important;
+  }
+
+  .control-qty input {
+    width: 60% !important;
+  }
+}
+
+/* RESPONSIVE NAV BROWSER OTHER PAGE*/
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .text-slogan-small {
+    font-size: 8px !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1104px) {
+  .a-cart-top img, .a-search-top img {
+    width: 23px !important;
+  }
+}
+
+/* RESPONSIVE FOOTER */
+@media (max-width: 1199px) {
+  .list-inline-item:not(:last-child) {
+    margin-right: -1px !important;
+  }
+
+  .text-center-md {
+    text-align: center !important;
+  }
+
+  .text-end-footer {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bg-footer-img {
+    background-image: url('../img/footer-m.jpg');
+  }
+}
