@@ -13,5 +13,5 @@
         'views/sale.xml'
 	],
   	'category': 'Theme/Creative',
-  	'depends': ['website', 'website_theme_install', 'sale'],
+  	'depends': ['website', 'website_theme_install', 'sale', 'website_sale'],
 }
