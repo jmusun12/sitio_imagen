@@ -17,6 +17,7 @@ _logger = logging.getLogger(__name__)
 class WebSiteSaleInherit(WebsiteSale):
     @http.route()
     def shop(self, page=0, category=None, search='', ppg=False, **post):
+        print('shop override')
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
@@ -90,15 +91,6 @@ class WebSiteSaleInherit(WebsiteSale):
         else:
             attributes = ProductAttribute.browse(attributes_ids)
 
-        """
-        layout_mode = request.session.get('website_sale_shop_layout_mode')
-        if not layout_mode:
-            if request.website.viewref('website_sale.products_list_view').active:
-                layout_mode = 'list'
-            else:
-                layout_mode = 'grid'
-        """
-
         values = {
             'search': search,
             'category': category,
@@ -119,56 +111,6 @@ class WebSiteSaleInherit(WebsiteSale):
         if category:
             values['main_object'] = category
         return request.render("website_sale.products", values)
-
-    @http.route()
-    def product(self, product, category='', search='', **kwargs):
-        if not product.can_access_from_current_website():
-            raise NotFound()
-
-        return request.render("website_sale.product", self._prepare_product_values(product, category, search, **kwargs))
-
-    def _prepare_product_values(self, product, category, search, **kwargs):
-        add_qty = int(kwargs.get('add_qty', 1))
-
-        product_context = dict(request.env.context, quantity=add_qty,
-                               active_id=product.id,
-                               partner=request.env.user.partner_id)
-        ProductCategory = request.env['product.public.category']
-
-        if category:
-            category = ProductCategory.browse(int(category)).exists()
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attrib_set = {v[1] for v in attrib_values}
-
-        keep = QueryURL('/shop', category=category and category.id, search=search, attrib=attrib_list)
-
-        categs = ProductCategory.search([('parent_id', '=', False)])
-
-        pricelist = request.website.get_current_pricelist()
-
-        if not product_context.get('pricelist'):
-            product_context['pricelist'] = pricelist.id
-            product = product.with_context(product_context)
-
-        # Needed to trigger the recently viewed product rpc
-        view_track = request.website.viewref("website_sale.product").track
-
-        return {
-            'search': search,
-            'category': category,
-            'pricelist': pricelist,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'keep': keep,
-            'categories': categs,
-            'main_object': product,
-            'product': product,
-            'add_qty': add_qty,
-            'view_track': view_track,
-        }
-
 
     @http.route()
     def cart(self, access_token=None, revive='', **post):
@@ -214,8 +156,11 @@ class WebSiteSaleInherit(WebsiteSale):
             return request.render("website_sale.cart_popover", values,
                                   headers={'Cache-Control': 'no-cache'})
         if post.get('type') == 'slide':
+            values['lines_product'] = order.order_line[:4]
+
             return request.render("sitio_imagen.cart_slide", values,
                                   headers={'Cache-Control': 'no-cache'})
+
         group_line_order = []
         group = []
         cont = 0

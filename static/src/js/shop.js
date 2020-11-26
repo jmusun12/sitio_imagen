@@ -184,7 +184,7 @@ $(document).ready(function () {
 
   // inicializacion de bodymovin div
 
-  if(document.getElementById("wrapwrap")) {
+  if($('#bm-body').length) {
       var animation = bodymovin.loadAnimation({
         container: document.getElementById("wrapwrap"),
         renderer: 'svg',

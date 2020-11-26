@@ -137,7 +137,7 @@
                         <div class="row">
                             <div class="col-md-4 col-xl-2 text-center">
                                 <a class="a-img-linea-nav-hidden ml-xl-2 ml-mb-2" href="#">
-                                    <img src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+                                    <img src="/sitio_imagen/static/src/img/linea-blue.png" alt="Linea"/>
                                 </a>
                             </div>
                             <div class="col-md-8 col-xl-10">
@@ -246,10 +246,10 @@
                     </div>
                     <div class="col-md-1 col-xl-1 text-left pt-xl-4 pt-md-4">
                         <a class="a-search-top" href="#">
-                            <img src="/sitio_imagen/static/src/img/lupa.png" alt=""/>
+                            <img src="/sitio_imagen/static/src/img/lupa-blue.png" alt=""/>
                         </a>
                         <a class="a-cart-top a-cart-top-fixed" href="#">
-                            <img src="/sitio_imagen/static/src/img/cart.png" alt=""/>
+                            <img src="/sitio_imagen/static/src/img/cart-blue.png" alt=""/>
                         </a>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
                 <div class="row">
                     <div class="col-md-4 col-xl-2 text-center">
                         <a class="a-img-linea-nav-hidden ml-xl-2 ml-mb-2" href="#">
-                            <img src="/sitio_imagen/static/src/img/linea.png" alt="Linea"/>
+                            <img src="/sitio_imagen/static/src/img/linea-blue.png" alt="Linea"/>
                         </a>
                     </div>
                     <div class="col-md-8 col-xl-10">
@@ -504,10 +504,10 @@
             </div>
             <div class="col-md-1 col-xl-1 text-left pt-xl-4 pt-md-4">
                 <a class="a-search-top" href="#">
-                    <img src="/sitio_imagen/static/src/img/lupa.png" alt=""/>
+                    <img src="/sitio_imagen/static/src/img/lupa-blue.png" alt=""/>
                 </a>
                 <a class="a-cart-top cart-other-page" href="#">
-                    <img src="/sitio_imagen/static/src/img/cart.png" alt=""/>
+                    <img src="/sitio_imagen/static/src/img/cart-blue.png" alt=""/>
                 </a>
             </div>
         </div>
@@ -524,7 +524,7 @@
                 <p class="text-center text-animation-cart">Atrévete a comprar nuestros productos.</p>
             </div>
             <t t-if="website_sale_order and website_sale_order.website_order_line">
-                <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                <t t-foreach="lines_product" t-as="line">
                     <div class="item-product">
                         <div class="item-img">
                             <span t-field="line.product_id.image_128"
@@ -567,7 +567,7 @@
                         </div>
                     </div>
                 </t>
-                <div class="text-center">
+                <div class="text-center mb-3">
                     <span class="h6">
                         <t t-call="website_sale.total">
                             <t t-set='hide_coupon'>True</t>
