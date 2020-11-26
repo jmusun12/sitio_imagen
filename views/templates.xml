@@ -33,7 +33,7 @@
                     <t t-call="sitio_imagen.mobil_header"/>
 
                     <!--http://chicosimagen.com/shop-->
-                    <t t-if="request.httprequest.url == 'http://localhost:8069/shop'">
+                    <t t-if="request.httprequest.url == 'http://chicosimagen.com/shop'">
                         <div id="bm-body"></div>
                         <div class="nav-browser">
                             <t t-call="sitio_imagen.shop_header"/>
