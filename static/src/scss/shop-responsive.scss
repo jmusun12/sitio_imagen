@@ -74,6 +74,10 @@
     margin-left: 8px !important;
   }
 
+  .div-title-etapas {
+    margin: 0px !important;
+  }
+
   .list-rrss li a img {
     width: 35px !important;
   }
@@ -81,6 +85,10 @@
   .div-title-etapas h3 {
     font-size: 13px !important;
     margin-top: 15px !important;
+  }
+
+  .div-etapas {
+    margin-top: 2px !important;
   }
 
   .list-etapas {
@@ -139,6 +147,18 @@
 
   .shop-page {
     padding-top: 5.5rem !important;
+  }
+
+  .nav-cart {
+    padding-top: 3.5rem !important;
+  }
+
+  .detail-header {
+    margin-top: 2.7rem !important;
+  }
+
+  .carousel-indicators {
+    z-index: 5 !important;
   }
 }
 
@@ -215,6 +235,14 @@
 
   .list-rrss li a img {
     width: 45px !important;
+  }
+
+  .div-etapas {
+    margin-top: 2px !important;
+  }
+
+  .div-title-etapas {
+    margin: 0px !important;
   }
 
   .div-title-etapas h3 {
@@ -315,6 +343,18 @@
   .shop-page {
     padding-top: 5.5rem !important;
   }
+
+  .nav-cart {
+    padding-top: 3.5rem !important;
+  }
+
+  .detail-header {
+    margin-top: 2.7rem !important;
+  }
+
+  .carousel-indicators {
+    z-index: 5 !important;
+  }
 }
 
 /*
@@ -387,8 +427,16 @@
     margin-left: 16px !important;
   }
 
+  .div-etapas {
+    margin-top: 2px !important;
+  }
+
   .list-rrss li a img {
     width: 50px !important;
+  }
+
+  .div-title-etapas {
+    margin: 0px !important;
   }
 
   .div-title-etapas h3 {
@@ -820,6 +868,10 @@
   .product-price {
     font-size: 10px !important;
   }
+
+  .shopping-title-invoice {
+    margin-top: 1rem !important;
+  }
 }
 @media (min-width:320px) and (max-width:480px) {
   .div-transparent {
@@ -839,7 +891,7 @@
   }
 
   .a-product-name {
-    font-size: 14px !important;
+    font-size: 11px !important;
   }
 
   .start-i {
@@ -851,7 +903,11 @@
   }
 
   .product-price {
-    font-size: 14px !important;
+    font-size: 10 !important;
+  }
+
+  .shopping-title-invoice {
+    margin-top: 1rem !important;
   }
 }
 

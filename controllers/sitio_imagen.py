@@ -157,7 +157,7 @@ class WebSiteSaleInherit(WebsiteSale):
             return request.render("website_sale.cart_popover", values,
                                   headers={'Cache-Control': 'no-cache'})
         if post.get('type') == 'slide':
-            values['lines_product'] = order.order_line[:4]
+            values['lines_product'] = order.order_line[:3]
 
             return request.render("sitio_imagen.cart_slide", values,
                                   headers={'Cache-Control': 'no-cache'})
