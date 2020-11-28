@@ -1183,3 +1183,7 @@ main {
 .indicator-carousel {
     background-color: #0066ff !important;
 }
+
+.carousel-indicators li {
+  box-shadow: none !important;
+}

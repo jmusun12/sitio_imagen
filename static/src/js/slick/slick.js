@@ -1305,7 +1305,7 @@
                 });
 
         _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
-            'aria-hidden': 'true',
+            'aria-hidden': 'false',
             'tabindex': '-1'
         }).find('a, input, button, select').attr({
             'tabindex': '-1'
@@ -2295,7 +2295,7 @@
         allSlides = _.$slider
             .find('.slick-slide')
             .removeClass('slick-active slick-center slick-current')
-            .attr('aria-hidden', 'true');
+            .attr('aria-hidden', 'false');
 
         _.$slides
             .eq(index)

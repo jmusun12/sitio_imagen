@@ -182,6 +182,7 @@
                                     </p>
                                 </t>
                             </div>
+                            <!--
                             <div id="carousel-products" class="s_carousel s_carousel_default carousel slide" data-interval="0" data-name="Carousel">
                                 <ol class="carousel-indicators mt-4">
                                     <t t-foreach="website_group_line_order" t-as="group">
@@ -223,7 +224,8 @@
                                         </div>
                                     </t>
                                 </div>
-                                <!--
+
+
                                 <div class="carousel-control-prev" data-target="#carousel-products" data-slide="prev" role="img" aria-label="Anterior" title="Anterior">
                                     <span class="carousel-control-prev-icon icon-arrow-carousel"/>
                                     <span class="sr-only o_default_snippet_text">Anterior</span>
@@ -232,7 +234,29 @@
                                     <span class="carousel-control-next-icon icon-arrow-carousel"/>
                                     <span class="sr-only o_default_snippet_text">Siguiente</span>
                                 </div>
-                                -->
+
+                            </div>
+                            -->
+                            <div class="slider-product-cart">
+                                <t t-if="not website_sale_order or not website_sale_order.website_order_line" class="js_cart_lines alert alert-info">
+                                    <div class="item-slider">
+                                        <div class="container">
+                                            <div class="row content">
+                                                <div class="col-lg-12">
+                                                    <p class="text-center text-empty-cart">Tu carrito está vacio.</p>
+                                                    <p class="text-center text-animation-cart">Atrévete a comprar nuestros productos.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-foreach="website_group_line_order" t-as="group">
+                                    <div class="item-slider">
+                                        <t t-foreach="group" t-as="line">
+                                            <t t-call="sitio_imagen.cart_line_imagen"/>
+                                        </t>
+                                    </div>
+                                </t>
                             </div>
                         </div>
                     </div>

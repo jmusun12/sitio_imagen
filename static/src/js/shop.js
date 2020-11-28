@@ -61,6 +61,14 @@ $(document).ready(function () {
         ]
     });
 
+  $('.slider-product-cart').slick({
+    dots: true,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+
   // inicializacion de bodymovin div
   if($('#bm-body').length) {
       var animation = bodymovin.loadAnimation({
