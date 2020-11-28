@@ -21,17 +21,9 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        """
-        if category:
-            category = Category.search([('id', '=', int(category))], limit=1)
-            if not category or not category.can_access_from_current_website():
-                raise NotFound()
-        else:
-            category = Category
-        """
-
         category = Category.search([('id', '=', 3)], limit=1)
 
+        """
         if ppg:
             try:
                 ppg = int(ppg)
@@ -39,7 +31,9 @@ class WebSiteSaleInherit(WebsiteSale):
             except ValueError:
                 ppg = False
         if not ppg:
-            ppg = request.env['website'].get_current_website().shop_ppg or 20
+            ppg = 3
+        """
+        ppg = 9
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -110,6 +104,11 @@ class WebSiteSaleInherit(WebsiteSale):
         }
         if category:
             values['main_object'] = category
+
+        if post.get('xhr'):
+            return request.render("sitio_imagen.content_product_imagen", values,
+                                  headers={'Cache-Control': 'no-cache'})
+
         return request.render("website_sale.products", values)
 
     @http.route()
@@ -119,6 +118,8 @@ class WebSiteSaleInherit(WebsiteSale):
         access_token: Abandoned cart SO access token
         revive: Revival method when abandoned cart. Can be 'merge' or 'squash'
         """
+        print('Call override cart')
+
         order = request.website.sale_get_order()
         if order and order.state != 'draft':
             request.session['sale_order_id'] = None
@@ -173,7 +174,7 @@ class WebSiteSaleInherit(WebsiteSale):
             group.append(item)
             cont += 1
 
-        if 0 < cont < 4:
+        if len(group):
             group_line_order.append(group)
 
         values['website_group_line_order'] = group_line_order

@@ -131,19 +131,76 @@ odoo.define('sitio_imagen.cart_imagen', function(require){
      publicWidget.registry.websiteCartImagen = publicWidget.Widget.extend({
         selector: '#detail-cart',
         events:  {
-            'change #input-quantity-line': '_onChangeQuantity',
             'click #delete_product-cart': '_onClickRemoveProduct',
+            'click #a-minus-qty': '_onClickMinusQty',
+            'click #a-plus-qty': '_onClickPlusQty'
         },
 
         _onClickRemoveProduct: function(ev) {
             ev.preventDefault();
 
-            $('#input-quantity-line').val(0).trigger('change');
+            var $input = $(ev.currentTarget).parents('div.item-product-cart').find('input#input-quantity-line');
+            var product= $input.data('product-id');
+            var line_id = $input.data('line-id');
+            // var qty = $('#input-quantity-line').val();
+
+            this._rpc({
+                route: "/shop/cart/update_json",
+                params: {
+                    line_id: line_id,
+                    product_id: product,
+                    set_qty: 0
+                },
+            }).then(function(data){
+                return window.location = '/shop/cart';
+            });
         },
 
-        _onChangeQuantity: function(ev) {
-            $('#input-quantity-line').addClass('border');
+        _onClickMinusQty: function(ev) {
+            ev.preventDefault();
+
+            var $input = $(ev.currentTarget).parents('div.control-qty').find('input#input-quantity-line');
+            var product_id = $input.data('product-id');
+            var line_id = $input.data('line-id');
+            var qty = parseInt($input.val() || 0, 10);
+            var new_qty = 0;
+            if (qty > 1) {
+                new_qty = qty - 1;
+            } else {
+                new_qty = 0;
+            }
+
+            this._rpc({
+                route: "/shop/cart/update_json",
+                params: {
+                    line_id: line_id,
+                    product_id: product_id,
+                    set_qty: new_qty
+                },
+            }).then(function(data){
+                return window.location = '/shop/cart';
+            });
         },
+
+        _onClickPlusQty: function(ev) {
+            ev.preventDefault();
+
+            var $input = $(ev.currentTarget).parents('div.control-qty').find('input#input-quantity-line');
+            var product_id = $input.data('product-id');
+            var line_id = $input.data('line-id');
+            //var qty = $('#input-quantity-line').val();
+
+            this._rpc({
+                route: "/shop/cart/update_json",
+                params: {
+                    line_id: line_id,
+                    product_id: product_id,
+                    add_qty: 1
+                },
+            }).then(function(data){
+                return window.location = '/shop/cart';
+            });
+        }
      });
 });
 

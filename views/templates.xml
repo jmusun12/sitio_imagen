@@ -10,9 +10,11 @@
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-responsive.scss"/>
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/animation-shop.scss"/>
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-nav.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/scroll_pagination.scss"/>
         </xpath>
         <xpath expr="script[last()]" position="after">
             <script type="text/javascript" src="/sitio_imagen/static/src/js/slick/slick.js"></script>
+            <script type="text/javascript" src="/sitio_imagen/static/src/js/scroll_pagination.js"></script>
             <script type="text/javascript" src="/sitio_imagen/static/src/js/shop.js"></script>
             <script type="text/javascript" src="/sitio_imagen/static/src/js/bodymovin.js"></script>
             <script type="text/javascript" src="/sitio_imagen/static/src/js/shop_utils.js"></script>
@@ -33,7 +35,7 @@
                     <t t-call="sitio_imagen.mobil_header"/>
 
                     <!--http://chicosimagen.com/shop-->
-                    <t t-if="request.httprequest.url == 'http://chicosimagen.com/shop'">
+                    <t t-if="request.httprequest.url == 'http://localhost:8069/shop'">
                         <div id="bm-body"></div>
                         <div class="nav-browser">
                             <t t-call="sitio_imagen.shop_header"/>
