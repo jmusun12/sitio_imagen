@@ -204,3 +204,17 @@ odoo.define('sitio_imagen.cart_imagen', function(require){
      });
 });
 
+odoo.define('sitio_imagen.product_imagen', function(require){
+    'use strict';
+    var ajax = require('web.ajax');
+    var publicWidget = require('web.public.widget');
+
+    publicWidget.registry.websiteProductImagen = publicWidget.Widget.extend({
+        selector: '#detail-product',
+        events:  {
+            'click #delete_product-cart': '_onClickRemoveProduct',
+            'click #a-minus-qty': '_onClickMinusQty',
+            'click #a-plus-qty': '_onClickPlusQty'
+        },
+    });
+});
