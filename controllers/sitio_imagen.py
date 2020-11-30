@@ -180,3 +180,7 @@ class WebSiteSaleInherit(WebsiteSale):
         values['website_group_line_order'] = group_line_order
 
         return request.render("website_sale.cart", values)
+
+    @http.route(['/shop/thanks'], type='http', auth="public", website=True)
+    def thanks(self, **kwargs):
+        return request.render("sitio_imagen.thanks")

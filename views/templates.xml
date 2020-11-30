@@ -31,8 +31,16 @@
         <!--Reemplazamos el menu-->
         <xpath expr="//div[@id='wrapwrap']/header" position="replace">
             <t t-if="website.code == 'IMG'">
+                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks']"/>
                 <nav class="nav-imagen">
                     <t t-call="sitio_imagen.mobil_header"/>
+
+                    <t t-set="valido" t-value="0"/>
+                    <t t-foreach="urls" t-as="u">
+                        <t t-if="u in request.httprequest.url">
+                            <t t-set="valido" t-value="1"/>
+                        </t>
+                    </t>
 
                     <!--http://chicosimagen.com/shop-->
                     <t t-if="request.httprequest.url == 'http://chicosimagen.com/shop'">
@@ -41,7 +49,7 @@
                             <t t-call="sitio_imagen.shop_header"/>
                         </div>
                     </t>
-                    <t t-elif="('/shop/product' in request.httprequest.url) or ('/shop/cart' in request.httprequest.url) or ('/shop/address' in request.httprequest.url) or ('/shop/checkout' in request.httprequest.url) or ('/shop/payment' in request.httprequest.url)">
+                    <t t-elif="valido == 1">
                         <div class="nav-browser">
                             <t t-call="sitio_imagen.other_header"/>
                         </div>
@@ -173,5 +181,33 @@
                 <t t-call="sitio_imagen.confirmation_imagen"/>
             </t>
         </xpath>
+    </template>
+
+    <template id="thanks">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Tienda - Gracias</t>
+            <div class="thank-you">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 text-center p-3">
+                        <h3 class="title-thank-you">!SU PAGO A SIDO REGISTRADO EXITOSAMENTE!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 text-center p-3">
+                        <h4 class="title-thank-you">
+                            ¡GRACIAS POR ADQUIRIR NUESTRO PRODUCTO, ESPERAMOS QUE VUELVAS PRONTO!
+                        </h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <img class="mx-auto d-block" src="/sitio_imagen/static/src/img/thanks.jpg" alt="Thanks"/>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                document.body.classList.add('page');
+            </script>
+        </t>
     </template>
 </odoo>

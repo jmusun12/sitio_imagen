@@ -413,13 +413,15 @@
                                     <t t-set="i" t-value="0"/>
                                     <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
                                         <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
-                                            <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon"}'/>
+                                            <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon m-1"}'/>
                                         </li>
                                         <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
                                             <span class="float-right more_option text-info">
                                                 <a href="#" class="o_payment_form_pay_icon_more"
                                                    data-toggle="tooltip"
-                                                   t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">and more</a>
+                                                   t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
                                             </span>
                                         </li>
                                         <t t-set="i" t-value="i+1"/>
@@ -542,75 +544,106 @@
     <template id="confirmation_imagen">
         <div class="detail-sale">
             <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-12 col-xl-12">
-                    <div class="container">
-                        <h5 class="shopping-title">DIRECCIÓN DE ENTREGA</h5>
-                        <hr/>
-                        <div class="row">
-                            <div class="col-12 col-md-7 col-xl-7">
-                                <div class="row">
-                                    <div class="col-12 col-md-12 col-xl-12">
-                                        <h6 class="text-center"><span>Orden</span> <em t-field="order.name"/><t t-if="order.state == 'sale'"><span>Confirmada</span></t></h6>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-xl">
-                                        <div class="oe_cart">
-                                            <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
-                                            <t t-if="payment_tx_id.state == 'done'">
-                                    <div class="thanks_msg">
-                                        <h2>Thank you for your order.
-                                            <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
-                                        </h2>
-                                    </div>
-                                </t>
-                                            <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
-                                    <p class="alert alert-info mt-3" role="status">
-                                        <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn btn-primary'>Sign Up</a>
-                                         to follow your order.
-                                    </p>
-                                </t>
-                                            <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_confirmation_1"/>
-                                            <h3 class="text-left mt-3">
-                                                <strong>Información de pago:</strong>
-                                            </h3>
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <t t-esc="order.get_portal_last_transaction().acquirer_id.name" />
-                                                        </td>
-                                                        <td class="text-right" width="100">
-                                                            <strong>Total:</strong>
-                                                        </td>
-                                                        <td class="text-right" width="100">
-                                                            <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <t t-call="sitio_imagen.payment_confirmation_status_imagen"/>
-                                            <div class="card mt-3">
-                                                <div class="card-body">
-                                                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
-                                                    <div><b>Billing <t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
-                                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Shipping: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <div class="container">
+                            <h5 class="shopping-title">CONFIRMACIÓN DE ORDEN</h5>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-12 col-md-7 col-xl-7">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 col-md-12 col-xl-12">
+                                                <h5 class="text-center confirmation-title mb-3">
+                                                    <span>ORDEN </span>
+                                                    <em t-field="order.name"/>
+                                                    <t t-if="order.state == 'sale'">
+                                                        <span>CONFIRMADA</span>
+                                                    </t>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-12 col-xl-12">
+                                                <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
+                                                <t t-if="payment_tx_id.state == 'done'">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-12 col-xl-12">
+                                                            <h2>¡Gracias por realizar su orden!.
+                                                                <a role="button" class="btn d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print">
+                                                                    <i class="fa fa-print"></i> Imprimir
+                                                                </a>
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
+                                             <div class="row">
+                                                 <div class="col-12 col-md-12 col-xl-12">
+                                                     <p class="alert alert-info mt-3" role="status">
+                                                         <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn'>
+                                                             Iniciar sesion
+                                                         </a>
+                                                         para continuar su orden.
+                                                     </p>
+                                                 </div>
+                                             </div>
+                                        </t>
+                                        <div class="row">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-12 col-xl-12 ml-3">
+                                                        <h6 class="text-left title-confirm-order">INFORMACIÓN DE PAGO</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6 co-xl-6 ml-3">
+                                                        <div class="row">
+                                                            <div class="col-6 col-md-6 col-xl-6">
+                                                                <p class="text-left" t-esc="order.get_portal_last_transaction().acquirer_id.name"></p>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 col-xl-3">
+                                                                <p class="text-right">Total:</p>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 col-xl-3">
+                                                                <p class="text-left">
+                                                                    <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>
+                                        </div>
+
+                                        <t t-call="sitio_imagen.payment_confirmation_status_imagen"/>
+
+                                        <div class="row">
+                                            <div class="col-12 col-md-12 col-xl-12">
+                                                <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                                <div>
+                                                    <b class="other-title">Facturación <t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b>
+                                                    <span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
+                                                </div>
+                                                <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address">
+                                                    <b class="other-title">Envío: </b>
+                                                    <span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-5 col-xl-5">
-                                <t t-call="sitio_imagen.invoice_address"/>
+                                <div class="col-12 col-md-5 col-xl-5">
+                                    <t t-set="website_sale_order" t-value="order"/>
+                                    <t t-call="sitio_imagen.invoice_address"/>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         <script type="text/javascript">
             document.body.classList.add('page');
@@ -618,44 +651,74 @@
     </template>
 
     <template id="payment_confirmation_status_imagen">
-        <div class="oe_website_sale_tx_status mt-3" t-att-data-order-id="order.id">
+        <div class="mt-3" t-att-data-order-id="order.id">
             <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
-            <div t-attf-class="card #{
+            <!--
+            <div t-attf-class="container #{
                 (payment_tx_id.state == 'pending' and 'bg-info') or
                 (payment_tx_id.state == 'done' and 'alert-success') or
                 (payment_tx_id.state == 'authorized' and 'alert-success') or
                 'bg-danger'}">
-                <div class="card-header">
-                    <a role="button" groups="base.group_system" class="btn btn-sm btn-link text-white float-right" target="_blank" aria-label="Edit" title="Edit"
-                            t-att-href="'/web#model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % ('payment.acquirer', payment_tx_id.acquirer_id.id, 'payment.action_payment_acquirer')">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <t t-if="payment_tx_id.state == 'pending'">
+             -->
+            <t t-if="payment_tx_id.state == 'pending'">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
                         <t t-raw="payment_tx_id.acquirer_id.pending_msg"/>
-                    </t>
-                    <t t-if="payment_tx_id.state == 'done'">
-                        <span t-if='payment_tx_id.acquirer_id.done_msg' t-raw="payment_tx_id.acquirer_id.done_msg"/>
-                    </t>
-                    <t t-if="payment_tx_id.state == 'cancel'">
-                        <t t-raw="payment_tx_id.acquirer_id.cancel_msg"/>
-                    </t>
-                    <t t-if="payment_tx_id.state == 'authorized'">
-                        <span>Your payment has been authorized.</span>
-                    </t>
-                    <t t-if="payment_tx_id.state == 'error'">
-                        <span t-esc="payment_tx_id.state_message"/>
-                    </t>
-                </div>
-                <div t-if="payment_tx_id.acquirer_id.provider == 'transfer' and order.reference" class="card-body">
-                    <b>Communication: </b><span t-esc='order.reference'/>
-                </div>
-                <div t-if="(payment_tx_id.acquirer_id.qr_code == True) and (payment_tx_id.acquirer_id.provider == 'transfer') and (payment_tx_id.currency_id.name == 'EUR')">
-                    <div class="card-body" t-if="payment_tx_id.acquirer_id.journal_id.bank_account_id.qr_code_valid">
-                        <h3>Or scan me with your banking app.</h3>
-                        <img class="border border-dark rounded" t-att-src="payment_tx_id.acquirer_id.journal_id.bank_account_id.build_qr_code_url(order.amount_total,payment_tx_id.reference)"/>
                     </div>
-                    <div class="card-body" t-if="payment_tx_id.acquirer_id.journal_id.bank_account_id.qr_code_valid == False">
-                        <h3>The SEPA QR Code informations are not set correctly.</h3>
+                </div>
+            </t>
+            <t t-if="payment_tx_id.state == 'done'">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <div t-if='payment_tx_id.acquirer_id.done_msg' t-raw="payment_tx_id.acquirer_id.done_msg"></div>
+                    </div>
+                </div>
+            </t>
+            <t t-if="payment_tx_id.state == 'cancel'">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <t t-raw="payment_tx_id.acquirer_id.cancel_msg"/>
+                    </div>
+                </div>
+            </t>
+
+            <t t-if="payment_tx_id.state == 'authorized'">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <p class="text-left other-title">Su pago ha sido autorizado.</p>
+                    </div>
+                </div>
+            </t>
+            <t t-if="payment_tx_id.state == 'error'">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <div t-esc="payment_tx_id.state_message"></div>
+                    </div>
+                </div>
+            </t>
+
+            <div class="row">
+                <div class="col-12 col-md-12 col-xl-12">
+                    <p class="text-left">
+                        <span class="other-title"><strong>Referencia: </strong></span>
+                        <span t-esc='order.reference'/>
+                    </p>
+                </div>
+            </div>
+
+            <div t-if="(payment_tx_id.acquirer_id.qr_code == True) and (payment_tx_id.acquirer_id.provider == 'transfer') and (payment_tx_id.currency_id.name == 'EUR')">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12" t-if="payment_tx_id.acquirer_id.journal_id.bank_account_id.qr_code_valid">
+                        <h3 class="text-left other-title">O escanéame con tu aplicación bancaria.</h3>
+                        <img class="border border-dark rounded"
+                             t-att-src="payment_tx_id.acquirer_id.journal_id.bank_account_id.build_qr_code_url(order.amount_total,payment_tx_id.reference)"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12" t-if="payment_tx_id.acquirer_id.journal_id.bank_account_id.qr_code_valid == False">
+                        <h3 class="text-center other-title">
+                            La información del código QR SEPA no está configurada correctamente.
+                        </h3>
                     </div>
                 </div>
             </div>
