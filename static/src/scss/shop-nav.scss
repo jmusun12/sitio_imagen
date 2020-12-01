@@ -157,6 +157,10 @@
   width: 100%;
 }
 
+.title-children {
+    font-size: 18px !important;
+}
+
 @media (min-width: 1025px) and (max-width: 1255px) {
   .childrens {
     width: 100% !important;
@@ -181,6 +185,14 @@ svg {
     transform: translateX(-50%) translateY(-50%) !important;
     z-index: -100 !important;
     background-size: cover !important;
+}
+
+.nav-tabs {
+    font-size: 18px !important;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: #ffd00b !important;
 }
 
 

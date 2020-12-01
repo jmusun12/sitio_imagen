@@ -890,7 +890,7 @@ main {
 
 .product-name-cart {
   font-family: 'KG Red Hands';
-  font-size: 12px !important;
+  font-size: 15px !important;
 }
 
 .label-start-number-cart, .start-i-cart {
@@ -926,6 +926,7 @@ main {
   border: none !important;
   text-align: center;
   background-color: transparent;
+  font-size: 18px !important;
 }
 
 .img-puy {
@@ -1034,11 +1035,13 @@ main {
 .description-category {
   font-family: 'Neris-SemiBold';
   color: #073ead;
+  font-size: 20px !important;
 }
 
 .small-description {
   font-family: 'Neris-SemiBold';
   color: #7584a0;
+  font-size: 18px !important;
 }
 
 .text-description-product {
@@ -1064,6 +1067,10 @@ main {
   display: flex !important;
   justify-content: center !important;
   transform: none !important;
+}
+
+#buy_now {
+    color: white !important;
 }
 
 .text-nav-tab, .text-btn-send, .text-button-buy, .lbl-comment, .text-extra-info {

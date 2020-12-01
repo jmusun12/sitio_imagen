@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12">
                             <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} div_street">
-                                <label class="col-form-label" for="street">Calle <span class="d-none d-md-inline"> y Numero</span></label>
+                                <label class="col-form-label" for="street">Dirección</label>
                                 <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']" />
                             </div>
                         </div>
@@ -118,7 +118,26 @@
                     <!-- Example -->
                     <input type="hidden" name="field_required" t-att-value="'phone,name'" />
 
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <label class="col-form-label">Selecciona tu forma de entrega</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-4 col-xl-4">
+                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-checkout a-submit-disable a-submit-loading">
+                                Retiro en tienda
+                            </a>
+                        </div>
 
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
+                                Envío a domicilio
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--
                     <div class="row">
                         <div class="col-6 col-md-6 col-xl-6 text-left">
                             <a role="button" href="/shop/cart" class="btn-continue btn mb32">
@@ -133,6 +152,7 @@
                             </a>
                         </div>
                     </div>
+                    -->
                 </form>
             </div>
         </div>
@@ -196,13 +216,15 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-right">
-                            <a  class="btn btn-primary btn-pay-now" href="/shop/address">
-                                PAGAR AHORA
-                            </a>
+                    <t t-if="show_buy == 1">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-xl-12 text-right">
+                                <a  class="btn btn-primary btn-pay-now" href="/shop/address">
+                                    PAGAR AHORA
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </t>
                 </div>
             </div>
     </template>
@@ -260,6 +282,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5">
+                        <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_address"/>
                     </div>
                 </div>
@@ -322,16 +345,18 @@
                             <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12">
                                     <a class="a-title-step collapsed" href="#collapseStepOne" data-toggle="collapse" aria-expanded="false" aria-controls="collapseStepOne">
-                                        1. COMPLETA TUS DATOS
+                                        COMPLETA TUS DATOS
                                     </a>
                                     <div class="container collapse show" id="collapseStepOne">
                                         <t t-call="sitio_imagen.form_address_imagen"/>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5">
+                        <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_address"/>
                     </div>
                 </div>
@@ -530,6 +555,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5">
+                        <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_address"/>
                     </div>
                 </div>
@@ -637,6 +663,7 @@
                                 </div>
                                 <div class="col-12 col-md-5 col-xl-5">
                                     <t t-set="website_sale_order" t-value="order"/>
+                                    <t t-set="show_buy" t-value="0"/>
                                     <t t-call="sitio_imagen.invoice_address"/>
                                 </div>
                             </div>
