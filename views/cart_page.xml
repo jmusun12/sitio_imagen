@@ -78,7 +78,7 @@
                                             <t t-set="qty" t-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
                                             <t t-set="price_unit" t-value="line.price_unit"/>
                                             <t t-set="total" t-value="qty * price_unit"/>
-                                            <span t-esc="total" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
+                                            <span t-esc="total" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
                                         </h5>
                                     </div>
                                 </div>
