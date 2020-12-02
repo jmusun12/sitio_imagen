@@ -11,7 +11,7 @@
                            "from_currency": website_sale_order.currency_id if delivery.free_over else delivery.product_id.company_id.currency_id or website_sale_order.company_id.currency_id,
                            "display_currency": website_sale_order.currency_id}'/>
           </span>
-          <span t-else="" t-att-class="badge_class">Free</span>
+          <span t-else="" t-att-class="badge_class">Gratis</span>
         </t>
         <t t-else="">
             <span t-attf-class="#{badge_class} o_wsale_delivery_badge_price">Select to compute delivery rate</span>
