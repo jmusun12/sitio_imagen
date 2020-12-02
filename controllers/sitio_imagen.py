@@ -184,3 +184,4 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['/shop/thanks'], type='http', auth="public", website=True)
     def thanks(self, **kwargs):
         return request.render("sitio_imagen.thanks")
+

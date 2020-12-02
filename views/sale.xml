@@ -114,7 +114,7 @@
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                     <input type="hidden" name="submitted" value="1" />
                     <input type="hidden" name="partner_id" t-att-value="partner_id or '0'" />
-                    <input type="hidden" name="callback" t-att-value="callback" />
+                    <input type="hidden" name="callback" id="callback" t-att-value="callback" />
                     <!-- Example -->
                     <input type="hidden" name="field_required" t-att-value="'phone,name'" />
 
@@ -125,13 +125,13 @@
                     </div>
                     <div class="row">
                         <div class="col-6 col-md-4 col-xl-4">
-                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-checkout a-submit-disable a-submit-loading">
+                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
                                 Retiro en tienda
                             </a>
                         </div>
 
                         <div class="col-6 col-md-6 col-xl-6">
-                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
+                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-checkout a-submit-disable a-submit-loading">
                                 Envío a domicilio
                             </a>
                         </div>
@@ -175,8 +175,8 @@
                             </p>
                         </div>
                         <div class="col-6 col-md-6 col-xl-6">
-                            <p class="label-invoice-money text-right">
-                                <span t-field="website_sale_order.amount_untaxed" style="white-space: nowrap;"
+                            <p class="label-invoice-money text-right" id="amount_untaxed_product_imagen">
+                                <span t-esc="website_sale_order.amount_untaxed - website_sale_order.amount_delivery" class="monetary_field" style="white-space: nowrap;"
                                   t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
                             </p>
                         </div>
@@ -186,7 +186,21 @@
                             <p class="label-invoice text-left">Cargo por envio</p>
                         </div>
                         <div class="col-6 col-md-6 col-xl-6">
-                            <p class="label-invoice-money text-right">N/A</p>
+                            <p class="label-invoice-money text-right" id="amount_delivery_imagen">
+                                <span t-field="website_sale_order.amount_delivery" class="monetary_field" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice text-left">Subtotal</p>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice-money text-right" id="amount_untaxed_imagen">
+                                <span t-field="website_sale_order.amount_untaxed" class="monetary_field" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -194,8 +208,8 @@
                             <p class="label-invoice text-left">Impuestos</p>
                         </div>
                         <div class="col-6 col-md-6 col-xl-6">
-                            <p class="label-invoice-money text-right">
-                                <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;"
+                            <p class="label-invoice-money text-right" id="amount_tax_imagen">
+                                <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;" class="monetary_field"
                                       t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
                             </p>
                         </div>
@@ -210,8 +224,8 @@
                             <p class="label-invoice text-left">Total</p>
                         </div>
                         <div class="col-6">
-                            <p class="label-invoice-money text-right">
-                                <strong t-field="website_sale_order.amount_total"
+                            <p class="label-invoice-money text-right" id="amount_total_imagen">
+                                <strong t-field="website_sale_order.amount_total" class="monetary_field"
                                   t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
                             </p>
                         </div>
@@ -529,11 +543,11 @@
         </div>
     </template>
     <template id="payment_imagen">
-        <div class="detail-sale">
+        <div class="detail-sale" id="payment-page">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-7 col-xl-7">
-                        <div class="container">
+                        <div class="container" id="payment_method">
                             <h5 class="shopping-title">MÉTODOS DE PAGO</h5>
                             <hr/>
                             <t t-call="sitio_imagen.payment_methods_imagen">

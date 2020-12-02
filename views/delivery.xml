@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="payment_delivery_imagen" name="Delivery Costs" inherit_id="sitio_imagen.payment_imagen">
+        <!--
+        <xpath expr="//div[@id='payment_methods']" position="before">
+            <t t-set="delivery_nb" t-value="deliveries and len(deliveries)"/>
+            <div t-if="delivery_nb == 1" id="delivery_carrier" class="mt4">
+                <b>Shipping Method: </b>
+                <t t-foreach="deliveries" t-as="delivery">
+                    <t t-call="website_sale_delivery.payment_delivery_methods"/>
+                </t>
+            </div>
+        </xpath>
+        -->
+        <xpath expr="//div[@id='payment_method']" position="before">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 mb-4" id="delivery_carrier_imagen">
+                        <t t-set="delivery_nb" t-value="len(deliveries)"/>
+                        <h5 t-if="delivery_nb &gt; 1" class="text-center mb-3 mt-2 shopping-title">ELIJA EL MÉTODO DE ENVÍO</h5>
+                        <t t-if="delivery_nb &gt; 1">
+                            <hr/>
+                        </t>
+                        <div t-if="delivery_nb &gt; 1" class="row">
+                            <div class="col-12 col-md-12 col-xl-12">
+                                <ul class="list-group list list-unstyled">
+                                    <t t-foreach="deliveries" t-as="delivery">
+                                        <li class="o_delivery_carrier_select">
+                                            <t t-call="website_sale_delivery.payment_delivery_methods"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <!-- we shouldn't be able to pay if there is no way to deliver -->
+        <xpath expr="//div[@id='payment_method']" position="attributes">
+            <attribute name="t-att-style">'display: none!important' if not deliveries and delivery_has_storable else ''</attribute>
+        </xpath>
+    </template>
+</odoo>

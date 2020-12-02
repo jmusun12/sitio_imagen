@@ -10,8 +10,9 @@
         'views/shop_page.xml',
         'views/product.xml',
         'views/cart_page.xml',
-        'views/sale.xml'
+        'views/sale.xml',
+		'views/delivery.xml'
 	],
   	'category': 'Theme/Creative',
-  	'depends': ['website', 'website_theme_install', 'sale', 'website_sale'],
+  	'depends': ['website', 'website_theme_install', 'sale', 'website_sale', 'website_sale_delivery'],
 }

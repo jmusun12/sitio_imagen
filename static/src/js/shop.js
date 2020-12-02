@@ -189,31 +189,16 @@ $(document).ready(function () {
   $(document).on('click', '.a-submit-form-checkout', function(event) {
     event.preventDefault();
 
+    $('#checkout_form_imagen').find('input#callback').val('/shop/checkout');
     $('form#checkout_form_imagen').submit();
   });
-   /*
-  $(document).on('click', '#delete_product-cart', function(event){
+
+
+  $(document).on('click', '.a-submit-form-xpress', function(event){
     event.preventDefault();
-    $('#input-quantity-line').val(0);
-    var product_id = $('#input-quantity-line').data('product-id');
-    var line_id = $('#input-quantity-line').data('line-id');
-    var qty = $('#input-quantity-line').val();
 
-    $.ajax({
-        type: 'POST',
-        data: {
-            'product_id': product_id,
-            'line_id': line_id,
-            'set_qty': qty
-        },
-        dataType: 'json',
-        success: function(data) {
-            return window.location = '/shop/cart';
-        },
-        error: function(er) {
+    $('#checkout_form_imagen').find('input#callback').val('/shop/payment');
 
-        }
-    });
+    $('form#checkout_form_imagen').submit();
   });
-  */
 });
