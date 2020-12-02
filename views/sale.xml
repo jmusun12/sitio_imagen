@@ -288,7 +288,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12 text-right mr-5 mb-3">
-                                    <a class="btn-continue btn btn-next-step" data-toggle="collapse" href="#collapseStepThree" aria-expanded="false" aria-controls="collapseStepThree" current-controls="#collapseStepTwo" focus-control=".focus-control">
+                                    <a class="btn-continue btn btn-next-step" data-toggle="collapse" href="/shop/confirm_order" aria-expanded="false" aria-controls="collapseStepThree" current-controls="#collapseStepTwo" focus-control=".focus-control">
                                         CONTINUAR
                                     </a>
                                 </div>

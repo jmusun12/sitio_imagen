@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="payment_delivery_imagen" name="Delivery Costs" inherit_id="sitio_imagen.payment_imagen">
-        <!--
-        <xpath expr="//div[@id='payment_methods']" position="before">
+        <xpath expr="//div[@id='shipping_and_billing']" position="inside">
             <t t-set="delivery_nb" t-value="deliveries and len(deliveries)"/>
             <div t-if="delivery_nb == 1" id="delivery_carrier" class="mt4">
                 <b>Shipping Method: </b>
@@ -11,7 +10,7 @@
                 </t>
             </div>
         </xpath>
-        -->
+
         <xpath expr="//div[@id='payment_method']" position="before">
             <div class="container">
                 <div class="row">
