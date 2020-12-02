@@ -31,7 +31,7 @@
         <!--Reemplazamos el menu-->
         <xpath expr="//div[@id='wrapwrap']/header" position="replace">
             <t t-if="website.code == 'IMG'">
-                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact']"/>
+                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process']"/>
                 <nav class="nav-imagen">
                     <t t-call="sitio_imagen.mobil_header"/>
 
