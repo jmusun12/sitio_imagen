@@ -792,4 +792,21 @@
             </div>
         </xpath>
     </template>
+
+    <template id="payment_process_imagen" inherit_id="payment.payment_process_page">
+        <xpath expr="//div[@class='wrap']" position="replace">
+            <div class="detail-sale">
+                 <div class="container o_website_payment">
+                    <div class="o_payment_processing">
+                        <div class="row">
+                            <div class="o_payment_processing_content col-sm-6 col-sm-offset-3">
+                                <!-- The content here is generated in JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
 </odoo>
