@@ -185,3 +185,6 @@ class WebSiteSaleInherit(WebsiteSale):
     def thanks(self, **kwargs):
         return request.render("sitio_imagen.thanks")
 
+    @http.route(['/shop/contact'], type='http', auth="public", website=True)
+    def contact(self, **kw):
+        return request.render("sitio_imagen.page_contact_imagen")

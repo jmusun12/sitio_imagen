@@ -11,7 +11,9 @@
         'views/product.xml',
         'views/cart_page.xml',
         'views/sale.xml',
-		'views/delivery.xml'
+		'views/delivery.xml',
+		'views/terms.xml',
+		'views/contact.xml'
 	],
   	'category': 'Theme/Creative',
   	'depends': ['website', 'website_theme_install', 'sale', 'website_sale', 'website_sale_delivery'],

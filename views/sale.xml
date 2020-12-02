@@ -781,4 +781,15 @@
             </div>
         </div>
     </template>
+
+    <template id="payment_sale_note_imagen" inherit_id="payment_imagen" name="Accept Terms &amp; Conditions">
+        <xpath expr="//div[@id='payment_method']" position="after">
+            <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
+                <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                <label for="checkbox_cgv" class="custom-control-label text-red-hands font-size-12">
+                    Estoy de acuerdo con los <a target="_BLANK" href="/shop/terms">terminos &amp; condiciones</a>
+                </label>
+            </div>
+        </xpath>
+    </template>
 </odoo>

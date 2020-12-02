@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="terms_imagen" inherit_id="website_sale.terms">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div class="detail-sale">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <h5 class="text-center term-title">TÉRMINOS Y CONDICIONES</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <ul class="list-unstyled list-group list-group-flush">
+                                <li class="list-group-item">
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

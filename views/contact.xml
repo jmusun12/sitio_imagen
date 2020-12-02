@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="page_contact_imagen">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Contáctanos</t>
+            <div class="detail-sale">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <h5 class="text-center term-title">CONTÁCTANOS</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <h6 class="other-title">ENCUENTRANOS EN:</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <p class="text-left text-red-hands">
+                                9a Calle Poniente 3972, San Salvador
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 mt-3">
+                            <h6 class="other-title">LLÁMANOS A:</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="text-red-hands black-text" href="tel: +503 2235-3824">Tel: +503 2235-3824</a>
+                                </li>
+                                <li>
+                                    <a class="text-red-hands black-text" href="tel: +503 2264-9463">Tel: +503 2264-9463</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

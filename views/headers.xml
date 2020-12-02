@@ -281,7 +281,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="a-contact" href="#">
+                            <a class="a-contact" href="/shop/contact">
                                 <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/contact.png" alt="Contactanos"/>
                                 <p id="p-contact">CONTACTANOS</p>
                             </a>
