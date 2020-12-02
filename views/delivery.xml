@@ -2,7 +2,7 @@
 <odoo>
      <template id="payment_delivery_methods_imagen">
         <input t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''"/>
-        <label class="label-optional" t-field="delivery.name"/>
+        <label class="label-optional text-red-hands font-size-14" t-field="delivery.name"/>
         <t t-set='badge_class' t-value="(delivery_nb != 1 and 'float-right ' or '') + 'badge badge-secondary'" />
         <t t-if="delivery.delivery_type == 'fixed'">
           <span t-if="delivery.fixed_price > 0.0" t-att-class="badge_class">

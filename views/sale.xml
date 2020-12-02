@@ -219,7 +219,7 @@
                             <hr/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-6">
                             <p class="label-invoice text-left">Total</p>
                         </div>
@@ -232,7 +232,7 @@
                     </div>
                     <t t-if="show_buy == 1">
                         <div class="row">
-                            <div class="col-12 col-md-12 col-xl-12 text-right">
+                            <div class="col-12 col-md-12 col-xl-12 text-right mb-3">
                                 <a  class="btn btn-primary btn-pay-now" href="/shop/address">
                                     PAGAR AHORA
                                 </a>
@@ -411,7 +411,7 @@
 
                         <t t-foreach="acquirers" t-as="acq">
                             <div class="col-12 col-md-12 col-xl-12 mt-3">
-                                <p class="text-left title-payment-method">
+                                <p class="text-left title-payment-method font-size-14 text-red-hands">
                                     <t t-if="acq.payment_flow == 'form'">
                                         <input type="radio" t-att-data-acquirer-id="acq.id"
                                                t-att-data-form-payment="true"
@@ -430,7 +430,7 @@
                                                t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"
                                         />
                                     </t>
-                                    <span class="payment_option_name">
+                                    <span class="payment_option_name font-size-14 text-red-hands">
                                         <t t-esc="acq.display_as or acq.name"/>
                                         <!--
                                         <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right" style="margin-left:5px">
@@ -448,25 +448,27 @@
                                         <small class="text-muted">(Some fees may apply)</small>
                                     </t>
                                 </p>
-                                <ul class="list-inline">
-                                    <t t-set="i" t-value="0"/>
-                                    <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
-                                        <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
-                                            <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon m-1"}'/>
-                                        </li>
-                                        <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
-                                            <span class="float-right more_option text-info">
-                                                <a href="#" class="o_payment_form_pay_icon_more"
-                                                   data-toggle="tooltip"
-                                                   t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
-                                            </span>
-                                        </li>
-                                        <t t-set="i" t-value="i+1"/>
-                                    </t>
-                                </ul>
-                                <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                                <t t-if="len(acq.payment_icon_ids) &gt; 0">
+                                    <ul class="list-inline">
+                                        <t t-set="i" t-value="0"/>
+                                        <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
+                                            <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
+                                                <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon m-1"}'/>
+                                            </li>
+                                            <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
+                                                <span class="float-right more_option text-info">
+                                                    <a href="#" class="o_payment_form_pay_icon_more"
+                                                       data-toggle="tooltip"
+                                                       t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </span>
+                                            </li>
+                                            <t t-set="i" t-value="i+1"/>
+                                        </t>
+                                    </ul>
+                                    <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                                </t>
                             </div>
                             <t t-if="acq.payment_flow == 'form'">
                                 <div t-attf-id="o_payment_form_acq_{{acq.id}}"
@@ -514,29 +516,31 @@
                             </t>
                         </t>
                     </div>
-                    <div t-if='back_button_txt' class="float-left mt-2">
-                        <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
-                            <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
-                            <t t-esc="back_button_txt"/>
-                        </a>
-                    </div>
-                    <div class="float-right mt-2">
-                        <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
-                            <t t-if="submit_txt">
-                                <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
-                                <t t-esc="submit_txt"/>
-                                <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+                    <div class="row">
+                        <div t-if='back_button_txt' class="col-12 col-md-6 col-xl-6 float-left mt-2">
+                            <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
+                                <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
+                                <t t-esc="back_button_txt"/>
+                            </a>
+                        </div>
+                        <div class="float-right mt-2 col-12 col-md-6 col-xl-6">
+                            <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+                                <t t-if="submit_txt">
+                                    <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
+                                    <t t-esc="submit_txt"/>
+                                    <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-lock"/> Pay
+                                </t>
+                            </button>
+                            <t t-if="show_manage_btn">
+                                <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
                             </t>
-                            <t t-else="">
-                                <i class="fa fa-lock"/> Pay
-                            </t>
-                        </button>
-                        <t t-if="show_manage_btn">
-                            <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
-                        </t>
-                        <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="btn btn-primary btn-lg mb8 mt8">
-                            <i class="fa fa-plus-circle"/> Add new card
-                        </button>
+                            <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="btn btn-primary btn-lg mb8 mt8">
+                                <i class="fa fa-plus-circle"/> Add new card
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -546,16 +550,16 @@
         <div class="detail-sale" id="payment-page">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-7 col-xl-7">
+                    <div class="col-12 col-md-7 col-xl-7 order-md-1 order-xl-1 order-2">
                         <div class="container">
                             <h5 class="shopping-title">DIRECCIONES</h5>
                             <hr/>
                              <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12 mb-4 mt-2" id="shipping_and_billing">
-                                    <a class='float-right no-decoration a-link-imagen' href='/shop/checkout'><i class="fa fa-edit"/> Editar</a>
+                                    <a class='float-right no-decoration text-red-hands font-size-10 a-link-imagen' href='/shop/checkout'><i class="fa fa-edit"/> Editar</a>
                                     <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
-                                    <div><b>Facturación<t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
-                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Envío: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                                    <div class="text-red-hands "><b>Facturación<t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline font-size-12 mt-1"/></div>
+                                    <div class="text-red-hands" t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Envío: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline font-size-12 mt-1"/></div>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +571,7 @@
                                 <t t-set="submit_txt">Pagar ahora</t>
                                 <t t-set="icon_right" t-value="1"/>
                                 <t t-set="icon_class" t-value="'fa-chevron-right'"/>
-                                <t t-set="submit_class" t-value="'btn btn-custom'"/>
+                                <t t-set="submit_class" t-value="'btn btn-custom w-sm-100'"/>
                                 <t t-set="pms" t-value="tokens"/>
                                 <t t-set="form_action" t-value="'/shop/payment/token'"/>
                                 <t t-set="prepare_tx_url" t-value="'/shop/payment/transaction/'"/>
@@ -575,12 +579,12 @@
 
                                 <t t-set="back_button_icon_class" t-value="'fa-chevron-left'"/>
                                 <t t-set="back_button_txt">Regresar al carrito</t>
-                                <t t-set="back_button_class" t-value="'btn btn-custom'"/>
+                                <t t-set="back_button_class" t-value="'btn btn-custom w-sm-100'"/>
                                 <t t-set="back_button_link" t-value="'/shop/cart'"/>
                             </t>
                         </div>
                     </div>
-                    <div class="col-12 col-md-5 col-xl-5">
+                    <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1">
                         <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_address"/>
                     </div>
