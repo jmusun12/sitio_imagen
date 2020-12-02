@@ -244,7 +244,7 @@
     </template>
 
     <template id="checkout_imagen">
-        <div class="detail-sale">
+        <div class="detail-sale" id="checkout-imagen">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-7 col-xl-7">
@@ -263,7 +263,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12 col-md-12 col-xl-12">
+                                <div class="col-12 col-md-12 col-xl-12 one_kanban">
                                     <form action="/shop/address" method="post" class='form-add-address'>
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                         <a role="button" href="#" class='a-submit-add-address btn btn-continue mb16 btn-block'>
@@ -273,9 +273,9 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row all_shipping">
                                 <t t-foreach="shippings" t-as="ship">
-                                    <div class="col-6 col-md-6 col-xl-6">
+                                    <div class="col-6 col-md-6 col-xl-6 one_kanban">
                                         <t t-call="sitio_imagen.item_address">
                                             <t t-set="actual_partner" t-value="order.partner_id" />
                                             <t t-set='contact' t-value="ship"/>
@@ -316,7 +316,7 @@
             </t>
             <input type='submit'/>
         </form>
-        <div t-attf-class="row #{selected and 'border border-primary' or 'js_change_shipping'}">
+        <div t-attf-class="row item-address #{selected and 'border border-primary' or 'js_change_shipping'}">
             <div class="col-12 col-md-12 col-xl-12">
                 <div class="row">
                     <div class="col-10 col-md-10 col-xl-10">
@@ -547,6 +547,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-7 col-xl-7">
+                        <div class="container">
+                            <h5 class="shopping-title">DIRECCIONES</h5>
+                            <hr/>
+                             <div class="row">
+                                <div class="col-12 col-md-12 col-xl-12 mb-4 mt-2" id="shipping_and_billing">
+                                    <a class='float-right no-decoration a-link-imagen' href='/shop/checkout'><i class="fa fa-edit"/> Editar</a>
+                                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                    <div><b>Facturación<t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Envío: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="container" id="payment_method">
                             <h5 class="shopping-title">MÉTODOS DE PAGO</h5>
                             <hr/>
