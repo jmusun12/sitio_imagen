@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-6">
                         <p class="label-invoice-money text-right">
-                            <span t-field="website_sale_order.amount_untaxed" style="white-space: nowrap;"
+                            <span t-esc="website_sale_order.amount_untaxed - website_sale_order.amount_delivery" style="white-space: nowrap;"
                                   t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
                         </p>
                     </div>
@@ -111,7 +111,21 @@
                         <p class="label-invoice text-left">Cargo por envio</p>
                     </div>
                     <div class="col-6">
-                        <p class="label-invoice-money text-right">N/A</p>
+                        <p class="label-invoice-money text-right">
+                            <span t-field="website_sale_order.amount_delivery" style="white-space: nowrap;"
+                                  t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="label-invoice text-left">Subtotal</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="label-invoice-money text-right">
+                            <span t-field="website_sale_order.amount_untaxed" style="white-space: nowrap;"
+                                  t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                        </p>
                     </div>
                 </div>
                 <div class="row">
