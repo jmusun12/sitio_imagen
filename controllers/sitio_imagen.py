@@ -157,7 +157,8 @@ class WebSiteSaleInherit(WebsiteSale):
             return request.render("website_sale.cart_popover", values,
                                   headers={'Cache-Control': 'no-cache'})
         if post.get('type') == 'slide':
-            values['lines_product'] = order.order_line[:3]
+            order_lines = order.order_line.filtered(lambda line: line.product_template_id.type != "service")
+            values['lines_product'] = order_lines[:3]
 
             return request.render("sitio_imagen.cart_slide", values,
                                   headers={'Cache-Control': 'no-cache'})
@@ -165,7 +166,8 @@ class WebSiteSaleInherit(WebsiteSale):
         group_line_order = []
         group = []
         cont = 0
-        for item in order.order_line:
+        order_lines = order.order_line.filtered(lambda line: line.product_template_id.type != "service")
+        for item in order_lines:
             if cont > 3:
                 group_line_order.append(group)
                 group = []
