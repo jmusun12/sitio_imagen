@@ -157,14 +157,14 @@ $(document).ready(function () {
 
 
   // click a boton de siguiente paso en proceso de pago
-  $(document).on('click', '.btn-next-step', function (event) {
+  /*$(document).on('click', '.btn-next-step', function (event) {
     event.preventDefault();
     var currentCollapse = $(this).attr('current-controls');
     var nextControl = $(this).attr('href');
 
     $(currentCollapse).collapse('toggle');
     $(nextControl).focus();
-  });
+  });*/
 
   // envio de formulario para agregar al carrito
 
