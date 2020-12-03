@@ -107,7 +107,9 @@
                                 <div class="related-product">
                                     <a t-att-href="alt_product.website_url">
                                         <figure>
-                                            <img class="related-product-img" src="/sitio_imagen/static/src/img/products/botecitos4.jpg" alt=""/>
+                                            <span t-field="product.image_1920"
+                                                  t-options="{'widget': 'image', 'class': 'product-img', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                            />
                                         </figure>
                                         <div class="related-product-data">
                                             <div class="related-product-info">
