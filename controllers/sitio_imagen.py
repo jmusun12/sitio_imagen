@@ -190,3 +190,13 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['/shop/contact'], type='http', auth="public", website=True)
     def contact(self, **kw):
         return request.render("sitio_imagen.page_contact_imagen")
+
+    @http.route()
+    def print_saleorder(self, **kwargs):
+        sale_order_id = request.session.get('sale_last_order_id')
+        if sale_order_id:
+            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf([sale_order_id])
+            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
+            return request.make_response(pdf, headers=pdfhttpheaders)
+        else:
+            return request.redirect('/shop')
