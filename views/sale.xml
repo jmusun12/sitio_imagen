@@ -625,11 +625,7 @@
                                                 <t t-if="payment_tx_id.state == 'done'">
                                                     <div class="row">
                                                         <div class="col-12 col-md-12 col-xl-12">
-                                                            <h2>¡Gracias por realizar su orden!.
-                                                                <a role="button" class="btn d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print">
-                                                                    <i class="fa fa-print"></i> Imprimir
-                                                                </a>
-                                                            </h2>
+                                                            <h2 class="text-center font-size-14 other-title">¡Gracias por realizar su orden!.</h2>
                                                         </div>
                                                     </div>
                                                 </t>
@@ -689,6 +685,14 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12 col-md-12 col-xl-12">
+                                                <a role="button" class="btn btn-custom w-sm-100" href="/shop/print" target="_blank" aria-label="Orden de Venta" title="Orden de Venta">
+                                                    <i class="fa fa-print"></i> Imprimir orden
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5 col-xl-5">
@@ -726,8 +730,8 @@
             </t>
             <t t-if="payment_tx_id.state == 'done'">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-xl-12">
-                        <div t-if='payment_tx_id.acquirer_id.done_msg' t-raw="payment_tx_id.acquirer_id.done_msg"></div>
+                    <div t-if='payment_tx_id.acquirer_id.done_msg' class="col-12 col-md-12 col-xl-12">
+                        <div  t-raw="payment_tx_id.acquirer_id.done_msg"></div>
                     </div>
                 </div>
             </t>
