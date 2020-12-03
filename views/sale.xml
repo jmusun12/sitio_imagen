@@ -606,7 +606,7 @@
                             <h5 class="shopping-title">CONFIRMACIÓN DE ORDEN</h5>
                             <hr/>
                             <div class="row">
-                                <div class="col-12 col-md-7 col-xl-7">
+                                <div class="col-12 col-md-7 col-xl-7 order-md-1 order-xl-1 order-2">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 col-md-12 col-xl-12">
@@ -624,8 +624,8 @@
                                                 <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
                                                 <t t-if="payment_tx_id.state == 'done'">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-12 col-xl-12">
-                                                            <h2 class="text-center font-size-14 other-title">¡Gracias por realizar su orden!.</h2>
+                                                        <div class="col-12 col-md-12 col-xl-12 mb-3">
+                                                            <h2 class="text-center font-size-20 other-title">¡Gracias por realizar su orden!.</h2>
                                                         </div>
                                                     </div>
                                                 </t>
@@ -656,12 +656,12 @@
                                                             <div class="col-6 col-md-6 col-xl-6">
                                                                 <p class="text-left" t-esc="order.get_portal_last_transaction().acquirer_id.name"></p>
                                                             </div>
-                                                            <div class="col-6 col-md-3 col-xl-3">
-                                                                <p class="text-right">Total:</p>
-                                                            </div>
-                                                            <div class="col-6 col-md-3 col-xl-3">
+                                                            <div class="col-6 col-md-6 col-xl-6">
                                                                 <p class="text-left">
-                                                                    <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                                                    <span>Total: </span>
+                                                                    <span>
+                                                                        <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                                                    </span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -687,7 +687,7 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-12 col-md-12 col-xl-12">
+                                            <div class="col-12 col-md-12 col-xl-12 mt-3">
                                                 <a role="button" class="btn btn-custom w-sm-100" href="/shop/print" target="_blank" aria-label="Orden de Venta" title="Orden de Venta">
                                                     <i class="fa fa-print"></i> Imprimir orden
                                                 </a>
@@ -695,7 +695,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-5 col-xl-5">
+                                <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1">
                                     <t t-set="website_sale_order" t-value="order"/>
                                     <t t-set="show_buy" t-value="0"/>
                                     <t t-call="sitio_imagen.invoice_address"/>
