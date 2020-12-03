@@ -370,6 +370,25 @@ odoo.define('sitio_imagen.checkout_imagen', function(require){
         ev.preventDefault();
         $(ev.currentTarget).closest('div.one_kanban').find('form.d-none').attr('action', '/shop/address').submit();
     },
-});
+    });
 });
 
+odoo.define('sitio_imagen.product_list_imagen', function(require){
+    'use strict';
+    var ajax = require('web.ajax');
+    var publicWidget = require('web.public.widget');
+
+    publicWidget.registry.ProductListImagen = publicWidget.Widget.extend({
+        selector: '#page-products-imagen',
+        events: {
+            'click .a-submit': '_onAddCart',
+        },
+
+        _onAddCart: function(ev) {
+            ev.preventDefault();
+
+            var $form = $(ev.currentTarget).parents('div.product-link').find('form.form-add-cart');
+            $form.submit();
+        },
+    });
+});

@@ -168,11 +168,16 @@ $(document).ready(function () {
 
   // envio de formulario para agregar al carrito
 
+/*
   $(document).on('click', '.a-submit', function (event) {
     event.preventDefault();
+    var $target = event.target;
 
-    $('form.form-add-cart').submit();
+    $form = $target.parent('form.form-add-cart');
+
+    $form.submit();
   });
+  */
 
   $(document).on('click', '.related-a-add-cart', function (event) {
     event.preventDefault();
