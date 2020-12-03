@@ -730,15 +730,13 @@
             </t>
             <t t-if="payment_tx_id.state == 'done'">
                 <div class="row">
-                    <div t-if='payment_tx_id.acquirer_id.done_msg' class="col-12 col-md-12 col-xl-12">
-                        <div  t-raw="payment_tx_id.acquirer_id.done_msg"></div>
+                    <div t-if='payment_tx_id.acquirer_id.done_msg' class="col-12 col-md-12 col-xl-12" t-raw="payment_tx_id.acquirer_id.done_msg">
                     </div>
                 </div>
             </t>
             <t t-if="payment_tx_id.state == 'cancel'">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-xl-12">
-                        <t t-raw="payment_tx_id.acquirer_id.cancel_msg"/>
+                    <div class="col-12 col-md-12 col-xl-12" t-raw="payment_tx_id.acquirer_id.cancel_msg">
                     </div>
                 </div>
             </t>
