@@ -308,7 +308,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
         return request.render("website_sale.products", values)
 
-    @http.route(['''/shop/libros-niños-4-5''', '''/shop/libros-niños-2-4/page/<int:page>'''], type='http',
+    @http.route(['''/shop/libros-niños-4-5''', '''/shop/libros-niños-4-5/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_2_4(self, page=0, category=None, search='', ppg=False, **post):
         print('shop override')
