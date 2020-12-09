@@ -319,7 +319,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/libros-niños-2-4">
                                 <div class="div-img-etapa">
                                     <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/2-4.png" alt="Leeme, releeme y vuelveme a leer"/>
                                 </div>
@@ -435,7 +435,7 @@
                                 <div class="col-md-2 col-xl-2 text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                            <a class="hvr-buzz-out item-children" href="/libros-niños-2-4" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
                                                 <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
                                             </a>
                                         </div>

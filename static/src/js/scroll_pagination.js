@@ -5,6 +5,7 @@
     $('#scrollpagination').attr('pagination', 'enabled');
     $('#loading').hide();
     $('#no-more-result').hide();
+    var url_get = $('#url_get').val();
 
     $(window).on('scroll', function() {
         var scrollHeight = $(document).height();
@@ -16,7 +17,7 @@
                     current_page += 1;
                     $.ajax({
                         type: 'GET',
-                        url: '/shop',
+                        url: url_get,
                         data: {
                             'ppg': 9,
                             'page': current_page,
