@@ -296,7 +296,7 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/libros-niños-2-4'
+            'url_get': '/shop/libros-niños-2-4'
         }
 
         if category:
@@ -398,7 +398,7 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/libros-niños-2-4'
+            'url_get': '/shop/libros-niños-4-5'
         }
 
         if category:
