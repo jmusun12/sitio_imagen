@@ -64,7 +64,7 @@
                                 <div class="col-md-2 col-xl-2 text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-niños-2-4" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
                                                 <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
                                             </a>
                                         </div>
@@ -77,7 +77,7 @@
                                 <div class="col-md-2 col-xl-2 text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-niños-4-5" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
                                                 <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
                                             </a>
                                         </div>
@@ -177,7 +177,7 @@
                                         <div class="col-md-2 col-xl-2 text-center">
                                             <div class="row">
                                                 <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-niños-2-4" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
                                                         <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
                                                     </a>
                                                 </div>
@@ -190,7 +190,7 @@
                                         <div class="col-md-2 col-xl-2 text-center">
                                             <div class="row">
                                                 <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-niños-4-5" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
                                                         <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
                                                     </a>
                                                 </div>
@@ -319,7 +319,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/libros-niños-2-4">
+                            <a href="/shop/libros-niños-2-4">
                                 <div class="div-img-etapa">
                                     <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/2-4.png" alt="Leeme, releeme y vuelveme a leer"/>
                                 </div>
@@ -330,7 +330,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/shop/libros-niños-4-5">
                                 <div class="div-img-etapa">
                                     <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/4-5.png" alt="Mis historias con varios finales"/>
                                 </div>
@@ -435,7 +435,7 @@
                                 <div class="col-md-2 col-xl-2 text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/libros-niños-2-4" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-niños-2-4" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
                                                 <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
                                             </a>
                                         </div>
@@ -448,7 +448,7 @@
                                 <div class="col-md-2 col-xl-2 text-center">
                                     <div class="row">
                                         <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="#" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-niños-4-5" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
                                                 <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
                                             </a>
                                         </div>
