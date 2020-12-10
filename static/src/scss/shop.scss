@@ -636,7 +636,7 @@ main {
 
 .table-bordered {
     border: 1px solid #dee2e6;
-}CHART
+}
 
 .table {
     color: #4f4f4f;
@@ -649,7 +649,7 @@ main {
 }
 
 /*Related products*/
-.related-sCHARTlick-products {
+.related-slick-products {
   display: flex;
 }
 
@@ -661,7 +661,7 @@ main {
   /* width: calc(33.33% - 66.5px); */
   width: 252px !important;
   height: 252px !important;
-  padding:CHART 0px;
+  padding: 0px;
   border: 2px solid #0071BC;
   position: relative;
   margin-right: 40px;
@@ -676,7 +676,7 @@ main {
 .related-product a figure {
   position: relative;
   transition: all .5s;
-  margin: 1CHART2px 0px 0px 12px;
+  margin: 12px 0px 0px 12px;
   z-index: -2;
 }
 
