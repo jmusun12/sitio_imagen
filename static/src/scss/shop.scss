@@ -689,6 +689,7 @@ main {
   width: 250px;
   height: 250px;
   z-index: -2;
+  max-width: 250px !important;
 }
 
 .related-product-data {
