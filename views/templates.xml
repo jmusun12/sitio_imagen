@@ -32,7 +32,7 @@
         <xpath expr="//div[@id='wrapwrap']/header" position="replace">
             <t t-if="website.code == 'IMG'">
                 <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process']"/>
-                <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', '/shop/libros-chicos-2-4', '/shop/libros-chicos-4-5', '/shop/libros-chicos-6-7', '/shop/libros-chicos-8-9', '/shop/libros-chicos-10-12']"/>
+                <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', 'http://chicosimagen.com/shop/libros-chicos-2-4', 'http://chicosimagen.com/shop/libros-chicos-4-5', 'http://chicosimagen.com/shop/libros-chicos-6-7', 'http://chicosimagen.com/shop/libros-chicos-8-9', 'http://chicosimagen.com/shop/libros-chicos-10-12']"/>
 
                 <nav class="nav-imagen">
                     <t t-call="sitio_imagen.mobil_header"/>
