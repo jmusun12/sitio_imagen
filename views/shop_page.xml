@@ -47,7 +47,9 @@
                 <div class="description-page">
                     <div class="row">
                         <div class="col-12 text-center col-hidden-movil pb-3">
-                            <img width="90" src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
+                            <span t-field="category.image_1920"
+                                  t-options="{'widget': 'image', 'style': 'width:90px !important;'}"
+                            />
                         </div>
                     </div>
                     <div class="row">
