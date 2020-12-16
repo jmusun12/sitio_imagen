@@ -135,10 +135,11 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p class="text-justify text-description-product" t-esc="product.description_sale">
+                                                    <p class="text-justify text-description-product" t-esc="product.description">
                                                     </p>
                                                 </div>
                                             </div>
+                                            
                                             <!--
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -200,4 +201,4 @@
             </t>
         </xpath>
     </template>
-</odoo>
+</odoo>     
