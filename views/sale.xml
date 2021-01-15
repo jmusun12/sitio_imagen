@@ -11,28 +11,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-12 col-xl-12">
+            <div class="col-12 col-md-12 col-xl-12 oe_website_sale">
                 <form id="checkout_form_imagen" class="checkout_autoformat" action="/shop/address" method="post">
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12">
+                            <p class="text-left">Campos requeridos (*)</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
                             <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} div_name">
-                                <label class="col-form-label" for="name">Nombre</label>
+                                <label class="col-form-label" for="name">Nombre completo (*)</label>
                                 <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" t-att-value="'name' in checkout and checkout['name']" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6 col-xl-6">
-                            <t t-if="mode[1] == 'billing' ">
-                                <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''}" id="div_email">
-                                    <label class="col-form-label" for="email">Correo electrónico</label>
-                                    <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']" />
-                                </div>
-                            </t>
+                            <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''}" id="div_email">
+                                <label class="col-form-label" for="email">Correo electrónico (*)</label>
+                                <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']" />
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6">
                             <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''}" id="div_phone">
-                                <label class="col-form-label" for="phone">Teléfono</label>
+                                <label class="col-form-label" for="phone">Teléfono (*)</label>
                                 <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="'phone' in checkout and checkout['phone']" />
                             </div>
                         </div>
@@ -40,7 +43,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12">
                             <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} div_street">
-                                <label class="col-form-label" for="street">Dirección</label>
+                                <label class="col-form-label" for="street">Dirección (*)</label>
                                 <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']" />
                             </div>
                         </div>
@@ -66,48 +69,43 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-7 col-xl-7">
+                        <div class="col-12 col-md-12 col-xl-12">
                             <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} div_city">
-                                <label class="col-form-label" for="city">Ciudad</label>
+                                <label class="col-form-label" for="city">Ciudad (*)</label>
                                 <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="'city' in checkout and checkout['city']" />
                             </div>
-                        </div>
-                        <div class="col-12 col-md-5 col-xl-5">
-                            <t t-set='zip_city' t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
-                            <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
-                                <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} div_zip">
-                                    <label class="col-form-label label-optional" for="zip">Código de área</label>
-                                    <input type="text" name="zip" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="'zip' in checkout and checkout['zip']" />
-                                </div>
-                            </t>
-                        </div>
+                        </div>                       
                     </div>
-                    <div class="row">
-                        <div class="col-6 col-md-6 col-xl-6">
-                            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} div_country">
-                                <label class="col-form-label" for="country_id">País</label>
-                                <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
-                                    <option value="">Country...</option>
-                                    <t t-foreach="countries" t-as="c">
-                                        <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
-                                            <t t-esc="c.name" />
-                                        </option>
-                                    </t>
-                                </select>
+                    <div class="row">                        
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} div_zip">
+                                <label class="col-form-label label-optional" for="zip">Código de área (*)</label>
+                                <input type="text" name="zip" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="'zip' in checkout and checkout['zip']" />
                             </div>
                         </div>
+                    </div>
+                    <div class="row" id="div-country">
                         <div class="col-6 col-md-6 col-xl-6">
-                             <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} div_state" t-att-style="(not country or not country.state_ids) and 'display: none'">
-                                 <label class="col-form-label" for="state_id">Departamento</label>
-                                 <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}" data-init="1">
-                                    <option value="">Departamento</option>
-                                    <t t-foreach="country and country.state_ids or []" t-as="s">
-                                        <option t-att-value="s.id" t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
-                                            <t t-esc="s.name" />
-                                        </option>
-                                    </t>
-                                </select>
-                             </div>
+                            <label class="col-form-label" for="country_id">País (*)</label>
+                            <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                <option value="">Seleccione...</option>
+                                <t t-foreach="countries" t-as="c">
+                                    <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                                        <t t-esc="c.name" />
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <label class="col-form-label" for="state_id">Departamento (*)</label>
+                            <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}" data-init="1">
+                                <option value="">Seleccione...</option>
+                                <t t-foreach="country and country.state_ids or []" t-as="s">
+                                    <option t-att-value="s.id" t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                                        <t t-esc="s.name" />
+                                    </option>
+                                </t>
+                            </select>
                         </div>
                     </div>
 
@@ -117,6 +115,15 @@
                     <input type="hidden" name="callback" id="callback" t-att-value="callback" />
                     <!-- Example -->
                     <input type="hidden" name="field_required" t-att-value="'phone,name'" />
+
+                    <!--Recaptcha-->
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 mt-2">
+                            <script src="https://www.google.com/recaptcha/api.js"></script>                            
+                            <div class="g-recaptcha" data-sitekey="6LfG4i0aAAAAACNEHaB__-dsJ5i8cIzvRuguz-IE"></div>
+                            <div class="help-block with-errors" id="err" style='color: red'></div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12">
@@ -153,6 +160,7 @@
                         </div>
                     </div>
                     -->
+                    
                 </form>
             </div>
         </div>
@@ -219,7 +227,7 @@
                             <hr/>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-3" id="div-total-invoices">
                         <div class="col-6">
                             <p class="label-invoice text-left">Total</p>
                         </div>
@@ -384,7 +392,7 @@
     <!--Metodos de pago-->
     <template id="payment_methods_imagen">
         <div class="row">
-            <form t-if="pms or acquirers" method="post" class="o_payment_form mt-3 clearfix w-100"
+            <form id="form-payment" t-if="pms or acquirers" method="post" class="o_payment_form mt-3 clearfix w-100"
                   t-att-action="form_action if form_action else '#'"
                   t-att-data-success-url="success_url or ''"
                   t-att-data-error-url="error_url or ''"
@@ -516,6 +524,14 @@
                             </t>
                         </t>
                     </div>
+
+                    <!-- <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <script src="https://www.google.com/recaptcha/api.js"></script>
+                            <div class="g-recaptcha" data-sitekey="6LfG4i0aAAAAACNEHaB__-dsJ5i8cIzvRuguz-IE"></div>
+                            <div class="help-block with-errors" id="err" style='color: red'></div>
+                        </div>
+                    </div> -->
                     <div class="row" id="div-buttons">
                         <div t-if='back_button_txt' class="col-12 col-md-6 col-xl-6 float-left mt-2">
                             <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">

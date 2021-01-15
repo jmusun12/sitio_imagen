@@ -14,7 +14,8 @@
 		'views/delivery.xml',
 		'views/terms.xml',
 		'views/contact.xml',
-		'views/report_order.xml'
+		'views/report_order.xml',
+		'views/promo_code.xml'
 	],
   	'category': 'Theme/Creative',
   	'depends': ['website', 'website_theme_install', 'sale', 'website_sale', 'website_sale_delivery'],
