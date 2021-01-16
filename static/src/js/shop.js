@@ -288,7 +288,7 @@ $(document).ready(function () {
 
     var recaptcha = $("#g-recaptcha-response").val();
     if (recaptcha === "") {
-      document.getElementById('err').innerHTML="Please check Captcha";
+      document.getElementById('err').innerHTML="Complete el campo 'No soy un robot'";
       valid = false;
     }
 
@@ -312,4 +312,16 @@ $(document).ready(function () {
   //       $('form#form-payment').submit();
   //   }
   // });
+
+  $(document).on('click', '.a-submit-cupon', function(event) { 
+    event.preventDefault();
+
+    let code = $('input[name=promo]').val();
+
+    if ( code == null || code === '' ) {
+      document.getElementById('err').innerHTML="Código de promoción requerido.";
+    } else {
+      $('form[name=coupon_code]').submit();
+    }
+  });
 });

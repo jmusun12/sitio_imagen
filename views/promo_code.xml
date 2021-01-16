@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="code_promo_imagen" inherit_id="sitio_imagen.invoice_address" name="Promo Code">
-        <xpath expr="//div[@id='div-total-invoices']" position="after">
+    <template id="code_promo_imagen" inherit_id="sitio_imagen.invoice_cart_imagen" name="Promo Code">
+        <xpath expr="//div[@id='div-total-invoices-cart']" position="after">
             <tr t-if="not hide_coupon">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-xl-12 text-center text-xl-right border-0">
+                    <div class="col-12 col-md-12 col-xl-12 text-center text-xl-right border-0 mb-3">
                         <span class=''>
                             <t t-set='force_coupon' t-value="website_sale_order.pricelist_id.code or request.params.get('code_not_available')"/>
                             <t t-if="not force_coupon">
-                                <a href="#" class="show_coupon_imagen">Tengo un código promocional</a>
+                                <a href="#" class="show_coupon_imagen other-title">Tengo un código promocional</a>
                             </t>
                             <div t-attf-class="coupon_form #{not force_coupon and 'd-none'}">
                                 <t t-call="sitio_imagen.coupon_form_imagen"/>
@@ -18,5 +18,22 @@
                 </div>
             </tr>
         </xpath>
+    </template>
+
+     <template id='coupon_form_imagen' name='Coupon form'>
+        <form t-att-action="'/shop/pricelist%s' % (redirect and '?r=' + redirect or '')"
+            method="post" name="coupon_code">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+            <div class="input-group w-100">
+                <input name="promo" class="form-control" type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or None"/>
+                <div class="help-block with-errors" id="err" style='color: red'></div>
+                <div class="input-group-append">
+                    <a href="#" role="button" class="btn btn-secondary a-submit-cupon btn-custom">Aplicar</a>
+                </div>
+            </div>
+        </form>
+        <t t-if="request.params.get('code_not_available')" name="code_not_available">
+            <div class="alert alert-danger text-left" role="alert">El código de promoción no es válido.</div>
+        </t>
     </template>
 </odoo>
