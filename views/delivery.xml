@@ -35,22 +35,24 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-12 col-xl-12 mb-4" id="delivery_carrier_imagen">
-                        <t t-set="delivery_nb" t-value="len(deliveries)"/>
-                        <h5 t-if="delivery_nb &gt; 1" class="text-center mb-3 mt-2 shopping-title">ELIJA EL MÉTODO DE ENVÍO</h5>
-                        <t t-if="delivery_nb &gt; 1">
-                            <hr/>
-                        </t>
-                        <div t-if="delivery_nb &gt; 1" class="row">
-                            <div class="col-12 col-md-12 col-xl-12">
-                                <ul class="list-group list list-unstyled">
-                                    <t t-foreach="deliveries" t-as="delivery">
-                                        <li class="o_delivery_carrier_select">
-                                            <t t-call="sitio_imagen.payment_delivery_methods_imagen"/>
-                                        </li>
-                                    </t>
-                                </ul>
+                        <t t-set="delivery_nb" t-value="deliveries and len(deliveries)"/>
+                        <t t-if="delivery_nb">
+                            <h5 t-if="delivery_nb &gt; 1" class="text-center mb-3 mt-2 shopping-title">ELIJA EL MÉTODO DE ENVÍO</h5>
+                            <t t-if="delivery_nb &gt; 1">
+                                <hr/>
+                            </t>
+                            <div t-if="delivery_nb &gt; 1" class="row">
+                                <div class="col-12 col-md-12 col-xl-12">
+                                    <ul class="list-group list list-unstyled">
+                                        <t t-foreach="deliveries" t-as="delivery">
+                                            <li class="o_delivery_carrier_select">
+                                                <t t-call="sitio_imagen.payment_delivery_methods_imagen"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        </t>                        
                     </div>
                 </div>
             </div>
