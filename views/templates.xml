@@ -31,9 +31,18 @@
         <!--Reemplazamos el menu-->
         <xpath expr="//div[@id='wrapwrap']/header" position="replace">
             <t t-if="website.code == 'IMG'">
-                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process']"/>}
+                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process']"/>
                 <!-- <t t-set="urls_test" t-value="['http://localhost:8050/shop', 'http://localhost:8050/shop/libros-chicos-2-4', 'http://localhost:8050/shop/libros-chicos-4-5', 'http://localhost:8050/shop/libros-chicos-6-7', 'http://localhost:8050/shop/libros-chicos-8-9', 'http://localhost:8050/shop/libros-chicos-10-12']"/> -->
                 <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', 'http://chicosimagen.com/shop/libros-chicos-2-4', 'http://chicosimagen.com/shop/libros-chicos-4-5', 'http://chicosimagen.com/shop/libros-chicos-6-7', 'http://chicosimagen.com/shop/libros-chicos-8-9', 'http://chicosimagen.com/shop/libros-chicos-10-12']"/>
+                <t t-set="urls_portal" t-value="['/my/orders', '/my/home', '/my/account']"/>
+
+                <t t-set="es_portal" t-value="0"/>
+                <t t-foreach="urls_portal" t-as="u">
+                    <t t-if="u in request.httprequest.url">
+                        <t t-set="es_portal" t-value="1"/>
+                    </t>
+                </t>
+
 
                 <nav class="nav-imagen">
                     <t t-call="sitio_imagen.mobil_header"/>
@@ -66,6 +75,17 @@
                     </t>
                     <t t-else="">
                         <!--<p t-esc="request.httprequest.url"></p>-->
+                    </t>
+
+                    <t t-if="es_portal == 1">
+                        <div class="nav-browser">
+                            <t t-call="sitio_imagen.header_portal"/>
+                        </div>
+                        <style type="text/css">
+                            main {
+                                margin-top: 80px !important;
+                            }
+                        </style>
                     </t>
                 </nav>
 

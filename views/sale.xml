@@ -120,8 +120,8 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 mt-2">
                             <script src="https://www.google.com/recaptcha/api.js"></script>                            
-                            <!-- <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div> -->
-                            <div class="g-recaptcha" data-sitekey="6LeNVy4aAAAAABVe8xbMhkwB1eKWyNKCJkunJ8wF"></div>
+                            <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>
+                            <!-- <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div> -->
                             <div class="help-block with-errors" id="err" style='color: red'></div>
                         </div>
                     </div>
@@ -580,7 +580,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container" id="payment_method">
+                        <div class="container" id="payment_method" t-if="(acquirers or tokens) and website_sale_order.amount_total">
                             <h5 class="shopping-title">MÉTODOS DE PAGO</h5>
                             <hr/>
                             <t t-call="sitio_imagen.payment_methods_imagen">
@@ -599,6 +599,19 @@
                                 <t t-set="back_button_class" t-value="'btn btn-custom w-sm-100'"/>
                                 <t t-set="back_button_link" t-value="'/shop/cart'"/>
                             </t>
+                        </div>
+                        <div class="container row">
+                            <div class="col-12 col-md-12 col-xl-12 pr-0 mr-0">
+                                <div class="js_payment mt-3" t-if="not website_sale_order.amount_total" id="payment_method">
+                                    <form target="_self" action="/shop/payment/validate" method="post" class="float-right" id="form-payment-validate">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                        <a role="button" class="btn btn-primary a-submit-confirm btn-custom" href="#">
+                                            <span t-if="order.amount_total &gt; 0">Pagar Ahora</span>
+                                            <span t-if="order.amount_total == 0">Confirmar Orden</span>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1">
@@ -651,7 +664,7 @@
                                         <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
                                              <div class="row">
                                                  <div class="col-12 col-md-12 col-xl-12">
-                                                     <p class="alert alert-info mt-3" role="status">
+                                                     <p class="alert alert-info mt-3 title-confirm-order" role="status">
                                                          <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn'>
                                                              Iniciar sesion
                                                          </a>
@@ -664,7 +677,8 @@
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-12 col-md-12 col-xl-12 ml-3">
-                                                        <h6 class="text-left title-confirm-order">INFORMACIÓN DE PAGO</h6>
+                                                        <h6 class="text-left title-confirm-order">INFORMACIÓN DE PAGO
+                                                        <span t-field="order.amount_total"/></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -803,7 +817,7 @@
 
     <template id="payment_sale_note_imagen" inherit_id="payment_imagen" name="Accept Terms &amp; Conditions">
         <xpath expr="//div[@id='payment_method']" position="after">
-            <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
+            <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button" t-if="website_sale_order.amount_total">
                 <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
                 <label for="checkbox_cgv" class="custom-control-label text-red-hands font-size-12">
                     Estoy de acuerdo con los <a target="_BLANK" href="/shop/terms">terminos &amp; condiciones</a>

@@ -10,6 +10,7 @@ from odoo.http import request
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.addons.payment.controllers.portal import PaymentProcessing
 
 _logger = logging.getLogger(__name__)
 
@@ -126,10 +127,13 @@ class WebSiteSaleInherit(WebsiteSale):
         """
         print('Call override cart')
 
-        order = request.website.sale_get_order()
+        order = request.website.sale_get_order()        
+
         if order and order.state != 'draft':
             request.session['sale_order_id'] = None
             order = request.website.sale_get_order()
+
+        order.recompute_coupon_lines()
         values = {}
         if access_token:
             abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)
@@ -715,3 +719,18 @@ class WebSiteSaleInherit(WebsiteSale):
                                   headers={'Cache-Control': 'no-cache'})
 
         return request.render("website_sale.products", values)
+
+    @http.route('/shop/payment/get_status/<int:sale_order_id>', type='json', auth="public", website=True)
+    def payment_get_status(self, sale_order_id, **post):
+        order = request.env['sale.order'].sudo().browse(sale_order_id).exists()
+        if order.id != request.session.get('sale_last_order_id'):
+            # either something went wrong or the session is unbound
+            # prevent recalling every 3rd of a second in the JS widget
+            return {}
+
+        return {
+            'recall': order.get_portal_last_transaction().state == 'pending',
+            'message': request.env['ir.ui.view'].render_template("website_sale.payment_confirmation_status", {
+                'order': order
+            })
+        }

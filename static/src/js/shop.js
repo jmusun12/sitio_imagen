@@ -324,4 +324,9 @@ $(document).ready(function () {
       $('form[name=coupon_code]').submit();
     }
   });
+
+  $(document).on('click', '.a-submit-confirm', function(event) { 
+    event.preventDefault();
+    $('form#form-payment-validate').submit();
+  });
 });

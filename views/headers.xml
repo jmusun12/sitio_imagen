@@ -580,4 +580,75 @@
             </t>
         </div>
     </template>
+
+    <template id="header_portal">
+        <div class="row bg-second pl-1">
+            <div class="col-12 col-md-2 col-xl-2">
+                <div class="row">
+                    <div class="col-md-4 col-xl-2 text-center">
+                        <a class="a-img-linea-nav-hidden ml-xl-2 ml-mb-2" href="#">
+                            <img src="/sitio_imagen/static/src/img/linea-blue.png" alt="Linea"/>
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-xl-10">
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12">
+                                <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="/shop">
+                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 mb-xl-1 ml-xl-2 pl-xl-4">
+                                <p class="text-slogan-small ml-xl-2">Libros Recreativos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-10 col-xl-10">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 text-rigth mt-xl-2 mt-md-3">
+                        <nav class="navbar navbar-expand-md">
+                            <div class="container">
+                                <div class="collapse navbar-collapse" id="top_menu_collapse">
+                                    <!-- FIXME We want menu to open to the right by default (except cases handled in JS) -->
+                                    <ul class="nav navbar-nav ml-auto text-right" id="top_menu">
+                                        <li class="nav-item divider"/>
+                                        <li class="nav-item">
+                                            <a href="/shop" class="nav-link link-text-portal">
+                                                <b>
+                                                    Tienda
+                                                </b>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item divider"/>
+                                        <li class="nav-item">
+                                            <a href="/contact" class="nav-link link-text-portal">
+                                                <b>
+                                                    Contáctanos
+                                                </b>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item divider" t-ignore="true" t-if="not user_id._is_public()"/>
+                                        <li class="nav-item dropdown" t-ignore="true" t-if="not user_id._is_public()">
+                                            <a href="#" class="nav-link dropdown-toggle link-text-portal" data-toggle="dropdown">
+                                                <b>
+                                                    <span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                                                </b>
+                                            </a>
+                                            <div class="dropdown-menu js_usermenu link-text-portal" role="menu">
+                                                <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Cerrar sesión</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+    </template>
 </odoo>
