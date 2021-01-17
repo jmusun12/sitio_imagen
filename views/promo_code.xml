@@ -25,7 +25,7 @@
             method="post" name="coupon_code">
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
             <div class="input-group w-100">
-                <input name="promo" class="form-control" type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or None"/>
+                <input name="promo" class="form-control" type="text" placeholder="Código" t-att-value="website_sale_order.pricelist_id.code or None"/>
                 <div class="help-block with-errors" id="err" style='color: red'></div>
                 <div class="input-group-append">
                     <a href="#" role="button" class="btn btn-secondary a-submit-cupon btn-custom">Aplicar</a>
@@ -35,5 +35,40 @@
         <t t-if="request.params.get('code_not_available')" name="code_not_available">
             <div class="alert alert-danger text-left" role="alert">El código de promoción no es válido.</div>
         </t>
+    </template>
+
+    <template id="sale_coupon_result" inherit_id="sitio_imagen.coupon_form_imagen">
+        <xpath expr="//form[@name='coupon_code']" position="after">
+            <t t-if="website_sale_order and website_sale_order.applied_coupon_ids">
+                <t t-foreach="website_sale_order.applied_coupon_ids" t-as="coupon">
+                    <div class="alert alert-success text-left mt16" role="alert">
+                        You have successfully applied following promo code: <strong t-esc="coupon.code"/>
+                    </div>
+                </t>
+            </t>
+            <t t-if="website_sale_order and website_sale_order.promo_code">
+                <div class="alert alert-success text-left mt16" role="alert">
+                    You have successfully applied following promo code: <strong t-esc="website_sale_order.promo_code"/>
+                </div>
+            </t>
+            <t t-if="website_sale_order and website_sale_order.generated_coupon_ids">
+                <t t-foreach="website_sale_order.generated_coupon_ids.filtered(lambda c: c.state != 'expired')" t-as="coupon">
+                    <div class="alert alert-success text-left mt16" role="alert">
+                        Your reward <strong t-esc="coupon.discount_line_product_id.name"/> is available on a next order with this promo code: <strong t-esc="coupon.code"/>
+                    </div>
+                </t>
+            </t>
+            <t t-if="request.params.get('code_not_available')">
+                <div class="alert alert-danger text-left mt16" role="alert">
+                    Invalid or expired promo code.
+                </div>
+            </t>
+            <t t-if="website_sale_order.get_promo_code_error(delete=False)">
+                <div class="alert alert-danger text-left mt16" role="alert">
+                    <t t-esc="website_sale_order.get_promo_code_error()"/>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//t[@name='code_not_available']" position="replace"/>
     </template>
 </odoo>
