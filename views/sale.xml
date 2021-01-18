@@ -79,7 +79,7 @@
                     <div class="row">                        
                         <div class="col-12 col-md-12 col-xl-12">
                             <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} div_zip">
-                                <label class="col-form-label label-optional" for="zip">Código de área (*)</label>
+                                <label class="col-form-label label-optional" for="zip">Código de área</label>
                                 <input type="text" name="zip" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="'zip' in checkout and checkout['zip']" />
                             </div>
                         </div>
