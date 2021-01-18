@@ -720,17 +720,12 @@ class WebSiteSaleInherit(WebsiteSale):
 
         return request.render("website_sale.products", values)
 
-    @http.route('/shop/payment/get_status/<int:sale_order_id>', type='json', auth="public", website=True)
-    def payment_get_status(self, sale_order_id, **post):
-        order = request.env['sale.order'].sudo().browse(sale_order_id).exists()
-        if order.id != request.session.get('sale_last_order_id'):
-            # either something went wrong or the session is unbound
-            # prevent recalling every 3rd of a second in the JS widget
-            return {}
-
-        return {
-            'recall': order.get_portal_last_transaction().state == 'pending',
-            'message': request.env['ir.ui.view'].render_template("website_sale.payment_confirmation_status", {
-                'order': order
-            })
-        }
+    @http.route()
+    def print_saleorder(self, **kwargs):        
+        sale_order_id = request.session.get('sale_last_order_id')
+        if sale_order_id:
+            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf([sale_order_id])
+            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
+            return request.make_response(pdf, headers=pdfhttpheaders)
+        else:
+            return request.redirect('/shop')

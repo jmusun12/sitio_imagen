@@ -262,13 +262,13 @@ $(document).ready(function () {
       $('input[name=name]').css('border', '1px solid #ced4da');
     }
 
-    let zip = $('input[name=zip]').val();
-    if ( zip == null || zip === '') {
-      $('input[name=zip]').css('border', '1px solid #dc3545');
-      valid = false;
-    } else {
-      $('input[name=name]').css('border', '1px solid #ced4da');
-    }
+    // let zip = $('input[name=zip]').val();
+    // if ( zip == null || zip === '') {
+    //   $('input[name=zip]').css('border', '1px solid #dc3545');
+    //   valid = false;
+    // } else {
+    //   $('input[name=name]').css('border', '1px solid #ced4da');
+    // }
 
     let country_id = $('select[name=country_id]').val();
     if ( country_id == null || country_id === '') {

@@ -18,5 +18,13 @@
 		'views/promo_code.xml'
 	],
   	'category': 'Theme/Creative',
-  	'depends': ['website', 'website_theme_install', 'sale', 'website_sale', 'website_sale_delivery'],
+  	'depends': [
+		  'website', 
+		  'website_theme_install', 
+		  'sale', 
+		  'website_sale', 
+		  'website_sale_delivery', 
+		  'payment',
+		  'website_sale_coupon'
+		],
 }
