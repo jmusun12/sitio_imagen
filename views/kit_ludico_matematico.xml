@@ -617,6 +617,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-12 col-xl-12 mt-2">
                                             <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
+                                                <div class="help-block with-errors" id="err_term" style='color: red'></div>
                                                 <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
                                                 <label for="checkbox_cgv" class="custom-control-label">
                                                     Blue Line El Salvador S.A. de C.V. es la Responsable del Tratamiento de tus datos,

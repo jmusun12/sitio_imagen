@@ -13,11 +13,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12">
-                            <a class="btn btn-default btn-return" href="/shop/kit-ludico-matematico">VOLVER</a>
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <a class="btn btn-default btn-return" href="/shop/kit-ludico-matematico">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
                         </div>
                     </div>
-                    <span t-esc="code"/>
                 </div>
             </div>
 
@@ -32,6 +31,8 @@
                 .btn-return {
                     background-color: #206dbf !important;
                     border-color: #206dbf !important;
+                    font-family: 'Neris-SemiBold';
+                    color: white;
                 }
             </style>
         </t>

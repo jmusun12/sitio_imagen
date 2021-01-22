@@ -39,6 +39,11 @@
       valid = false;
     }
 
+    if( !$('#checkbox_cgv').prop('checked') ) {
+        document.getElementById('err_term').innerHTML="Debe aceptar los terminos y condiciones";
+        valid = false;
+    }
+
     return valid;
   }
 
@@ -49,21 +54,7 @@
         $('#btn-submit-kit').css('display', 'none');
 
         if ( validateFormKit() ) {
-            let email = $('input[name=email]').val();
-            let url_validate_email = 'https://app.verify-email.org/api/v1/47McjgovmWIEhPyNb1GeTaMtn2cE2QsY4jef0VFIrZtZoWMSSr/verify/' + email
-
             $('form#form-get-kit').submit();
-
-//            $.get(url_validate_email, (data) => {
-//                if ( data.status === 1 ) {
-//                    console.log('Email válido.');
-//                    $('form#form-get-kit').submit();
-//                } else {
-//                    $('#msg-error-email').innerHtml = 'El correo electrónico es inválido.';
-//                    $('#msg-error-email').css('color', 'red');
-//                    $('#btn-submit-kit').css('display', 'block');
-//                }
-//            });
         } else {
             $('#btn-submit-kit').css('display', 'block');
         }

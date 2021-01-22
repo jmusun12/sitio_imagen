@@ -7,6 +7,7 @@ import os
 import mimetypes
 import logging
 import random
+import secrets
 from . import email_service
 from datetime import datetime
 from werkzeug.exceptions import Forbidden, NotFound
@@ -760,33 +761,24 @@ class WebSiteSaleInherit(WebsiteSale):
                 name = post.get('name')
                 institucion = post.get('institucion')
                 grado = post.get('nivel')
+                code = secrets.token_hex(20)
 
-                cliente_id = request.env['res.partner'].sudo().create({
+                request.env['codigos.cliente.website'].sudo().create({
                     'name': name,
+                    'code': code,
                     'email': email,
-                    'type': 'contact',
-                    'comment': '{0} - {1}'.format(institucion, grado)
+                    'state': 'generado',
+                    'note': '{0} - {1}'.format(institucion, grado)
                 })
 
-                if cliente_id:
-                    valor_aleatorio = random.randint(1000, 5000000)
-                    code = '{0}{1}'.format(valor_aleatorio, cliente_id.id)
+                message = email_service.get_message(name, institucion, grado, code)
+                email_service.send_email(email, message)
+                print('Correo enviado')
 
-                    request.env['codigos.cliente.website'].sudo().create({
-                        'name': name,
-                        'code': code,
-                        'email': email,
-                        'state': 'generado'
-                    })
-
-                    message = email_service.get_message(name, institucion, grado, code)
-                    email_service.send_email(email, message)
-                    print('Correo enviado')
-
-                    return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                        'exito': 'S',
-                        'email': email
-                    })
+                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                    'exito': 'S',
+                    'email': email
+                })
             else:
                 print('Cliente existe')
                 return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
@@ -797,26 +789,37 @@ class WebSiteSaleInherit(WebsiteSale):
             print('No email')
             return request.render("sitio_imagen.tmp_kit_ludico_matematico")
 
-    @http.route(['''/shop/plantilla/<int:code>'''], type='http', auth="public", website=True)
-    def download_template(self, code):
-        codigo_cliente = request.env['codigos.cliente.website'].search([
+    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
+    def download_template(self, code, **kwargs):
+        print('Codigo: ', code)
+        codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
             ('code', '=', code),
             ('state', '=', 'generado')
         ])
 
-        if codigo_cliente:
-            attachment = request.env['catalogo.producto'].search_read([
-                ('key', '=', 'plantilla_mate_01')
-            ], ['name', 'key', 'file_name', 'file', 'file_type'])
+        print(codigo_cliente)
 
-            request.env['codigos.cliente.website'].sudo().search([
-                ('code', '=', code),
-                ('state', '=', 'generado')
-            ]).write({
-                'state': 'usado'
-            })
+        if codigo_cliente:
+            print('Código existe')
+
+            attachment = request.env['catalogo.producto'].search([
+                ('key', '=', 'plantilla_mate_01')
+            ])
 
             if attachment:
+                request.env['res.partner'].sudo().create({
+                    'name': codigo_cliente['name'],
+                    'email': codigo_cliente['email'],
+                    'type': 'contact',
+                    'comment': codigo_cliente['note'],
+                    'type_partner': 'customer'
+                })
+
+                codigo_cliente.write({
+                    'state': 'usado'
+                })
+
+                print('Attachment existe')
                 data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
                 # we follow what is done in ir_http's binary_content for the extension management
                 extension = os.path.splitext(attachment["file_name"] or '')[1]
