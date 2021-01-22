@@ -86,7 +86,7 @@
 .btn-detail {
     background-color: #04a32a;
     color: white;
-    font-family: 'Crewniverse';
+    font-family: 'Neris-SemiBold';
 }
 
 .h-singin {
@@ -118,4 +118,13 @@
 
 .ul-features li:before {
     content: '✓';
+}
+
+.title-landing {
+    font-size: 20px !important;
+    margin-top: 3rem !important;
+    margin-bottom: 2rem !important;
+    font-family: 'Crewniverse';
+    color: #04a32a;
+    letter-spacing: 3px;
 }
