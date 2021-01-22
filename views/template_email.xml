@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmp_email_download" name="Template Download">
+        <html>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            </head>
+            <body>
+                <div class="container">
+                    <div >
+
+                    </div>
+                </div>
+            </body>
+        </html>
+
+    </template>
+</odoo>

@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmp_kit_ludico_matematico" name="kit_ludico_matematico">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Kit lúdico</t>
+            <div id="wrap" class="js_sale">
+                <!--Header kit-->
+                <div class="container-fluid m-0 p-0">
+                    <img class="img-header-kit" src="/sitio_imagen/static/src/img/kit_ludico/header_kit.png" alt="Encabezado del kit"/>
+                </div>
+
+                <!--Modal de confirmación-->
+                <t t-if="exito and exito == 1">
+                    <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">¡Gracias por apuntarte a la aventura de jugar con las matemáticas!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Te hemos enviado un correo electrónico a <strong><span t-esc="email"/></strong> con el enlace de descarga.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        #dialog-confirm {
+                            margin-top: 4.5rem;
+                        }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <script type="text/javascript">
+                        $('#dialog-confirm').modal('show');
+                    </script>
+                </t>
+
+                <!--Modal de error-->
+                <t t-if="exito and exito == 0">
+                    <div id="dialog-error" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Notificación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Ya se ha solicitado la plantilla con el correo electrónico <strong><span t-esc="email"/></strong>
+                                    .Por favor revise su correo.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        #dialog-error {
+                            margin-top: 4.5rem;
+                        }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <script type="text/javascript">
+                        $('#dialog-error').modal('show');
+                    </script>
+                </t>
+
+
+                <t t-set="btn_text" t-value="'QUIERO EL CUADERNO DE PLANTILLAS'"/>
+
+
+                <div class="container mt-3" id="content-landing">
+                    <!--Introducción-->
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-xl-6">
+                            <h1 class="text-center other-title">LA GUÍA DE TUS AVENTURAS MATEMÁTICAS</h1>
+                            <p class="text-justify p-text-info">
+                                Exprime con espontaneidad tus recursos del kit de matemáticas y disfruta ver a
+                                tus chicos contagiarse de diversión y creatividad cuando juegan
+                                con el producto físico del kit de matemáticas.
+                            </p>
+
+                            <h1 class="text-center other-title">PLANTILLAS O TABLEROS DE JUEGO</h1>
+                            <p class="text-justify p-text-info">
+                                Que invitan a la aventura y a la exploración de jugar con los productos físicos del kit chicos de matemática.
+                            </p>
+                            <p class="text-justify p-text-info">
+                                Si pensar matemáticas no te funciona, intenta que los niños jueguen con ellas.
+                                Los niños tienen una habilidad espontánea para ver el potencial creativo,
+                                son curiosos por naturaleza y les encanta experimentar, ven posibilidades en lugar de limitaciones y
+                                tienen la capacidad de explorar los límites de lo que es posible.
+                            </p>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-6">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/kit.png"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 mt-2 mb-2">
+                            <h3 class="text-center h-title-kit">CONTENIDO DEL KIT</h3>
+                        </div>
+                    </div>
+
+                    <!--Animales fexibles-->
+                     <div class="row">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/flexianimales.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">ANIMALES FLEXIBLES</h4>
+                            <p class="text-justify p-text-info">
+                                Los contadores en forma de flexifiguras animales, realizados en
+                                plástico flexible, vienen en 6 colores y varios motivos de animales.
+                                Todas las piezas se pueden conectar entre ellas para crear cadenas
+                                de agárrense de las manos y realizar algunas actividades de
+                                seriaciones con varios niveles de dificultad.
+
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#">
+                                <span t-esc="btn_text"/>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Botones geométricos-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">BOTONES GEOMÉTRICOS</h4>
+                            <p class="text-justify p-text-info">
+                                Los botones de plástico son de seis colores distintos con 6 figuras
+                                distintas (cuadrado, círculo, triángulo, pentágono, hexágono y
+                                rombo). Cada figura contiene cuatro agujeros para poder enlazar
+                                las piezas con los cordones o cintas. Los cordones también son
+                                de distintos colores. El conjunto se completa con 12 fichas con
+                                actividades individuales.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                Utilidades: hacer series y clasificaciones, coser los botones para
+                                estimular la motricidad fina, practicar el conteo, diferenciar colores
+                                y figuras geométricas, etc
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrarse"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/botones.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Bloques lógicos-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_logicos.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">BLOQUES LÓGICOS</h4>
+                            <p class="text-justify p-text-info">
+                                Los bloques lógicos o bloques de Dienes tienen 5 cualidades
+                                distintas: color (azul, rojo y amarillo), forma (cuadrado, círculo,
+                                triángulo, rectángulo y hexágono), tamaño (grande y pequeño) y
+                                grosor (fino y grueso). Son uno de los materiales más presentes en
+                                todas las aulas de educación Infantil, ya que es un material para que
+                                los niños a través de la experimentación amplíen el pensamiento
+                                lógico y puedan ir profundizando en la complejidad y precisión del
+                                lograr las habilidades.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                Son útiles para hacer series, clasificaciones, definir piezas en base a
+                                sus cualidades, detectar la diferencia entre dos piezas, etc.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+
+                    </div>
+
+                    <!--Tangram-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">TANGRAM</h4>
+                            <p class="text-justify p-text-info">
+                                Cada tangram está compuesto por siete figuras de plástico
+                                reciclado RE-Plastic®: dos triángulos pequeños, un triángulo
+                                mediano y dos triángulos grandes, un rombo y un cuadrado.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades: </strong> introducir y trabajar conceptos de la geometría
+                                plana (simetría, tamaño de cada figura,…), clasificar
+                                figuras, potenciar el razonamiento lógico y el sentido de
+                                la orientación. Muchas de estas habilidades y capacidades
+                                están relacionadas con la resolución de problemas.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/tangram.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Bloques geométricos-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_geometricos.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">BLOQUES GEOMÉTRICOS</h4>
+                            <p class="text-justify p-text-info">
+                                Los Bloques Geométricos o patrones de bloques son un conjunto de
+                                figuras planas son de plástico reciclado y todas coinciden en, al menos,
+                                la medida de uno de sus lados. Hay seis formas diferentes: hexágonos
+                                (rojos), trapecios (amarillos), rombos (azules), triángulos (verdes),
+                                romboides (violeta) y cuadrados (naranjas).
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                Como te podrás imaginar resultan útiles para proponer actividades
+                                relacionadas con la geometría aunque también los puedes utilizar para
+                                ofrecer retos lógicos de simetría y de construcción de composiciones a
+                                partir de varias figuras geométricas.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+
+                    </div>
+
+                    <!--Cubitos conectables-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">CUBITOS CONECTABLES</h4>
+                            <p class="text-justify p-text-info">
+                                Estos cubos encajables, conectables y ensartables están
+                                fabricados en plástico muy resistente en cuatro colores
+                                diferentes. Son los idóneo para hacer creaciones libres,
+                                hacer clasificaciones básicas por colores, experimentar
+                                seriaciones, practicar el conteo, descubrir los números,
+                                experimentar la conceptualización de las primeras
+                                operaciones básicas de sumas restas.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cubitos_conectables.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Contadores-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/contadores.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">CONTADORES</h4>
+                            <p class="text-justify p-text-info">
+                                Las piezas están hechas en plástico reciclado RE-Plastic® y
+                                tienen dos colores: por un lado azul y por el otro rojo. Su forma
+                                y tamaño facilitan su manejo para todo tipo de actividades.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> hacer series, trabajar el conteo, la suma, la resta,
+                                usarlos para la resolución de problemas sencillos, etc.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                    </div>
+
+                    <!--Números enlazables-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">NÚMEROS ENLAZABLES</h4>
+                            <p class="text-justify p-text-info">
+                                El set de números está fabricado en plástico induce a
+                                los niños para la correcta escritura de la grafía de los
+                                números. Además, cada una de las piezas tiene varios
+                                agujeros para coser con los cordones y así interiorizar
+                                el concepto del trazo.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> coser los números para trabajar la
+                                motricidad fina, relacionar la grafía con las cantidades,
+                                utilizarlos para hacer las primeras sumas y restas,
+                                ordenar y clasificar, etc.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/numeros_enlazables.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Regletas de cuisenaire-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cusinaire.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">REGLETAS DE CUISENAIRE</h4>
+                            <p class="text-justify p-text-info">
+                                Las regletas están hechas en plástico reciclado y tienen diez
+                                colores distintos, cada una de ellas representan uno de los diez
+                                primeros números naturales.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> aprenderán a descomponer los números y desarrollar
+                                el cálculo mental, realizarán sumas, restas, multiplicaciones,
+                                divisiones, potencias y raíces cuadradas, visualizarán las
+                                propiedades conmutativa, asociativa y distributiva, trabajarán
+                                perímetro, superficie y volumen, etc.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                    </div>
+
+                    <!--Unidades y decenas-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">UNIDADES Y DECENAS</h4>
+                            <p class="text-justify p-text-info">
+                                Este material de fabricación nacional en madera de pino o MDF
+                                es ideal para complementar las regletas numéricas.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> trabajar el sistema decimal (construcción de los
+                                números, visualizando las unidades, decenas y centenas), la
+                                descomposición numérica, practicar las operaciones básicas,
+                                comprensión de las medidas de longitud y las medidas de
+                                superficie, etc.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/unidades_decenas.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Dados-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/dados.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">DADOS</h4>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> practicar las operaciones básicas, la descomposición
+                                de números, trabajar la probabilidad y crear juegos.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                    </div>
+
+                    <!--Fracciones rectangulares-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">FRACCIONES RECTANGULARES</h4>
+
+                            <p class="text-justify p-text-info">
+                                Las fracciones son de plástico reciclado y representan la unidad
+                                entera del rectángulo y la unidad dividida en medios, tercios,
+                                cuartos, quintos, sextos, octavos, décimos. En cada pieza se puede
+                                ver el número fraccionario escrito en una cara y en la otra no.
+                            </p>
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> entender el concepto de fracción antes de ver la
+                                representación escrita, trabajar la equivalencia de fracciones,
+                                relacionar las piezas de los rectángulos con su expresión escrita
+                                y operar con fracciones.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/fracciones.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Reloj-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/reloj.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">RELOJ</h4>
+
+                            <p class="text-justify p-text-info">
+                                De plástico reciclado, con dos manecillas manipulables. una
+                                roja para indicar las horas y otra azul para los minutos. En la
+                                parte exterior hay la numeración de las horas de la 1 a las 12 y
+                                en la parte interior de las 13 a las 24.
+                            </p>
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> comprender las horas y los minutos, pasar del
+                                sistema horario de 12 horas al de 24 y comprender el sistema
+                                numérico sexagesimal.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                    </div>
+
+                    <!--Cinta metrica-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
+                            <h4 class="name-product">CINTA METRICA</h4>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> aprender a medir distancias entre objetos y
+                                tamaños de cosas y espacios.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cinta_metrica.jpg"/>
+                        </div>
+                    </div>
+
+                    <!--Geoplano-->
+                    <div class="row row-product">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <h4 class="name-product">GEOPLANO</h4>
+
+                            <p>
+                                Tablero de plástico reciclado RE-Plastic® de doble
+                                cara de 15 x 15 cm. Una cara tiene 49 pivotes dispuestos
+                                en un red cuadriculada y otra cara contiene 25 pivotes
+                                situados en una circunferencia. Incluye una bolsa con
+                                4 gomas elásticas de 3 colores diferentes (cada uno de
+                                un tamaño distinto) para utilizar en el geoplano.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                <strong>Utilidades:</strong> construir formas geométricas, descubrir
+                                propiedades de los polígonos, la circunferencia y el
+                                círculo, aprender sobre áreas, perímetros y resolver
+                                problemas geométricos.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/geoplano.jpg"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Formulario de cliente-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 p-3">
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                             <h3 class="text-center h-singin mb-3" id="registrarse">REGÍSTRATE PARA OBTENER EL CUADERNO DE PLANTILLA DEL KIT LÚDICO</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <div class="form-singin">
+                                <form id="form-get-kit" action="/shop/kit-email" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                     <input type="hidden" name="submitted" value="1" />
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 col-xl-6">
+                                            <div class="form-group">
+                                                <label class="text-neris-semibold" for="InputName">Nombre completo</label>
+                                                <input name="name" type="text" class="form-control text-neris-semibold" id="InputName" placeholder="Ingrese nombre completo"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6 col-xl-6">
+                                            <div class="form-group">
+                                                <label class="text-neris-semibold" for="InputEmail">Correo electrónico</label>
+                                                <input name="email" type="email" class="form-control text-neris-semibold" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese correo electrónico"/>
+                                                <small id="emailHelp" class="form-text text-muted text-neris-semibold">A este correo se enviará el enlace de descarga.</small>
+                                                <small id="msg-error-email" class="form-text text-muted text-neris-semibold"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 col-xl-6" >
+                                            <div class="form-group">
+                                                <label class="text-neris-semibold" for="InputIE">Nombre de la institución educativa</label>
+                                                <input name="institucion" type="text" class="form-control text-neris-semibold" id="InputIE" placeholder="Institución educativa"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-xl-6">
+                                            <label class="text-neris-semibold">Nivel educativo</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nivel" id="nivel1" value="PARVULARIA" checked="checked"/>
+                                                <label class="form-check-label" for="nivel1">
+                                                    Parvularia
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nivel" id="nivel2" value="PRIMARIA"/>
+                                                <label class="form-check-label" for="nivel2">
+                                                    Primaria
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 col-xl-12 mt-2">
+                                            <script src="https://www.google.com/recaptcha/api.js"></script>
+<!--                                            <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>-->
+                                             <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div>
+                                            <div class="help-block with-errors" id="err" style='color: red'></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 col-xl-12 mt-2">
+                                            <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
+                                                <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                                                <label for="checkbox_cgv" class="custom-control-label">
+                                                    Blue Line El Salvador s.a. de c.v. es la Responsable del Tratamiento de tus datos,
+                                                    con la finalidad de gestionar tu entrega del Cuaderno de Plantillas de Actividades
+                                                    <span id="terminos" class="collapse">
+                                                        para implementar el KIT CHICOS MATEMATICAS INFANTIL y para remitirte comunicaciones
+                                                    con novedades sobre sus servicios sólo si marcas la casilla dispuesta a tal fin.
+                                                    Tienes derecho de acceso, rectificación, supresión, limitación, oposición al tratamiento y portabilidad.
+                                                    Puedes ejercitar tus derechos en chicos.comunicaciones@gmail.com.
+                                                    </span>
+                                                    <a style="text-decoration: none;" data-toggle="collapse" data-target="#terminos" href="#">...</a>
+                                                </label>
+                                            </div>
+                                            <p>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 col-xl-2 mt-2">
+                                            <button id="btn-submit-kit" type="button" class="btn btn-primary btn-send">Enviar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--CSS -->
+                <style type="text/css">
+                    main {
+                        margin-top: 80px !important;
+                    }
+
+                    .lbl-field-required {
+                        color: red !important;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+</odoo>

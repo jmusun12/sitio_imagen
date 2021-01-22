@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmp_code_error" name="Codigo caducado o utilizado">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Kit lúdico</t>
+            <div id="wrap" class="js_sale">
+                <div class="container">
+                    <p class="text-center message">
+
+                    </p>
+                </div>
+            </div>
+
+            <style type="text/css">
+                .message {
+                    font-family: 'Neris-SemiBold';
+                    color: #626875;
+                    font-size: 20px;
+                    margin-top: 3rem !important;
+                }
+            </style>
+        </t>
+    </template>
+</odoo>

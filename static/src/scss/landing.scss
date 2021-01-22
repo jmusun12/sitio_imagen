@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Neris-SemiBold';
+    src: url('./fonts/Neris-SemiBold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Crewniverse';
+    src: url('./fonts/crewniverse/crewniverse_font.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#header-kit {
+    background-image: url('/sitio_imagen/static/src/img/header_kit.png')
+}
+
+.img-header-kit {
+    width: 100%;
+    margin-top: -12px !important;
+    padding-top: 0px !important;
+}
+
+.p-text-info {
+  font-family: 'Neris-SemiBold';
+  color: #626875;
+}
+
+.img-product {
+    width: 81% !important;
+}
+
+.h-title-kit {
+    font-size: 18px !important;
+    font-family: 'Neris-SemiBold';
+    color: #626875;
+    margin-top: 2rem !important;
+}
+
+.form-singin {
+    width: 80% !important;
+    margin: 0 auto;
+}
+
+.title-intro {
+    font-size: 16px !important;
+    margin-top: 3rem !important;
+    margin-bottom: 2rem !important;
+    font-family: 'Crewniverse';
+    color: #04a32a;
+    letter-spacing: 5px;
+}
+
+.other-title {
+    font-size: 18px !important;
+    margin-top: 3rem !important;
+    margin-bottom: 2rem !important;
+    font-family: 'Crewniverse';
+    color: #04a32a;
+    letter-spacing: 2px;
+    text-align: left !important;
+}
+
+.h-title-kit {
+    font-size: 16px !important;
+    font-family: 'Crewniverse';
+    margin-bottom: 2rem !important;
+    color: #04a32a;
+    letter-spacing: 5px;
+}
+
+.name-product {
+    font-size: 15px !important;
+    font-family: 'Crewniverse';
+    color: #04a32a;
+    letter-spacing: 2px;
+    margin-bottom: 2rem !important;
+}
+
+.row-product {
+    margin-top: 3rem !important;
+}
+
+.btn-detail {
+    background-color: #04a32a;
+    color: white;
+    font-family: 'Crewniverse';
+}
+
+.h-singin {
+    font-size: 16px !important;
+    font-family: 'Crewniverse';
+    margin-bottom: 2rem !important;
+    color: #206dbf !important;
+    letter-spacing: 2px;
+}
+
+.text-neris-semibold {
+    font-family: 'Neris-SemiBold' !important;
+    color: #206dbf !important;
+}
+
+#content-landing {
+    margin-top: 2.5rem !important;
+}
+
+.btn-send {
+    background-color: #206dbf !important;
+}

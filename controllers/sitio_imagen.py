@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import json
+import base64
+import io
+import os
+import mimetypes
 import logging
+import random
+from . import email_service
 from datetime import datetime
 from werkzeug.exceptions import Forbidden, NotFound
 
@@ -729,3 +735,94 @@ class WebSiteSaleInherit(WebsiteSale):
             return request.make_response(pdf, headers=pdfhttpheaders)
         else:
             return request.redirect('/shop')
+
+    @http.route(['/shop/kit-ludico-matematico'], type='http', auth="public", website=True)
+    def kit_ludico(self, **kwargs):
+        print('Kit lúdico')
+        return request.render("sitio_imagen.tmp_kit_ludico_matematico")
+
+        # return request.render("sitio_imagen.tmp_email_download")
+
+    @http.route(['/shop/kit-email'], type='http', auth="public", website=True)
+    def send_email_kit_ludico(self, **post):
+        email = post.get('email')
+
+        if email:
+            print(email)
+            email = post.get('email')
+
+            cliente = request.env['res.partner'].search([
+                ('email', '=', email.strip())
+            ])
+
+            if not cliente:
+                print('Cliente no existe')
+                name = post.get('name')
+                institucion = post.get('institucion')
+                grado = post.get('nivel')
+
+                cliente_id = request.env['res.partner'].sudo().create({
+                    'name': name,
+                    'email': email,
+                    'type': 'contact',
+                    'comment': '{0} - {1}'.format(institucion, grado)
+                })
+
+                if cliente_id:
+                    valor_aleatorio = random.randint(1000, 5000000)
+                    code = '{0}{1}'.format(valor_aleatorio, cliente_id.id)
+
+                    request.env['codigos.cliente.website'].sudo().create({
+                        'name': name,
+                        'code': code,
+                        'email': email,
+                        'state': 'generado'
+                    })
+
+                    message = email_service.get_message(name, institucion, grado, code)
+                    email_service.send_email(email, message)
+                    print('Correo enviado')
+
+                    return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                        'exito': 1,
+                        'email': email
+                    })
+            else:
+                print('Cliente existe')
+                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                    'exito': 0,
+                    'email': email
+                })
+        else:
+            print('No email')
+            return request.render("sitio_imagen.tmp_kit_ludico_matematico")
+
+    @http.route(['''/shop/plantilla/<int:code>'''], type='http', auth="public", website=True)
+    def download_template(self, code):
+        codigo_cliente = request.env['codigos.cliente.website'].search([
+            ('code', '=', code),
+            ('state', '=', 'generado')
+        ])
+
+        if codigo_cliente:
+            attachment = request.env['catalogo.producto'].search_read([
+                ('key', '=', 'plantilla_mate_01')
+            ], ['name', 'key', 'file_name', 'file', 'file_type'])
+
+            request.env['codigos.cliente.website'].sudo().search([
+                ('code', '=', code),
+                ('state', '=', 'generado')
+            ]).write({
+                'state': 'usado'
+            })
+
+            if attachment:
+                data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
+                # we follow what is done in ir_http's binary_content for the extension management
+                extension = os.path.splitext(attachment["file_name"] or '')[1]
+                extension = extension if extension else mimetypes.guess_extension(attachment["file_type"] or '')
+                filename = attachment['file_name']
+                filename = filename if os.path.splitext(filename)[1] else filename + extension
+                return http.send_file(data, filename=filename, as_attachment=True)
+        else:
+            return request.render("sitio_imagen.tmp_code_error")
