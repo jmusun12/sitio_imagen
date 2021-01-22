@@ -19,10 +19,10 @@
 
     let institucion = $('input[name=institucion]').val();
     if ( institucion == null || institucion === '') {
-      $('input[name=institucion]').css('border', '1px solid #dc3545 !important');
+      $('input[name=institucion]').css('border', '1px solid #dc3545');
       valid = false;
     } else {
-      $('input[name=institucion]').css('border', '1px solid #ced4da !important');
+      $('input[name=institucion]').css('border', '1px solid #ced4da');
     }
 
     let nivel = $('input[name=nivel]').val();
