@@ -157,7 +157,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/flexianimales.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">ANIMALES FLEXIBLES</h4>
+                            <h4 class="name-product-landing">ANIMALES FLEXIBLES</h4>
                             <p class="text-justify p-text-info">
                                 Tus chicos iniciarán jugando de manera espontánea con los animales flexibles y
                                 darán comienzo experimentando sus construcciones de manera libre,
@@ -182,7 +182,7 @@
                     <!--Botones geométricos-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">BOTONES GEOMÉTRICOS</h4>
+                            <h4 class="name-product-landing">BOTONES GEOMÉTRICOS</h4>
                             <p class="text-justify p-text-info">
                                 En esta actividad puede involucrarse la abuelita con su nieto o nieta y
                                 mostrarle sus habilidades de costura, propiciando una interacción generacional.
@@ -213,7 +213,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_logicos.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">BLOQUES LÓGICOS</h4>
+                            <h4 class="name-product-landing">BLOQUES LÓGICOS</h4>
                             <p class="text-justify p-text-info">
                                 A ti que te encanta ser más racional y tradicional, te explicaremos
                                 este recuso manipulativo de manera más técnica.
@@ -254,7 +254,7 @@
                     <!--Tangram-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">TANGRAM</h4>
+                            <h4 class="name-product-landing">TANGRAM</h4>
                             <p class="text-justify p-text-info">
                                 Ya sé que este juguete lo conoces, pues está presente tanto en
                                 El Salvador como en la China. Te aseguro que toda la familia se
@@ -281,7 +281,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_geometricos.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">BLOQUES GEOMÉTRICOS</h4>
+                            <h4 class="name-product-landing">BLOQUES GEOMÉTRICOS</h4>
                             <p class="text-justify p-text-info">
                                 Los Bloques Geométricos o patrones de bloques son un conjunto de
                                 figuras planas son de plástico reciclado y todas coinciden en, al menos,
@@ -305,7 +305,7 @@
                     <!--Cubitos conectables-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">CUBITOS CONECTABLES</h4>
+                            <h4 class="name-product-landing">CUBITOS CONECTABLES</h4>
                             <p class="text-justify p-text-info">
                                 Estos cubos encajables, conectables y ensartables están
                                 fabricados en plástico muy resistente en cuatro colores
@@ -329,7 +329,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/contadores.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">CONTADORES</h4>
+                            <h4 class="name-product-landing">CONTADORES</h4>
                             <p class="text-justify p-text-info">
                                 Cara o cruz, exactamente son fichas de dos caras, pero tienen un potencial
                                 para que tus niños desarrollen una variedad de habilidades matemáticas.
@@ -359,7 +359,7 @@
                     <!--Números enlazables-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">NÚMEROS ENLAZABLES</h4>
+                            <h4 class="name-product-landing">NÚMEROS ENLAZABLES</h4>
                             <p class="text-justify p-text-info">
                                 Llegó de nuevo el turno de participación de la abuelita’, ahora con los números enlazables.
                             </p>
@@ -391,7 +391,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cusinaire.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">REGLETAS DE CUISENAIRE</h4>
+                            <h4 class="name-product-landing">REGLETAS DE CUISENAIRE</h4>
                             <p class="text-justify p-text-info">
                                 ¿Te estarás preguntando que puede aprender tu niño o tu niña con estas barritas?
                             </p>
@@ -418,7 +418,7 @@
                     <!--Unidades y decenas-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">UNIDADES Y DECENAS</h4>
+                            <h4 class="name-product-landing">UNIDADES Y DECENAS</h4>
                             <p class="text-justify p-text-info">
                                 Tendrás la oportunidad e introducir a tus hijos en el mundo de las medidas y especialmente en nuestro sistema métrico decimal.
                             </p>
@@ -440,7 +440,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/dados.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">DADOS</h4>
+                            <h4 class="name-product-landing">DADOS</h4>
 
                             <p class="text-justify p-text-info">
                                 <strong>Utilidades:</strong> practicar las operaciones básicas, la descomposición
@@ -454,7 +454,7 @@
                     <!--Fracciones rectangulares-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">FRACCIONES RECTANGULARES</h4>
+                            <h4 class="name-product-landing">FRACCIONES RECTANGULARES</h4>
 
                             <p class="text-justify p-text-info">
                                 Las fracciones son de plástico reciclado y representan la unidad
@@ -482,7 +482,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/reloj.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">RELOJ</h4>
+                            <h4 class="name-product-landing">RELOJ</h4>
 
                             <p class="text-justify p-text-info">
                                 De plástico reciclado, con dos manecillas manipulables. una
@@ -503,7 +503,7 @@
                     <!--Cinta metrica-->
                     <div class="row row-product">
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
-                            <h4 class="name-product">CINTA METRICA</h4>
+                            <h4 class="name-product-landing">CINTA METRICA</h4>
 
                             <p class="text-justify p-text-info">
                                 <strong>Utilidades:</strong> aprender a medir distancias entre objetos y
@@ -523,7 +523,7 @@
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/geoplano.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
-                            <h4 class="name-product">GEOPLANO</h4>
+                            <h4 class="name-product-landing">GEOPLANO</h4>
 
                             <p class="text-justify p-text-info">
                                 Tablero de plástico reciclado RE-Plastic® de doble
