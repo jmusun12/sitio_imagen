@@ -126,6 +126,8 @@
                             <p class="text-justify p-text-info">
                                 A continuación, te presentamos los juguetes que te acompañaran en el disfrute de aprender matemáticas junto a tus hijos.
                             </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
                     </div>
                     <div class="row">

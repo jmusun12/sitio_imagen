@@ -101,6 +101,11 @@
 .text-neris-semibold {
     font-family: 'Neris-SemiBold' !important;
     color: #206dbf !important;
+    font-size: 18px !important;
+}
+
+.custom-control-label, .form-check-label {
+    font-size: 18px !important;
 }
 
 #content-landing {
