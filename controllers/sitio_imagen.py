@@ -784,13 +784,13 @@ class WebSiteSaleInherit(WebsiteSale):
                     print('Correo enviado')
 
                     return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                        'exito': 1,
+                        'exito': 'S',
                         'email': email
                     })
             else:
                 print('Cliente existe')
                 return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 0,
+                    'exito': 'N',
                     'email': email
                 })
         else:
@@ -825,4 +825,6 @@ class WebSiteSaleInherit(WebsiteSale):
                 filename = filename if os.path.splitext(filename)[1] else filename + extension
                 return http.send_file(data, filename=filename, as_attachment=True)
         else:
-            return request.render("sitio_imagen.tmp_code_error")
+            return request.render("sitio_imagen.tmp_code_error", {
+                'code': code
+            })

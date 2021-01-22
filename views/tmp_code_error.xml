@@ -5,9 +5,19 @@
             <t t-set="additional_title">Kit lúdico</t>
             <div id="wrap" class="js_sale">
                 <div class="container">
-                    <p class="text-center message">
-
-                    </p>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <p class="text-center message">
+                                Ya has decargado el recurso. Gracias por preferirnos!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12">
+                            <a class="btn btn-default btn-return" href="/shop/kit-ludico-matematico">VOLVER</a>
+                        </div>
+                    </div>
+                    <span t-esc="code"/>
                 </div>
             </div>
 
@@ -15,8 +25,13 @@
                 .message {
                     font-family: 'Neris-SemiBold';
                     color: #626875;
-                    font-size: 20px;
-                    margin-top: 3rem !important;
+                    font-size: 25px;
+                    margin-top: 12rem !important;
+                }
+
+                .btn-return {
+                    background-color: #206dbf !important;
+                    border-color: #206dbf !important;
                 }
             </style>
         </t>

@@ -46,19 +46,26 @@
     $(document).on('click', '#btn-submit-kit', function(event){
         event.preventDefault();
 
+        $('#btn-submit-kit').css('display', 'none');
+
         if ( validateFormKit() ) {
             let email = $('input[name=email]').val();
             let url_validate_email = 'https://app.verify-email.org/api/v1/47McjgovmWIEhPyNb1GeTaMtn2cE2QsY4jef0VFIrZtZoWMSSr/verify/' + email
 
-            $.get(url_validate_email, (data) => {
-                if ( data.status === 1 ) {
-                    console.log('Email válido.');
-                    $('form#form-get-kit').submit();
-                } else {
-                    $('#msg-error-email').innerHtml = 'El correo electrónico es inválido.';
-                    $('#msg-error-email').css('color', 'red');
-                }
-            });
+            $('form#form-get-kit').submit();
+
+//            $.get(url_validate_email, (data) => {
+//                if ( data.status === 1 ) {
+//                    console.log('Email válido.');
+//                    $('form#form-get-kit').submit();
+//                } else {
+//                    $('#msg-error-email').innerHtml = 'El correo electrónico es inválido.';
+//                    $('#msg-error-email').css('color', 'red');
+//                    $('#btn-submit-kit').css('display', 'block');
+//                }
+//            });
+        } else {
+            $('#btn-submit-kit').css('display', 'block');
         }
     });
   });

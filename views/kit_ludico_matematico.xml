@@ -10,7 +10,7 @@
                 </div>
 
                 <!--Modal de confirmación-->
-                <t t-if="exito and exito == 1">
+                <t t-if="exito and exito == 'S'">
                     <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -24,14 +24,19 @@
                                     <p>Te hemos enviado un correo electrónico a <strong><span t-esc="email"/></strong> con el enlace de descarga.</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <style>
                         #dialog-confirm {
-                            margin-top: 4.5rem;
+                            margin-top: 12.5rem;
+                        }
+
+                        .btn-chicos {
+                            background-color: #206dbf !important;
+                            border-color: #206dbf !important;
                         }
                     </style>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -43,7 +48,7 @@
                 </t>
 
                 <!--Modal de error-->
-                <t t-if="exito and exito == 0">
+                <t t-if="exito and exito == 'N'">
                     <div id="dialog-error" class="modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -55,17 +60,22 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Ya se ha solicitado la plantilla con el correo electrónico <strong><span t-esc="email"/></strong>
-                                    .Por favor revise su correo.</p>
+                                    .Por favor revise su bandeja de entrada.</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <style>
                         #dialog-error {
-                            margin-top: 4.5rem;
+                            margin-top: 12.5rem;
+                        }
+
+                        .btn-chicos {
+                            background-color: #206dbf !important;
+                            border-color: #206dbf !important;
                         }
                     </style>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -130,7 +140,7 @@
                             </p>
                         </div>
 
-                        <div class="col-12 col-md-6 col-xl-6">
+                        <div class="col-12 col-md-6 col-xl-6 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/kit.png"/>
                         </div>
                     </div>
@@ -600,7 +610,7 @@
                                         <div class="col-12 col-md-12 col-xl-12 mt-2">
                                             <script src="https://www.google.com/recaptcha/api.js"></script>
                                             <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>
-<!--                                             <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div>-->
+<!--                                             <div class="g-recaptcha" data-sitekey="6Ldf8jcaAAAAAJp6CFnkD0Qn0md52arY7AC7F4wp"></div>-->
                                             <div class="help-block with-errors" id="err" style='color: red'></div>
                                         </div>
                                     </div>
