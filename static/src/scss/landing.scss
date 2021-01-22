@@ -109,3 +109,13 @@
 .btn-send {
     background-color: #206dbf !important;
 }
+
+.ul-features {
+    font-family: 'Neris-SemiBold';
+    color: #626875;
+    list-style: none;
+}
+
+.ul-features li:before {
+    content: '✓';
+}

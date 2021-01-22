@@ -116,21 +116,27 @@
 
                     <!--Animales fexibles-->
                      <div class="row">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/flexianimales.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
                             <h4 class="name-product">ANIMALES FLEXIBLES</h4>
                             <p class="text-justify p-text-info">
-                                Los contadores en forma de flexifiguras animales, realizados en
-                                plástico flexible, vienen en 6 colores y varios motivos de animales.
-                                Todas las piezas se pueden conectar entre ellas para crear cadenas
-                                de agárrense de las manos y realizar algunas actividades de
-                                seriaciones con varios niveles de dificultad.
-
+                                Tus chicos iniciarán jugando de manera espontánea con los animales flexibles y
+                                darán comienzo experimentando sus construcciones de manera libre,
+                                sin ellos saberlo, estarán estimulando habilidades de procesos lógicos y de
+                                procesos de trazos cómo soltar la mano, fortalecer el agarre y adquisiciones
+                                de capacidades visuales.
+                            </p>
+                            <p class="text-justify p-text-info">
+                                Con las plantillas de actividades podrán ir perfeccionando la precisión y escalando la complejidad.
+                            </p>
+                            <p class="text-justify p-text-info">
+                                Las plantillas para las actividades que te potencializaran la implementación del
+                                KIT puedes obtenerla en el siguiente enlace.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#">
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate">
                                 <span t-esc="btn_text"/>
                             </a>
                         </div>
@@ -141,51 +147,69 @@
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
                             <h4 class="name-product">BOTONES GEOMÉTRICOS</h4>
                             <p class="text-justify p-text-info">
-                                Los botones de plástico son de seis colores distintos con 6 figuras
-                                distintas (cuadrado, círculo, triángulo, pentágono, hexágono y
-                                rombo). Cada figura contiene cuatro agujeros para poder enlazar
-                                las piezas con los cordones o cintas. Los cordones también son
-                                de distintos colores. El conjunto se completa con 12 fichas con
-                                actividades individuales.
+                                En esta actividad puede involucrarse la abuelita con su nieto o nieta y
+                                mostrarle sus habilidades de costura, propiciando una interacción generacional.
+                                La diversión familiar es importante y produce una plataforma del aprendizaje
+                                muy emotiva y llena de curiosidad.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                Utilidades: hacer series y clasificaciones, coser los botones para
-                                estimular la motricidad fina, practicar el conteo, diferenciar colores
-                                y figuras geométricas, etc
+                                Algunas habilidades matemáticas, entre muchas, que tu niño o niña desarrollarán
+                                pensamiento crítico y el gusto por solucionar problemas.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrarse"><span t-esc="btn_text"/></a>
+                            <p class="text-justify p-text-info">
+                                Las plantillas con los patrones de costura para los botones puedes obtenerla
+                                en el siguiente enlace.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/botones.jpg"/>
                         </div>
                     </div>
 
                     <!--Bloques lógicos-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_logicos.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
                             <h4 class="name-product">BLOQUES LÓGICOS</h4>
                             <p class="text-justify p-text-info">
-                                Los bloques lógicos o bloques de Dienes tienen 5 cualidades
-                                distintas: color (azul, rojo y amarillo), forma (cuadrado, círculo,
-                                triángulo, rectángulo y hexágono), tamaño (grande y pequeño) y
-                                grosor (fino y grueso). Son uno de los materiales más presentes en
-                                todas las aulas de educación Infantil, ya que es un material para que
-                                los niños a través de la experimentación amplíen el pensamiento
-                                lógico y puedan ir profundizando en la complejidad y precisión del
-                                lograr las habilidades.
+                                A ti que te encanta ser más racional y tradicional, te explicaremos
+                                este recuso manipulativo de manera más técnica.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                Son útiles para hacer series, clasificaciones, definir piezas en base a
-                                sus cualidades, detectar la diferencia entre dos piezas, etc.
+                                Los bloques lógicos son un material lógicamente estructurado
+                                ¿Qué significa esto? Es sencillo: sus piezas están definidas por unas cualidades,
+                                con diferentes atributos, de tal forma que cada bloque es el resultado de la combinación
+                                de estos atributos. Están recogidas todas las posibles combinaciones de manera única,
+                                es decir, no hay dos piezas iguales ni ninguna repetida.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <p class="text-justify p-text-info">
+                                <span class="text-justify p-text-info">Las cuatro cualidades que los definen son: </span>
+                                <ul class="ul-features">
+                                    <li>Color (rojo, azul y amarillo)</li>
+                                    <li>Forma (cuadrado, triángulo, rectángulo, círculo y hexágono)</li>
+                                    <li>Tamaño (grande y pequeño)</li>
+                                    <li>Grosor (delgado y grueso)</li>
+                                </ul>
+
+                                <span class="text-justify p-text-info">
+                                    De la combinación de estas cualidades surgen 60 piezas diferentes.
+                                </span>
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                Quieres saber más posibilidades que tu hijo puede desarrollar con ellos.
+                                Ve al siguiente enlace y descargar la plantilla de actividades.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
 
                     </div>
@@ -195,29 +219,28 @@
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
                             <h4 class="name-product">TANGRAM</h4>
                             <p class="text-justify p-text-info">
-                                Cada tangram está compuesto por siete figuras de plástico
-                                reciclado RE-Plastic®: dos triángulos pequeños, un triángulo
-                                mediano y dos triángulos grandes, un rombo y un cuadrado.
+                                Ya sé que este juguete lo conoces, pues está presente tanto en
+                                El Salvador como en la China. Te aseguro que toda la familia se
+                                verá retada a resolver a la enorme cantidad de figuras que puedes
+                                montar con sólo siete piezas geométricas.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                <strong>Utilidades: </strong> introducir y trabajar conceptos de la geometría
-                                plana (simetría, tamaño de cada figura,…), clasificar
-                                figuras, potenciar el razonamiento lógico y el sentido de
-                                la orientación. Muchas de estas habilidades y capacidades
-                                están relacionadas con la resolución de problemas.
+                                ¿Quieres descubrir otras maneras de utilizar el tangram, para que tu niño o niña,
+                                desarrollen más habilidades matemáticas?
+                                Ve al siguiente enlace
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/tangram.jpg"/>
                         </div>
                     </div>
 
                     <!--Bloques geométricos-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_geometricos.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
@@ -237,7 +260,7 @@
                                 partir de varias figuras geométricas.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
 
                     </div>
@@ -256,32 +279,43 @@
                                 operaciones básicas de sumas restas.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cubitos_conectables.jpg"/>
                         </div>
                     </div>
 
                     <!--Contadores-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/contadores.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
                             <h4 class="name-product">CONTADORES</h4>
                             <p class="text-justify p-text-info">
-                                Las piezas están hechas en plástico reciclado RE-Plastic® y
-                                tienen dos colores: por un lado azul y por el otro rojo. Su forma
-                                y tamaño facilitan su manejo para todo tipo de actividades.
+                                Cara o cruz, exactamente son fichas de dos caras, pero tienen un potencial
+                                para que tus niños desarrollen una variedad de habilidades matemáticas.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                <strong>Utilidades:</strong> hacer series, trabajar el conteo, la suma, la resta,
-                                usarlos para la resolución de problemas sencillos, etc.
+                                Te listamos algunas:<br/>
+                                <ul class="ul-features">
+                                    <li>Planteamiento de lógica matemática</li>
+                                    <li>Planteamiento de probabilidad</li>
+                                    <li>Contar</li>
+                                    <li>Hacer operaciones</li>
+                                    <li>Descomponer números</li>
+                                </ul>
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <p class="text-justify p-text-info">
+                                Es un material didáctico que se puede usar desde los 5 años hasta los 15 años
+                                Así de potente es este recurso, quiere iniciar usándolo puedes descargar las
+                                plantillas de actividades en el enlace a continuación.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
                     </div>
 
@@ -290,49 +324,57 @@
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
                             <h4 class="name-product">NÚMEROS ENLAZABLES</h4>
                             <p class="text-justify p-text-info">
-                                El set de números está fabricado en plástico induce a
-                                los niños para la correcta escritura de la grafía de los
-                                números. Además, cada una de las piezas tiene varios
-                                agujeros para coser con los cordones y así interiorizar
-                                el concepto del trazo.
+                                Llegó de nuevo el turno de participación de la abuelita’, ahora con los números enlazables.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                <strong>Utilidades:</strong> coser los números para trabajar la
-                                motricidad fina, relacionar la grafía con las cantidades,
-                                utilizarlos para hacer las primeras sumas y restas,
-                                ordenar y clasificar, etc.
+                                Sí es hasta este momento que presentaremos a tus niños el significado de los
+                                números y su asociación con la cantidad, también la orientación del trazo.
+                                ¿Por qué tan tarde? Podemos presentárselo en cualquier momento, pero con
+                                las matemáticas manipulativas es muchísimo mejor que los chicos ejerciten
+                                el pensamiento crítico y comprensivo, para que la numeración no la interioricen
+                                de manera mecánica.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <p class="text-justify p-text-info">
+                                Las plantillas de actividades que te presentamos para los números en el siguiente enlace,
+                                te servirán para direccionar el trazo correcto de los números.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/numeros_enlazables.jpg"/>
                         </div>
                     </div>
 
                     <!--Regletas de cuisenaire-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cusinaire.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
                             <h4 class="name-product">REGLETAS DE CUISENAIRE</h4>
                             <p class="text-justify p-text-info">
-                                Las regletas están hechas en plástico reciclado y tienen diez
-                                colores distintos, cada una de ellas representan uno de los diez
-                                primeros números naturales.
+                                ¿Te estarás preguntando que puede aprender tu niño o tu niña con estas barritas?
                             </p>
 
                             <p class="text-justify p-text-info">
-                                <strong>Utilidades:</strong> aprenderán a descomponer los números y desarrollar
-                                el cálculo mental, realizarán sumas, restas, multiplicaciones,
-                                divisiones, potencias y raíces cuadradas, visualizarán las
-                                propiedades conmutativa, asociativa y distributiva, trabajarán
-                                perímetro, superficie y volumen, etc.
+                                Este material es fenomenal para poner aprueba el pensamiento reversible en tus niños,
+                                para adquirir las habilidades matemáticas es fundamental pensar hacia adelante y hacia atrás.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <p class="text-justify p-text-info">
+                                Un ejemplo de pensamiento reversible en geometría es la simetría.
+                                Otro ejemplo de pensamiento reversible en numeración y aritmética es
+                                la suma y la resta o la multiplicación y la división.
+                            </p>
+
+                            <p class="text-justify p-text-info">
+                                ¿Cómo jugar o usar las regletas? ve al siguiente enlace y descarga las plantillas de actividades.
+                            </p>
+
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
                     </div>
 
@@ -341,28 +383,23 @@
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-2 order-md-1 order-xl-1">
                             <h4 class="name-product">UNIDADES Y DECENAS</h4>
                             <p class="text-justify p-text-info">
-                                Este material de fabricación nacional en madera de pino o MDF
-                                es ideal para complementar las regletas numéricas.
+                                Tendrás la oportunidad e introducir a tus hijos en el mundo de las medidas y especialmente en nuestro sistema métrico decimal.
                             </p>
 
                             <p class="text-justify p-text-info">
-                                <strong>Utilidades:</strong> trabajar el sistema decimal (construcción de los
-                                números, visualizando las unidades, decenas y centenas), la
-                                descomposición numérica, practicar las operaciones básicas,
-                                comprensión de las medidas de longitud y las medidas de
-                                superficie, etc.
+                                ¿Cómo jugar o usar las unidades y decenas? ve al siguiente enlace y descarga las plantillas de actividades.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/unidades_decenas.jpg"/>
                         </div>
                     </div>
 
                     <!--Dados-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/dados.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
@@ -373,7 +410,7 @@
                                 de números, trabajar la probabilidad y crear juegos.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
                     </div>
 
@@ -395,16 +432,16 @@
                                 y operar con fracciones.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/fracciones.jpg"/>
                         </div>
                     </div>
 
                     <!--Reloj-->
                     <div class="row row-product">
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/reloj.jpg"/>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
@@ -422,7 +459,7 @@
                                 numérico sexagesimal.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
                     </div>
 
@@ -436,9 +473,9 @@
                                 tamaños de cosas y espacios.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cinta_metrica.jpg"/>
                         </div>
                     </div>
@@ -448,7 +485,7 @@
                         <div class="col-12 col-md-6 col-xl-6 mb-3">
                             <h4 class="name-product">GEOPLANO</h4>
 
-                            <p>
+                            <p class="text-justify p-text-info">
                                 Tablero de plástico reciclado RE-Plastic® de doble
                                 cara de 15 x 15 cm. Una cara tiene 49 pivotes dispuestos
                                 en un red cuadriculada y otra cara contiene 25 pivotes
@@ -464,9 +501,9 @@
                                 problemas geométricos.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#"><span t-esc="btn_text"/></a>
+                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mb-3">
+                        <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/geoplano.jpg"/>
                         </div>
                     </div>
@@ -476,13 +513,13 @@
                 <!--Formulario de cliente-->
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 p-3">
+                        <div class="col-12 col-md-12 col-xl-12 p-3" id="registrate">
                             <hr/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12">
-                             <h3 class="text-center h-singin mb-3" id="registrarse">REGÍSTRATE PARA OBTENER EL CUADERNO DE PLANTILLA DEL KIT LÚDICO</h3>
+                             <h3 class="text-center h-singin mb-3">REGÍSTRATE PARA OBTENER EL CUADERNO DE PLANTILLA DEL KIT LÚDICO</h3>
                         </div>
                     </div>
                     <div class="row">
