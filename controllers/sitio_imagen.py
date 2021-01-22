@@ -750,7 +750,6 @@ class WebSiteSaleInherit(WebsiteSale):
 
         if email:
             print(email)
-            email = post.get('email')
 
             cliente = request.env['res.partner'].search([
                 ('email', '=', email.strip())
@@ -766,13 +765,13 @@ class WebSiteSaleInherit(WebsiteSale):
                 request.env['codigos.cliente.website'].sudo().create({
                     'name': name,
                     'code': code,
-                    'email': email,
+                    'email': email.strip(),
                     'state': 'generado',
                     'note': '{0} - {1}'.format(institucion, grado)
                 })
 
                 message = email_service.get_message(name, institucion, grado, code)
-                email_service.send_email(email, message)
+                email_service.send_email(email.strip(), message)
                 print('Correo enviado')
 
                 return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
