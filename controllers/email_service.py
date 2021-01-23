@@ -2,6 +2,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
+import logging
 
 sender_email = 'chicos.comunicaciones@gmail.com'
 password_sender_email = 'Chicostiend@#2019'
@@ -39,6 +40,10 @@ def send_email(receiver_email, bodyHtml):
         print('Ha ocurrido un error al intentar enviar el correo electrónico a: {0}'
               .format(receiver_email))
         print(error)
+        
+        logging.warning('Ha ocurrido un error al intentar enviar el correo electrónico a: {0}'
+              .format(receiver_email))
+        logging.warning(error)
 
     finally:
         server.quit()
