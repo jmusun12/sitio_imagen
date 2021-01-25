@@ -5,7 +5,7 @@ import requests
 import logging
 
 gmail_user = 'chicos.comunicaciones@gmail.com'
-gmail_password = 'Chicostiend@#2019'
+gmail_password = '@Chi.com.20$'
 smtp_server = 'smtp.gmail.com'
 port_server = 465
 
@@ -34,7 +34,7 @@ def send_email(receiver_email, bodyHtml):
         server.ehlo()
         server.login(gmail_user, gmail_password)
         server.sendmail(gmail_user, receiver_email, message.as_string())
-        server.close()
+        # server.close()
 
         logging.warning('Email enviado a: {0}'.format(receiver_email))
 
