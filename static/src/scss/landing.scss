@@ -12,6 +12,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Kubos Bold';
+    src: url('./fonts/kubos/kubos-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 #header-kit {
     background-image: url('/sitio_imagen/static/src/img/header_kit.png')
@@ -26,7 +32,12 @@
 .p-text-info {
   font-family: 'Neris-SemiBold';
   color: #626875;
-  font-size: 20px !important;
+  font-size: 18px !important;
+}
+
+.border-img {
+    width: auto;
+    height: auto;
 }
 
 .img-product {
@@ -34,10 +45,12 @@
 }
 
 .h-title-kit {
-    font-size: 18px !important;
-    font-family: 'Neris-SemiBold';
-    color: #626875;
+    font-size: 16px !important;
+    font-family: 'Kubos Bold';
+    margin-bottom: 2rem !important;
     margin-top: 2rem !important;
+    color: #04a32a;
+    letter-spacing: 5px;
 }
 
 .form-singin {
@@ -64,14 +77,6 @@
     text-align: left !important;
 }
 
-.h-title-kit {
-    font-size: 16px !important;
-    font-family: 'Crewniverse';
-    margin-bottom: 2rem !important;
-    color: #04a32a;
-    letter-spacing: 5px;
-}
-
 .name-product-landing {
     font-size: 15px !important;
     font-family: 'Crewniverse';
@@ -85,9 +90,19 @@
 }
 
 .btn-detail {
-    background-color: #04a32a;
+    background-color: #007226 !important;
     color: white;
-    font-family: 'Neris-SemiBold';
+    font-family: 'Crewniverse';
+    border-radius: 25px !important;
+    border-color: #04a32a;
+    padding: 10px !important;
+    box-shadow: 5px 7px #888888;
+}
+
+.btn-detail:hover {
+    //#04a32a
+    background-color: #007226 !important;
+    box-shadow: 5px 10px #888888;
 }
 
 .h-singin {
@@ -134,4 +149,13 @@
     font-family: 'Crewniverse';
     color: #04a32a;
     letter-spacing: 3px;
+}
+
+.img-separator {
+    width: 90% !important;
+    margin-top: -53px !important;
+}
+
+#products {
+    background-color: #FFD00B !important;
 }
