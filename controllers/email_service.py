@@ -4,8 +4,8 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import logging
 
-sender_email = 'chicos.comunicaciones@gmail.com'
-password_sender_email = 'Chicostiend@#2019'
+gmail_user = 'chicos.comunicaciones@gmail.com'
+gmail_password = 'Chicostiend@#2019'
 smtp_server = 'smtp.gmail.com'
 port_server = 465
 
@@ -22,7 +22,7 @@ def verify_email(receiver_email):
 def send_email(receiver_email, bodyHtml):
     message = MIMEMultipart("alternative")
     message["Subject"] = "¡Gracias por apuntarte a la aventura de jugar con las matemáticas!"
-    message["From"] = sender_email
+    message["From"] = gmail_user
     message["To"] = receiver_email
 
     body = MIMEText(bodyHtml, 'html')
@@ -30,11 +30,13 @@ def send_email(receiver_email, bodyHtml):
     message.attach(body)
 
     try:
-        context = ssl.create_default_context()
-        server = smtplib.SMTP_SSL(smtp_server, port_server, context=context)
-        server.login(sender_email, password_sender_email)
+        server = smtplib.SMTP_SSL(smtp_server, port_server)
+        server.ehlo()
+        server.login(gmail_user, gmail_password)
+        server.sendmail(gmail_user, receiver_email, message.as_string())
+        server.close()
 
-        server.sendmail(sender_email, receiver_email, message.as_string())
+        logging.warning('Email enviado a: {0}'.format(receiver_email))
 
     except Exception as error:
         print('Ha ocurrido un error al intentar enviar el correo electrónico a: {0}'

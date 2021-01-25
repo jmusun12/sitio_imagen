@@ -127,7 +127,9 @@
                                 A continuación, te presentamos los juguetes que te acompañaran en el disfrute de aprender matemáticas junto a tus hijos.
                             </p>
 
-<!--                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>-->
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -184,9 +186,11 @@
                                 KIT puedes obtenerla en el siguiente enlace.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate">
-                                <span t-esc="btn_text"/>
-                            </a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate">
+                                    <span t-esc="btn_text"/>
+                                </a>
+                            </p>
                         </div>
                     </div>
 
@@ -211,7 +215,9 @@
                                 en el siguiente enlace.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/botones.jpg"/>
@@ -257,7 +263,9 @@
                                 Ve al siguiente enlace y descargar la plantilla de actividades.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
 
                     </div>
@@ -279,7 +287,9 @@
                                 Ve al siguiente enlace
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                               <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/tangram.jpg"/>
@@ -308,7 +318,9 @@
                                 partir de varias figuras geométricas.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
 
                     </div>
@@ -327,7 +339,9 @@
                                 operaciones básicas de sumas restas.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cubitos_conectables.jpg"/>
@@ -363,7 +377,9 @@
                                 plantillas de actividades en el enlace a continuación.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
 
@@ -389,7 +405,9 @@
                                 te servirán para direccionar el trazo correcto de los números.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/numeros_enlazables.jpg"/>
@@ -422,7 +440,9 @@
                                 ¿Cómo jugar o usar las regletas? ve al siguiente enlace y descarga las plantillas de actividades.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
 
@@ -438,7 +458,9 @@
                                 ¿Cómo jugar o usar las unidades y decenas? ve al siguiente enlace y descarga las plantillas de actividades.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/unidades_decenas.jpg"/>
@@ -458,7 +480,9 @@
                                 de números, trabajar la probabilidad y crear juegos.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
 
@@ -480,7 +504,9 @@
                                 y operar con fracciones.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/fracciones.jpg"/>
@@ -507,7 +533,9 @@
                                 numérico sexagesimal.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
 
@@ -521,7 +549,9 @@
                                 tamaños de cosas y espacios.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
                             <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cinta_metrica.jpg"/>
@@ -552,7 +582,9 @@
                                 problemas geométricos.
                             </p>
 
-                            <a class="btn btn-primary w-100 btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            <p class="text-left">
+                                <a class="btn btn-primary btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                     </div>
                 </div>
