@@ -790,17 +790,12 @@ class WebSiteSaleInherit(WebsiteSale):
 
     @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
     def download_template(self, code, **kwargs):
-        print('Codigo: ', code)
         codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
             ('code', '=', code),
             ('state', '=', 'generado')
         ])
 
-        print(codigo_cliente)
-
         if codigo_cliente:
-            print('Código existe')
-
             attachment = request.env['catalogo.producto'].search([
                 ('key', '=', 'plantilla_mate_01')
             ])
@@ -818,7 +813,6 @@ class WebSiteSaleInherit(WebsiteSale):
                     'state': 'usado'
                 })
 
-                print('Attachment existe')
                 data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
                 # we follow what is done in ir_http's binary_content for the extension management
                 extension = os.path.splitext(attachment["file_name"] or '')[1]

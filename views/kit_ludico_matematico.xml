@@ -94,7 +94,6 @@
                     <!--Introducción-->
                     <div class="row">
                         <div class="col-12 col-md-6 col-xl-6">
-                            <h1 class="text-center title-landing">KIT MATEMATICA INFANTIL</h1>
                             <p class="text-justify p-text-info">
                                 Sí viene de manera natural el bloqueo a tu mente de sólo pensar cómo solucionar
                                 los problemas de matemáticas.
@@ -170,14 +169,16 @@
                     </div>
                 </div>
 
-                <div class="container-fluid" id="products">
+                <div class="container-fluid">
                     <div class="container mt-5">
                         <!--Animales fexibles-->
                          <div class="row">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-left d-flex align-items-center">
-                                <div class="border-img">
-                                    <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/flexianimales.jpg"/>
-                                </div>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                               <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/flexianimales.jpg"/>
+                                   </figure>
+                               </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">ANIMALES FLEXIBLES</h4>
@@ -229,15 +230,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/botones.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/botones.jpg"/>
+                                   </figure>
+                               </div>
                             </div>
                         </div>
 
                         <!--Bloques lógicos-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_logicos.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/bloques_logicos.jpg"/>
+                                   </figure>
+                               </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">BLOQUES LÓGICOS</h4>
@@ -301,15 +310,23 @@
                                    <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/tangram.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/tangram.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Bloques geométricos-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/bloques_geometricos.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/bloques_geometricos.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">BLOQUES GEOMÉTRICOS</h4>
@@ -353,15 +370,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cubitos_conectables.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cubitos_conectables.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Contadores-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/contadores.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/contadores.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">CONTADORES</h4>
@@ -419,15 +444,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/numeros_enlazables.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/numeros_enlazables.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Regletas de cuisenaire-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cusinaire.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/cusinaire.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">REGLETAS DE CUISENAIRE</h4>
@@ -472,15 +505,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-left d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/unidades_decenas.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/unidades_decenas.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Dados-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/dados.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/dados.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">DADOS</h4>
@@ -518,15 +559,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/fracciones.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/fracciones.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Reloj-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/reloj.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/reloj.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">RELOJ</h4>
@@ -563,15 +612,23 @@
                                     <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/cinta_metrica.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 order-1 order-md-2 order-xl-2 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/cinta_metrica.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                         </div>
 
                         <!--Geoplano-->
                         <div class="row row-product">
-                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center d-flex align-items-center">
-                                <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/geoplano.jpg"/>
+                            <div class="col-12 col-md-6 col-xl-6 mb-3 text-center">
+                                <div class="product-landing">
+                                   <figure>
+                                       <img src="/sitio_imagen/static/src/img/kit_ludico/geoplano.jpg"/>
+                                   </figure>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-6 mb-3">
                                 <h4 class="name-product-landing">GEOPLANO</h4>
@@ -684,9 +741,6 @@
                                                     <a style="text-decoration: none;" data-toggle="collapse" data-target="#terminos" href="#">...</a>
                                                 </label>
                                             </div>
-                                            <p>
-
-                                            </p>
                                         </div>
                                     </div>
                                     <div class="row">
