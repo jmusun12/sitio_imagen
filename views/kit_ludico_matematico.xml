@@ -796,7 +796,15 @@
 
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 text-center">
-                            <a class="btn btn-default btn-return" t-att-href="enlace">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
+                            <h5 class="text-center">
+                                Ya pudes descargar el archivo PDF que contiene el cuaderno de PLANTILLAS
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
                         </div>
                     </div>
                 </div>

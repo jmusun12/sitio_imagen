@@ -147,11 +147,13 @@ def get_message(cliente, institucion, grado, code):
                                         <img src="http://drive.google.com/uc?export=view&id=1GugeOZLhsMgk8L88Hgmk5nFBjX70P2n8" alt="Phone" width="38" height="38" style="display: block;" border="0" />
                                     </a>
                                 </td>
+                                <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                                 <td>
                                     <a href="https://goo.gl/maps/goiH78rvynovt3pV9">
                                         <img src="http://drive.google.com/uc?export=view&id=1oIfB02GqcQEMq61Mw0tjrDKb7zbcBO3h" alt="Location" width="38" height="38" style="display: block;" border="0" />
                                     </a>
                                 </td>
+                                <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                                 <td>
                                     <a href="https://www.facebook.com/ChicosJuguetesEducativos">
                                         <img src="http://drive.google.com/uc?export=view&id=1LDh1OvZLW_IE-T5osNsq6hdP8rMIN-u1" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
