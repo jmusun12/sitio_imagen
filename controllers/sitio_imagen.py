@@ -801,6 +801,30 @@ class WebSiteSaleInherit(WebsiteSale):
                 ('state', '=', 'generado')
             ])
 
+            if request.env['res.partner'].search_count([('email', '=', codigo_cliente['email'])]):
+                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                    'exito': 'N',
+                    'email': codigo_cliente['email']
+                })
+
+            return request.render("sitio_imagen.download_template", {
+                'enlace': '/shop/download-template/{0}'.format(code),
+                'cliente': codigo_cliente
+            })
+
+        else:
+            return request.render("sitio_imagen.tmp_code_error", {
+                'code': code
+            })
+
+    @http.route(['''/shop/download-template/<string:code>'''], type='http', auth="public", website=True, methods=['GET'])
+    def download_template(self, code, **kwargs):
+        if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count', '=', 0)]):
+            codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
+                ('code', '=', code),
+                ('state', '=', 'generado')
+            ])
+
             request.env['ir.rule'].clear_cache()
             codigo_cliente.write({
                 'state': 'usado',

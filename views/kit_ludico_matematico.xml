@@ -768,4 +768,39 @@
             </div>
         </t>
     </template>
+
+    <template id="download_template" name="Download Template">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Kit lúdico</t>
+            <div id="wrap" class="js_sale">
+                <!--Header kit-->
+                <div class="container-fluid m-0 p-0">
+                    <img class="img-header-kit" src="/sitio_imagen/static/src/img/kit_ludico/header_kit.png" alt="Encabezado del kit"/>
+                </div>
+
+                <div class="container mt-3" id="content-landing">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <h4 class="text-center">
+                                HOLA, <strong><span t-esc="cliente[name]"/></strong> GRACIAS POR PREFERIR NUESTROS PRODUCTOS.
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <h5 class="text-center">
+                                Ya eres parte de la comunidad <strong>CHICOS</strong> y de <strong><span t-esc="cliente[note]"/></strong>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <a class="btn btn-default btn-return" t-att-href="enlace">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
 </odoo>
