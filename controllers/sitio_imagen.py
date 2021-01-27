@@ -755,7 +755,11 @@ class WebSiteSaleInherit(WebsiteSale):
                 ('email', '=', email.strip())
             ])
 
-            if not cliente:
+            codigo = request.env['codigos.cliente.website'].search([
+                ('email', '=', email.strip())
+            ])
+
+            if not cliente and not codigo:
                 print('Cliente no existe')
                 name = post.get('name')
                 institucion = post.get('institucion')
@@ -789,7 +793,7 @@ class WebSiteSaleInherit(WebsiteSale):
             print('No email')
             return request.render("sitio_imagen.tmp_kit_ludico_matematico")
 
-    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
+    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True, method=['POST'])
     def download_template(self, code, **kwargs):
         request.env['codigos.cliente.website'].invalidate_cache()
         request.env['res.partner'].invalidate_cache()
@@ -810,6 +814,14 @@ class WebSiteSaleInherit(WebsiteSale):
                     'email': codigo_cliente['email']
                 })
 
+            request.env['codigos.cliente.website'].sudo().search([
+                ('code', '=', code),
+                ('state', '=', 'generado')
+            ]).write({
+                'state': 'usado',
+                'download_count': 1
+            })
+
             attachment = request.env['catalogo.producto'].search([
                 ('key', '=', 'plantilla_mate_01')
             ])
@@ -821,14 +833,6 @@ class WebSiteSaleInherit(WebsiteSale):
                     'type': 'contact',
                     'comment': codigo_cliente['note'],
                     'type_partner': 'customer'
-                })
-
-                request.env['codigos.cliente.website'].sudo().search([
-                    ('code', '=', code),
-                    ('state', '=', 'generado')
-                ]).write({
-                    'state': 'usado',
-                    'download_count': 1
                 })
 
                 data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
