@@ -780,14 +780,14 @@
 
                 <div class="container mt-3" id="content-landing">
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
                             <h4 class="text-center">
                                 HOLA, <strong><span t-esc="cliente.name"/></strong> GRACIAS POR PREFERIR NUESTROS PRODUCTOS.
                             </h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
                             <h5 class="text-center">
                                 Ya eres parte de la comunidad <strong>CHICOS</strong> y de <strong><span t-esc="cliente.note"/></strong>
                             </h5>
@@ -795,7 +795,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
                             <h5 class="text-center">
                                 Ya pudes descargar el archivo PDF que contiene el cuaderno de PLANTILLAS
                             </h5>
@@ -803,14 +803,14 @@
                     </div>
 
                     <div class="row" id="btn-download">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                        <div class="col-12 col-md-12 col-xl-12 text-cente mt-3r">
                             <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
                         </div>
                     </div>
 
                     <div class="row d-none" id="btn-return-kit">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
-                            <a class="btn btn-default btn-return" href="/shop/kit-ludico-matematico">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
+                            <a class="btn btn-default btn-return btn-primary" href="/shop/kit-ludico-matematico">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
                         </div>
                     </div>
                 </div>
