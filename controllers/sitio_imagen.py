@@ -796,11 +796,13 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True,  methods=['GET'])
     def download_template(self, code, **kwargs):
         if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count','=',0)]):
-            request.env['ir.rule'].clear_cache()
             codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
                 ('code', '=', code),
                 ('state', '=', 'generado')
-            ]).write({
+            ])
+
+            request.env['ir.rule'].clear_cache()
+            codigo_cliente.write({
                 'state': 'usado',
                 'download_count': 1
             })
