@@ -791,6 +791,7 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
     def download_template(self, code, **kwargs):
         request.env['codigos.cliente.website'].invalidate_cache()
+        request.env['res.partner'].invalidate_cache()
 
         codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
             ('code', '=', code),
@@ -798,6 +799,16 @@ class WebSiteSaleInherit(WebsiteSale):
         ])
 
         if codigo_cliente:
+            res_partner = request.env['res.partner'].search([
+                ('email', '=', codigo_cliente['email'])
+            ])
+
+            if res_partner:
+                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                    'exito': 'N',
+                    'email': codigo_cliente['email']
+                })
+
             attachment = request.env['catalogo.producto'].search([
                 ('key', '=', 'plantilla_mate_01')
             ])
