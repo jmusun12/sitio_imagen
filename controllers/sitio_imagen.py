@@ -820,7 +820,8 @@ class WebSiteSaleInherit(WebsiteSale):
                     'email': codigo_cliente['email'],
                     'type': 'contact',
                     'comment': codigo_cliente['note'],
-                    'type_partner': 'customer'
+                    'type_partner': 'customer',
+                    'download_count': 1
                 })
 
                 codigo_cliente.write({
