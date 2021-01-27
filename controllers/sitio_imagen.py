@@ -790,6 +790,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
     @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
     def download_template(self, code, **kwargs):
+        request.env['codigos.cliente.website'].invalidate_cache()
+
         codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
             ('code', '=', code),
             ('state', '=', 'generado')
