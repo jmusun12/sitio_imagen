@@ -793,28 +793,11 @@ class WebSiteSaleInherit(WebsiteSale):
             print('No email')
             return request.render("sitio_imagen.tmp_kit_ludico_matematico")
 
-    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True, method=['POST'])
+    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True,  methods=['GET'])
     def download_template(self, code, **kwargs):
-        request.env['codigos.cliente.website'].invalidate_cache()
-        request.env['res.partner'].invalidate_cache()
-
-        codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
-            ('code', '=', code),
-            ('state', '=', 'generado')
-        ])
-
-        if codigo_cliente and codigo_cliente.download_count == 0:
-            res_partner = request.env['res.partner'].search([
-                ('email', '=', codigo_cliente['email'])
-            ])
-
-            if res_partner:
-                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 'N',
-                    'email': codigo_cliente['email']
-                })
-
-            request.env['codigos.cliente.website'].sudo().search([
+        if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count','=',0)]):
+            request.env['ir.rule'].clear_cache()
+            codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
                 ('code', '=', code),
                 ('state', '=', 'generado')
             ]).write({
@@ -822,11 +805,18 @@ class WebSiteSaleInherit(WebsiteSale):
                 'download_count': 1
             })
 
+            if request.env['res.partner'].search_count([('email', '=', codigo_cliente['email'])]):
+                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
+                    'exito': 'N',
+                    'email': codigo_cliente['email']
+                })
+
             attachment = request.env['catalogo.producto'].search([
                 ('key', '=', 'plantilla_mate_01')
             ])
 
             if attachment:
+                request.env['ir.rule'].clear_cache()
                 request.env['res.partner'].sudo().create({
                     'name': codigo_cliente['name'],
                     'email': codigo_cliente['email'],
