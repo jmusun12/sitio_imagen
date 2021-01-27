@@ -803,7 +803,7 @@
                     </div>
 
                     <div class="row" id="btn-download">
-                        <div class="col-12 col-md-12 col-xl-12 text-cente mt-3r">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3r">
                             <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
                         </div>
                     </div>
