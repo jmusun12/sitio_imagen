@@ -782,14 +782,14 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 text-center">
                             <h4 class="text-center">
-                                HOLA, <strong><span t-esc="cliente[name]"/></strong> GRACIAS POR PREFERIR NUESTROS PRODUCTOS.
+                                HOLA, <strong><span t-esc="cliente.name"/></strong> GRACIAS POR PREFERIR NUESTROS PRODUCTOS.
                             </h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 text-center">
                             <h5 class="text-center">
-                                Ya eres parte de la comunidad <strong>CHICOS</strong> y de <strong><span t-esc="cliente[note]"/></strong>
+                                Ya eres parte de la comunidad <strong>CHICOS</strong> y de <strong><span t-esc="cliente.note"/></strong>
                             </h5>
                         </div>
                     </div>
@@ -801,6 +801,13 @@
                     </div>
                 </div>
             </div>
+
+            <!--CSS -->
+            <style type="text/css">
+                main {
+                    margin-top: 80px !important;
+                }
+            </style>
         </t>
     </template>
 </odoo>
