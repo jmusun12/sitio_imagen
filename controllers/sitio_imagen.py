@@ -793,7 +793,7 @@ class WebSiteSaleInherit(WebsiteSale):
             print('No email')
             return request.render("sitio_imagen.tmp_kit_ludico_matematico")
 
-    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True,  methods=['GET'])
+    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
     def shop_template(self, code, **kwargs):
         if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count','=',0)]):
             codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
@@ -807,7 +807,7 @@ class WebSiteSaleInherit(WebsiteSale):
                     'email': codigo_cliente['email']
                 })
 
-            return request.render("sitio_imagen.download_template", {
+            return request.render("sitio_imagen.tmp_download_template", {
                 'enlace': '/shop/download-template/{0}'.format(code),
                 'cliente': codigo_cliente
             })
@@ -817,7 +817,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 'code': code
             })
 
-    @http.route(['''/shop/download-template/<string:code>'''], type='http', auth="public", website=True, methods=['GET'])
+    @http.route(['''/shop/download-template/<string:code>'''], type='http', auth="public", website=True)
     def download_template(self, code, **kwargs):
         if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count', '=', 0)]):
             codigo_cliente = request.env['codigos.cliente.website'].sudo().search([

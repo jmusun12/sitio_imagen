@@ -769,7 +769,7 @@
         </t>
     </template>
 
-    <template id="download_template" name="Download Template">
+    <template id="tmp_download_template" name="Download Template">
         <t t-call="website.layout">
             <t t-set="additional_title">Kit lúdico</t>
             <div id="wrap" class="js_sale">
