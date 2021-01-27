@@ -807,6 +807,18 @@
                             <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
                         </div>
                     </div>
+
+                    <div class="row" id="btn-download">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
+                        </div>
+                    </div>
+
+                    <div class="row d-none" id="btn-return-kit">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <a class="btn btn-default btn-return" href="/shop/kit-ludico-matematico">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -816,6 +828,13 @@
                     margin-top: 80px !important;
                 }
             </style>
+
+            <script>
+                $(document).on('click', '#btn-download', function(event){
+                    $(this).addClass('d-none');
+                    $('#btn-return-kit').removeClass('d-none');
+                });
+            </script>
         </t>
     </template>
 </odoo>
