@@ -762,6 +762,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 grado = post.get('nivel')
                 code = secrets.token_hex(20)
 
+                request.env['codigos.cliente.website'].invalidate_cache()
                 request.env['codigos.cliente.website'].sudo().create({
                     'name': name,
                     'code': code,
@@ -798,7 +799,7 @@ class WebSiteSaleInherit(WebsiteSale):
             ('state', '=', 'generado')
         ])
 
-        if codigo_cliente:
+        if codigo_cliente and codigo_cliente.download_count == 0:
             res_partner = request.env['res.partner'].search([
                 ('email', '=', codigo_cliente['email'])
             ])
