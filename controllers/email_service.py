@@ -87,8 +87,8 @@ def get_message(cliente, institucion, grado, code):
                 
                 <tr>
                     <td style="text-align: justify; padding: 20px 0 0 0; color: #6d726e; font-family: 'Roboto'; font-size: 15px;" colspan="2">
-                        Eres parte de la comunidad <strong>CHICOS</strong> y del {1}, queremos apoyarte en la 
-                            implementación del <strong>KIT CHICOS MATEMATICAS</strong> {2}
+                        Eres parte de la comunidad <strong>CHICOS</strong> y del <strong>{1}</strong>, queremos apoyarte en la 
+                            implementación del <strong>KIT CHICOS MATEMATICAS {2}</strong>
                     </td>
                     <td></td>
                 </tr>
@@ -118,7 +118,7 @@ def get_message(cliente, institucion, grado, code):
 
                 <tr>
                     <td style="padding: 0 0 0 0; color: #6d726e; font-family: 'Roboto'; font-size: 15px;" colspan="2">
-                        Estamos impacientes porque nos escribas tus consultas o comentarios de la implementación del KIT.
+                        Estamos impacientes porque nos escribas tus consultas o comentarios de la implementación del KIT al email <a href='mailto:chicos.comunicaciones@gmail.com'>chicos.comunicaciones@gmail.com</a>
                     </td>
                     <td></td>
                 </tr>
@@ -138,18 +138,20 @@ def get_message(cliente, institucion, grado, code):
                 </tr>
                 
                 <tr style="color: #04a32a;">
-                    <td tyle="color: #ffffff; ">
-                        <p style="margin-bottom: 1px; margin-top: 1px; font-family: 'Roboto'; font-size: 10px;">9a Calle Poniente 3972, San Salvador</p>                    
-                        <p style="margin-bottom: 1px; margin-top: 1px;">
-                            <a style="text-decoration: none; color: #04a32a; font-family: 'Roboto'; font-size: 10px;" href="tel: +503 2235-3824">Tel: +503 2235-3824</a>
-                        </p>
-                        <p style="margin-bottom: 1px; margin-top: 1px;">
-                            <a style="text-decoration: none; color: #04a32a; font-family: 'Roboto'; font-size: 10px;" href="tel: +503 2264-9463">Tel: +503 2264-9463</a>
-                        </p>
-                    </td>
-                    <td width="25%">
+                    <td></td>                    
+                    <td colspan="2" >
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
+                                <td>
+                                    <a href="tel: +503 2235-3824">
+                                        <img src="http://drive.google.com/uc?export=view&id=1GugeOZLhsMgk8L88Hgmk5nFBjX70P2n8" alt="Phone" width="38" height="38" style="display: block;" border="0" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://goo.gl/maps/goiH78rvynovt3pV9">
+                                        <img src="http://drive.google.com/uc?export=view&id=1oIfB02GqcQEMq61Mw0tjrDKb7zbcBO3h" alt="Location" width="38" height="38" style="display: block;" border="0" />
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="https://www.facebook.com/ChicosJuguetesEducativos">
                                         <img src="http://drive.google.com/uc?export=view&id=1LDh1OvZLW_IE-T5osNsq6hdP8rMIN-u1" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
