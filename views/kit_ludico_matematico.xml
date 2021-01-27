@@ -801,13 +801,7 @@
                             </h5>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-center">
-                            <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
-                        </div>
-                    </div>
-
+                    
                     <div class="row" id="btn-download">
                         <div class="col-12 col-md-12 col-xl-12 text-center">
                             <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
