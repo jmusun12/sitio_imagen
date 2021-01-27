@@ -103,7 +103,7 @@ def get_message(cliente, institucion, grado, code):
                 </tr>
                 <tr>
                     <td align="center" style="padding: 40px 0 30px 0; color: #04a32a;" colspan="2">
-                        <a style="background-color: #04a32a;color: white; padding: 15px 15px 15px 15px; border-radius: 1.25rem; text-decoration: none; font-size: 20px; margin-top: 15px;" href="https://chicosimagen.com/shop/plantilla/{3}">
+                        <a style="background-color: #04a32a;color: white; padding: 15px 15px 15px 15px; border-radius: 1.25rem; text-decoration: none; font-size: 20px; margin-top: 15px;" href="https://chicosimagen.com/shop/plantilla/{3}" target="_blank">
                             DESCARGAR
                         </a>                            
                     </td>
