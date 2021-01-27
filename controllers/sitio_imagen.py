@@ -820,12 +820,15 @@ class WebSiteSaleInherit(WebsiteSale):
                     'email': codigo_cliente['email'],
                     'type': 'contact',
                     'comment': codigo_cliente['note'],
-                    'type_partner': 'customer',
-                    'download_count': 1
+                    'type_partner': 'customer'
                 })
 
-                codigo_cliente.write({
-                    'state': 'usado'
+                request.env['codigos.cliente.website'].sudo().search([
+                    ('code', '=', code),
+                    ('state', '=', 'generado')
+                ]).write({
+                    'state': 'usado',
+                    'download_count': 1
                 })
 
                 data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
