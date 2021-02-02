@@ -112,7 +112,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop'
+            'url_get': '/shop',
+            'id_svg': 'green_cloud'
         }
 
         if category:
@@ -307,7 +308,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-2-4'
+            'url_get': '/shop/libros-chicos-2-4',
+            'id_svg': 'yellow_cloud'
         }
 
         if category:
@@ -409,7 +411,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-4-5'
+            'url_get': '/shop/libros-chicos-4-5',
+            'id_svg': 'pink_cloud'
         }
 
         if category:
@@ -511,7 +514,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-6-7'
+            'url_get': '/shop/libros-chicos-6-7',
+            'id_svg': 'violet_cloud'
         }
 
         if category:
@@ -613,7 +617,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-8-9'
+            'url_get': '/shop/libros-chicos-8-9',
+            'id_svg': 'blue_cloud'
         }
 
         if category:
@@ -715,7 +720,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'attributes': attributes,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-10-12'
+            'url_get': '/shop/libros-chicos-10-12',
+            'id_svg': 'orange_cloud'
         }
 
         if category:

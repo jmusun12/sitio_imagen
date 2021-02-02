@@ -70,15 +70,66 @@ $(document).ready(function () {
   });
 
   // inicializacion de bodymovin div
-  if($('#bm-body').length) {
+  if($('#green_cloud').length) {
       var animation = bodymovin.loadAnimation({
         container: document.getElementById("wrapwrap"),
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/sitio_imagen/static/src/js/data.json'
+        path: '/sitio_imagen/static/src/js/green_cloud/data.json'
       });
   }
+
+  if($('#yellow_cloud').length) {
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("wrapwrap"),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/sitio_imagen/static/src/js/yellow_cloud/data.json'
+      });
+  }
+
+  if($('#pink_cloud').length) {
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("wrapwrap"),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/sitio_imagen/static/src/js/pink_cloud/data.json'
+      });
+  }
+
+  if($('#violet_cloud').length) {
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("wrapwrap"),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/sitio_imagen/static/src/js/violet_cloud/data.json'
+      });
+  }
+
+  if($('#blue_cloud').length) {
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("wrapwrap"),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/sitio_imagen/static/src/js/blue_cloud/data.json'
+      });
+  }
+
+  if($('#orange_cloud').length) {
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("wrapwrap"),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/sitio_imagen/static/src/js/orange_cloud/data.json'
+      });
+  }
+
 /*
   $('.slider-product-images').slick({
     dots: false,

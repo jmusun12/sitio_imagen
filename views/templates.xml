@@ -65,7 +65,7 @@
 
                     <!--http://chicosimagen.com/shop-->
                     <t t-if="valido_cat == 1">
-                        <div id="bm-body"></div>
+                        <div t-if="id_svg" t-att-id="id_svg"></div>
                         <div class="nav-browser">
                             <t t-call="sitio_imagen.shop_header"/>
                         </div>
