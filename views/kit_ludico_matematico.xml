@@ -94,29 +94,29 @@
                     <!--Introducción-->
                     <div class="row">
                         <div class="col-12 col-md-6 col-xl-6">
-                            <p class="text-justify p-text-info">
-                                Sí viene de manera natural el bloqueo a tu mente de sólo pensar cómo solucionar
-                                los problemas de matemáticas.
-                            </p>
-                            <p class="text-justify p-text-info">
-                                Sí eres de las que han heredado un odio por las matemáticas.
-                            </p>
-                            <p class="text-justify p-text-info">
-                                Sí tuviste la suerte de tener un buen maestro que te enseñaba de
-                                manera tradicional las matemáticas, es decir que, te enseñaba de la
-                                pizarra al cuaderno.
-                            </p>
-                            <p class="text-justify p-text-info">
-                                Es exactamente a ti a quién queremos proponerte, el KIT CHICOS MATEMÁTICAS INFANTIL.
-                            </p>
-                            <p class="text-justify p-text-info">
-                                Ya que, si no quieres ni pensar, intenta jugar y descubrirás una
-                                aventura espontanea de aprender las matemáticas junto a tus hijos.
-                            </p>
-                            <p class="text-justify p-text-info">
-                                Descubrirás por tu propia experiencia que del Odio al Amor solo hay un paso
-                                y este se llama jugar con las matemáticas.
-                            </p>
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Sí viene de manera natural el bloqueo a tu mente de sólo pensar cómo solucionar-->
+<!--                                los problemas de matemáticas.-->
+<!--                            </p>-->
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Sí eres de las que han heredado un odio por las matemáticas.-->
+<!--                            </p>-->
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Sí tuviste la suerte de tener un buen maestro que te enseñaba de-->
+<!--                                manera tradicional las matemáticas, es decir que, te enseñaba de la-->
+<!--                                pizarra al cuaderno.-->
+<!--                            </p>-->
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Es exactamente a ti a quién queremos proponerte, el KIT CHICOS MATEMÁTICAS INFANTIL.-->
+<!--                            </p>-->
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Ya que, si no quieres ni pensar, intenta jugar y descubrirás una-->
+<!--                                aventura espontanea de aprender las matemáticas junto a tus hijos.-->
+<!--                            </p>-->
+<!--                            <p class="text-justify p-text-info">-->
+<!--                                Descubrirás por tu propia experiencia que del Odio al Amor solo hay un paso-->
+<!--                                y este se llama jugar con las matemáticas.-->
+<!--                            </p>-->
                             <p class="text-justify p-text-info">
                                 Estás invitada a exprimir los recursos del <strong>KIT CHICOS MATEMATICAS INFANTIL</strong>
                                 y junto a tu niño o niña se verán contagiados de diversión y creatividad cuando
@@ -125,9 +125,13 @@
                             <p class="text-justify p-text-info">
                                 A continuación, te presentamos los juguetes que te acompañaran en el disfrute de aprender matemáticas junto a tus hijos.
                             </p>
+
+                            <p class="text-center">
+                                <a class="btn btn-detail" href="#registrate"><span t-esc="btn_text"/></a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 col-xl-6 text-center d-flex align-items-center">
-                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/kit.png"/>
+                            <img class="img-product" src="/sitio_imagen/static/src/img/kit_ludico/Kit_caja.jpg"/>
                         </div>
                     </div>
                     <div class="row">
