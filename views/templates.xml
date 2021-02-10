@@ -12,6 +12,7 @@
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-nav.scss"/>
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/scroll_pagination.scss"/>
             <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/landing.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/landing_leolandia.scss"/>
         </xpath>
         <xpath expr="script[last()]" position="after">
             <script type="text/javascript" src="/sitio_imagen/static/src/js/slick/slick.js"></script>
@@ -33,7 +34,7 @@
         <!--Reemplazamos el menu-->
         <xpath expr="//div[@id='wrapwrap']/header" position="replace">
             <t t-if="website.code == 'IMG'">
-                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process', '/shop/kit-ludico-matematico', '/shop/kit-email', '/shop/plantilla/']"/>
+                <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process', '/shop/kit-ludico-matematico', '/shop/kit-email', '/shop/plantilla/', '/shop/curso-leolandia', '/shop/curso/registrate']"/>
 <!--                 <t t-set="urls_cat" t-value="['http://localhost:8050/shop', 'http://localhost:8050/shop/libros-chicos-2-4', 'http://localhost:8050/shop/libros-chicos-4-5', 'http://localhost:8050/shop/libros-chicos-6-7', 'http://localhost:8050/shop/libros-chicos-8-9', 'http://localhost:8050/shop/libros-chicos-10-12']"/>-->
                 <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', 'http://chicosimagen.com/shop/libros-chicos-2-4', 'http://chicosimagen.com/shop/libros-chicos-4-5', 'http://chicosimagen.com/shop/libros-chicos-6-7', 'http://chicosimagen.com/shop/libros-chicos-8-9', 'http://chicosimagen.com/shop/libros-chicos-10-12']"/>
                 <t t-set="urls_portal" t-value="['/my/orders', '/my/home', '/my/account']"/>

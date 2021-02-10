@@ -18,7 +18,8 @@
 		'views/promo_code.xml',
 		'views/kit_ludico_matematico.xml',
 		'views/template_email.xml',
-		'views/tmp_code_error.xml'
+		'views/tmp_code_error.xml',
+		'views/kit_leolandia.xml'
 	],
   	'category': 'Theme/Creative',
   	'depends': [

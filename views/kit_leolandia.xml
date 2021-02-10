@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmpl_curso_leolandia" name="curso_leolandia">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Curso Leolandia</t>
+            <div id="wrap" class="js_sale">
+                <!--Header kit-->
+                <div class="container-fluid m-0 p-0">
+                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header.png" alt="Encabezado del kit"/>
+                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/header-responsive.jpg" alt="Encabezado del kit"/>
+                </div>
+
+                <!--Modal de confirmación-->
+                <t t-if="exito and exito == 'S'">
+                    <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        ¡Gracias por registrarte para el curso de leolandia!
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Se le estará enviando el enlace de invitación al correo electrónico:
+                                        <strong><span t-esc="email"/></strong> un día antes de la fecha prevista de
+                                        inicio del curso.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
+                                    <a t-att-href="url_payment" class="btn btn-warning">
+                                        Pagar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        #dialog-confirm {
+                            margin-top: 12.5rem;
+                        }
+
+                        .btn-chicos {
+                            background-color: #206dbf !important;
+                            border-color: #206dbf !important;
+                        }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <script type="text/javascript">
+                        $('#dialog-confirm').modal('show');
+                    </script>
+                </t>
+
+                <!--Modal de error-->
+                <t t-if="exito and exito == 'N'">
+                    <div id="dialog-error" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Notificación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Ya se ha solicitado la plantilla con el correo electrónico <strong><span t-esc="email"/></strong>
+                                    .Por favor revise su bandeja de entrada.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        #dialog-error {
+                            margin-top: 12.5rem;
+                        }
+
+                        .btn-chicos {
+                            background-color: #206dbf !important;
+                            border-color: #206dbf !important;
+                        }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <script type="text/javascript">
+                        $('#dialog-error').modal('show');
+                    </script>
+                </t>
+
+                <div class="contenido container-fluid">
+                    <div class="row">
+                         <div id="col-tree-books" class="col-12 col-md-6 col-xl-6 mt-5">
+                            <img class="loe-img-product" src="/sitio_imagen/static/src/img/kit_leolandia/tree-books.jpg"/>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6 mt-5">
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-xl-12">
+                                    <h1 class="title">Curso impartido por <span class="name-author">Maite Vallet.</span></h1>
+
+                                    <p class="p-text-leolandia text-color-deep-green">
+                                        Formadora y orientadora pedagógica de profesores y padres en España y Centroamérica.
+                                    </p>
+
+                                    <p class="p-text-leolandia text-color-deep-green mb-0">
+                                        Enseñar a leer y escribir es uno de los retos más apasionantes de la vida docente.
+                                    </p>
+
+                                    <a class="text-link text-color-orange" href="#">
+                                        ¡Conoce más sobre el curso!
+                                    </a>
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                 <div class="col-12 col-md-12 col-xl-12 mt-3">
+                                    <h1 class="other-title text-color-light-green">¡Regístrate!</h1>
+                                    <div>
+                                        <form id="form-get-kit-leolandia" action="/shop/curso/registrate" method="post">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                             <input type="hidden" name="submitted" value="1" />
+
+                                            <div class="row">
+                                                <div class="col-12 col-md-8 col-xl-8">
+                                                    <div class="form-group">
+                                                        <input name="name" type="text" class="form-control text-input" id="InputName" placeholder="Ingrese nombre completo"/>
+                                                    </div>
+
+                                                     <div class="form-group">
+                                                        <input name="email" type="email" class="form-control text-input" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese correo electrónico"/>
+                                                        <small id="emailHelp" class="form-text text-muted">A este correo se enviará el enlace de invitación.</small>
+                                                        <small id="msg-error-email" class="form-text text-muted"></small>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <select class="form-control text-input" name="country">
+                                                            <option>Seleccione el país</option>
+
+                                                            <t t-foreach="paises" t-as="pais">
+                                                                <option t-att-value="pais.id">
+                                                                    <t t-esc="pais.name" />
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-12 mt-2">
+                                                    <script src="https://www.google.com/recaptcha/api.js"></script>
+                                                    <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>
+<!--                                                     <div class="g-recaptcha" data-sitekey="6Ldf8jcaAAAAAJp6CFnkD0Qn0md52arY7AC7F4wp"></div>-->
+                                                    <div class="help-block with-errors" id="err" style='color: red'></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-12 mt-2">
+                                                    <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
+                                                        <div class="help-block with-errors" id="err_term" style='color: red'></div>
+                                                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                                                        <label for="checkbox_cgv" class="custom-control-label text-color-green font-futura-light" style="font-size: 14px !important;">
+                                                            Blue Line El Salvador S.A. de C.V. es la Responsable del Tratamiento de tus datos,
+                                                            con la finalidad de gestionar el curso de Leolandia. Enseñar a leer comprendiendo y escribir creando,
+                                                            <span id="terminos" class="collapse">si marcas la casilla dispuesta a tal fin.
+                                                            Tienes derecho de acceso, rectificación, supresión, limitación, oposición al tratamiento y portabilidad.
+                                                            Puedes ejercitar tus derechos en chicos.comunicaciones@gmail.com.
+                                                            </span>
+                                                            <a style="text-decoration: none;" data-toggle="collapse" data-target="#terminos" href="#">...</a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-2 mt-2" id="btn-register-center">
+<!--                                                    <button id="btn-submit-kit-leolandia" type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>-->
+                                                    <button type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-xl-6 mt-5">
+                            <div class="container pl-xl-5 pl-2 pl-md-5">
+                                <h4 class="title ">¿Qué aprenderemos en este curso?</h4>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    El método pedagógico que hace posible que todos los niños adquieran
+                                    el hábito lector y aprendan a leer y escribir con solidez: Leolandia.
+                                </p>
+
+                                <h3 class="title mt-4">Descubriremos:</h3>
+                                 <ul class="ul-descubriremos">
+                                    <li>Qué se debería hacer, y lo que no hay que hacer, para enseñar
+                                        lectura comprensiva y escritura creativa, no lectoescritura mecánica.</li>
+                                    <li>Que la enseñanza de la lectoescritura resulta absolutamente
+                                        gratificante porque los niños disfrutan aprendiendo a leer y escribir.</li>
+                                    <li>Actividades y recursos prácticos que facilitan la labor docente.</li>
+                                </ul>
+
+
+                                <h3 class="title mt-3 mb-0">Es un curso práctico:</h3>
+                                <p class="p-text-leolandia text-color-gray mt-0">
+                                    Se tratan situaciones cotidianas, desarrollando una metodología de trabajo en equipo.
+                                </p>
+
+                                 <p class="p-text-leolandia text-color-gray">
+                                    Los docentes adquieren nuevos conocimientos y habilidades para aplicar en el aula, con seguimiento y puesta en común en cada sesión.
+                                </p>
+
+                                 <p class="p-text-leolandia text-color-gray">
+                                    Tras la experiencia del curso, se propondrá presentar un trabajo práctico que será tutorizado.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-6 mt-5">
+                            <div class="row">
+                                <div class="col-12 col-xl-12 col-md-12" id="img-afiche-center">
+                                    <img class="loe-img-product" src="/sitio_imagen/static/src/img/kit_leolandia/afiche.png"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xl-12 col-md-12">
+                                    <h3 class="title mt-3">¿A QUIÉN VA DIRIGIDO?</h3>
+                                    <p class="p-text-leolandia text-color-gray">
+                                        Profesorado, coordinadores y orientadores de Ed. Infantil.
+                                    </p>
+
+                                    <h3 class="title mt-3 mb-0">¿DURACIÓN?</h3>
+                                    <p class="p-text-leolandia text-color-gray mt-0">
+                                        8h. (cuatro sesiones de 2h.)
+                                    </p>
+
+                                    <h3 class="title mt-3 mb-0">¿LUGAR?</h3>
+                                    <p class="p-text-leolandia text-color-gray mt-0">
+                                        Plataforma Zoom
+                                    </p>
+
+                                    <h3 class="title mt-3 mb-0">FECHAS:</h3>
+                                    <p class="p-text-leolandia text-color-gray mt-0">
+                                        2, 4, 9, 11 de marzo. De 08:00h. a 10:00h.
+                                    </p>
+
+                                    <h3 class="title mt-3 text-color-light-green">!Plazas limitadas!</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="contenido-modulos container-fluid mt-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-xl-6">
+                                <h1 class="other-title text-color-light-green">MÓDULO I:</h1>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Desarrollo de la autonomía aprendiendo a leer y escribir.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Trabajar en equipo: un método que posibilita que todos aprendan
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Cómo organizar el aula para facilitar el aprendizaje de la lectoescritura.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Los primeros días de clase. Enseñar a los niños a organizar su material, a utilizar el de clase y a trabajar en equipo.
+                                </p>
+
+                                <h1 class="title text-color-light-green mt-3">Lectura</h1>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    ¿Comprendemos todo lo que leemos? Cómo evitar la lectura mecánica.
+                                    Actividades para leer comprendiendo y disfrutar leyendo.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    El hábito lector. La biblioteca de aula: cómo organizarla para que sea cercana y atractiva. Cuándo y cómo utilizarla.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    El placer de mirar un cuento. Leer sin conocer las letras. Lectura de símbolos e imágenes.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Lectura global de sus nombres y otras palabras.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Lectura comprensiva. Actividades entretenidas para descubrir lo que comunican las letras.
+                                </p>
+
+                                <h1 class="title text-color-light-green mt-3">Escritura</h1>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Cómo utilizar y cuidar el material de escritura, personal y común.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Actividades grafomotrices relacionadas con las manualidades y las actividades de la vida diaria.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Cuentos de imágenes "escritos" por los niños.
+                                </p>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Escritura creativa. Actividades entretenidas para expresarse utilizando las letras.
+                                </p>
+
+
+                                <h1 class="other-title text-color-light-green mt-5">MÓDULO II:</h1>
+
+                                <p class="p-text-leolandia text-color-light-green">
+                                    Ortografía natural. Aprender a escribir sin faltas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--CSS -->
+                <style type="text/css">
+                    main {
+                        margin-top: 80px !important;
+                    }
+
+                    .lbl-field-required {
+                        color: red !important;
+                    }
+
+                    .page-footer {
+                        margin-top: -21px !important;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+
+    <template id="tmp_download_template" name="Download Template">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Kit lúdico</t>
+            <div id="wrap" class="js_sale">
+                <!--Header kit-->
+                <div class="container-fluid m-0 p-0">
+                    <img class="img-header-kit" src="/sitio_imagen/static/src/img/kit_ludico/header_kit.png" alt="Encabezado del kit"/>
+                </div>
+
+                <div class="container mt-3" id="content-landing">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
+                            <h4 class="text-center">
+                                HOLA, <strong><span t-esc="cliente.name"/></strong> GRACIAS POR PREFERIR NUESTROS PRODUCTOS.
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
+                            <h5 class="text-center">
+                                Ya eres parte de la comunidad <strong>CHICOS</strong> y de <strong><span t-esc="cliente.note"/></strong>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
+                            <h5 class="text-center">
+                                Ya puedes descargar el archivo PDF que contiene el cuaderno de PLANTILLAS
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row" id="btn-download">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3r">
+                            <a class="btn btn-default btn-return btn-primary" t-att-href="enlace">DESCARGAR</a>
+                        </div>
+                    </div>
+
+                    <div class="row d-none" id="btn-return-kit">
+                        <div class="col-12 col-md-12 col-xl-12 text-center mt-3">
+                            <a class="btn btn-default btn-return btn-primary" href="/shop/kit-ludico-matematico">VOLVER AL KIT LÚDICO MATEMÁTICO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+            <!--CSS -->
+            <style type="text/css">
+                main {
+                    margin-top: 80px !important;
+                }
+            </style>
+
+            <script>
+                $(document).on('click', '#btn-download', function(event){
+                    $(this).addClass('d-none');
+                    $('#btn-return-kit').removeClass('d-none');
+                });
+            </script>
+        </t>
+    </template>
+</odoo>

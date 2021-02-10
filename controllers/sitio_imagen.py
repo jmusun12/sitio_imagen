@@ -868,3 +868,88 @@ class WebSiteSaleInherit(WebsiteSale):
             return request.render("sitio_imagen.tmp_code_error", {
                 'code': code
             })
+
+    # CURSO DE LEONDIA
+    @http.route(['/shop/curso-leolandia'], type='http', auth="public", website=True)
+    def curso_leolandia(self, **kwargs):
+        values = {
+            "paises": request.env['res.country'].get_website_sale_countries()
+        }
+
+        return request.render("sitio_imagen.tmpl_curso_leolandia", values)
+
+    @http.route(['/shop/curso/registrate'], type='http', auth="public", website=True)
+    def registrate_curso(self, **post):
+        email = post.get('email')
+
+        if email:
+            cliente = request.env['res.partner'].search([
+                ('email', '=', email.strip())
+            ])
+
+            if cliente:
+                return request.render("sitio_imagen.tmpl_curso_leolandia", { 'exito': 'N', 'email': email})
+
+            name = post.get('name')
+            phone = post.get('phone')
+            country_id = post.get('country')
+
+            country = request['res.country'].search([
+                ('id', '=', int(country_id))
+            ])
+
+            partner = request.env['res.partner'].sudo().create({
+                'name': name.strip(),
+                'email': email.strip(),
+                'type': 'contact',
+                'phone': phone.strip(),
+                'country_id': country.id,
+                'street': country.name,
+                'comment': 'Cliente de Curso Leolandia',
+                'type_partner': 'customer',
+                'website_id': request.website.id,
+                'company_id': request.website.company_id.id,
+                'team_id': request.website.salesteam_id and request.website.salesteam_id.id,
+                'user_id': request.website.salesperson_id and request.website.salesperson_id.id
+            })
+
+            if partner:
+                sale_order = request.website.sale_get_order(force_create=1)
+
+                if sale_order:
+                    sale_order.partner_id = partner.id
+
+                    # buscamos y agregamos el producto
+                    curso = request.env['product.template'].search([
+                        ('default_code', '=', 'CUR-LEO-001')
+                    ])
+
+                    sale_order._cart_update(
+                        product_id=int(curso.id),
+                        set_qty=1
+                    )
+
+                    # confirmamos la orden
+                    sale_order.onchange_partner_shipping_id()
+                    sale_order.order_line._compute_tax_id()
+                    request.session['sale_last_order_id'] = sale_order.id
+                    request.website.sale_get_order(update_pricelist=True)
+
+                    return request.render("sitio_imagen.tmpl_curso_leolandia", {
+                        'exito': 'S',
+                        'email': email,
+                        'url_payment': '/shop/payment',
+                        'precio_producto': curso.list_price
+                    })
+        else:
+            return request.render("sitio_imagen.tmpl_curso_leolandia")
+                
+
+
+
+
+
+
+
+
+

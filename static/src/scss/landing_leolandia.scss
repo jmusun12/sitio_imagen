@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Futura Round Bold';
+    src: url('./fonts/futura/Futura Round Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Round Demi';
+    src: url('./fonts/futura/Futura Round Demi.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Round Medium';
+    src: url('./fonts/futura/Futura Round Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Round Light';
+    src: url('./fonts/futura/Futura Round Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title {
+    font-family: 'Futura Round Bold';
+    font-size: 18px !important;
+    color:  #006633;
+}
+
+.name-author {
+    font-family: 'Futura Round Bold';
+    font-size: 18px !important;
+    color: #F39200;
+}
+
+.p-text-leolandia {
+  font-family: 'Futura Round Demi';
+  font-size: 18px !important;
+}
+
+.text-color-light-green {
+    color: #006633 !important;
+}
+
+.text-color-deep-green {
+    color:  #008D36 !important;
+}
+
+.text-color-gray {
+    color: #575756 !important;
+}
+
+.text-color-orange {
+    color: #F39200 !important;
+}
+
+.text-color-green {
+    color: #889E85 !important;
+}
+
+.text-color-light-gray {
+    color: #B2B2B2 !important;
+}
+
+.text-link {
+    font-family: 'Futura Round Demi';
+    font-size: 18px !important;
+}
+
+.font-futura-medium {
+    font-family: 'Futura Round Medium' !important;
+}
+
+.font-futura-light {
+    font-family: 'Futura Round Light' !important;
+}
+
+.other-title {
+    font-family: 'Futura Round Bold';
+    font-size: 20px !important;
+}
+
+.ul-descubriremos li {
+    font-family: 'Futura Round Medium';
+    color: #575756;
+    font-size: 18px !important;
+}
+
+.ul-descubriremos li::marker {
+    color: #006633 !important;
+    font-size: 30px !important;
+}
+
+.loe-img-product {
+    width: 81% !important;
+    margin-left: -15px !important;
+}
+
+.text-input {
+    color: #B2B2B2 !important;
+    font-size: 14px !important;
+    font-family: 'Futura Round Demi';
+}
+
+.btn-send-leolandia {
+    font-family: 'Futura Round Bold';
+    background-color: #006633 !important;
+    color: white;
+}
+
+.contenido-modulos {
+    background-image: url('/sitio_imagen/static/src/img/kit_leolandia/leolandia-modulos.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80rem;
+}
+
+// responsive
+
+
+@media (max-width:319px){
+    #col-tree-books {
+        display: none !important;
+    }
+
+    #img-browser-mobil {
+        display: block !important;
+    }
+
+    #img-browser-full {
+        display: none !important;
+    }
+
+    .contenido-modulos {
+        background-image: url('/sitio_imagen/static/src/img/kit_leolandia/nubes_reponsive.jpg') !important;
+        background-repeat: repeat-y;
+        height: 92rem !important;
+    }
+
+    #btn-register-center {
+        text-align: center !important;
+    }
+
+    #img-afiche-center {
+        text-align: center !important;
+    }
+
+}
+
+@media (min-width:320px) and (max-width:480px) {
+    #col-tree-books {
+        display: none !important;
+    }
+
+    #img-browser-mobil {
+        display: block !important;
+    }
+
+    #img-browser-full {
+        display: none !important;
+    }
+
+    .contenido-modulos {
+        background-image: url('/sitio_imagen/static/src/img/kit_leolandia/nubes_reponsive.jpg') !important;
+        background-repeat: repeat-y;
+        height: 92rem !important;
+    }
+
+    #btn-register-center {
+        text-align: center !important;
+    }
+
+    #img-afiche-center {
+        text-align: center !important;
+    }
+
+}
+
+
