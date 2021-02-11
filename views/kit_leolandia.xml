@@ -6,7 +6,7 @@
             <div id="wrap" class="js_sale">
                 <!--Header kit-->
                 <div class="container-fluid m-0 p-0">
-                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header.png" alt="Encabezado del kit"/>
+                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header-maite.jpg" alt="Encabezado del kit"/>
                     <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/header-responsive.jpg" alt="Encabezado del kit"/>
                 </div>
 
@@ -101,10 +101,10 @@
                          <div id="col-tree-books" class="col-12 col-md-6 col-xl-6 mt-5">
                             <img class="loe-img-product" src="/sitio_imagen/static/src/img/kit_leolandia/tree-books.jpg"/>
                         </div>
-                        <div class="col-12 col-md-6 col-xl-6 mt-5">
+                        <div class="col-12 col-md-6 col-xl-6 mt-5" id="registrate">
                             <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12">
-                                    <h1 class="title">Curso impartido por <span class="name-author">Maite Vallet.</span></h1>
+                                    <h1  class="title">Curso impartido por <span class="name-author">Maite Vallet.</span></h1>
 
                                     <p class="p-text-leolandia text-color-deep-green">
                                         Formadora y orientadora pedagógica de profesores y padres en España y Centroamérica.
@@ -166,7 +166,7 @@
                                                 <div class="col-12 col-md-12 col-xl-12 mt-2">
                                                     <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button">
                                                         <div class="help-block with-errors" id="err_term" style='color: red'></div>
-                                                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                                                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input terminos-leolandia"/>
                                                         <label for="checkbox_cgv" class="custom-control-label text-color-green font-futura-light" style="font-size: 14px !important;">
                                                             Blue Line El Salvador S.A. de C.V. es la Responsable del Tratamiento de tus datos,
                                                             con la finalidad de gestionar el curso de Leolandia. Enseñar a leer comprendiendo y escribir creando,
@@ -181,8 +181,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-md-12 col-xl-2 mt-2" id="btn-register-center">
-<!--                                                    <button id="btn-submit-kit-leolandia" type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>-->
-                                                    <button type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>
+                                                    <button id="btn-submit-kit-leolandia" type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>
+<!--                                                    <button type="button" class="btn btn-primary btn-send-leolandia">Registrarse</button>-->
                                                 </div>
                                             </div>
                                         </form>
@@ -223,6 +223,8 @@
                                  <p class="p-text-leolandia text-color-gray">
                                     Tras la experiencia del curso, se propondrá presentar un trabajo práctico que será tutorizado.
                                 </p>
+
+                                <a class="btn btn-primary btn-send-leolandia" href="#registrate">Registrarse</a>
                             </div>
                         </div>
 
@@ -235,27 +237,27 @@
 
                             <div class="row">
                                 <div class="col-12 col-xl-12 col-md-12">
-                                    <h3 class="title mt-3">¿A QUIÉN VA DIRIGIDO?</h3>
+                                    <h3 class="title-item mt-3">¿A QUIÉN VA DIRIGIDO?</h3>
                                     <p class="p-text-leolandia text-color-gray">
                                         Profesorado, coordinadores y orientadores de Ed. Infantil.
                                     </p>
 
-                                    <h3 class="title mt-3 mb-0">¿DURACIÓN?</h3>
+                                    <h3 class="title-item mt-3 mb-0">¿DURACIÓN?</h3>
                                     <p class="p-text-leolandia text-color-gray mt-0">
                                         8h. (cuatro sesiones de 2h.)
                                     </p>
 
-                                    <h3 class="title mt-3 mb-0">¿LUGAR?</h3>
+                                    <h3 class="title-item mt-3 mb-0">¿LUGAR?</h3>
                                     <p class="p-text-leolandia text-color-gray mt-0">
                                         Plataforma Zoom
                                     </p>
 
-                                    <h3 class="title mt-3 mb-0">FECHAS:</h3>
+                                    <h5 class="title-item mt-3 mb-0">FECHAS:</h5>
                                     <p class="p-text-leolandia text-color-gray mt-0">
                                         2, 4, 9, 11 de marzo. De 08:00h. a 10:00h.
                                     </p>
 
-                                    <h3 class="title mt-3 text-color-light-green">!Plazas limitadas!</h3>
+                                    <h3 class="plazas-limitadas mt-3 text-color-light-green ">¡Plazas limitadas!</h3>
                                 </div>
                             </div>
                         </div>
@@ -332,6 +334,8 @@
                                 <p class="p-text-leolandia text-color-light-green">
                                     Ortografía natural. Aprender a escribir sin faltas.
                                 </p>
+
+                                <a class="btn btn-primary btn-send-leolandia" href="#registrate">Registrarse</a>
                             </div>
                         </div>
                     </div>

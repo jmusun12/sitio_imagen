@@ -47,22 +47,6 @@
     return valid;
   }
 
-  $(document).ready(function() {
-    $(document).on('click', '#btn-submit-kit', function(event){
-        event.preventDefault();
-
-        $('#btn-submit-kit').css('display', 'none');
-
-        if ( validateFormKit() ) {
-            $('form#form-get-kit').submit();
-        } else {
-            $('#btn-submit-kit').css('display', 'block');
-        }
-    });
-  });
-
-
-
   // formulario de curso leolandia
   function validateFormKitLeolandia() {
     valid = true;
@@ -83,14 +67,6 @@
       $('input[name=email]').css('border', '1px solid #ced4da');
     }
 
-    let phone = $('input[name=phone]').val();
-    if ( phone == null || phone === '') {
-      $('input[name=phone]').css('border', '1px solid #dc3545');
-      valid = false;
-    } else {
-      $('input[name=phone]').css('border', '1px solid #ced4da');
-    }
-
     let country = $('select[name=country]').val();
     if ( country == null || country === '') {
       $('select[name=country]').css('border', '1px solid #dc3545 !important');
@@ -105,7 +81,8 @@
       valid = false;
     }
 
-    if( !$('#checkbox_cgv').prop('checked') ) {
+    let check_terminos = $('.terminos-leolandia').prop('checked');
+    if( check_terminos == false ) {
         document.getElementById('err_term').innerHTML="Debe aceptar los terminos y condiciones";
         valid = false;
     }
@@ -114,6 +91,18 @@
   }
 
   $(document).ready(function() {
+    $(document).on('click', '#btn-submit-kit', function(event){
+        event.preventDefault();
+
+        $('#btn-submit-kit').css('display', 'none');
+
+        if ( validateFormKit() ) {
+            $('form#form-get-kit').submit();
+        } else {
+            $('#btn-submit-kit').css('display', 'block');
+        }
+    });
+
     $(document).on('click', '#btn-submit-kit-leolandia', function(event){
         event.preventDefault();
 

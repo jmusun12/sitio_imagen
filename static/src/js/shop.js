@@ -334,7 +334,7 @@ $(document).ready(function () {
       $('select[name=state_id]').css('border', '1px solid #dc3545');
       valid = false;
     } else {
-      $('select[name=name]').css('border', '1px solid #ced4da');
+      $('select[name=state_id]').css('border', '1px solid #ced4da');
     }
 
     var recaptcha = $("#g-recaptcha-response").val();

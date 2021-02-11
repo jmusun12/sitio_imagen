@@ -32,6 +32,18 @@
     color:  #006633;
 }
 
+.title-item {
+    font-family: 'Futura Round Bold';
+    font-size: 14px !important;
+    color:  #006633;
+}
+
+.plazas-limitadas {
+    font-family: 'Futura Round Bold';
+    font-size: 22px !important;
+    color:  #006633;
+}
+
 .name-author {
     font-family: 'Futura Round Bold';
     font-size: 18px !important;
@@ -116,7 +128,7 @@
 .contenido-modulos {
     background-image: url('/sitio_imagen/static/src/img/kit_leolandia/leolandia-modulos.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     height: 80rem;
 }
 

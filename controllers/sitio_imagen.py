@@ -891,10 +891,10 @@ class WebSiteSaleInherit(WebsiteSale):
                 return request.render("sitio_imagen.tmpl_curso_leolandia", { 'exito': 'N', 'email': email})
 
             name = post.get('name')
-            phone = post.get('phone')
             country_id = post.get('country')
 
-            country = request['res.country'].search([
+
+            country = request.env['res.country'].search([
                 ('id', '=', int(country_id))
             ])
 
@@ -902,7 +902,6 @@ class WebSiteSaleInherit(WebsiteSale):
                 'name': name.strip(),
                 'email': email.strip(),
                 'type': 'contact',
-                'phone': phone.strip(),
                 'country_id': country.id,
                 'street': country.name,
                 'comment': 'Cliente de Curso Leolandia',
