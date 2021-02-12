@@ -947,8 +947,12 @@ class WebSiteSaleInherit(WebsiteSale):
                 if sale_order:
                     sale_order.partner_id = partner.id
 
+                    producto = request.env['product.template'].search([
+                        ('barcode', '=', '4610000000007')
+                    ])
+
                     sale_order._cart_update(
-                        product_id=int(curso.producto.id),
+                        product_id=int(producto.id),
                         set_qty=1
                     )
 
@@ -962,7 +966,7 @@ class WebSiteSaleInherit(WebsiteSale):
                         'exito': 'S',
                         'email': email,
                         'url_payment': '/shop/payment',
-                        'precio_producto': curso.producto.list_price,
+                        'precio_producto': producto.list_price,
                         "paises": request.env['res.country'].get_website_sale_countries(),
                         'curso': curso_id
                     })
