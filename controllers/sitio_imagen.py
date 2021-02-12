@@ -888,7 +888,6 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['/shop/curso/registrate'], type='http', auth="public", website=True)
     def registrate_curso(self, **post):
         email = post.get('email')
-        curso_id = post.get('curso_id')
 
         if email:
             cliente = request.env['res.partner'].search([
@@ -906,7 +905,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 })
 
             # validamos la cantidad de suscritores
-            curso = request.env['curso.producto'].sudo().search([('id', '=', int(curso_id))])
+            curso = request.env['curso.producto'].search([('id', '=', int(curso_id))])
 
             if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
                 return request.render("sitio_imagen.tmpl_curso_leolandia", {
@@ -929,7 +928,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 'type': 'contact',
                 'country_id': country.id,
                 'street': country.name,
-                'comment': 'Cliente de Curso Leolandia',
+                'comment': 'Curso Loelandia 01',
                 'type_partner': 'customer',
                 'website_id': request.website.id,
                 'company_id': request.website.company_id.id,
