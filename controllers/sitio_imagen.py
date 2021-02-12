@@ -880,7 +880,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
         values = {
             "paises": request.env['res.country'].get_website_sale_countries(),
-            'curso': curso.id
+            'curso': curso.id,
+            'product': curso.producto.id
         }
 
         return request.render("sitio_imagen.tmpl_curso_leolandia", values)
@@ -901,7 +902,8 @@ class WebSiteSaleInherit(WebsiteSale):
                     'exito': 'N',
                     'email': email,
                     "paises": request.env['res.country'].get_website_sale_countries(),
-                    'curso': curso_id
+                    'curso': curso_id,
+                    'product': post.get('product_id')
                 })
 
             # validamos la cantidad de suscritores
@@ -912,7 +914,8 @@ class WebSiteSaleInherit(WebsiteSale):
                     'exito': 'N',
                     'msj': 'Lo sentimos, el curso ya no se encuentra disponible.',
                     "paises": request.env['res.country'].get_website_sale_countries(),
-                    'curso': curso_id
+                    'curso': curso_id.,
+                    'product': post.get('product_id')
                 })
 
             name = post.get('name')
@@ -947,13 +950,9 @@ class WebSiteSaleInherit(WebsiteSale):
                 if sale_order:
                     sale_order.partner_id = partner.id
 
-                    # buscamos y agregamos el producto
-                    p = request.env['product.template'].search([
-                        ('default_code', '=', 'CUR-LEO-001')
-                    ])
-
                     sale_order._cart_update(
-                        product_id=int(p.id),
+                        product_id=int(post.get('product_id')),
+                        add_qty=1,
                         set_qty=1
                     )
 
@@ -967,9 +966,9 @@ class WebSiteSaleInherit(WebsiteSale):
                         'exito': 'S',
                         'email': email,
                         'url_payment': '/shop/payment',
-                        'precio_producto': p.list_price,
                         "paises": request.env['res.country'].get_website_sale_countries(),
-                        'curso': curso_id
+                        'curso': curso_id,
+                        'product': post.get('product_id')
                     })
         else:
             return request.redirect('/shop/curso-leolandia')

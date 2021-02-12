@@ -133,6 +133,7 @@
                                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                              <input type="hidden" name="submitted" value="1" />
                                             <input type="hidden" name="curso_id" t-att-value="curso"/>
+                                            <input type="hidden" name="product_id" t-att-value="product"/>
 
                                             <div class="row">
                                                 <div class="col-12 col-md-8 col-xl-8">
