@@ -872,7 +872,7 @@ class WebSiteSaleInherit(WebsiteSale):
     # CURSO DE LEONDIA
     @http.route(['/shop/curso-leolandia'], type='http', auth="public", website=True)
     def curso_leolandia(self, **kwargs):
-        curso = request.env['curso.producto'].search([
+        curso = request.env['curso.producto'].sudo().search([
             ('codigo', '=', 'CUR-LEO-01')
         ])
 
@@ -907,14 +907,14 @@ class WebSiteSaleInherit(WebsiteSale):
                 })
 
             # validamos la cantidad de suscritores
-            curso = request.env['curso.producto'].search([('id', '=', int(curso_id))])
+            curso = request.env['curso.producto'].sudo().search([('id', '=', int(curso_id))])
 
             if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
                 return request.render("sitio_imagen.tmpl_curso_leolandia", {
                     'exito': 'N',
                     'msj': 'Lo sentimos, el curso ya no se encuentra disponible.',
                     "paises": request.env['res.country'].get_website_sale_countries(),
-                    'curso': curso_id.,
+                    'curso': curso_id.id,
                     'product': post.get('product_id')
                 })
 
