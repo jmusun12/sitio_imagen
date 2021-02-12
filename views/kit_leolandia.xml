@@ -31,7 +31,7 @@
                                     </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
+<!--                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>-->
                                     <a t-att-href="url_payment" class="btn btn-warning">
                                         Pagar ahora
                                     </a>
@@ -69,8 +69,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ya se ha solicitado la plantilla con el correo electrónico <strong><span t-esc="email"/></strong>
-                                    .Por favor revise su bandeja de entrada.</p>
+                                    <t t-if="msj">
+                                        <p t-esc="msj"></p>
+                                    </t>
+                                    <t t-else="">
+                                        <p>Ya se ha solicitado la plantilla con el correo electrónico <strong><span t-esc="email"/></strong>
+                                            .Por favor revise su bandeja de entrada.</p>
+                                    </t>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>
@@ -127,6 +132,7 @@
                                         <form id="form-get-kit-leolandia" action="/shop/curso/registrate" method="post">
                                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                              <input type="hidden" name="submitted" value="1" />
+                                            <input type="hidden" name="curso_id" t-att-value="curso"/>
 
                                             <div class="row">
                                                 <div class="col-12 col-md-8 col-xl-8">

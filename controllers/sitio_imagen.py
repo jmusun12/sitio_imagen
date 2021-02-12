@@ -872,8 +872,15 @@ class WebSiteSaleInherit(WebsiteSale):
     # CURSO DE LEONDIA
     @http.route(['/shop/curso-leolandia'], type='http', auth="public", website=True)
     def curso_leolandia(self, **kwargs):
+        curso = request.env['curso.producto'].search([
+            ('codigo', '=', 'CUR-LEO-01')
+        ])
+
+        print(curso)
+
         values = {
-            "paises": request.env['res.country'].get_website_sale_countries()
+            "paises": request.env['res.country'].get_website_sale_countries(),
+            'curso': curso.id
         }
 
         return request.render("sitio_imagen.tmpl_curso_leolandia", values)
@@ -881,18 +888,36 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['/shop/curso/registrate'], type='http', auth="public", website=True)
     def registrate_curso(self, **post):
         email = post.get('email')
+        curso_id = post.get('curso_id')
 
         if email:
             cliente = request.env['res.partner'].search([
                 ('email', '=', email.strip())
             ])
 
+            curso_id = post.get('curso_id')
+
             if cliente:
-                return request.render("sitio_imagen.tmpl_curso_leolandia", { 'exito': 'N', 'email': email})
+                return request.render("sitio_imagen.tmpl_curso_leolandia", {
+                    'exito': 'N',
+                    'email': email,
+                    "paises": request.env['res.country'].get_website_sale_countries(),
+                    'curso': curso_id
+                })
+
+            # validamos la cantidad de suscritores
+            curso = request.env['curso.producto'].sudo().search([('id', '=', int(curso_id))])
+
+            if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
+                return request.render("sitio_imagen.tmpl_curso_leolandia", {
+                    'exito': 'N',
+                    'msj': 'Lo sentimos, el curso ya no se encuentra disponible.',
+                    "paises": request.env['res.country'].get_website_sale_countries(),
+                    'curso': curso_id
+                })
 
             name = post.get('name')
             country_id = post.get('country')
-
 
             country = request.env['res.country'].search([
                 ('id', '=', int(country_id))
@@ -913,18 +938,18 @@ class WebSiteSaleInherit(WebsiteSale):
             })
 
             if partner:
+                suscritos = curso.suscritos
+                curso.write({
+                    'suscritos': (suscritos + 1)
+                })
+
                 sale_order = request.website.sale_get_order(force_create=1)
 
                 if sale_order:
                     sale_order.partner_id = partner.id
 
-                    # buscamos y agregamos el producto
-                    curso = request.env['product.template'].search([
-                        ('default_code', '=', 'CUR-LEO-001')
-                    ])
-
                     sale_order._cart_update(
-                        product_id=int(curso.id),
+                        product_id=int(curso.producto.id),
                         set_qty=1
                     )
 
@@ -938,10 +963,12 @@ class WebSiteSaleInherit(WebsiteSale):
                         'exito': 'S',
                         'email': email,
                         'url_payment': '/shop/payment',
-                        'precio_producto': curso.list_price
+                        'precio_producto': curso.producto.list_price,
+                        "paises": request.env['res.country'].get_website_sale_countries(),
+                        'curso': curso_id
                     })
         else:
-            return request.render("sitio_imagen.tmpl_curso_leolandia")
+            return request.redirect('/shop/curso-leolandia')
                 
 
 
