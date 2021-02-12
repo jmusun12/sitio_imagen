@@ -881,7 +881,7 @@ class WebSiteSaleInherit(WebsiteSale):
         values = {
             "paises": request.env['res.country'].get_website_sale_countries(),
             'curso': curso.id,
-            'product': curso.producto.id
+            'product': 'CUR-LEO-01'
         }
 
         return request.render("sitio_imagen.tmpl_curso_leolandia", values)
@@ -950,9 +950,12 @@ class WebSiteSaleInherit(WebsiteSale):
                 if sale_order:
                     sale_order.partner_id = partner.id
 
+                    p = request.env['product.product'].search([
+                        ('default_code', '=', post.get('product_id'))
+                    ])
+
                     sale_order._cart_update(
-                        product_id=int(post.get('product_id')),
-                        add_qty=1,
+                        product_id=p.id,
                         set_qty=1
                     )
 
