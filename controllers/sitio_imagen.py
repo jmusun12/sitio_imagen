@@ -7,6 +7,7 @@ import os
 import mimetypes
 import logging
 import random
+from pathlib import Path
 import secrets
 from . import email_service
 from datetime import datetime
@@ -203,7 +204,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
     @http.route(['/shop/thanks'], type='http', auth="public", website=True)
     def thanks(self, **kwargs):
-        return request.render("sitio_imagen.thanks")
+        # return request.render("sitio_imagen.thanks")
+        return request.render("sitio_imagen.thanks_leolandia")
 
     @http.route(['/shop/contact'], type='http', auth="public", website=True)
     def contact(self, **kw):
@@ -743,242 +745,13 @@ class WebSiteSaleInherit(WebsiteSale):
         else:
             return request.redirect('/shop')
 
-    @http.route(['/shop/kit-ludico-matematico'], type='http', auth="public", website=True)
-    def kit_ludico(self, **kwargs):
-        print('Kit lúdico')
-        return request.render("sitio_imagen.tmp_kit_ludico_matematico")
+    @http.route(['/test_email'], type='http', auth="public", website=True)
+    def final_shop_curso(self, **kwargs):
+        url_file = Path(__file__).parent / "../static/src/xml/publicitario_leolandia.html"
+        template_email = open(url_file, "r", encoding="utf-8")
 
-        # return request.render("sitio_imagen.tmp_email_download")
-
-    @http.route(['/shop/kit-email'], type='http', auth="public", website=True)
-    def send_email_kit_ludico(self, **post):
-        email = post.get('email')
-
-        if email:
-            print(email)
-
-            cliente = request.env['res.partner'].search([
-                ('email', '=', email.strip())
-            ])
-
-            codigo = request.env['codigos.cliente.website'].search([
-                ('email', '=', email.strip())
-            ])
-
-            if not cliente and not codigo:
-                print('Cliente no existe')
-                name = post.get('name')
-                institucion = post.get('institucion')
-                grado = post.get('nivel')
-                code = secrets.token_hex(20)
-
-                request.env['codigos.cliente.website'].invalidate_cache()
-                request.env['codigos.cliente.website'].sudo().create({
-                    'name': name,
-                    'code': code,
-                    'email': email.strip(),
-                    'state': 'generado',
-                    'note': '{0} - {1}'.format(institucion, grado)
-                })
-
-                message = email_service.get_message(name, institucion, grado, code)
-                email_service.send_email(email.strip(), message)
-                print('Correo enviado')
-
-                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 'S',
-                    'email': email
-                })
-            else:
-                print('Cliente existe')
-                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 'N',
-                    'email': email
-                })
-        else:
-            print('No email')
-            return request.render("sitio_imagen.tmp_kit_ludico_matematico")
-
-    @http.route(['''/shop/plantilla/<string:code>'''], type='http', auth="public", website=True)
-    def shop_template(self, code, **kwargs):
-        if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count','=',0)]):
-            codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
-                ('code', '=', code),
-                ('state', '=', 'generado')
-            ])
-
-            if request.env['res.partner'].search_count([('email', '=', codigo_cliente['email'])]):
-                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 'N',
-                    'email': codigo_cliente['email']
-                })
-
-            return request.render("sitio_imagen.tmp_download_template", {
-                'enlace': '/shop/download-template/{0}'.format(code),
-                'cliente': codigo_cliente
-            })
-
-        else:
-            return request.render("sitio_imagen.tmp_code_error", {
-                'code': code
-            })
-
-    @http.route(['''/shop/download-template/<string:code>'''], type='http', auth="public", website=True)
-    def download_template(self, code, **kwargs):
-        if request.env['codigos.cliente.website'].sudo().search_count([('code', '=', code), ('state', '=', 'generado'), ('download_count', '=', 0)]):
-            codigo_cliente = request.env['codigos.cliente.website'].sudo().search([
-                ('code', '=', code),
-                ('state', '=', 'generado')
-            ])
-
-            request.env['ir.rule'].clear_cache()
-            codigo_cliente.write({
-                'state': 'usado',
-                'download_count': 1
-            })
-
-            if request.env['res.partner'].search_count([('email', '=', codigo_cliente['email'])]):
-                return request.render("sitio_imagen.tmp_kit_ludico_matematico", {
-                    'exito': 'N',
-                    'email': codigo_cliente['email']
-                })
-
-            attachment = request.env['catalogo.producto'].search([
-                ('key', '=', 'plantilla_mate_01')
-            ])
-
-            if attachment:
-                request.env['ir.rule'].clear_cache()
-                request.env['res.partner'].sudo().create({
-                    'name': codigo_cliente['name'],
-                    'email': codigo_cliente['email'],
-                    'type': 'contact',
-                    'comment': codigo_cliente['note'],
-                    'type_partner': 'customer'
-                })
-
-                data = io.BytesIO(base64.standard_b64decode(attachment["file"]))
-                # we follow what is done in ir_http's binary_content for the extension management
-                extension = os.path.splitext(attachment["file_name"] or '')[1]
-                extension = extension if extension else mimetypes.guess_extension(attachment["file_type"] or '')
-                filename = attachment['file_name']
-                filename = filename if os.path.splitext(filename)[1] else filename + extension
-                return http.send_file(data, filename=filename, as_attachment=True)
-        else:
-            return request.render("sitio_imagen.tmp_code_error", {
-                'code': code
-            })
-
-    # CURSO DE LEONDIA
-    @http.route(['/shop/curso-leolandia'], type='http', auth="public", website=True)
-    def curso_leolandia(self, **kwargs):
-        curso = request.env['curso.producto'].sudo().search([
-            ('codigo', '=', 'CUR-LEO-01')
-        ])
-
-        print(curso)
-
-        values = {
-            "paises": request.env['res.country'].get_website_sale_countries(),
-            'curso': curso.id,
-            'product': '4613000000008'
-        }
-
-        return request.render("sitio_imagen.tmpl_curso_leolandia", values)
-
-    @http.route(['/shop/curso/registrate'], type='http', auth="public", website=True)
-    def registrate_curso(self, **post):
-        email = post.get('email')
-
-        if email:
-            cliente = request.env['res.partner'].search([
-                ('email', '=', email.strip())
-            ])
-
-            curso_id = post.get('curso_id')
-
-            if cliente:
-                return request.render("sitio_imagen.tmpl_curso_leolandia", {
-                    'exito': 'N',
-                    'email': email,
-                    "paises": request.env['res.country'].get_website_sale_countries(),
-                    'curso': curso_id,
-                    'product': post.get('product_id')
-                })
-
-            # validamos la cantidad de suscritores
-            curso = request.env['curso.producto'].sudo().search([('id', '=', int(curso_id))])
-
-            if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
-                return request.render("sitio_imagen.tmpl_curso_leolandia", {
-                    'exito': 'N',
-                    'msj': 'Lo sentimos, el curso ya no se encuentra disponible.',
-                    "paises": request.env['res.country'].get_website_sale_countries(),
-                    'curso': curso_id.id,
-                    'product': post.get('product_id')
-                })
-
-            name = post.get('name')
-            country_id = post.get('country')
-
-            country = request.env['res.country'].search([
-                ('id', '=', int(country_id))
-            ])
-
-            partner = request.env['res.partner'].sudo().create({
-                'name': name.strip(),
-                'email': email.strip(),
-                'type': 'contact',
-                'country_id': country.id,
-                'street': country.name,
-                'comment': 'Curso Loelandia 01',
-                'type_partner': 'customer',
-                'website_id': request.website.id,
-                'company_id': request.website.company_id.id,
-                'team_id': request.website.salesteam_id and request.website.salesteam_id.id,
-                'user_id': request.website.salesperson_id and request.website.salesperson_id.id
-            })
-
-            if partner:
-                suscritos = curso.suscritos
-                curso.write({
-                    'suscritos': (suscritos + 1)
-                })
-
-                sale_order = request.website.sale_get_order(force_create=1)
-
-                if sale_order:
-                    sale_order.partner_id = partner.id
-
-                    p = request.env['product.product'].sudo().search([
-                        ('barcode', '=', post.get('product_id'))
-                    ])
-                    logging.warning("Producto: ")
-                    logging.warning(p)		
-
-                    sale_order._cart_update(
-                        product_id=p.id,
-                        set_qty=1
-                    )
-
-                    # confirmamos la orden
-                    sale_order.onchange_partner_shipping_id()
-                    sale_order.order_line._compute_tax_id()
-                    request.session['sale_last_order_id'] = sale_order.id
-                    request.website.sale_get_order(update_pricelist=True)
-
-                    return request.render("sitio_imagen.tmpl_curso_leolandia", {
-                        'exito': 'S',
-                        'email': email,
-                        'url_payment': '/shop/payment',
-                        "paises": request.env['res.country'].get_website_sale_countries(),
-                        'curso': curso_id,
-                        'product': post.get('product_id')
-                    })
-        else:
-            return request.redirect('/shop/curso-leolandia')
-                
-
+        email_service.send_email("Primera Edición en Latinoamérica de LEOLANDIA Online", "stdjosemusun@gmail.com", template_email.read())
+        template_email.close()
 
 
 

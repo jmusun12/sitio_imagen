@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="final_shop_curso">
+        <t t-call="website.layout">
+            <t t-set="additional_title">¡Gracias por tu compra!</t>
+
+            <!--Contenido de la página-->
+            <div id="wrap" class="js_sale">
+
+            </div>
+        </t>
+    </template>
+</odoo>

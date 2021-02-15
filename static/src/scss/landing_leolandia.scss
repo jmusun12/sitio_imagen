@@ -32,6 +32,18 @@
     color:  #006633;
 }
 
+.title2 {
+    font-family: 'Futura Round Bold';
+    font-size: 20px !important;
+    color:  #006633;
+}
+
+.sub-title {
+    font-family: 'Futura Round Bold';
+    font-size: 18px !important;
+    color:  #006633;
+}
+
 .title-item {
     font-family: 'Futura Round Bold';
     font-size: 14px !important;
@@ -164,6 +176,7 @@
 
 }
 
+
 @media (min-width:320px) and (max-width:480px) {
     #col-tree-books {
         display: none !important;
@@ -192,5 +205,3 @@
     }
 
 }
-
-

@@ -121,7 +121,7 @@
                         <div class="col-12 col-md-12 col-xl-12 mt-2">
                             <script src="https://www.google.com/recaptcha/api.js"></script>                            
                             <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>
-                            <!-- <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div> -->
+<!--                             <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div>-->
                             <div class="help-block with-errors" id="err" style='color: red'></div>
                         </div>
                     </div>
@@ -132,17 +132,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 col-md-4 col-xl-4">
-                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
-                                Retiro en tienda
-                            </a>
-                        </div>
-
-                        <div class="col-6 col-md-6 col-xl-6">
-                            <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-checkout a-submit-disable a-submit-loading">
-                                Envío a domicilio
-                            </a>
-                        </div>
+                        <t t-if="only_services">
+                            <div class="col-6 col-md-4 col-xl-4">
+                                <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
+                                    Continuar
+                                </a>
+                            </div>
+                        </t>
+                        <t t-else="">
+                             <div class="col-6 col-md-4 col-xl-4">
+                                <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-xpress a-submit-disable a-submit-loading">
+                                    Retiro en tienda
+                                </a>
+                            </div>
+                            <div class="col-6 col-md-6 col-xl-6">
+                                <a role="button" href="#" class="btn-continue btn mb32 a-submit-form-checkout a-submit-disable a-submit-loading">
+                                    Envío a domicilio
+                                </a>
+                            </div>
+                        </t>
                     </div>
 
                     <!--

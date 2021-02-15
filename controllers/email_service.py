@@ -19,9 +19,9 @@ def verify_email(receiver_email):
         return True
 
 
-def send_email(receiver_email, bodyHtml):
+def send_email(subject, receiver_email, bodyHtml):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "¡Gracias por apuntarte a la aventura de jugar con las matemáticas!"
+    message["Subject"] = subject
     message["From"] = gmail_user
     message["To"] = receiver_email
 
