@@ -1,3 +1,14 @@
+  // validar número telefónico
+  function validatePhone(numberString) {
+    if ( numberString.length < 7) {
+        return false;
+    }
+
+    let regularExp = new RegExp(/^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/gm);
+
+    return regularExp.test(numberString);
+  }
+
   function validateFormKit() {
     valid = true;
 
@@ -67,6 +78,20 @@
       $('input[name=email]').css('border', '1px solid #ced4da');
     }
 
+    let phone = $("input[name=phone]").val();
+    if ( phone == null || phone == '' ) {
+        $('input[name=phone]').css('border', '1px solid #dc3545');
+        valid = false;
+    } else {
+        if ( !validatePhone(phone) ) {
+            valid = false;
+            $('#msg-error-phone').text('Número telefónico inválido.');
+            $('input[name=phone]').css('border', '1px solid #dc3545');
+        }
+
+        $('input[name=phone]').css('border', '1px solid #ced4da');
+    }
+
     let country = $('select[name=country]').val();
     if ( country == null || country === '') {
       $('select[name=country]').css('border', '1px solid #dc3545 !important');
@@ -81,6 +106,7 @@
       valid = false;
     }
 
+
     let check_terminos = $('.terminos-leolandia').prop('checked');
     if( check_terminos == false ) {
         document.getElementById('err_term').innerHTML="Debe aceptar los terminos y condiciones";
@@ -89,6 +115,7 @@
 
     return valid;
   }
+
 
   $(document).ready(function() {
     $(document).on('click', '#btn-submit-kit', function(event){
