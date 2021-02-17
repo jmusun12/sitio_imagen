@@ -182,6 +182,10 @@
   z-index: -2;
 }
 
+.content-modulos {
+    padding-left: 50px;
+}
+
 @media (max-width:319px){
      .product-landing {
         /* width: calc(33.33% - 66.5px); */
@@ -209,6 +213,10 @@
         height: 202px;
         max-width: 202px !important;
         z-index: -2;
+    }
+
+    .content-modulos {
+        padding-left: 0px;
     }
 }
 
@@ -239,5 +247,9 @@
         height: 252px;
         max-width: 252px !important;
         z-index: -2;
+    }
+
+    .content-modulos {
+        padding-left: 0px;
     }
 }
