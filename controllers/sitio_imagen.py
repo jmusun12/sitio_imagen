@@ -763,6 +763,35 @@ class WebSiteSaleInherit(WebsiteSale):
 
         logging.warning("Email enviado a {0}".format(partner_email))
 
+    def send_email_transfer(self, partner_name, partner_email):
+        url_file = Path(__file__).parent / "../static/src/xml/email_transferencia.html"
+        template_email = open(url_file, "r", encoding="utf-8")
+        string_email = str(template_email.read()).replace('partner_name', partner_name)
+        email_service.send_email("Datos de pago", partner_email, string_email)
+        template_email.close()
+
+        logging.warning("Email de transferencia enviado a {0}".format(partner_email))
+
+    def analitic_order(self, sale_order_id):
+        order = request.env['sale.order'].sudo().browse(sale_order_id)
+        payment_tx_id = order.get_portal_last_transaction()
+
+        if order.only_services:
+            if any(line.product_id.barcode == '7630000001' for line in order.order_line):
+                if payment_tx_id.state == 'done':
+                    self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
+                    return request.render("sitio_imagen.thanks_leolandia")
+
+                if payment_tx_id.acquirer_id.provider == 'transfer':
+                    self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+                    return request.render("website_sale.confirmation", {'order': order})
+
+        else:
+            if payment_tx_id.acquirer_id.provider == 'transfer':
+                self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+
+            return request.render("website_sale.confirmation", {'order': order})
+
     @http.route()
     def payment_confirmation(self, **post):
         logging.warning("Override Payment Confirmation")
@@ -773,14 +802,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
             logging.warning(order.state)
 
-            if order.only_services:
-                if any(line.product_id.barcode == '7630000001' for line in order.order_line):
-                    self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
-                    return request.render("sitio_imagen.thanks_leolandia")
-                else:
-                    return request.render("website_sale.confirmation", {'order': order})
-            else:
-                return request.render("website_sale.confirmation", {'order': order})
+            self.analitic_order(sale_order_id)
         else:
             return request.redirect('/shop')
 
