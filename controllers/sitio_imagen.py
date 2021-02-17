@@ -205,6 +205,12 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['/shop/thanks'], type='http', auth="public", website=True)
     def thanks(self, **kwargs):
         # return request.render("sitio_imagen.thanks")
+
+        sale_order_id = request.session.get('sale_last_order_id')
+
+        if sale_order_id:
+            logging("La orden aun existe hasta aqui. Gracias")
+
         return request.render("sitio_imagen.thanks_leolandia")
 
     @http.route(['/shop/contact'], type='http', auth="public", website=True)
@@ -745,12 +751,46 @@ class WebSiteSaleInherit(WebsiteSale):
         else:
             return request.redirect('/shop')
 
+    # CONFIRMACION DE PAGO
+    #
+    def send_email_leolandia(self, partner_name, partner_email):
+        url_file = Path(__file__).parent / "../static/src/xml/confirmacion_leolandia.html"
+        template_email = open(url_file, "r", encoding="utf-8")
+        string_email = str(template_email.read()).replace('partner_name', partner_name)
+        email_service.send_email("Confirmación de pago", partner_email,
+                                 string_email)
+        template_email.close()
+
+        logging.warning("Email enviado a {0}".format(partner_email))
+
+    @http.route()
+    def payment_confirmation(self, **post):
+        logging.warning("Override Payment Confirmation")
+
+        sale_order_id = request.session.get('sale_last_order_id')
+        if sale_order_id:
+            order = request.env['sale.order'].sudo().browse(sale_order_id)
+
+            logging.warning(order.state)
+
+            if order.only_services:
+                if any(line.product_id.barcode == '7630000001' for line in order.order_line):
+                    self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
+                    return request.render("sitio_imagen.thanks_leolandia")
+                else:
+                    return request.render("website_sale.confirmation", {'order': order})
+            else:
+                return request.render("website_sale.confirmation", {'order': order})
+        else:
+            return request.redirect('/shop')
+
     @http.route(['/test_email'], type='http', auth="public", website=True)
     def final_shop_curso(self, **kwargs):
-        url_file = Path(__file__).parent / "../static/src/xml/publicitario_leolandia.html"
+        url_file = Path(__file__).parent / "../static/src/xml/confirmacion_leolandia.html"
         template_email = open(url_file, "r", encoding="utf-8")
+        string_email = str(template_email.read()).replace('partner_name', 'José Musun')
 
-        email_service.send_email("Primera Edición en Latinoamérica de LEOLANDIA Online", "stdjosemusun@gmail.com", template_email.read())
+        email_service.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
         template_email.close()
 
 
