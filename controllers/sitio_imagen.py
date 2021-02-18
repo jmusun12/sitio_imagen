@@ -780,18 +780,35 @@ class WebSiteSaleInherit(WebsiteSale):
 
             logging.warning("Email de transferencia enviado a {0}".format(partner_email))
 
+    def update_partner(self, partner_id, estado, email_pago=False, email_transfer=False):
+        partner = request.env['res.partner'].sudo().search([
+            ('id', '=', partner_id)
+        ])
+
+        partner.write({
+            'estado_compra': estado,
+            'email_pago_enviado': email_pago,
+            'email_transfer': email_transfer
+        })
+
     def analitic_order(self, sale_order_id):
         order = request.env['sale.order'].sudo().browse(sale_order_id)
         payment_tx_id = order.get_portal_last_transaction()
 
         if order.only_services:
-            if any(line.product_id.barcode == '7630000001' for line in order.order_line):
+            curso = request.env['curso.producto'].sudo().search([
+                ('codigo', '=', 'CUR-LEO-01')
+            ])
+
+            if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
                 if payment_tx_id.state == 'done':
                     self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
+                    self.update_partner(order.partner_id.id, estado='pagado', email_pago=True)
                     return request.render("sitio_imagen.thanks_leolandia")
 
                 if payment_tx_id.acquirer_id.provider == 'transfer':
                     self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+                    self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False, email_transfer=True)
                     return request.render("website_sale.confirmation", {'order': order})
 
         else:
@@ -799,6 +816,8 @@ class WebSiteSaleInherit(WebsiteSale):
                 self.send_email_transfer(order.partner_id.name, order.partner_id.email)
 
             return request.render("website_sale.confirmation", {'order': order})
+
+        return request.render("website_sale.confirmation", {'order': order})
 
     @http.route()
     def payment_confirmation(self, **post):

@@ -50,7 +50,10 @@ class CursoLeolandiaController(WebsiteSale):
             'website_id': request.website.id,
             'company_id': request.website.company_id.id,
             'team_id': request.website.salesteam_id and request.website.salesteam_id.id,
-            'user_id': request.website.salesperson_id and request.website.salesperson_id.id
+            'user_id': request.website.salesperson_id and request.website.salesperson_id.id,
+            'estado_compra': 'inscrito',
+            'email_pago_enviado': False,
+            'email_transfer': True
         }
 
         if partner:
