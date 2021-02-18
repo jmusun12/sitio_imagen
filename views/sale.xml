@@ -644,7 +644,7 @@
             <div class="c-container">
                 <div class="row m-0">
                     <div class="col-12 col-md-7 col-xl-7 order-md-1 order-xl-1 order-2">
-                        <div class="container">
+                        <div t-if="not only_services" class="container">
                             <h5 class="shopping-title">DIRECCIONES</h5>
                              <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12 mb-4 mt-2" id="shipping_and_billing">
@@ -779,19 +779,21 @@
 
                                         <t t-call="sitio_imagen.payment_confirmation_status_imagen"/>
 
-                                        <div class="row">
-                                            <div class="col-12 col-md-12 col-xl-12">
-                                                <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
-                                                <div>
-                                                    <b class="other-title">Facturación <t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b>
-                                                    <span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
-                                                </div>
-                                                <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address">
-                                                    <b class="other-title">Envío: </b>
-                                                    <span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/>
+                                        <t t-if="not only_services">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-12">
+                                                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                                    <div>
+                                                        <b class="other-title">Facturación <t t-if="same_shipping and not only_services"> &amp; Envío</t>: </b>
+                                                        <span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
+                                                    </div>
+                                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address">
+                                                        <b class="other-title">Envío: </b>
+                                                        <span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </t>
 
                                         <div class="row">
                                             <div class="col-12 col-md-12 col-xl-12 mt-3">
@@ -905,12 +907,27 @@
     <template id="payment_process_imagen" inherit_id="payment.payment_process_page">
         <xpath expr="//div[@class='wrap']" position="replace">
             <div class="detail-sale">
-                 <div class="container o_website_payment">
-                    <div class="o_payment_processing">
-                        <div class="row">
-                            <div class="o_payment_processing_content col-sm-6 col-sm-offset-3">
-                                <!-- The content here is generated in JS -->
-                            </div>
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 text-center">
+                            <img class="w-75" src="/sitio_imagen/static/src/img/no-pago.png"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 mt-3">
+                            <h4 class="title-process-payment">
+                                No hemos podido localizar su pago, pero no se preocupe.
+                            </h4>
+
+                            <p class="text-process-payment mt-3">
+                                Debería recibir un correo electrónico confirmando su pago en unos minutos.
+                            </p>
+                            <p class="text-process-payment mt-1">
+                                Si el pago no ha sido confirmado, puede contactarnos al número telefónico
+                                <strong>+503 2264 9463</strong> ó al whatsapp: <strong>+503 7862 3396</strong>.
+                                 Tambien puedes escribirnos a <strong>chicos.comunicaciones@gmail.com</strong>
+                            </p>
                         </div>
                     </div>
                 </div>
