@@ -1283,6 +1283,11 @@ main {
 .text-process-payment {
     color: #E94659 !important;
     font-family: 'Neris-Black';
+    font-size: 18px !important;
+}
+
+.img-payment-process {
+    width: 15% !important;
 }
 
 /*Estilo XAVI*/
@@ -1370,8 +1375,4 @@ main {
 
 .badge-secondary{
     display:none;
-}
-
-.c-container {
-    margin-bottom: 15rem !important;
 }

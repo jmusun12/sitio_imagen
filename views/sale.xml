@@ -910,12 +910,12 @@
                  <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 text-center">
-                            <img class="w-75" src="/sitio_imagen/static/src/img/no-pago.png"/>
+                            <img class="img-payment-process" src="/sitio_imagen/static/src/img/no-pago.png"/>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 mt-3">
+                        <div class="col-12 col-md-12 col-xl-12 mt-3 text-center">
                             <h4 class="title-process-payment">
                                 No hemos podido localizar su pago, pero no se preocupe.
                             </h4>
