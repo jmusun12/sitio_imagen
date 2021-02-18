@@ -28,6 +28,7 @@ class CursoLeolandiaController(WebsiteSale):
         email = post_email.strip()
         name = post.get('name')
         country_id = int(post.get('country'))
+        phone = post.get('phone')
 
         partner = request.env['res.partner'].sudo().search([
             ('email', '=', email)
@@ -45,6 +46,7 @@ class CursoLeolandiaController(WebsiteSale):
             'street': country.name,
             'comment': 'Curso Loelandia 01',
             'type_partner': 'customer',
+            'mobile': phone,
             'website_id': request.website.id,
             'company_id': request.website.company_id.id,
             'team_id': request.website.salesteam_id and request.website.salesteam_id.id,

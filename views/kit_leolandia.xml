@@ -151,6 +151,13 @@
                                                     </div>
 
                                                     <div class="form-group">
+                                                        <input name="phone" type="text" class="form-control text-input"
+                                                               id="InputPhone" placeholder="Ingrese su número telefónico"
+                                                        />
+                                                        <small id="msg-error-phone" class="form-text text-muted"></small>
+                                                    </div>
+
+                                                    <div class="form-group">
                                                         <select class="form-control text-input" name="country">
                                                             <option>Seleccione el país</option>
 
@@ -276,7 +283,7 @@
 
 
                 <div class="contenido-modulos container-fluid mt-4">
-                    <div class="container">
+                    <div class="content-modulos">
                         <div class="row">
                             <div class="col-12 col-md-6 col-xl-6">
                                 <h1 class="other-title text-color-light-green">MÓDULO I:</h1>
@@ -337,15 +344,6 @@
                                 <p class="p-text-leolandia text-color-light-green">
                                     Escritura creativa. Actividades entretenidas para expresarse utilizando las letras.
                                 </p>
-
-
-                                <h1 class="other-title text-color-light-green mt-5">MÓDULO II:</h1>
-
-                                <p class="p-text-leolandia text-color-light-green">
-                                    Ortografía natural. Aprender a escribir sin faltas.
-                                </p>
-
-                                <a class="btn btn-primary btn-send-leolandia" href="#registrate">Registrarse</a>
                             </div>
                         </div>
                     </div>
@@ -363,6 +361,14 @@
 
                     .page-footer {
                         margin-top: -21px !important;
+                    }
+
+                    .nav-imagen {
+                        display: none !important;
+                    }
+
+                    #wrap {
+                        margin-top: -70px !important;
                     }
                 </style>
             </div>
@@ -506,6 +512,14 @@
 
                     .page-footer {
                         margin-top: 21px !important;
+                    }
+
+                    .nav-imagen {
+                        display: none !important;
+                    }
+
+                    #wrap {
+                        margin-top: -70px !important;
                     }
                 </style>
             </div>
