@@ -39,7 +39,6 @@
                         <t t-if="delivery_nb">
                             <h5 t-if="delivery_nb &gt; 1" class="text-center mb-3 mt-2 shopping-title">ELIJA EL MÉTODO DE ENVÍO</h5>
                             <t t-if="delivery_nb &gt; 1">
-                                <hr/>
                             </t>
                             <div t-if="delivery_nb &gt; 1" class="row">
                                 <div class="col-12 col-md-12 col-xl-12">

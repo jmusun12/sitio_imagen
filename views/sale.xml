@@ -120,8 +120,8 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-xl-12 mt-2">
                             <script src="https://www.google.com/recaptcha/api.js"></script>                            
-                            <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>
-<!--                             <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div>-->
+<!--                            <div class="g-recaptcha" data-sitekey="6LeZ0y0aAAAAABTcP9QU7PVUxESOJgxXM1dZdyLJ"></div>-->
+                             <div class="g-recaptcha" data-sitekey="6LcwBC8aAAAAAP0AFl1m0mvnfTIgHBLsTH-If38I"></div>
                             <div class="help-block with-errors" id="err" style='color: red'></div>
                         </div>
                     </div>
@@ -176,7 +176,91 @@
     </template>
 
     <template id="invoice_address">
-        <div class="container">
+        <div class="container m-dv">
+                <h5 class="shopping-title-invoice text-center">DETALLE DE PAGO</h5>
+                <div class="invoice-cart">
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice text-left">
+                                <span t-esc="website_sale_order.cart_quantity"/>
+                                <t t-if="website_sale_order.cart_quantity == 1">
+                                    articulo
+                                </t>
+                                <t t-else="">
+                                    articulos
+                                </t>
+                            </p>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice-money text-right" id="amount_untaxed_product_imagen">
+                                <span t-esc="website_sale_order.amount_untaxed - website_sale_order.amount_delivery" class="monetary_field font-color-w" style="white-space: nowrap;"
+                                  t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice text-left">Cargo por envio</p>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice-money text-right" id="amount_delivery_imagen">
+                                <span t-field="website_sale_order.amount_delivery" class="monetary_field font-color-w" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice text-left">Subtotal</p>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice-money text-right" id="amount_untaxed_imagen">
+                                <span t-field="website_sale_order.amount_untaxed" class="monetary_field font-color-w" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice text-left">Impuestos</p>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-6">
+                            <p class="label-invoice-money text-right" id="amount_tax_imagen">
+                                <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;" class="monetary_field font-color-w"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                            </p>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-12">
+                        </div>
+                    </div>
+                    <div class="row mb-3" id="div-total-invoices">
+                        <div class="col-6">
+                            <p class="label-invoice text-left">Total</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="label-invoice-money text-right" id="amount_total_imagen">
+                                <strong t-field="website_sale_order.amount_total" class="monetary_field font-color-w"
+                                  t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                            </p>
+                        </div>
+                    </div>
+                    <t t-if="show_buy == 1">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-xl-12 text-right mb-3">
+                                <a  class="btn btn-primary btn-pay-now" href="/shop/address">
+                                    PAGAR AHORA
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+    </template>
+
+    <template id="invoice_payment">
+        <div class="container m-dv">
                 <h5 class="shopping-title-invoice text-center">DETALLE DE PAGO</h5>
                 <div class="invoice-cart">
                     <div class="row">
@@ -233,7 +317,6 @@
                     </div>
                      <div class="row">
                         <div class="col-12">
-                            <hr/>
                         </div>
                     </div>
                     <div class="row mb-3" id="div-total-invoices">
@@ -388,7 +471,7 @@
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1">
                         <t t-set="show_buy" t-value="0"/>
-                        <t t-call="sitio_imagen.invoice_address"/>
+                        <t t-call="sitio_imagen.invoice_payment"/>
                     </div>
                 </div>
             </div>
@@ -526,15 +609,43 @@
                 </div>
             </div>
         </xpath>        
+
+        <xpath expr="//a[@role='button']" position="replace">
+            <div t-if='back_button_txt' class="float-left mt-2">
+                <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-warning'">
+                    <i t-if="back_button_icon_class" t-attf-class="fa fa-shopping-cart"/>
+                    <t t-esc="back_button_txt"/>
+                </a>
+            </div>
+        </xpath>
+
+        <xpath expr="//button[@id='o_payment_form_pay']" position="replace">
+            <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+                <t t-if="submit_txt">
+                    <i t-if="icon_class and not icon_right" t-attf-class="fa fa-bolt"/>
+                    <i t-if="icon_class and icon_right" t-attf-class="fa fa-bolt"/>
+                    <t t-esc="submit_txt"/>
+
+                </t>
+                <t t-else="">
+                    <i class="fa fa-lock"/> Pay
+                </t>
+            </button>
+            <t t-if="show_manage_btn">
+                <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
+            </t>
+            <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="btn btn-primary btn-lg mb8 mt8">
+                <i class="fa fa-plus-circle"/> Add new card
+            </button>
+        </xpath>
     </template>
     <template id="payment_imagen">
-        <div class="detail-sale" id="payment-page">
-            <div class="container">
-                <div class="row">
+        <div class="detail-sale ds-st" id="payment-page">
+            <div class="c-container">
+                <div class="row m-0">
                     <div class="col-12 col-md-7 col-xl-7 order-md-1 order-xl-1 order-2">
                         <div class="container">
                             <h5 class="shopping-title">DIRECCIONES</h5>
-                            <hr/>
                              <div class="row">
                                 <div class="col-12 col-md-12 col-xl-12 mb-4 mt-2" id="shipping_and_billing">
                                     <a class='float-right no-decoration text-red-hands font-size-10 a-link-imagen' href='/shop/checkout'><i class="fa fa-edit"/> Editar</a>
@@ -546,13 +657,12 @@
                         </div>
                         <div class="container" id="payment_method" t-if="(acquirers or tokens) and website_sale_order.amount_total">
                             <h5 class="shopping-title">MÉTODOS DE PAGO</h5>
-                            <hr/>
                             <t t-call="sitio_imagen.payment_methods_imagen">
                                 <t t-set="mode" t-value="'payment'"/>
                                 <t t-set="submit_txt">Pagar ahora</t>
                                 <t t-set="icon_right" t-value="1"/>
                                 <t t-set="icon_class" t-value="'fa-chevron-right'"/>
-                                <t t-set="submit_class" t-value="'btn btn-custom w-100'"/>
+                                <t t-set="submit_class" t-value="'btn btn-primary w-100 color-b'"/>
                                 <t t-set="pms" t-value="tokens"/>
                                 <t t-set="form_action" t-value="'/shop/payment/token'"/>
                                 <t t-set="prepare_tx_url" t-value="'/shop/payment/transaction/'"/>
@@ -560,7 +670,7 @@
 
                                 <t t-set="back_button_icon_class" t-value="'fa-chevron-left'"/>
                                 <t t-set="back_button_txt">Regresar al carrito</t>
-                                <t t-set="back_button_class" t-value="'btn btn-custom w-100'"/>
+                                <t t-set="back_button_class" t-value="'btn btn-warning w-100 color-w'"/>
                                 <t t-set="back_button_link" t-value="'/shop/cart'"/>
                             </t>
                         </div>
@@ -578,9 +688,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1">
+                    <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1 img-fondo-dv">
+                        <div class="img-fondo">
                         <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_address"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -783,7 +895,7 @@
         <xpath expr="//div[@id='payment_method']" position="after">
             <div class="custom-control custom-checkbox float-right mt-2 oe_accept_cgv_button" t-if="website_sale_order.amount_total">
                 <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
-                <label for="checkbox_cgv" class="custom-control-label text-red-hands font-size-12">
+                <label for="checkbox_cgv" class="custom-control-label text-red-hands font-size-12" style="font-size: 0.8rem !important;">
                     Estoy de acuerdo con los <a target="_BLANK" href="/shop/terms">terminos &amp; condiciones</a>
                 </label>
             </div>
