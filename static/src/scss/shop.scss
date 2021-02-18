@@ -955,7 +955,7 @@ main {
 
 .shopping-title-invoice {
   font-family: 'KG inimitable Original';
-  color: #0066ff;
+  /*color: #0066ff;*/
 }
 
 .invoice-cart {
@@ -1283,4 +1283,95 @@ main {
 .text-process-payment {
     color: #E94659 !important;
     font-family: 'Neris-Black';
+}
+
+/*Estilo XAVI*/
+.ds-st{
+    height: 100% !important;
+    width: 100%;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    padding-top: 5.3% !important;
+    padding-bottom: 0px !important;
+}
+
+.img-fondo-dv{
+    color: white !important;
+    background-image: url('/sitio_imagen/static/src/img/barra-nubes-pasarela.jpg');
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    padding-bottom: 15rem !important;
+}
+
+.font-color-w, .f-r{
+    color: white;
+}
+
+.color-w{
+    color: #1757f9 !important;
+    border-radius: 50px !important;
+}
+
+.color-b{
+    background: #1757f9 !important;
+    border-radius: 50px !important;
+}
+
+.order-2{
+    margin-top: 44px !important;
+}
+
+.oe_website_sale{
+    max-width: 100%;
+    margin-left: 4%;
+}
+
+.m-dv{
+    margin-top: 8% !important;
+}
+
+.btn-custom{
+    background: #0066ff !important;
+    border: none !important;
+}
+
+.custom-checkbox{
+    float: left !important;
+    margin-left: 2% !important;
+}
+
+.m-0{
+    margin-right: 0px;
+}
+
+.mt-4, .my-4 {
+    margin-top: 0rem !important;
+}
+
+.text-red-hands{
+    color: #868686 !important;
+}
+
+.text-red-hands, .streetAddress{
+    color: #575756 !important;
+}
+
+.shopping-title{
+    font-family: Neris Black;
+}
+
+.text-red-hands, f-r, h5, .h5 {
+    font-size: 0.8rem !important;
+}
+
+.f-r{
+    float: right;
+}
+
+.badge-secondary{
+    display:none;
+}
+
+.c-container {
+    margin-bottom:
 }
