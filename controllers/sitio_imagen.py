@@ -754,23 +754,31 @@ class WebSiteSaleInherit(WebsiteSale):
     # CONFIRMACION DE PAGO
     #
     def send_email_leolandia(self, partner_name, partner_email):
-        url_file = Path(__file__).parent / "../static/src/xml/confirmacion_leolandia.html"
-        template_email = open(url_file, "r", encoding="utf-8")
-        string_email = str(template_email.read()).replace('partner_name', partner_name)
-        email_service.send_email("Confirmación de pago", partner_email,
-                                 string_email)
-        template_email.close()
+        template = request.env['template.email.website'].sudo().search([
+            ('name', '=', 'TEMP-EMAIL-LEO'),
+            ('activo', '=', True),
+            ('website_id', '=', request.website.id)
+        ])
 
-        logging.warning("Email enviado a {0}".format(partner_email))
+        if template:
+            string_email = str(template.html).replace('partner_name', partner_name)
+            email_service.send_email("Confirmación de pago", partner_email,
+                                     string_email)
+
+            logging.warning("Email enviado a {0}".format(partner_email))
 
     def send_email_transfer(self, partner_name, partner_email):
-        url_file = Path(__file__).parent / "../static/src/xml/email_transferencia.html"
-        template_email = open(url_file, "r", encoding="utf-8")
-        string_email = str(template_email.read()).replace('partner_name', partner_name)
-        email_service.send_email("Datos de pago", partner_email, string_email)
-        template_email.close()
+        template = request.env['template.email.website'].sudo().search([
+            ('name', '=', 'TEMP-EMAIL-TRANSFER'),
+            ('activo', '=', True),
+            ('website_id', '=', request.website.id)
+        ])
 
-        logging.warning("Email de transferencia enviado a {0}".format(partner_email))
+        if template:
+            string_email = str(template.html).replace('partner_name', partner_name)
+            email_service.send_email("Datos de pago", partner_email, string_email)
+
+            logging.warning("Email de transferencia enviado a {0}".format(partner_email))
 
     def analitic_order(self, sale_order_id):
         order = request.env['sale.order'].sudo().browse(sale_order_id)
@@ -808,12 +816,15 @@ class WebSiteSaleInherit(WebsiteSale):
 
     @http.route(['/test_email'], type='http', auth="public", website=True)
     def final_shop_curso(self, **kwargs):
-        url_file = Path(__file__).parent / "../static/src/xml/confirmacion_leolandia.html"
-        template_email = open(url_file, "r", encoding="utf-8")
-        string_email = str(template_email.read()).replace('partner_name', 'José Musun')
+        template = request.env['template.email.website'].sudo().search([
+            ('name', '=', 'TEMP-EMAIL-LEO'),
+            ('activo', '=', True),
+            ('website_id', '=', request.website.id)
+        ])
 
-        email_service.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
-        template_email.close()
+        if template:
+            string_email = str(template.html).replace('partner_name', 'José Musun')
+            email_service.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
 
 
 
