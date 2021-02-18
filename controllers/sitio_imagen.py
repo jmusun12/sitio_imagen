@@ -18,7 +18,7 @@ from odoo.http import request
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website_sale.controllers.main import WebsiteSale
-from odoo.addons.payment.controllers.portal import PaymentProcessing
+
 
 _logger = logging.getLogger(__name__)
 
