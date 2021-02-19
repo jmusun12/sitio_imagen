@@ -138,6 +138,7 @@ class CursoLeolandiaController(WebsiteSale):
             if partner_db:
                 return request.redirect('/shop/curso-leolandia?op=' + str(3))
 
+            request.website.sale_reset()
             partner = self._registrar_cliente(post)
             self._create_orden_cliente(partner.id, post)
 
