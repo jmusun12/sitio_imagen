@@ -61,6 +61,13 @@ class CursoLeolandiaController(WebsiteSale):
         else:
             partner = request.env['res.partner'].sudo().create(values)
 
+        curso = request.env['curso.producto'].sudo().search([('id', '=', int(post.get('curso_id')))])
+        inscritos = curso.suscritos + 1
+
+        curso.write({
+            'suscritos': inscritos
+        })
+
         return partner
 
     def _create_orden_cliente(self, partner_id, post):
@@ -104,6 +111,11 @@ class CursoLeolandiaController(WebsiteSale):
             values['exito'] = 'N'
             values['msj'] = 'Lo sentimos, el curso ya no se encuentra disponible.'
 
+        # el usuario ya se registro al curso
+        if op == '3':
+            values['exito'] = 'N'
+            values['msj'] = 'Ya te has inscrito a la Primera Edición de Latinoamérica de LEOLANDIA Online con el correo electrónico que has proporcionado.'
+
         return request.render("sitio_imagen.tmpl_curso_leolandia", values)
 
     @http.route(['/shop/curso/registrate'], type='http', auth="public", website=True)
@@ -115,6 +127,16 @@ class CursoLeolandiaController(WebsiteSale):
 
             if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
                 return request.redirect('/shop/curso-leolandia?op=' + str(2))
+
+            # verificamos que el cliente aun no este inscrito
+            partner_db = request.env['res.partner'].sudo().search([
+                ('email', '=', str(email).strip()),
+                '|', ('estado_compra', '=', 'inscrito'),
+                ('estado_compra', '=', 'pagado')
+            ])
+
+            if partner_db:
+                return request.redirect('/shop/curso-leolandia?op=' + str(3))
 
             partner = self._registrar_cliente(post)
             self._create_orden_cliente(partner.id, post)
