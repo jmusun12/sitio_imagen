@@ -804,7 +804,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 if payment_tx_id.state == 'done':
                     self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
                     self.update_partner(order.partner_id.id, estado='pagado', email_pago=True)
-                    return request.render("sitio_imagen.thanks_leolandia")
+                    return request.redirect("/shop/curso/gracias")
 
                 if payment_tx_id.acquirer_id.provider == 'transfer':
                     self.send_email_transfer(order.partner_id.name, order.partner_id.email)

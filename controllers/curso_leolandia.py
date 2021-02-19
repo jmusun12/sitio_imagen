@@ -125,4 +125,5 @@ class CursoLeolandiaController(WebsiteSale):
 
     @http.route(['/shop/curso/gracias'], type='http', auth="public", website=True)
     def curso_gracias(self, **kwargs):
+        request.session['sale_last_order_id'] = None
         return request.render("sitio_imagen.thanks_leolandia")

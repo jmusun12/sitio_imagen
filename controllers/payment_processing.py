@@ -69,12 +69,22 @@ class PaymentProcessingImagen(PaymentProcessing):
                     ('codigo', '=', 'CUR-LEO-01')
                 ])
 
+                logging.warning("Solo servicios")
+
                 if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
                     if payment_tx_id.state == 'done':
+                        logging.warning("Transaccion hecha")
+                        order.action_confirm()  # confirmamos la orden de venta
+                        order._force_lines_to_invoice_policy_order()
+                        invoices = order._create_invoices()
+                        payment_tx_id.invoice_ids = [(6, 0, invoices.ids)]
+                        request.website.sale_reset()
+                        logging.warning("Orden confirmada y factura creada...")
+
                         if not order.partner_id.email_pago_enviado:
                             self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
                             self.update_partner(order.partner_id.id, estado='pagado', email_pago=True)
-                            return request.render("sitio_imagen.thanks_leolandia")
+                            return request.redirect("/shop/curso/gracias")
 
                     if payment_tx_id.acquirer_id.provider == 'transfer':
                         if not order.partner_id.email_transfer:
