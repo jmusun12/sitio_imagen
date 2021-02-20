@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="thanks_transferer" name="thanks_transfer">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Tu inscripción esta en camino.</t>
+            <div id="wrap" class="js_sale">
+                <!--Header kit-->
+                <div class="container-fluid m-0 p-0">
+                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header-verificado.jpg" alt="Encabezado del kit"/>
+                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/header-verificado.jpg" alt="Encabezado del kit"/>
+                </div>
+
+                <div class="contenido container-fluid w-75">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-xl-12 mt-5">
+                            <h3  class="sub-title text-color-deep-green">
+                                ¡Tu inscripción está en camino!
+                            </h3>
+
+                            <h1  class="title2 text-color-orange mt-3">
+                                ¡Felicidades por tomar acción!
+                            </h1>
+
+                            <p class="p-text-leolandia text-color-deep-green mt-3">
+                                Hemos enviado a tu email
+                                <span class="text-color-orange">
+                                    <strong>
+                                        una orden de pedido
+                                    </strong>
+                                </span>
+                                 y
+                                la descripción de los pasos para tu transferencia para completar
+                                tu inscripción a la
+                                <span class="text-color-orange">
+                                    <strong>
+                                        primera edición en Latinoamérica del curso LEOLANDIA on line.
+                                    </strong>
+                                </span>
+
+                                Recuerda revisar la bandeja de spam para asegurarte que lo has recibido correctamente.
+                                ¡Estamos seguros que lo disfrutarás y aprenderás con él!
+                            </p>
+
+                            <p class="p-text-leolandia text-color-deep-green mb-0 mt-3">
+                                Ya estás un paso más cerca para iniciar el viaje con tus niño y niñas hacia
+                                la aventura de la lectoescritura natural con el Método Leolandia.
+                            </p>
+
+                            <p class="p-text-leolandia text-color-deep-green mb-5 mt-3">
+                                Recuerda que si tienes cualquier duda,
+                                puedes contactarnos a
+                                <span class="text-color-deep-green">
+                                    <strong>
+                                        chicos.comunicaciones@gmail.com
+                                    </strong>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--CSS -->
+                <style type="text/css">
+                    main {
+                        margin-top: 80px !important;
+                    }
+
+                    .lbl-field-required {
+                        color: red !important;
+                    }
+
+                    .page-footer {
+                        margin-top: 21px !important;
+                    }
+
+                    .nav-imagen {
+                        display: none !important;
+                    }
+
+                    #wrap {
+                        margin-top: -70px !important;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+</odoo>

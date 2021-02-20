@@ -202,16 +202,27 @@ class WebSiteSaleInherit(WebsiteSale):
 
         return request.render("website_sale.cart", values)
 
-    @http.route(['/shop/thanks'], type='http', auth="public", website=True)
-    def thanks(self, **kwargs):
+    @http.route(['''/shop/thanks''', '''/shop/thanks/<string:res>'''], type='http', auth="public", website=True)
+    def thanks(self, res='', **kwargs):
         # return request.render("sitio_imagen.thanks")
 
         sale_order_id = request.session.get('sale_last_order_id')
 
-        if sale_order_id:
-            logging("La orden aun existe hasta aqui. Gracias")
-
-        return request.render("sitio_imagen.thanks_leolandia")
+        if res == 'lp':
+            request.website.sale_reset()
+            return request.render("sitio_imagen.thanks_leolandia")
+        elif res == 'p':
+            request.website.sale_reset()
+            return request.render("sitio_imagen.thanks")
+        elif res == 'pt':
+            sale_order_id = request.session.get('sale_last_order_id')
+            order = request.env['sale.order'].sudo().browse(sale_order_id)
+            return request.render("website_sale.confirmation", {'order': order})
+        elif res == 'ptl':
+            return request.render("sitio_imagen.thanks_transferer")
+        else:
+            request.website.sale_reset()
+            return request.render("sitio_imagen.thanks")
 
     @http.route(['/shop/contact'], type='http', auth="public", website=True)
     def contact(self, **kw):
@@ -767,7 +778,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
             logging.warning("Email enviado a {0}".format(partner_email))
 
-    def send_email_transfer(self, partner_name, partner_email):
+    def send_email_transfer(self, partner_name, partner_email, order_referen, price):
         template = request.env['template.email.website'].sudo().search([
             ('name', '=', 'TEMP-EMAIL-TRANSFER'),
             ('activo', '=', True),
@@ -775,7 +786,8 @@ class WebSiteSaleInherit(WebsiteSale):
         ])
 
         if template:
-            string_email = str(template.html).replace('partner_name', partner_name)
+            string_email = str(template.html).replace('partner_name', partner_name)\
+                .replace("order_referen", order_referen).replace("price_curso", '{:.2f}'.format(price))
             email_service.send_email("Datos de pago", partner_email, string_email)
 
             logging.warning("Email de transferencia enviado a {0}".format(partner_email))
@@ -791,33 +803,75 @@ class WebSiteSaleInherit(WebsiteSale):
             'email_transfer': email_transfer
         })
 
-    def analitic_order(self, sale_order_id):
+    def validate_order(self, sale_order_id):
         order = request.env['sale.order'].sudo().browse(sale_order_id)
         payment_tx_id = order.get_portal_last_transaction()
+        res = '0'
 
-        if order.only_services:
-            curso = request.env['curso.producto'].sudo().search([
-                ('codigo', '=', 'CUR-LEO-01')
-            ])
+        if payment_tx_id.state == 'done' and payment_tx_id.acquirer_id.provider == 'paypal':
+            logging.warning("Pago realizado con metodo paypal")
 
-            if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
-                if payment_tx_id.state == 'done':
-                    self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
-                    self.update_partner(order.partner_id.id, estado='pagado', email_pago=True)
-                    return request.redirect("/shop/curso/gracias")
+            if order.invoice_status != 'invoice':
+                logging.warning("Orden aun no facturada")
+                order.action_confirm()  # confirmamos la orden de venta
+                order._force_lines_to_invoice_policy_order()
+                invoices = order._create_invoices()
+                payment_tx_id.invoice_ids = [(6, 0, invoices.ids)]
+                request.website.sale_reset()
+                logging.warning("Orden confirmada y factura creada...")
 
-                if payment_tx_id.acquirer_id.provider == 'transfer':
-                    self.send_email_transfer(order.partner_id.name, order.partner_id.email)
-                    self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False, email_transfer=True)
-                    return request.render("website_sale.confirmation", {'order': order})
+            if not order.partner_id.email_pago_enviado:
+                logging.warning("Email de confirmacion de pago no enviado")
 
-        else:
-            if payment_tx_id.acquirer_id.provider == 'transfer':
-                self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+                if order.only_services:
+                    logging.warning("Orden unicamente con servicios")
 
-            return request.render("website_sale.confirmation", {'order': order})
+                    # consulto el curso leolandia
+                    curso = request.env['curso.producto'].sudo().search([
+                        ('codigo', '=', 'CUR-LEO-01')
+                    ])
 
-        return request.render("website_sale.confirmation", {'order': order})
+                    if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
+                        self.send_email_leolandia(order.partner_id.name, order.partner_id.email)
+                        logging.warning("Actualizando cliente...")
+                        self.update_partner(order.partner_id.id, estado='pagado', email_pago=True)
+                        res = 'lp'
+                    else:
+                        res = 'p'
+                        logging("Correo no definido para otros servicios")
+                else:
+                    res = 'p'
+                    logging.warning("Correo no definido para productos almacenables")
+            else:
+                # consulto el curso leolandia
+                curso = request.env['curso.producto'].sudo().search([
+                    ('codigo', '=', 'CUR-LEO-01')
+                ])
+
+                if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
+                    res = 'lp'
+                else:
+                    res = 'p'
+
+        if payment_tx_id.state == 'pending' and payment_tx_id.acquirer_id.provider == 'transfer':
+            logging.warning('Pending Transfer')
+            res = 'pt'
+            if not order.partner_id.email_transfer:
+                logging.warning("Email de transferencia bancaria no enviado")
+
+                # consulto el curso leolandia
+                curso = request.env['curso.producto'].sudo().search([
+                    ('codigo', '=', 'CUR-LEO-01')
+                ])
+
+                if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
+                    logging.warning("Transferencia leolandia")
+                    self.send_email_transfer(order.partner_id.name, order.partner_id.email, order.name, order.amount_total)
+                    self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False,
+                                        email_transfer=True)
+                    res = 'ptl'
+
+        return res
 
     @http.route()
     def payment_confirmation(self, **post):
@@ -825,11 +879,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
         sale_order_id = request.session.get('sale_last_order_id')
         if sale_order_id:
-            order = request.env['sale.order'].sudo().browse(sale_order_id)
-
-            logging.warning(order.state)
-
-            self.analitic_order(sale_order_id)
+            res = self.validate_order(sale_order_id)
+            return request.redirect('/shop/thanks?res={0}'.format(res))
         else:
             return request.redirect('/shop')
 
