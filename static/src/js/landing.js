@@ -38,10 +38,10 @@
 
     let nivel = $('input[name=nivel]').val();
     if ( nivel == null || nivel === '') {
-      $('input[name=nivel]').css('border', '1px solid #dc3545 !important');
+      $('input[name=nivel]').css('border', '1px solid #dc3545');
       valid = false;
     } else {
-      $('input[name=nivel]').css('border', '1px solid #ced4da !important');
+      $('input[name=nivel]').css('border', '1px solid #ced4da');
     }
 
     let recaptcha = $("#g-recaptcha-response").val();
@@ -94,16 +94,18 @@
 
     let country = $('select[name=country]').val();
     if ( country == null || country === '') {
-      $('select[name=country]').css('border', '1px solid #dc3545 !important');
+      $('select[name=country]').css('border', '1px solid #dc3545');
       valid = false;
     } else {
-      $('select[name=country]').css('border', '1px solid #ced4da !important');
+      $('select[name=country]').css('border', '1px solid #ced4da');
     }
 
     let recaptcha = $("#g-recaptcha-response").val();
     if (recaptcha === "") {
       document.getElementById('err').innerHTML="Complete el campo 'No soy un robot'";
       valid = false;
+    } else {
+        document.getElementById('err').innerHTML="";
     }
 
 
@@ -111,6 +113,8 @@
     if( check_terminos == false ) {
         document.getElementById('err_term').innerHTML="Debe aceptar los terminos y condiciones";
         valid = false;
+    } else {
+        document.getElementById('err_term').innerHTML="";
     }
 
     return valid;

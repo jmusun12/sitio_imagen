@@ -159,7 +159,7 @@
 
                                                     <div class="form-group">
                                                         <select class="form-control text-input" name="country">
-                                                            <option>Seleccione el país</option>
+                                                            <option value="">Seleccione el país</option>
 
                                                             <t t-foreach="paises" t-as="pais">
                                                                 <option t-att-value="pais.id">
