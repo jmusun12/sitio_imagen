@@ -6,8 +6,8 @@
             <div id="wrap" class="js_sale">
                 <!--Header kit-->
                 <div class="container-fluid m-0 p-0">
-                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header-maite.jpg" alt="Encabezado del kit"/>
-                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/header-responsive.jpg" alt="Encabezado del kit"/>
+                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/CURSO-ONLINE-header.jpg" alt="Encabezado del kit"/>
+                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/CURSO-ONLINE-responsive.jpg" alt="Encabezado del kit"/>
                 </div>
 
                 <!--Modal de confirmación-->
@@ -449,8 +449,8 @@
             <div id="wrap" class="js_sale">
                 <!--Header kit-->
                 <div class="container-fluid m-0 p-0">
-                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/header-verificado.jpg" alt="Encabezado del kit"/>
-                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/header-verificado.jpg" alt="Encabezado del kit"/>
+                    <img id="img-browser-full" class="img-header-kit" src="/sitio_imagen/static/src/img/kit_leolandia/CURSO-ONLINE-verificacion.jpg" alt="Encabezado del kit"/>
+                    <img id="img-browser-mobil" class="img-header-kit d-none" src="/sitio_imagen/static/src/img/kit_leolandia/CURSO-ONLINE-verificacion.jpg" alt="Encabezado del kit"/>
                 </div>
 
                 <div class="contenido container-fluid w-75">
