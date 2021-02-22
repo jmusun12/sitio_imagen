@@ -4,8 +4,10 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import logging
 
-gmail_user = 'chicos.comunicaciones@gmail.com'
-gmail_password = '@Chi.com.20$'
+# gmail_user = 'chicos.comunicaciones@gmail.com'
+# gmail_password = '@Chi.com.20$'
+gmail_user = 'chicos.comunicaciones01@gmail.com'
+gmail_password = '@chi.com.2021$'
 smtp_server = 'smtp.gmail.com'
 port_server = 465
 
