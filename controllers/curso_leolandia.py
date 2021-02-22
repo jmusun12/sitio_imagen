@@ -129,14 +129,14 @@ class CursoLeolandiaController(WebsiteSale):
                 return request.redirect('/shop/curso-leolandia?op=' + str(2))
 
             # verificamos que el cliente aun no este inscrito
-            # partner_db = request.env['res.partner'].sudo().search([
-            #     ('email', '=', str(email).strip()),
-            #     '|', ('estado_compra', '=', 'inscrito'),
-            #     ('estado_compra', '=', 'pagado')
-            # ])
-            #
-            # if partner_db:
-            #     return request.redirect('/shop/curso-leolandia?op=' + str(3))
+            partner_db = request.env['res.partner'].sudo().search([
+                ('email', '=', str(email).strip()),
+                '|', ('estado_compra', '=', 'inscrito'),
+                ('estado_compra', '=', 'pagado')
+            ])
+
+            if partner_db:
+                return request.redirect('/shop/curso-leolandia?op=' + str(3))
 
             request.website.sale_reset()
             partner = self._registrar_cliente(post)
