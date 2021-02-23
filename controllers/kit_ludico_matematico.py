@@ -61,7 +61,7 @@ class WebSiteSaleInherit(WebsiteSale):
                 })
 
                 message = email_service.get_message(name, institucion, grado, code)
-                email_service.send_email("¡Gracias por apuntarte a la aventura de jugar con las matemáticas!",
+                request.website.send_email("¡Gracias por apuntarte a la aventura de jugar con las matemáticas!",
                                          email.strip(), message)
                 print('Correo enviado')
 

@@ -61,27 +61,37 @@ class CursoLeolandiaController(WebsiteSale):
         else:
             partner = request.env['res.partner'].sudo().create(values)
 
-        curso = request.env['curso.producto'].sudo().search([('id', '=', int(post.get('curso_id')))])
-        inscritos = curso.suscritos + 1
+            curso = request.env['curso.producto'].sudo().search([('id', '=', int(post.get('curso_id')))])
+            inscritos = curso.suscritos + 1
 
-        curso.write({
-            'suscritos': inscritos
-        })
+            curso.write({
+                'suscritos': inscritos
+            })
 
         return partner
 
     def _create_orden_cliente(self, partner_id, post):
-        product = request.env['product.product'].sudo().search([
-            ('barcode', '=', post.get('product_id'))
-        ])
+        sale_order = request.env['sale.order'].sudo().search([
+            ('partner_id', '=', partner_id),
+            ('website_id', '=', request.website.id)
+        ], order='date_order desc', limit=1)
 
-        sale_order = request.website.sale_get_order(force_create=1)
-        sale_order.partner_id = partner_id
+        logging.warning(partner_id)
+        logging.warning(sale_order)
 
-        sale_order._cart_update(
-            product_id=product.id,
-            set_qty=1
-        )
+        if not sale_order or (sale_order.state == 'done' or sale_order.state == 'cancel'):
+            logging.warning('Creando orden de venta')
+            product = request.env['product.product'].sudo().search([
+                ('barcode', '=', post.get('product_id'))
+            ])
+
+            sale_order = request.website.sale_get_order(force_create=1)
+            sale_order.partner_id = partner_id
+
+            sale_order._cart_update(
+                product_id=product.id,
+                set_qty=1
+            )
 
         sale_order.onchange_partner_shipping_id()
         sale_order.order_line._compute_tax_id()
@@ -127,16 +137,6 @@ class CursoLeolandiaController(WebsiteSale):
 
             if not curso or (not curso.activo or curso.suscritos >= curso.maximo_suscritos):
                 return request.redirect('/shop/curso-leolandia?op=' + str(2))
-
-            # verificamos que el cliente aun no este inscrito
-            partner_db = request.env['res.partner'].sudo().search([
-                ('email', '=', str(email).strip()),
-                '|', ('estado_compra', '=', 'inscrito'),
-                ('estado_compra', '=', 'pagado')
-            ])
-
-            if partner_db:
-                return request.redirect('/shop/curso-leolandia?op=' + str(3))
 
             request.website.sale_reset()
             partner = self._registrar_cliente(post)

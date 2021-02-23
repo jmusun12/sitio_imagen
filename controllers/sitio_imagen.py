@@ -773,7 +773,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
         if template:
             string_email = str(template.html).replace('partner_name', partner_name)
-            email_service.send_email("Confirmación de pago", partner_email,
+            request.website.send_email("Confirmación de pago", partner_email,
                                      string_email)
 
             logging.warning("Email enviado a {0}".format(partner_email))
@@ -788,7 +788,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if template:
             string_email = str(template.html).replace('partner_name', partner_name)\
                 .replace("order_referen", order_referen).replace("price_curso", '{:.2f}'.format(price))
-            email_service.send_email("Datos de pago", partner_email, string_email)
+            request.website.send_email("Datos de pago", partner_email, string_email)
 
             logging.warning("Email de transferencia enviado a {0}".format(partner_email))
 
@@ -894,7 +894,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
         if template:
             string_email = str(template.html).replace('partner_name', 'José Musun')
-            email_service.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
+            request.website.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
 
 
 

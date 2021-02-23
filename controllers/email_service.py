@@ -4,54 +4,6 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import logging
 
-# gmail_user = 'chicos.comunicaciones@gmail.com'
-# gmail_password = '@Chi.com.20$'
-gmail_user = 'chicos.comunicaciones01@gmail.com'
-gmail_password = '@chi.com.2021$'
-smtp_server = 'smtp.gmail.com'
-port_server = 465
-
-
-def verify_email(receiver_email):
-    resp = requests.get('https://todolist.example.com/tasks/')
-
-    if resp.status_code != 200:
-        return False
-    else:
-        return True
-
-
-def send_email(subject, receiver_email, bodyHtml):
-    message = MIMEMultipart("alternative")
-    message["Subject"] = subject
-    message["From"] = gmail_user
-    message["To"] = receiver_email
-
-    body = MIMEText(bodyHtml, 'html')
-
-    message.attach(body)
-
-    try:
-        server = smtplib.SMTP_SSL(smtp_server, port_server)
-        server.ehlo()
-        server.login(gmail_user, gmail_password)
-        server.sendmail(gmail_user, receiver_email, message.as_string())
-        # server.close()
-
-        logging.warning('Email enviado a: {0}'.format(receiver_email))
-
-    except Exception as error:
-        print('Ha ocurrido un error al intentar enviar el correo electrónico a: {0}'
-              .format(receiver_email))
-        print(error)
-        
-        logging.warning('Ha ocurrido un error al intentar enviar el correo electrónico a: {0}'
-              .format(receiver_email))
-        logging.warning(error)
-
-    finally:
-        server.quit()
-
 
 def get_message(cliente, institucion, grado, code):
     message = """
