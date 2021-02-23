@@ -12,7 +12,7 @@
 
                 <!--Modal de confirmación-->
                 <t t-if="exito and exito == 'S'">
-                    <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog">
+                    <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog" style="padding-left: 0px !important;">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="row">
@@ -49,7 +49,7 @@
                     </div>
                     <style>
                         #dialog-confirm {
-                            margin-top: 8.5rem;
+                            margin-top: 3.5rem;
                         }
 
                         .btn-chicos {
@@ -93,7 +93,7 @@
                     </div>
                     <style>
                         #dialog-error {
-                            margin-top: 8.5rem;
+                            margin-top: 3.5rem;
                         }
 
                         .btn-chicos {
