@@ -71,32 +71,34 @@ class CursoLeolandiaController(WebsiteSale):
         return partner
 
     def _create_orden_cliente(self, partner_id, post):
-        sale_order = request.env['sale.order'].sudo().search([
-            ('partner_id', '=', partner_id),
-            ('website_id', '=', request.website.id)
-        ], order='date_order desc', limit=1)
+        partner = request.env['res.partner'].sudo().search([
+            ('id', '=', partner_id)
+        ], limit=1)
 
+        product = request.env['product.product'].sudo().search([
+            ('barcode', '=', post.get('product_id'))
+        ])
+
+        sale_order = partner.last_website_so_id
         logging.warning(partner_id)
         logging.warning(sale_order)
 
-        if not sale_order or (sale_order.state == 'done' or sale_order.state == 'cancel'):
-            logging.warning('Creando orden de venta')
-            product = request.env['product.product'].sudo().search([
-                ('barcode', '=', post.get('product_id'))
-            ])
-
+        if not sale_order:
+            logging.warning("Creando orden")
             sale_order = request.website.sale_get_order(force_create=1)
-            sale_order.partner_id = partner_id
 
+            sale_order.partner_id = partner_id
             sale_order._cart_update(
                 product_id=product.id,
                 set_qty=1
             )
 
-        sale_order.onchange_partner_shipping_id()
-        sale_order.order_line._compute_tax_id()
-        request.session['sale_last_order_id'] = sale_order.id
-        request.website.sale_get_order(update_pricelist=True)
+            sale_order.onchange_partner_shipping_id()
+            sale_order.order_line._compute_tax_id()
+            request.session['sale_last_order_id'] = sale_order.id
+            request.website.sale_get_order(update_pricelist=True)
+        else:
+            request.session['sale_order_id'] = sale_order.id
 
     @http.route(['''/shop/curso-leolandia''',
                  '''/shop/curso-leolandia/<int:op>'''], type='http', auth="public", website=True)
@@ -141,6 +143,7 @@ class CursoLeolandiaController(WebsiteSale):
             request.website.sale_reset()
             partner = self._registrar_cliente(post)
             self._create_orden_cliente(partner.id, post)
+            logging.warning(request.session['sale_last_order_id'])
 
             return request.redirect('/shop/curso-leolandia?op=' + str(1))
         else:
