@@ -153,3 +153,5 @@ class CursoLeolandiaController(WebsiteSale):
     def curso_gracias(self, **kwargs):
         request.website.sale_reset()
         return request.render("sitio_imagen.thanks_leolandia")
+
+

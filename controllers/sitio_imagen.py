@@ -896,6 +896,18 @@ class WebSiteSaleInherit(WebsiteSale):
             string_email = str(template.html).replace('partner_name', 'José Musun')
             request.website.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
 
+    @http.route(['''/shop/recovery_cart''', '''/shop/recovery_cart/<string:access_token>'''], type='http', auth="public", website=True)
+    def recovery_cart(self, access_token):
+        abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)
+
+        if abandoned_order:
+            request.session['sale_order_id'] = abandoned_order.id
+
+            return request.redirect('/shop/payment')
+
+
+
+
 
 
 
