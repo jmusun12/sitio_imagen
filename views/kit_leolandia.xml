@@ -15,25 +15,35 @@
                     <div id="dialog-confirm" class="modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">
-                                        ¡Gracias por preregistrarte a la primera edición en
-                                        <strong>Latinoamérica del curso LEOLANDIA Online!</strong>
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="row">
 
-                                    </button>
+                                    <!--Icono gusano-->
+                                    <div class="col-3 col-md-3 col-xl-3 d-flex align-items-center d-flex justify-content-center mb-3 mb-md-0 mb-xl-0">
+                                        <img class="gusano-modal" src="/sitio_imagen/static/src/img/kit_leolandia/gracias-gusano.png"/>
+                                    </div>
+
+                                    <!--Texto del confirmación-->
+                                    <div class="col-9 col-md-9 col-xl-9">
+                                        <p class="titulo-confirmacion">
+                                            ¡Gracias por <span class="text-color-light-green"><strong>pre-registrarte</strong></span> a la primera edición en latinoamérica del Curso LEOLANDIA online!
+                                        </p>
+
+                                        <p class="text-reservacion font-futura-medium">
+                                            Para poder <span class="color-blue font-futura-bold ">RESERVAR TU CUPO</span>, por favor paga ahora y recibirás el enlace
+                                            con la invitación al correo que nos proporcionaste
+                                        </p>
+
+                                        <p class="texto-precio">
+                                          <span class="text-color-gray text-tachado">$150.00</span> <span class="text-color-deep-green"><strong>Precio de 1° edición $75.00</strong></span>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <p>
-                                        Tu próximo paso es ir al enlace para que reserves tu inscripción.
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-<!--                                    <button type="button" class="btn btn-secondary btn-chicos" data-dismiss="modal">Aceptar</button>-->
-                                    <a t-att-href="url_payment" class="btn btn-warning">
-                                        Pagar ahora
-                                    </a>
+                                <div class="row">
+                                    <div class="col-12 col-md-12 col-xl-12 text-right">
+                                         <a t-att-href="url_payment" class="btn btn-pagar-ahora">
+                                            Pagar ahora
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

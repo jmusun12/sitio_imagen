@@ -26,6 +26,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'KG Red Hands';
+    src: url('./fonts/KGRedHands.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .title {
     font-family: 'Futura Round Bold';
     font-size: 18px !important;
@@ -104,6 +111,10 @@
     font-family: 'Futura Round Light' !important;
 }
 
+.font-futura-bold {
+    font-family: 'Futura Round Bold';
+}
+
 .other-title {
     font-family: 'Futura Round Bold';
     font-size: 20px !important;
@@ -142,6 +153,51 @@
     background-repeat: no-repeat;
     background-size: 100%;
     height: 80rem;
+}
+
+// ventana modal de confirmacion
+#dialog-confirm .modal-content {
+    border-radius: 2.3rem;
+    background-color: #f4f4ff !important;
+    padding: 31px !important;
+}
+
+.gusano-modal {
+    width: 140px !important;    
+}
+
+.titulo-confirmacion {
+    color: #39A935;
+    font-family: 'Futura Round Demi';
+    font-size: 18px !important;
+}
+
+.text-reservacion {
+    color: #6F6F6E;
+    font-size: 19px !important;
+}
+
+.color-blue {
+    color: #1757F9;
+}
+
+.text-tachado {
+    text-decoration: line-through;
+}
+
+.text-subrayado {
+    text-decoration: underline;
+}
+
+.texto-precio {
+    font-size: 18px !important;
+}
+
+.btn-pagar-ahora {
+    background: #0066ff !important;
+    border: none !important;
+    color: white;
+    font-family: 'KG Red Hands';
 }
 
 // responsive
