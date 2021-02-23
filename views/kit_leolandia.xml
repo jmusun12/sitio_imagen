@@ -50,7 +50,7 @@
                     </div>
                     <style>
                         #dialog-confirm {
-                            margin-top: 12.5rem;
+                            margin-top: 8.5rem;
                         }
 
                         .btn-chicos {
@@ -94,7 +94,7 @@
                     </div>
                     <style>
                         #dialog-error {
-                            margin-top: 12.5rem;
+                            margin-top: 8.5rem;
                         }
 
                         .btn-chicos {
