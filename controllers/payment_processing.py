@@ -91,11 +91,16 @@ class PaymentProcessingImagen(PaymentProcessing):
                             self.send_email_transfer(order.partner_id.name, order.partner_id.email)
                             self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False,
                                                 email_transfer=True)
-                            return request.render("website_sale.confirmation", {'order': order})
+                            if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
+                                return request.redirect("/shop/curso/gracias")
+                            else:
+                                return request.render("website_sale.confirmation", {'order': order})
             else:
                 if payment_tx_id.acquirer_id.provider == 'transfer':
                     if not order.partner_id.email_transfer:
                         self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+                        self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False,
+                                            email_transfer=True)
 
                 return request.render("website_sale.confirmation", {'order': order})
         else:

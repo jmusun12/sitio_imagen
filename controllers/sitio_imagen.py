@@ -809,11 +809,12 @@ class WebSiteSaleInherit(WebsiteSale):
                 if payment_tx_id.acquirer_id.provider == 'transfer':
                     self.send_email_transfer(order.partner_id.name, order.partner_id.email)
                     self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False, email_transfer=True)
-                    return request.render("website_sale.confirmation", {'order': order})
+                    return request.redirect("/shop/curso/gracias")
 
         else:
             if payment_tx_id.acquirer_id.provider == 'transfer':
                 self.send_email_transfer(order.partner_id.name, order.partner_id.email)
+                self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False, email_transfer=True)
 
             return request.render("website_sale.confirmation", {'order': order})
 

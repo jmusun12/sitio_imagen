@@ -1311,7 +1311,9 @@ main {
 .font-color-w, .f-r{
     color: white;
 }
-
+.white-c{
+    color: white !important;
+}
 .color-w{
     color: #1757f9 !important;
     border-radius: 50px !important;
@@ -1375,4 +1377,41 @@ main {
 
 .badge-secondary{
     display:none;
+}
+.style-image-addres{
+    margin-top: -3.5% !important;
+    height: 10% !important;
+    left: 9.21% !important;
+    box-shadow: 1px 5px 5px #999 !important;
+}
+.mt-19{
+    margin-top: 19% !important;
+}
+.total-label{
+    font-family: 'KG Inimitable Original' !important;
+}
+.font-kg-red{
+    font-family: 'KG Red Hands';
+}
+.style-image{
+    width: 45%;
+    border: 2px solid #FFC107;
+    margin-left: 45% !important;
+}
+.ml-40{
+    margin-left: 40% !important;
+}
+.mb-5{
+    margin-bottom: 5% !important;
+}
+.grey-c{
+    color: #868686 !important;
+    font-weight: 100 !important;
+}
+.grey-f{
+    color: #6F6F6E !important;
+    font-weight: 100 !important;
+}
+.font-NS{
+    font-family: 'Neris-SemiBold' !important;
 }
