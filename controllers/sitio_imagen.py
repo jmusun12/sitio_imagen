@@ -206,7 +206,7 @@ class WebSiteSaleInherit(WebsiteSale):
     def thanks(self, res='', **kwargs):
         # return request.render("sitio_imagen.thanks")
 
-        sale_order_id = request.session.get('sale_last_order_id')
+        # sale_order_id = request.session.get('sale_last_order_id')
 
         if res == 'lp':
             request.website.sale_reset()
@@ -866,7 +866,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
                 if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
                     logging.warning("Transferencia leolandia")
-                    self.send_email_transfer(order.partner_id.name, order.partner_id.email, order.name, order.amount_total)
+                    self.send_email_transfer(order.partner_id.name, order.partner_id.email, order.name,
+                                             order.amount_total)
                     self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False,
                                         email_transfer=True)
                     res = 'ptl'
