@@ -4,11 +4,11 @@
         <xpath expr="//div[@id='div-total-invoices-cart']" position="after">
             <tr t-if="not hide_coupon">
                 <div class="row oe_website_sale">
-                    <div class="col-12 col-md-12 col-xl-12 text-center text-xl-right border-0 mb-3">
+                    <div class="col-12 col-md-12 col-xl-12 text-center text-xl-right border-0 mb-3 size-cart">
                         <span class=''>
                             <t t-set='force_coupon' t-value="website_sale_order.pricelist_id.code or request.params.get('code_not_available')"/>
                             <t t-if="not force_coupon">
-                                <a href="#" class="show_coupon_imagen other-title">Tengo un código promocional</a>
+                                <a href="#" class="show_coupon_imagen other-title white-c">Tengo un código promocional</a>
                             </t>
                             <div t-attf-class="coupon_form #{not force_coupon and 'd-block'}">
                                 <t t-call="website_sale.coupon_form"/>

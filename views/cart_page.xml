@@ -19,121 +19,91 @@
     <!--Linea de product en el carrito-->
     <template id="cart_line_imagen">
         <div class="item-product-cart">
-                <div class="row">
-                    <div class="col-3 col-md-3 col-xl-2 text-center">
-                        <span t-field="line.product_id.image_128"
-                              t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'product-img-cart'}" />
+            <div class="d-flex justify-content-between">
+                <!--Imagen del producto-->
+                <div class="d-flex justify-content-start  mt-2">
+                    <span t-field="line.product_id.image_128"
+                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'product-img-cart'}" />
+                </div>
+                <!--Nombre del producto y botones-->
+                <div class="ml-3">
+                    <div class=""> <!--Nombre-->
+                        <a class="product-name-cart" t-att-href="line.product_id.website_url" t-esc="line.name_short"></a>
                     </div>
-                    <div class="col-9 col-md-9 col-xl-10">
-                        <div class="row">
-                            <div class="col-10 col-md-10 col-xl-10">
-                                <a class="product-name-cart" t-att-href="line.product_id.website_url" t-esc="line.name_short"></a>
-                            </div>
-                            <div class="col-2 col-md-2 col-xl-2">
-                                <a id="delete_product-cart" href='#' aria-label="Remove from cart" title="Quitar del carrito" class='no-decoration'>
-                                    <small><i class='fa fa-trash-o'></i></small>
-                                </a>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="row">
-                            <div class="col-7">
-                                <span class="sr-only">Four out of Five Stars</span>
-                                <i class="fas fa-star bg-start-span start-i-cart"></i>
-                                <i class="fas fa-star bg-start-span start-i-cart"></i>
-                                <i class="fas fa-star bg-start-span start-i-cart"></i>
-                                <i class="far fa-star bg-start-span start-i-cart"></i>
-                                <i class="far fa-star bg-start-span start-i-cart"></i>
-                                <span class="label label-success label-start-number-cart">(55)</span>
-                            </div>
-                            <div class="col-5 col-xl-3">
-                                <h5 class="product-price-cart text-right">$ 1000. 00</h5>
-                            </div>
-                        </div>
-                        -->
-                        <div class="row">
-                            <div class="col-12 col-md-4 col-xl-4">
-                                <div class="control-qty">
-                                    <a id="a-minus-qty" t-attf-href="#" class="btn btn-link js_add_cart_json d-md-inline-block" aria-label="Remove one" title="Remove one">
-                                        <i class="fa fa-minus"></i>
-                                    </a>
-                                    <input type="text" id="input-quantity-line" class="js_quantity quantity"
-                                           t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id"
-                                           t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"
-                                    />
-                                    <a id="a-plus-qty" t-attf-href="#" class="btn btn-link float_left js_add_cart_json d-md-inline-block" aria-label="Add one" title="Add one">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-6">
-                                <div class="row">
-                                    <div class="col-6 col-md-6 col-xl-6">
-                                        <h5 class="product-price-cart text-left">
-                                            <t t-call="sitio_imagen.price_product_image"/>
-                                        </h5>
-                                    </div>
-                                    <div class="col-6 col-md-6 col-xl-6">
-                                         <h5 class="product-price-cart text-right">
-                                            <t t-set="qty" t-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
-                                            <t t-set="price_unit" t-value="line.price_unit"/>
-                                            <t t-set="total" t-value="qty * price_unit"/>
-                                            <span t-esc="total" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class=""><!--Botones-->
+                        <div class="d-flex justify-content-start control-qty">
+                            <a id="a-minus-qty" t-attf-href="#" class="btn btn-link js_add_cart_json" aria-label="Remove one" title="Remove one">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <input type="text" id="input-quantity-line" readonly="readonly" style="max-width: 35%;" class="js_quantity quantity font-color-w"
+                                   t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id"
+                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"
+                            />
+                            <a id="a-plus-qty" t-attf-href="#" class="btn btn-link float_left js_add_cart_json" aria-label="Add one" title="Add one">
+                                <i class="fa fa-plus"></i>
+                            </a>
+
+                            <!--Boton para eliminar producto-->
+                            <a id="delete_product-cart" href='#' aria-label="Remove from cart" title="Quitar del carrito" class='no-decoration ml-3'>
+                                <small><i class='fa fa-trash-o' style="font-size: 4vh !important; margin-top: 2px;"></i></small>
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!--Precio unitario y subtotal-->
+                <div class="d-flex justify-content-between">
+                    <div><!--Subtotal-->
+                        <h5 class="product-price-cart text-left">
+                            <t t-set="qty" t-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                            <t t-set="price_unit" t-value="line.price_unit"/>
+                            <t t-set="total" t-value="qty * price_unit"/>
+                            <span t-esc="total" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                        </h5>
+                    </div>
+                </div>
             </div>
+        </div>
     </template>
 
     <!--Recibo de pago de carrito-->
     <template id="invoice_cart_imagen">
         <div class="container">
-            <h5 class="shopping-title-invoice text-center">RECIBO DE PAGO</h5>
-            <div class="invoice-cart">
+            <h5 class="shopping-title-invoice text-center font-color-w">RECIBO DE PAGO</h5>
+            <div class="invoice-cart font-color-w">
                 <hr/>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="label-invoice text-left"><span t-esc="website_sale_order.cart_quantity"/> articulos</p>
+                <div class="d-flex justify-content-between">
+                    <div >
                     </div>
-                    <div class="col-6">
-                        <p class="label-invoice-money text-right">
-                            <span t-esc="website_sale_order.amount_untaxed - website_sale_order.amount_delivery" style="white-space: nowrap;"
-                                  t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+                    <div>
                         <p class="label-invoice text-left">Cargo por envio</p>
                     </div>
-                    <div class="col-6">
-                        <p class="label-invoice-money text-right">
+                    <div>
+                        <p class="label-invoice-money text-right font-color-w">
                             <span t-field="website_sale_order.amount_delivery" style="white-space: nowrap;"
                                   t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
                         </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
+                <div class="d-flex justify-content-between">
+                    <dvi></dvi>
+                    <div class="row">
                         <p class="label-invoice text-left">Subtotal</p>
                     </div>
-                    <div class="col-6">
-                        <p class="label-invoice-money text-right">
+                    <div>
+                        <p class="label-invoice-money text-right font-color-w">
                             <span t-field="website_sale_order.amount_untaxed" style="white-space: nowrap;"
                                   t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
                         </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
+                <div class="d-flex justify-content-between">
+                    <div></div>
+                    <div class="row">
                         <p class="label-invoice text-left">Impuestos</p>
                     </div>
-                    <div class="col-6">
-                        <p class="label-invoice-money text-right">
+                    <div>
+                        <p class="label-invoice-money text-right font-color-w">
                             <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;"
                                   t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
                         </p>
@@ -144,12 +114,13 @@
                         <hr/>
                     </div>
                 </div>
-                <div class="row" id="div-total-invoices-cart">
-                    <div class="col-6">
-                        <p class="label-invoice text-left">Total</p>
+                <div class="d-flex justify-content-between" id="div-total-invoices-cart">
+                    <div></div>
+                    <div class="row">
+                        <p class="label-invoice text-left total-label">Total</p>
                     </div>
-                    <div class="col-6">
-                        <p class="label-invoice-money text-right">
+                    <div>
+                        <p class="label-invoice-money text-right font-color-w">
                             <strong t-field="website_sale_order.amount_total"
                               t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
                         </p>
@@ -157,21 +128,16 @@
                 </div>
 
                 <t t-if="show_buy == 1">
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12 text-right">
-                            <a  class="btn btn-primary btn-pay-now" href="/shop/address">
-                                PAGAR AHORA
-                            </a>
-                        </div>
-                    </div>
-                </t>
-
-                <div class="row">
-                    <div class="col-12 col-md-12 col-xl-12 text-right mt-2 mb-3">
-                        <a class="btn btn-warning btn-go-shop" href="/shop">
-                            SEGUIR COMPRANDO
+                    <div class="float-right mt-2">
+                        <a  class="btn btn-primary w-100 bc-w" href="/shop/address">
+                            PAGAR AHORA
                         </a>
                     </div>
+                </t>
+                <div class="float-left mt-2">
+                    <a class="btn btn-warning w-100 color-w" href="/shop">
+                        SEGUIR COMPRANDO
+                    </a>
                 </div>
             </div>
         </div>
@@ -181,9 +147,9 @@
         <div class="shopping-cart" id="detail-cart">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 col-xl-8">
-                        <div class="container">
-                            <h5 class="shopping-title">TU CARRITO</h5>
+                    <div class="col-md-12 col-xl-8 style-responsive-cart">
+                        <div class="container" style="margin-top: 5vw;">
+                            <h5 class="shopping-title font-color-w mb-2vw total-label">TU CARRITO</h5>
                             <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info" role="alert"> <!-- abandoned cart choices -->
                                 <t t-if="abandoned_proceed">
                                     <p>Your previous cart has already been completed.</p>
@@ -271,8 +237,8 @@
                                         <div class="container">
                                             <div class="row content">
                                                 <div class="col-lg-12">
-                                                    <p class="text-center text-empty-cart">Tu carrito está vacio.</p>
-                                                    <p class="text-center text-animation-cart">Atrévete a comprar nuestros productos.</p>
+                                                    <p class="text-center text-empty-cart font-kg-red">Tu carrito está vacio.</p>
+                                                    <p class="text-center text-animation-cart font-kg-red">Atrévete a comprar nuestros productos.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -287,8 +253,6 @@
                                 </t>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 col-xl-4 mt-sm-3">
                         <t t-set="show_buy" t-value="1"/>
                         <t t-call="sitio_imagen.invoice_cart_imagen"/>
                     </div>

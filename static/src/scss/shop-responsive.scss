@@ -206,9 +206,9 @@
         flex: 0 0 100%;
         max-width: 100%;
     }
-  .nav-browser {
-    display: none;
-  }
+    .nav-browser {
+        display: none;
+    }
     .float-right {
         width: 100% !important;
     }
@@ -402,9 +402,6 @@
     .mt-19 {
         margin-top: -10% !important;
     }
-    .product-img-cart {
-        width: 58px !important;
-    }
   .shop-page {
     padding-top: 5.5rem !important;
   }
@@ -428,6 +425,22 @@
 
   .img-fondo-dv {
     padding-bottom: 0rem !important;
+  }
+
+  /*style cart*/
+
+  .style-responsive-cart{
+    margin-top: -4.8vh !important;
+    margin-left: -25.1vw;
+  }
+  .mli{
+    margin-top: 0.5rem !important;
+  }
+  .product-img-cart{
+    width: 49px !important;
+  }
+  .product-name-cart{
+    font-size: 7px !important;
   }
 
   .img-payment-process {
@@ -640,6 +653,10 @@
   .style-image{
         margin-left: 2vh !important;
   }
+  .style-responsive-cart{
+    margin-top: -2.8vh !important;
+    left: 0vw !important;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -766,6 +783,18 @@
 
   .shop-page {
     padding-top: 5.5rem !important;
+  }
+
+  .style-image-addres{
+    left: 2vh !important;
+  }
+  .footer-style-responsive{
+    margin-top: 86vh !important;
+  }
+  .style-responsive-cart{
+    margin-top: -2.8vh !important;
+    left: 0vw !important;
+    height: 91vh !important;
   }
 
 }
@@ -900,6 +929,7 @@
     width: 200px !important;
     height: 200px !important;
   }
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -1123,9 +1153,6 @@
 
 /* RESPONSIVE CART */
 @media (max-width:477px) {
-  .product-img-cart {
-    width: 80px !important;
-  }
     .style-image {
         width: 58px !important;
     }
@@ -1139,10 +1166,6 @@
     }
   .item-product-cart {
     padding: 0px !important
-  }
-
-  .product-name-cart {
-    font-size: 15px !important;
   }
 
   .product-description-cart {
@@ -1175,10 +1198,6 @@
     }
   .item-product-cart {
     padding: 0px !important
-  }
-
-  .product-name-cart {
-    font-size: 15px !important;
   }
 
   .product-description-cart {
@@ -1232,8 +1251,8 @@
         margin-left: -20px !important;
     }
 }
-@media (min-width: 768px){
+@media (max-width: 768px){
     .style-image-addres{
-        margin-left: -19vh !important;
+        left: 21vh !important;
     }
 }

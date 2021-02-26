@@ -912,11 +912,6 @@ main {
   color: #a6a6ea;
 }
 
-.control-qty {
-  width: 100%;
-  display: flex;
-}
-
 .control-qty button {
   margin: 0px !important;
   background-color: transparent !important;
@@ -926,7 +921,6 @@ main {
 .control-qty input {
   margin: 0px !important;
   font-family: monospace;
-  width: 80% !important;
   border: none !important;
   text-align: center;
   background-color: transparent;
@@ -1131,7 +1125,7 @@ main {
     margin-right: 0;
 }
 
-.text-end-footer, .text-end-footer a {
+.text-end-footer, .text-animation-cart, .text-empty-cart, .text-end-footer a {
   color: white;
 }
 
@@ -1306,10 +1300,11 @@ main {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     padding-bottom: 15rem !important;
+    margin-top: -1rem;
 }
 
 .font-color-w, .f-r{
-    color: white;
+    color: white !important;
 }
 .white-c{
     color: white !important;
@@ -1317,6 +1312,14 @@ main {
 .color-w{
     color: #1757f9 !important;
     border-radius: 50px !important;
+}
+.input-quantity-line, .product-price-cart, #delete_product-cart,.product-name-cart{
+    color: white !important;
+}
+
+.btn-link{
+    color: #1757F9;
+    background: #FFC107;
 }
 
 .color-b{
@@ -1381,7 +1384,7 @@ main {
 .style-image-addres{
     margin-top: -3.5% !important;
     height: 10% !important;
-    left: 21.21vh !important;
+    left: 20.19vh !important;
     box-shadow: 1px 5px 5px #999 !important;
 }
 .mt-19{
@@ -1414,4 +1417,27 @@ main {
 }
 .font-NS{
     font-family: 'Neris-SemiBold' !important;
+}
+.style-responsive-cart{
+    left: 25vw !important;
+    background-image: url('/sitio_imagen/static/src/img/nubes-pago-ancho.png');
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin-top: -1.8vh !important;
+    height: 109vh !important;
+}
+.l-10vh{
+    left: 10vh !important;
+}
+.mb-2vw{
+    margin-bottom: 2vw !important;
+}
+.size-cart{
+    max-width: 39.5vw !important;
+    margin-left: 5.8vw !important;
+}
+.bc-w{
+    background: white;
+    color: #1757F9;
+    border-radius: 50px;
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="footer_imagen">
-        <footer class="page-footer font-small stylish-color-dark mt-4 pt-4 bg-footer-img">
+        <footer class="page-footer font-small stylish-color-dark mt-4 pt-4 bg-footer-img footer-style-responsive">
             <div class="container text-center text-md-left">
                 <div class="row">
                     <div class="col-12 col-md-12 col-xl-3 mx-auto">
