@@ -19,7 +19,6 @@ from odoo.addons.http_routing.models.ir_http import slug
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
-
 _logger = logging.getLogger(__name__)
 
 
@@ -126,8 +125,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
         return request.render("website_sale.products", values)
 
-
-    @http.route()
+    @http.route(['''/shop/cart''', '''/shop/cart/<string:access_token>'''], type='http', auth="public",
+                website=True, sitemap=False)
     def cart(self, access_token=None, revive='', **post):
         """
         Main cart management + abandoned cart revival
@@ -136,7 +135,7 @@ class WebSiteSaleInherit(WebsiteSale):
         """
         print('Call override cart')
 
-        order = request.website.sale_get_order()        
+        order = request.website.sale_get_order()
 
         if order and order.state != 'draft':
             request.session['sale_order_id'] = None
@@ -150,13 +149,15 @@ class WebSiteSaleInherit(WebsiteSale):
                 raise NotFound()
             if abandoned_order.state != 'draft':  # abandoned cart already finished
                 values.update({'abandoned_proceed': True})
-            elif revive == 'squash' or (revive == 'merge' and not request.session.get('sale_order_id')):  # restore old cart or merge with unexistant
+            elif revive == 'squash' or (revive == 'merge' and not request.session.get(
+                    'sale_order_id')):  # restore old cart or merge with unexistant
                 request.session['sale_order_id'] = abandoned_order.id
                 return request.redirect('/shop/cart')
             elif revive == 'merge':
                 abandoned_order.order_line.write({'order_id': request.session['sale_order_id']})
                 abandoned_order.action_cancel()
-            elif abandoned_order.id != request.session.get('sale_order_id'):  # abandoned cart found, user have to choose what to do
+            elif abandoned_order.id != request.session.get(
+                    'sale_order_id'):  # abandoned cart found, user have to choose what to do
                 values.update({'access_token': abandoned_order.access_token})
 
         values.update({
@@ -232,13 +233,15 @@ class WebSiteSaleInherit(WebsiteSale):
     def print_saleorder(self, **kwargs):
         sale_order_id = request.session.get('sale_last_order_id')
         if sale_order_id:
-            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf([sale_order_id])
+            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf(
+                [sale_order_id])
             pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
             return request.make_response(pdf, headers=pdfhttpheaders)
         else:
             return request.redirect('/shop')
 
-    @http.route(['''/shop/libros-chicos-2-4''', '''/shop/libros-chicos-2-4/page/<int:page>'''], type='http', auth="public", website=True)
+    @http.route(['''/shop/libros-chicos-2-4''', '''/shop/libros-chicos-2-4/page/<int:page>'''], type='http',
+                auth="public", website=True)
     def libros_2_4(self, page=0, category=None, search='', ppg=False, **post):
         print('shop override')
 
@@ -753,10 +756,11 @@ class WebSiteSaleInherit(WebsiteSale):
         return request.render("website_sale.products", values)
 
     @http.route()
-    def print_saleorder(self, **kwargs):        
+    def print_saleorder(self, **kwargs):
         sale_order_id = request.session.get('sale_last_order_id')
         if sale_order_id:
-            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf([sale_order_id])
+            pdf, _ = request.env.ref('sitio_imagen.action_report_saleorder_imagen').sudo().render_qweb_pdf(
+                [sale_order_id])
             pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
             return request.make_response(pdf, headers=pdfhttpheaders)
         else:
@@ -774,7 +778,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if template:
             string_email = str(template.html).replace('partner_name', partner_name)
             request.website.send_email("Confirmación de pago", partner_email,
-                                     string_email)
+                                       string_email)
 
             logging.warning("Email enviado a {0}".format(partner_email))
 
@@ -786,7 +790,7 @@ class WebSiteSaleInherit(WebsiteSale):
         ])
 
         if template:
-            string_email = str(template.html).replace('partner_name', partner_name)\
+            string_email = str(template.html).replace('partner_name', partner_name) \
                 .replace("order_referen", order_referen).replace("price_curso", '{:.2f}'.format(price))
             request.website.send_email("Datos de pago", partner_email, string_email)
 
@@ -866,7 +870,8 @@ class WebSiteSaleInherit(WebsiteSale):
 
                 if any(line.product_id.barcode == curso.producto.barcode for line in order.order_line):
                     logging.warning("Transferencia leolandia")
-                    self.send_email_transfer(order.partner_id.name, order.partner_id.email, order.name, order.amount_total)
+                    self.send_email_transfer(order.partner_id.name, order.partner_id.email, order.name,
+                                             order.amount_total)
                     self.update_partner(order.partner_id.id, estado='pendiente', email_pago=False,
                                         email_transfer=True)
                     res = 'ptl'
@@ -896,7 +901,8 @@ class WebSiteSaleInherit(WebsiteSale):
             string_email = str(template.html).replace('partner_name', 'José Musun')
             request.website.send_email("Confirmación de inscripción", "stdjosemusun@gmail.com", string_email)
 
-    @http.route(['''/shop/recovery_cart''', '''/shop/recovery_cart/<string:access_token>'''], type='http', auth="public", website=True)
+    @http.route(['''/shop/recovery_cart''', '''/shop/recovery_cart/<string:access_token>'''], type='http',
+                auth="public", website=True)
     def recovery_cart(self, access_token):
         abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)
 
@@ -904,14 +910,3 @@ class WebSiteSaleInherit(WebsiteSale):
             request.session['sale_order_id'] = abandoned_order.id
 
             return request.redirect('/shop/payment')
-
-
-
-
-
-
-
-
-
-
-
