@@ -874,7 +874,8 @@ main {
 
 /* DETALLE DE CARRITO */
 .shopping-cart {
-  padding-top: 6rem;
+  padding-top: 5rem;
+  display: flex;
 }
 
 .shopping-title {
@@ -889,7 +890,7 @@ main {
 }
 
 .product-img-cart {
-  width: 90px;
+  width: 90%;
 }
 
 .product-name-cart {
@@ -1333,11 +1334,10 @@ main {
 
 .oe_website_sale{
     max-width: 100%;
-    margin-left: 4%;
 }
 
 .m-dv{
-    margin-top: 8% !important;
+    margin-top: 14% !important;
 }
 
 .btn-custom{
@@ -1381,10 +1381,13 @@ main {
 .badge-secondary{
     display:none;
 }
+.mrgn-4{
+    margin-top: -2%;
+}
 .style-image-addres{
-    margin-top: -3.5% !important;
+    /*margin-top: -3.5% !important;*/
     height: 10% !important;
-    left: 20.19vh !important;
+    /*left: 20.19vh !important;*/
     box-shadow: 1px 5px 5px #999 !important;
 }
 .mt-19{
@@ -1418,13 +1421,16 @@ main {
 .font-NS{
     font-family: 'Neris-SemiBold' !important;
 }
+
 .style-responsive-cart{
-    left: 25vw !important;
+    /*left: 25vw !important;*/
     background-image: url('/sitio_imagen/static/src/img/nubes-pago-ancho.png');
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    margin-top: -1.8vh !important;
-    height: 109vh !important;
+    margin-top: -3.8vh !important;
+    /*height: 109vh !important;*/
+    width: 50%;
+    margin-left: 25%;
 }
 .l-10vh{
     left: 10vh !important;
@@ -1433,11 +1439,17 @@ main {
     margin-bottom: 2vw !important;
 }
 .size-cart{
-    max-width: 39.5vw !important;
-    margin-left: 5.8vw !important;
+    max-width: 60% !important;
+    margin-left: 25% !important;
 }
 .bc-w{
     background: white;
     color: #1757F9;
     border-radius: 50px;
+}
+.slick-track, .slick-current{
+    width: 100% !important;
+}
+main{
+    height: 80% !important;
 }

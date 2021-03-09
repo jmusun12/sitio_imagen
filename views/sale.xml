@@ -255,10 +255,10 @@
         <div class="container m-dv mt-19">
                 <h5 class="shopping-title-invoice text-center text-responsive-title">DETALLE DE PAGO</h5>
                 <div class="invoice-cart white-c">
-                    <div class="product-table">
+                    <div class="product-table  overflow-auto" style="max-height: 33vh;padding-top: 13px;">
                         <t t-foreach="orden.order_line" t-as="line">
                             <t t-if="line.product_id.name != 'Entrega gratuita'">
-                                <div class="row mb-5">
+                                <div class="d-flex justify-content-between" style="margin-top: 2%;">
                                     <span style="max-width: 114px !important;" class="img-responsive" t-field="line.product_id.image_128"
                                                   t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'style-image'}" />
                                     <div class="col-5 col-md-5 col-xl-5 style-responsive">
@@ -444,10 +444,11 @@
             </div>
         </div>
     </template>
+
     <template id="address_imagen">
         <div class="detail-sale" id="detail_sale_imagen">
-            <div class="container">
-                <div class="row">
+            <div class="mrgn-4">
+                <div class="row" style="max-width: 100vw;">
                     <div class="col-12 col-md-7 col-xl-7 order-md-1 order-xl-1 order-2 ml-img">
                         <div class="container">
                             <h5 class="shopping-title total-label">PROCESO DE PAGO</h5>
@@ -462,7 +463,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1 img-fondo-dv style-image-addres">
+                    <div class="col-12 col-md-5 col-xl-5 order-md-2 order-xl-2 order-1 img-fondo-dv style-image-addres justify-content-between">
                         <t t-set="orden" t-value="website_sale_order"/>
                         <t t-set="show_buy" t-value="0"/>
                         <t t-call="sitio_imagen.invoice_payment"/>
@@ -633,6 +634,7 @@
             </button>
         </xpath>
     </template>
+
     <template id="payment_imagen">
         <div class="detail-sale ds-st" id="payment-page">
             <div class="c-container">
