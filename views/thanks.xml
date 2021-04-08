@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="thanks">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Tienda - Gracias</t>
+            <div class="thank-you">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 text-center p-3">
+                        <h3 class="title-thank-you">!SU PAGO A SIDO REGISTRADO EXITOSAMENTE!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12 text-center p-3">
+                        <h4 class="title-thank-you">
+                            ¡GRACIAS POR ADQUIRIR NUESTRO PRODUCTO, ESPERAMOS QUE VUELVAS PRONTO!
+                        </h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <img class="mx-auto d-block" src="/sitio_imagen/static/src/img/thanks.jpg" alt="Thanks"/>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                document.body.classList.add('page');
+            </script>
+        </t>
+    </template>
+</odoo>

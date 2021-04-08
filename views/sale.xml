@@ -481,164 +481,163 @@
         </script>
     </template>
 
-    <!--Metodos de pago-->
-    <template id="payment_methods_imagen" inherit_id="payment.payment_tokens_list">
-        <xpath expr="//div[@class='card']" position="replace">
-            <div class="row">
-                <div class="col-12 col-md-12 col-xl-12">
-                    <div class="row">
-                        <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
-                        <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
-                        <t t-set="MAX_BRAND_LINE" t-value="3"/>
 
-                        <t t-foreach="acquirers" t-as="acq">
-                            <div class="col-12 col-md-12 col-xl-12 mt-3">
-                                <p class="text-left title-payment-method font-size-14 text-red-hands">
-                                    <t t-if="acq.payment_flow == 'form'">
-                                        <input type="radio" t-att-data-acquirer-id="acq.id"
-                                                t-att-data-form-payment="true"
-                                                t-att-data-provider="acq.provider"
-                                                t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
-                                                name="pm_id" t-attf-value="form_{{acq.id}}"
-                                                t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"
-                                        />
-                                    </t>
-                                    <t t-else="acq.payment_flow == 's2s'">
-                                        <input type="radio" t-att-data-acquirer-id="acq.id"
-                                                t-att-data-s2s-payment="true"
-                                                t-att-data-provider="acq.provider"
-                                                name="pm_id" t-attf-value="new_{{acq.id}}"
-                                                t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
-                                                t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"
-                                        />
-                                    </t>
-                                    <span class="payment_option_name font-size-14 text-red-hands">
-                                        <t t-esc="acq.display_as or acq.name"/>
-                                        <!--
-                                        <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right" style="margin-left:5px">
-                                            Test Mode
-                                        </div>
-                                        -->
+    <template id="card_payment_imagen">
+        <div class="row">
+            <div class="col-12 col-md-12 col-xl-12">
+                <div class="row">
+                    <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
+                    <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
+                    <t t-set="MAX_BRAND_LINE" t-value="3"/>
+
+                    <t t-foreach="acquirers" t-as="acq">
+                        <div class="col-12 col-md-12 col-xl-12 mt-3">
+                            <p class="text-left title-payment-method font-size-14 text-red-hands">
+                                <t t-if="acq.payment_flow == 'form'">
+                                    <input type="radio" t-att-data-acquirer-id="acq.id"
+                                            t-att-data-form-payment="true"
+                                            t-att-data-provider="acq.provider"
+                                            t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                            name="pm_id" t-attf-value="form_{{acq.id}}"
+                                            t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"
+                                    />
+                                </t>
+                                <t t-else="acq.payment_flow == 's2s'">
+                                    <input type="radio" t-att-data-acquirer-id="acq.id"
+                                            t-att-data-s2s-payment="true"
+                                            t-att-data-provider="acq.provider"
+                                            name="pm_id" t-attf-value="new_{{acq.id}}"
+                                            t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                            t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"
+                                    />
+                                </t>
+                                <span class="payment_option_name font-size-14 text-red-hands">
+                                    <t t-esc="acq.display_as or acq.name"/>
+                                    <!--
+                                    <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right" style="margin-left:5px">
+                                        Test Mode
+                                    </div>
+                                    -->
+                                </span>
+                                <t t-if="acq_extra_fees and acq_extra_fees.get(acq)">
+                                    <span class="badge badge-pill badge-secondary"> +
+                                        <t t-esc="acq_extra_fees[acq]" t-options='{"widget": "monetary", "display_currency": acq_extra_fees["currency_id"]}'/>
+                                        Fee
                                     </span>
-                                    <t t-if="acq_extra_fees and acq_extra_fees.get(acq)">
-                                        <span class="badge badge-pill badge-secondary"> +
-                                            <t t-esc="acq_extra_fees[acq]" t-options='{"widget": "monetary", "display_currency": acq_extra_fees["currency_id"]}'/>
-                                            Fee
-                                        </span>
+                                </t>
+                                <t t-elif="acq.fees_active">
+                                    <small class="text-muted">(Some fees may apply)</small>
+                                </t>
+                            </p>
+                            <t t-if="len(acq.payment_icon_ids) &gt; 0">
+                                <ul class="list-inline">
+                                    <t t-set="i" t-value="0"/>
+                                    <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
+                                        <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
+                                            <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon m-1"}'/>
+                                        </li>
+                                        <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
+                                            <span class="float-right more_option text-info">
+                                                <a href="#" class="o_payment_form_pay_icon_more"
+                                                    data-toggle="tooltip"
+                                                    t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </span>
+                                        </li>
+                                        <t t-set="i" t-value="i+1"/>
                                     </t>
-                                    <t t-elif="acq.fees_active">
-                                        <small class="text-muted">(Some fees may apply)</small>
-                                    </t>
-                                </p>
-                                <t t-if="len(acq.payment_icon_ids) &gt; 0">
-                                    <ul class="list-inline">
-                                        <t t-set="i" t-value="0"/>
-                                        <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
-                                            <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
-                                                <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name", "class": "pm-icon m-1"}'/>
-                                            </li>
-                                            <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
-                                                <span class="float-right more_option text-info">
-                                                    <a href="#" class="o_payment_form_pay_icon_more"
-                                                        data-toggle="tooltip"
-                                                        t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">
-                                                        <i class="fa fa-plus"></i>
-                                                    </a>
-                                                </span>
-                                            </li>
-                                            <t t-set="i" t-value="i+1"/>
-                                        </t>
-                                    </ul>
-                                    <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                                </ul>
+                                <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                            </t>
+                        </div>
+                        <t t-if="acq.payment_flow == 'form'">
+                            <div t-attf-id="o_payment_form_acq_{{acq.id}}"
+                                    t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
+                                <label t-if="acq.save_token == 'ask'">
+                                    <input type="checkbox" name="o_payment_form_save_token" data-remove-me=""/>
+                                    Guardar mis datos de pago
+                                </label>
+                                <t t-if="acq.save_token == 'always'">
+                                    <input type="checkbox" name="o_payment_form_save_token" checked="'checked'" class="o_hidden" data-remove-me=""/>
                                 </t>
                             </div>
-                            <t t-if="acq.payment_flow == 'form'">
-                                <div t-attf-id="o_payment_form_acq_{{acq.id}}"
-                                        t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
-                                    <label t-if="acq.save_token == 'ask'">
-                                        <input type="checkbox" name="o_payment_form_save_token" data-remove-me=""/>
-                                        Guardar mis datos de pago
-                                    </label>
-                                    <t t-if="acq.save_token == 'always'">
-                                        <input type="checkbox" name="o_payment_form_save_token" checked="'checked'" class="o_hidden" data-remove-me=""/>
+                        </t>
+                        <t t-else="acq.payment_flow == 's2s'">
+                            <div t-attf-id="o_payment_add_token_acq_{{acq.id}}"
+                                    t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
+                                <div class="clearfix">
+                                    <input type="hidden" t-if="(verify_validity==True or mode == 'manage') and acq.check_validity" name="verify_validity" t-att-value="acq.check_validity"/>
+                                    <t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
+                                        <t t-set="id" t-value="acq.id"/>
+                                        <t t-set="partner_id" t-value="partner_id"/>
+                                        <t t-if="not return_url" t-set="return_url" t-value="''"/>
                                     </t>
                                 </div>
-                            </t>
-                            <t t-else="acq.payment_flow == 's2s'">
-                                <div t-attf-id="o_payment_add_token_acq_{{acq.id}}"
-                                        t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
-                                    <div class="clearfix">
-                                        <input type="hidden" t-if="(verify_validity==True or mode == 'manage') and acq.check_validity" name="verify_validity" t-att-value="acq.check_validity"/>
-                                        <t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
-                                            <t t-set="id" t-value="acq.id"/>
-                                            <t t-set="partner_id" t-value="partner_id"/>
-                                            <t t-if="not return_url" t-set="return_url" t-value="''"/>
-                                        </t>
-                                    </div>
-                                </div>
-                            </t>
+                            </div>
                         </t>
-                        <t t-foreach="pms" t-as="pm">
-                            <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                                <div class="card-body o_payment_acquirer_select">
-                                    <label>
-                                        <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                        <span class="payment_option_name" t-esc="pm.name"/>
-                                        <t t-if="pm.verified">
-                                            <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
-                                        </t>
-                                        <t t-else="">
-                                            <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                        </t>
-                                    </label>
-                                    <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
-                                        <i class="fa fa-trash"></i> Eliminar
-                                    </button>
-                                </div>
-                            </t>
+                    </t>
+                    <t t-foreach="pms" t-as="pm">
+                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                            <div class="card-body o_payment_acquirer_select">
+                                <label>
+                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                    <span class="payment_option_name" t-esc="pm.name"/>
+                                    <t t-if="pm.verified">
+                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                    </t>
+                                    <t t-else="">
+                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                    </t>
+                                </label>
+                                <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+                                    <i class="fa fa-trash"></i> Eliminar
+                                </button>
+                            </div>
                         </t>
-                    </div>
-
-                    <!-- <div class="row">
-                        <div class="col-12 col-md-12 col-xl-12">
-                            <script src="https://www.google.com/recaptcha/api.js"></script>
-                            <div class="g-recaptcha" data-sitekey="6LfG4i0aAAAAACNEHaB__-dsJ5i8cIzvRuguz-IE"></div>
-                            <div class="help-block with-errors" id="err" style='color: red'></div>
-                        </div>
-                    </div> -->                   
+                    </t>
                 </div>
+
+                <!-- <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <script src="https://www.google.com/recaptcha/api.js"></script>
+                        <div class="g-recaptcha" data-sitekey="6LfG4i0aAAAAACNEHaB__-dsJ5i8cIzvRuguz-IE"></div>
+                        <div class="help-block with-errors" id="err" style='color: red'></div>
+                    </div>
+                </div> -->
             </div>
-        </xpath>        
-
-        <xpath expr="//a[@role='button']" position="replace">
-            <div t-if='back_button_txt' class="float-left mt-2">
-                <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-warning'">
-                    <i t-if="back_button_icon_class" t-attf-class="fa fa-shopping-cart"/>
-                    <t t-esc="back_button_txt"/>
-                </a>
             </div>
-        </xpath>
-
-        <xpath expr="//button[@id='o_payment_form_pay']" position="replace">
-            <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
-                <t t-if="submit_txt">
-                    <i t-if="icon_class and not icon_right" t-attf-class="fa fa-bolt"/>
-                    <i t-if="icon_class and icon_right" t-attf-class="fa fa-bolt"/>
-                    <t t-esc="submit_txt"/>
-
-                </t>
-                <t t-else="">
-                    <i class="fa fa-lock"/> Pay
-                </t>
-            </button>
-            <t t-if="show_manage_btn">
-                <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
-            </t>
-            <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="btn btn-primary btn-lg mb8 mt8">
-                <i class="fa fa-plus-circle"/> Add new card
-            </button>
-        </xpath>
     </template>
+
+    <template id="shopping_cart_button_imagen">
+        <div t-if='back_button_txt' class="float-left mt-2">
+            <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-warning'">
+                <i t-if="back_button_icon_class" t-attf-class="fa fa-shopping-cart"/>
+                <t t-esc="back_button_txt"/>
+            </a>
+        </div>
+    </template>
+
+    <template id="payment_form_pay_imagen">
+        <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+            <t t-if="submit_txt">
+                <i t-if="icon_class and not icon_right" t-attf-class="fa fa-bolt"/>
+                <i t-if="icon_class and icon_right" t-attf-class="fa fa-bolt"/>
+                <t t-esc="submit_txt"/>
+
+            </t>
+            <t t-else="">
+                <i class="fa fa-lock"/> Pay
+            </t>
+        </button>
+        <t t-if="show_manage_btn">
+            <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
+        </t>
+        <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="btn btn-primary btn-lg mb8 mt8">
+            <i class="fa fa-plus-circle"/> Add new card
+        </button>
+    </template>
+
     <template id="payment_imagen">
         <div class="detail-sale ds-st" id="payment-page">
             <div class="c-container">

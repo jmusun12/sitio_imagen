@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assets_imagen_css" name="CSS Sitio Imagen">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/js/slick/slick.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/js/slick/slick-theme.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-responsive.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/animation-shop.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/shop-nav.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/scroll_pagination.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/landing.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sitio_imagen/static/src/scss/landing_leolandia.scss"/>
+    </template>
+
+    <template id="assets_imagen_js" name="JS Sitio Imagen">
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/slick/slick.js"></script>
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/scroll_pagination.js"></script>
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/shop.js"></script>
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/bodymovin.js"></script>
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/shop_utils.js"></script>
+        <script type="text/javascript" src="/sitio_imagen/static/src/js/landing.js"></script>
+    </template>
+</odoo>

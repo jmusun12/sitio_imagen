@@ -1,12 +1,12 @@
 {
-	'name':'Tema imagen',
-  	'description': 'Tema personalizado para imagen',
+	'name':'Sitio Imagen',
+  	'description': 'Sitio web para imagen',
   	'version':'1.0',
   	'author':'Imagen',
 	'data': [
+		'views/assets_imagen.xml',
 		'views/headers.xml',
         'views/footer.xml',
-        'views/templates.xml',
         'views/shop_page.xml',
         'views/product.xml',
         'views/cart_page.xml',
@@ -20,16 +20,17 @@
 		'views/template_email.xml',
 		'views/tmp_code_error.xml',
 		'views/kit_leolandia.xml',
-		'views/thanks_transfer.xml'
+		'views/thanks_transfer.xml',
+		'views/thanks.xml',
+		'views/recommended_products.xml'
 	],
-  	'category': 'Theme/Creative',
   	'depends': [
-		  'website', 
-		  'website_theme_install', 
-		  'sale', 
-		  'website_sale', 
-		  'website_sale_delivery', 
-		  'payment',
-		  'website_sale_coupon'
-		],
+		'website',
+        'website_theme_install',
+        'sale',
+        'website_sale',
+        'website_sale_delivery',
+        'payment',
+        'website_sale_coupon'
+	],
 }

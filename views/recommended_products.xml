@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="recommended_products_imagen">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="h-relations-product">PRODUCTOS RELACIONADOS</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="r_products_imagen">
+                    <div class="slider-related-product slider">
+                        <t t-foreach="product.alternative_product_ids" t-as="alt_product">
+                            <t t-set="combination_info" t-value="alt_product._get_combination_info()"/>
+                            <t t-set="product_variant" t-value="alt_product.env['product.product'].browse(combination_info['product_id'])"/>
+                            <div class="item-slider">
+                                <div class="related-product">
+                                    <a t-att-href="alt_product.website_url">
+                                        <figure>
+                                            <span t-field="alt_product.image_1920"
+                                                  t-options="{'widget': 'image', 'class': 'product-img', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                            />
+                                        </figure>
+                                        <div class="related-product-data">
+                                            <div class="related-product-info">
+                                                <p class="related-name-product" t-esc="alt_product.name"></p>
+                                                <p class="related-price-product">
+                                                    <span t-esc="combination_info['list_price']"
+                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                    />
+                                                </p>
+                                            </div>
+                                            <div class="related-product-link">
+                                                <form class="related-form-add-cart hvr-pulse-grow" t-if="alt_product._is_add_to_cart_possible()" action="/shop/cart/update" method="POST">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                                    <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
+                                                    <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
+                                                    <a class="related-a-add-cart" href="#">
+                                                        <img class="related-img-add-cart" src="/sitio_imagen/static/src/img/cart-white.png" alt=""/>
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

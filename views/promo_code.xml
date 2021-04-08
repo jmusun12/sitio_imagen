@@ -20,19 +20,17 @@
         </xpath>
     </template>
     
-    <template id="form_code_promo_imagen" inherit_id="website_sale.coupon_form">
-        <xpath expr="//form[@name='coupon_code']" position="replace">
-            <form t-att-action="'/shop/pricelist%s' % (redirect and '?r=' + redirect or '')"
-                method="post" name="coupon_code">
-                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-                <div class="input-group w-100">
-                    <input name="promo" class="form-control" type="text" placeholder="código..." t-att-value="website_sale_order.pricelist_id.code or None"/>
-                    <div class="input-group-append">
-                        <a href="#" role="button" class="btn btn-secondary a-submit btn-custom">Aplicar</a>
-                    </div>
+    <template id="form_code_promo_imagen">
+        <form t-att-action="'/shop/pricelist%s' % (redirect and '?r=' + redirect or '')"
+            method="post" name="coupon_code">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+            <div class="input-group w-100">
+                <input name="promo" class="form-control" type="text" placeholder="código..." t-att-value="website_sale_order.pricelist_id.code or None"/>
+                <div class="input-group-append">
+                    <a href="#" role="button" class="btn btn-secondary a-submit btn-custom">Aplicar</a>
                 </div>
-            </form>
-        </xpath>
+            </div>
+        </form>
     </template>
 
     <template id="invoice_address_cupon" inherit_id="sitio_imagen.invoice_address">
