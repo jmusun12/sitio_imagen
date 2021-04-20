@@ -30,7 +30,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 3)], limit=1)
+        category = Category.search([('code', '=', 'cat_0_1')], limit=1)
 
         """
         if ppg:
@@ -248,7 +248,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 4)], limit=1)
+        category = Category.search([('code', '=', 'cat_2_4')], limit=1)
 
         """
         if ppg:
@@ -351,7 +351,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 2)], limit=1)
+        category = Category.search([('code', '=', 'cat_4_5')], limit=1)
 
         """
         if ppg:
@@ -454,7 +454,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 7)], limit=1)
+        category = Category.search([('code', '=', 'cat_6_7')], limit=1)
 
         """
         if ppg:
@@ -557,7 +557,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 8)], limit=1)
+        category = Category.search([('code', '=', 'cat_8_9')], limit=1)
 
         """
         if ppg:
@@ -660,7 +660,7 @@ class WebSiteSaleInherit(WebsiteSale):
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
 
-        category = Category.search([('id', '=', 5)], limit=1)
+        category = Category.search([('code', '=', 'cat_10_12')], limit=1)
 
         """
         if ppg:

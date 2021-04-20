@@ -31,6 +31,7 @@
         'website_sale',
         'website_sale_delivery',
         'payment',
-        'website_sale_coupon'
+        'website_sale_coupon',
+		'website_imagen'
 	],
 }
