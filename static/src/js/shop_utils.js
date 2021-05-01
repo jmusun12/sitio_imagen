@@ -139,7 +139,7 @@ odoo.define('sitio_imagen.cart_imagen', function(require){
         _onClickRemoveProduct: function(ev) {
             ev.preventDefault();
 
-            var $input = $(ev.currentTarget).parents('div.item-product-cart').find('input#input-quantity-line');
+            var $input = $(ev.currentTarget).parents('div.item-product-cart').find('input.quantity-line');
             var product= $input.data('product-id');
             var line_id = $input.data('line-id');
             // var qty = $('#input-quantity-line').val();
