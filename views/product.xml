@@ -70,17 +70,17 @@
                                             </h2>
                                         </div>
                                     </div>
-                                    <form class="form-add-cart" t-if="product._is_add_to_cart_possible()" action="/shop/cart/update" method="POST">
+                                    <form class="form-add-cart" t-if="product._is_add_to_cart_possible()" action="/shop/cart/update_website" method="POST">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                         <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
                                         <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
 
                                         <div class="row add-to-cart">
                                             <div class="col-12 col-md-12 col-xl-6 product-qty mb-2 pl-3">
-                                                <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-minus js_add_cart_json">
+                                                <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-minus">
                                                     <i class="fas fa-minus"></i>
                                                 </a>
-                                                <input class="btn btn-default btn-lg btn-qty input-qty quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+                                                <input type="number" class="btn btn-default btn-lg btn-qty input-qty quantity" min="1" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
                                                 <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-plus js_add_cart_json">
                                                     <i class="fas fa-plus"></i>
                                                 </a>
@@ -88,13 +88,13 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 col-md-12 col-xl-6">
-                                                <a class="btn btn-warning a-btn-img btn-md mr-1 mb-2 hvr-pulse-grow a-submit">
+                                                <a class="btn btn-warning a-btn-img btn-md mr-1 mb-2 hvr-pulse-grow add-cart-website">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span class="ml-2 text-button-buy">Agregar al carrito</span>
                                                 </a>
                                             </div>
                                             <div class="col-12 col-md-12 col-xl-6">
-                                                <a href="#" id="buy_now" class="btn btn-primary-img btn-md mr-1 mb-2 hvr-buzz-out text-button-buy a-btn-img p-12">
+                                                <a href="#" class="btn btn-primary-img btn-md mr-1 mb-2 hvr-buzz-out text-button-buy a-btn-img p-12 buy-now-website">
                                                     <i class="fa fa-bolt"/>
                                                     Comprar ahora
                                                 </a>
@@ -107,17 +107,17 @@
                                 <div class="col-md-12 mt-3">
                                     <ul class="nav nav-tabs" id="tab-product" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link text-nav-tab" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="false">Descripción</a>
+                                            <a class="nav-link active text-nav-tab" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="false">Descripción</a>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <a class="nav-link text-nav-tab" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Información</a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link active text-nav-tab" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="true">Comentarios</a>
+                                            <a class="nav-link text-nav-tab" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="true">Comentarios</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="tab-product-content">
-                                        <div class="tab-pane fade p-3" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                        <div class="tab-pane fade p-3 active show" id="description" role="tabpanel" aria-labelledby="description-tab">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <h5 class="h-general-description">DESCRIPCION DEL PRODUCTO</h5>
@@ -174,7 +174,7 @@
                                         <div class="tab-pane fade p-3" id="info" role="tabpanel" aria-labelledby="info-tab">
                                             <t t-call="sitio_imagen.tab_features_product"/>
                                         </div>
-                                        <div class="tab-pane fade show active pt-4 pl-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                        <div class="tab-pane fade pt-4 pl-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                             <div class="row">
                                                 <div class="col-12 col-md-12 col-xl-12">
                                                     <t t-call="portal.message_thread">
@@ -195,10 +195,16 @@
                     </div>
                 </div>
 
+                <div id="loading_website" class="d-none">
+                    <div id="spinner_website" class="spinner-border text-warning" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+
                 <script type="text/javascript">
                     document.body.classList.add('page');
                 </script>
             </t>
         </xpath>
     </template>
-</odoo>     
+</odoo>

@@ -210,12 +210,70 @@ odoo.define('sitio_imagen.product_imagen', function(require){
     var publicWidget = require('web.public.widget');
 
     publicWidget.registry.websiteProductImagen = publicWidget.Widget.extend({
-        selector: '#detail-product',
+        selector: '.detail-product',
         events:  {
             'click #delete_product-cart': '_onClickRemoveProduct',
             'click #a-minus-qty': '_onClickMinusQty',
-            'click #a-plus-qty': '_onClickPlusQty'
+            'click #a-plus-qty': '_onClickPlusQty',
+            'click .buy-now-website': '_onClickBuyNowWebsite',
+            'click .add-cart-website': '_onClickAddCartWebsite',
         },
+
+        init: function () {
+            this._super.apply(this, arguments);
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        },
+
+        _onClickBuyNowWebsite: function(ev) {
+            ev.preventDefault();
+            var $form = $('form.form-add-cart');
+            $form.submit();
+        },
+
+        _onClickAddCartWebsite: function(ev) {
+            ev.preventDefault();
+
+            var product_id = parseInt($('input.product_id').val());
+            var qty = parseInt($('input.input-qty').val())
+
+            if (qty <=0 ){
+                qty = 1;
+            }
+
+            $('div#loading_website').removeClass('d-none');
+
+            this._rpc({
+                route: '/shop/cart/update_json_website',
+                params: {
+                    product_id: product_id,
+                    set_qty: qty
+                }
+            }).then(function(res) {
+                var current_qty = parseInt($('input.input-qty').val());
+                $('div#loading_website').addClass('d-none');
+                toastr.info('Producto agregado');
+            }).catch(function(err) {
+                console.log(err);
+                $('div#loading_website').addClass('d-none');
+                toastr.error('No se pudo procesar la petición');
+            });
+        }
     });
 });
 
