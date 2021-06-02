@@ -27,7 +27,7 @@
 
         // if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
         // if(((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
-        if(getScrollTop() > getDocumentHeight() - window.innerHeight) {
+        if(((scrollHeight - 500) >= scrollPos) / scrollHeight == 0) {
             if (current_page < pages_number) {
                 if ($('#scrollpagination').attr('pagination') == 'enabled') {
                     current_page += 1;
