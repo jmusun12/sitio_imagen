@@ -7,11 +7,27 @@
     $('#no-more-result').hide();
     var url_get = $('#url_get').val();
 
+    function getDocumentHeight() {
+        const body = document.body;
+        const html = document.documentElement;
+
+        return Math.max(
+            body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+    };
+
+    function getScrollTop() {
+        return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    }
+
     $(window).on('scroll', function() {
         var scrollHeight = $(document).height();
         var scrollPos = $(window).height() + $(window).scrollTop();
 
-        if(((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
+        // if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
+        // if(((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
+        if(getScrollTop() > getDocumentHeight() - window.innerHeight) {
             if (current_page < pages_number) {
                 if ($('#scrollpagination').attr('pagination') == 'enabled') {
                     current_page += 1;
