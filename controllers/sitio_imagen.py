@@ -42,7 +42,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -240,7 +240,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -343,7 +343,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -446,7 +446,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -549,7 +549,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 
@@ -652,7 +652,7 @@ class WebSiteSaleInherit(WebsiteSale):
         if not ppg:
             ppg = 3
         """
-        ppg = 9
+        ppg = 12
 
         ppr = request.env['website'].get_current_website().shop_ppr or 4
 

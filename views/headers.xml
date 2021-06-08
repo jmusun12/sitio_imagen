@@ -49,82 +49,92 @@
                         <div class="container childrens">
                             <div class="row">
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop" data-toggle="tooltip" data-placement="top" title="Mis lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop" data-toggle="tooltip"
+                                       data-placement="top" title="Mis lecturas de rechupete">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">0 - 1</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">0 - 1</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4"
+                                       data-toggle="tooltip" data-placement="top"
+                                       title="Leeme, releeme y vuelveme a leer">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">2 - 4</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">2 - 4</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5"
+                                       data-toggle="tooltip" data-placement="top"
+                                       title="Mis historias con varios finales">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">4 - 5</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">4 - 5</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7" data-toggle="tooltip" data-placement="top" title="Mi orgullo de leer">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7"
+                                       data-toggle="tooltip" data-placement="top" title="Mi orgullo de leer">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">6 - 7</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">6 - 7</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9" data-toggle="tooltip" data-placement="top" title="Mi club de lectura">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9"
+                                       data-toggle="tooltip" data-placement="top" title="Mi club de lectura">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">8 - 9</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">8 - 9</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-10-12" data-toggle="tooltip" data-placement="top" title="Soy deboradora de libros">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-10-12"
+                                       data-toggle="tooltip" data-placement="top"
+                                       title="Soy deboradora de libros">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-6 col-xl-6">
+                                                <p class="title-children">10 - 12</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6">
-                                            <p class="title-children">10 - 12</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +154,8 @@
                                 <div class="row">
                                     <div class="col-md-12 col-xl-12">
                                         <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="/shop">
-                                            <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                            <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png"
+                                                 alt="Logo de la empresa"/>
                                         </a>
                                     </div>
                                 </div>
@@ -162,82 +173,94 @@
                                 <div class="container childrens">
                                     <div class="row">
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="#/shop" data-toggle="tooltip" data-placement="top" title="Mis lecturas de rechupete">
+                                            <a class="hvr-buzz-out item-children" href="#/shop"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Mis lecturas de rechupete">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">0 - 1</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">0 - 1</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4" data-toggle="tooltip" data-placement="top" title="Leeme, releeme y vuelveme a leer">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Leeme, releeme y vuelveme a leer">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">2 - 4</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">2 - 4</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5" data-toggle="tooltip" data-placement="top" title="Mis historias con varios finales">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Mis historias con varios finales">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">4 - 5</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">4 - 5</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7" data-toggle="tooltip" data-placement="top" title="Mi orgullo de leer">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Mi orgullo de leer">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">6 - 7</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">6 - 7</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9" data-toggle="tooltip" data-placement="top" title="Mi club de lectura">
+                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Mi club de lectura">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">8 - 9</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">8 - 9</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-2 col-xl-2 text-center">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xl-3">
-                                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-10-12" data-toggle="tooltip" data-placement="top" title="Soy deboradora de libros">
+                                            <a class="hvr-buzz-out item-children"
+                                               href="/shop/libros-chicos-10-12" data-toggle="tooltip"
+                                               data-placement="top" title="Soy deboradora de libros">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xl-3">
                                                         <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
-                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-9 col-xl-9">
+                                                        <p class="title-children">10 - 12</p>
+                                                        <p class="title-children">años</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-9 col-xl-9">
-                                                    <p class="title-children">10 - 12</p>
-                                                    <p class="title-children">años</p>
-                                                </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -282,19 +305,23 @@
                         </li>
                         <li>
                             <a class="a-contact" href="/shop/contact">
-                                <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/contact.png" alt="Contactanos"/>
+                                <img class="hvr-wobble-skew" src="/sitio_imagen/static/src/img/contact.png"
+                                     alt="Contactanos"/>
                                 <p id="p-contact">CONTACTANOS</p>
                             </a>
                         </li>
                     </ul>
                     <ul class="list-rrss">
                         <li>
-                            <a class="hvr-wobble-vertical" href="https://www.facebook.com/ChicosJuguetesEducativos" target="_blank">
+                            <a class="hvr-wobble-vertical" href="https://www.facebook.com/ChicosJuguetesEducativos"
+                               target="_blank">
                                 <img src="/sitio_imagen/static/src/img/facebook.png" alt="Facebook"/>
                             </a>
                         </li>
                         <li>
-                            <a class="hvr-wobble-vertical" href="https://instagram.com/chicosjugueteseducativos?igshid=10rk64rcdh4q" target="_blank">
+                            <a class="hvr-wobble-vertical"
+                               href="https://instagram.com/chicosjugueteseducativos?igshid=10rk64rcdh4q"
+                               target="_blank">
                                 <img src="/sitio_imagen/static/src/img/instagram.png" alt="Instagram"/>
                             </a>
                         </li>
@@ -310,7 +337,8 @@
                         <li>
                             <a href="/shop">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/0-1.png" alt="Mis lecturas de rechupete"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/0-1.png"
+                                         alt="Mis lecturas de rechupete"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">0 - 1 AÑOS</p>
@@ -321,7 +349,8 @@
                         <li>
                             <a href="/shop/libros-chicos-2-4">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/2-4.png" alt="Leeme, releeme y vuelveme a leer"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/2-4.png"
+                                         alt="Leeme, releeme y vuelveme a leer"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">2 - 4 AÑOS</p>
@@ -332,7 +361,8 @@
                         <li>
                             <a href="/shop/libros-chicos-4-5">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/4-5.png" alt="Mis historias con varios finales"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/4-5.png"
+                                         alt="Mis historias con varios finales"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">4 - 5 AÑOS</p>
@@ -343,7 +373,8 @@
                         <li>
                             <a href="/shop/libros-chicos-6-7">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/6-7.png" alt="Mi orgullo de leer"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/6-7.png"
+                                         alt="Mi orgullo de leer"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">6 - 7 AÑOS</p>
@@ -354,7 +385,8 @@
                         <li>
                             <a href="/shop/libros-chicos-8-9">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/8-9.png" alt="Mi club de lecturas"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/8-9.png"
+                                         alt="Mi club de lecturas"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">8 - 9 AÑOS</p>
@@ -365,7 +397,8 @@
                         <li>
                             <a href="/shop/libros-chicos-10-12">
                                 <div class="div-img-etapa">
-                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/10-12.png" alt="Soy deboradora de libros"/>
+                                    <img class="hvr-buzz-out" src="/sitio_imagen/static/src/img/10-12.png"
+                                         alt="Soy deboradora de libros"/>
                                 </div>
                                 <div class="div-data-etapa">
                                     <p class="name-etapa">10 - 12 AÑOS</p>
@@ -402,7 +435,8 @@
                         <div class="row">
                             <div class="col-md-12 col-xl-12">
                                 <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="/shop">
-                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png"
+                                         alt="Logo de la empresa"/>
                                 </a>
                             </div>
                         </div>
@@ -420,82 +454,102 @@
                         <div class="container childrens">
                             <div class="row">
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop" data-toggle="tooltip"
+                                       data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
                                                 <img src="/sitio_imagen/static/src/img/0-1.png" alt=""/>
-                                            </a>
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">0 - 1</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">0 - 1</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-2-4"
+                                       data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+
+                                            <div class="col-md-3 col-xl-3">
+
                                                 <img src="/sitio_imagen/static/src/img/2-4.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">2 - 4</p>
+                                                <p class="title-children">años</p>
+                                            </div>
+
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">2 - 4</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-4-5"
+                                       data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+
+                                            <div class="col-md-3 col-xl-3">
+
                                                 <img src="/sitio_imagen/static/src/img/4-5.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">4 - 5</p>
+                                                <p class="title-children">años</p>
+                                            </div>
+
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">4 - 5</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-6-7"
+                                       data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
+
                                                 <img src="/sitio_imagen/static/src/img/6-7.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">6 - 7</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">6 - 7</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-8-9"
+                                       data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
+
                                                 <img src="/sitio_imagen/static/src/img/8-9.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">8 - 9</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">8 - 9</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-2 col-xl-2 text-center">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xl-3">
-                                            <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-10-12" data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                    <a class="hvr-buzz-out item-children" href="/shop/libros-chicos-10-12"
+                                       data-toggle="tooltip" data-placement="top" title="Lecturas de rechupete">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xl-3">
+
                                                 <img src="/sitio_imagen/static/src/img/10-12.png" alt=""/>
-                                            </a>
+
+                                            </div>
+                                            <div class="col-md-9 col-xl-9">
+                                                <p class="title-children">10 - 12</p>
+                                                <p class="title-children">años</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9 col-xl-9">
-                                            <p class="title-children">10 - 12</p>
-                                            <p class="title-children">años</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -528,12 +582,13 @@
                     <div class="item-product">
                         <div class="item-img">
                             <span t-field="line.product_id.image_128"
-                                  t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max mb-2'}" />
+                                  t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max mb-2'}"/>
                         </div>
                         <div class="item-description">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a class="a-product-name" href="#description-product" data-toggle="collapse" aria-expanded="false" aria-controls="description-product">
+                                    <a class="a-product-name" href="#description-product" data-toggle="collapse"
+                                       aria-expanded="false" aria-controls="description-product">
                                         <span t-esc="line.name_short"/>
                                     </a>
                                 </div>
@@ -560,7 +615,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p id="description-product" class="description-product text-justify collapse" t-esc="line.product_template_id.intro_text">
+                                    <p id="description-product" class="description-product text-justify collapse"
+                                       t-esc="line.product_template_id.intro_text">
                                     </p>
                                 </div>
                             </div>
@@ -574,8 +630,10 @@
                         </t>
                     </span>
                     <a role="button" class="btn btn-primary" href="/shop/cart">
-                       Ver carrito (<t t-esc="website_sale_order.cart_quantity" /> productos)
-                     </a>
+                        Ver carrito (
+                        <t t-esc="website_sale_order.cart_quantity"/>
+                        productos)
+                    </a>
                 </div>
             </t>
         </div>
@@ -594,7 +652,8 @@
                         <div class="row">
                             <div class="col-md-12 col-xl-12">
                                 <a class="a-img-logo-nav-hidden ml-xl-2 mt-xl-1 mt-md-1" href="/shop">
-                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png" alt="Logo de la empresa"/>
+                                    <img class="img-logo ml-xl-2" src="/sitio_imagen/static/src/img/logo.png"
+                                         alt="Logo de la empresa"/>
                                 </a>
                             </div>
                         </div>
@@ -632,13 +691,17 @@
                                         </li>
                                         <li class="nav-item divider" t-ignore="true" t-if="not user_id._is_public()"/>
                                         <li class="nav-item dropdown" t-ignore="true" t-if="not user_id._is_public()">
-                                            <a href="#" class="nav-link dropdown-toggle link-text-portal" data-toggle="dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle link-text-portal"
+                                               data-toggle="dropdown">
                                                 <b>
                                                     <span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
                                                 </b>
                                             </a>
                                             <div class="dropdown-menu js_usermenu link-text-portal" role="menu">
-                                                <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Cerrar sesión</a>
+                                                <a id="o_logout" class="dropdown-item"
+                                                   t-attf-href="/web/session/logout?redirect=/" role="menuitem">Cerrar
+                                                    sesión
+                                                </a>
                                             </div>
                                         </li>
                                     </ul>
@@ -647,16 +710,18 @@
                         </nav>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
 
     </template>
 
     <!--Encabezado para el sitio de imagen-->
     <template id="header_imagen" name="Header Imagen">
-        <t t-set="urls" t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process', '/shop/kit-ludico-matematico', '/shop/kit-email', '/shop/plantilla/', '/shop/curso/registrate']"/>
-<!--         <t t-set="urls_cat" t-value="['http://localhost:8050/shop', 'http://localhost:8050/shop/libros-chicos-2-4', 'http://localhost:8050/shop/libros-chicos-4-5', 'http://localhost:8050/shop/libros-chicos-6-7', 'http://localhost:8050/shop/libros-chicos-8-9', 'http://localhost:8050/shop/libros-chicos-10-12']"/>-->
-                <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', 'http://chicosimagen.com/shop/libros-chicos-2-4', 'http://chicosimagen.com/shop/libros-chicos-4-5', 'http://chicosimagen.com/shop/libros-chicos-6-7', 'http://chicosimagen.com/shop/libros-chicos-8-9', 'http://chicosimagen.com/shop/libros-chicos-10-12']"/>
+        <t t-set="urls"
+           t-value="['/shop/product','/shop/cart','/shop/address','/shop/checkout','/shop/payment','/shop/confirmation','/shop/confirm_order','/shop/extra_info','/shop/terms','/shop/thanks', '/shop/contact', '/payment/process', '/shop/kit-ludico-matematico', '/shop/kit-email', '/shop/plantilla/', '/shop/curso/registrate']"/>
+        <t t-set="urls_cat"
+<!--           t-value="['http://localhost:8050/shop', 'http://localhost:8050/shop/libros-chicos-2-4', 'http://localhost:8050/shop/libros-chicos-4-5', 'http://localhost:8050/shop/libros-chicos-6-7', 'http://localhost:8050/shop/libros-chicos-8-9', 'http://localhost:8050/shop/libros-chicos-10-12']"/>-->
+                        <t t-set="urls_cat" t-value="['http://chicosimagen.com/shop', 'http://chicosimagen.com/shop/libros-chicos-2-4', 'http://chicosimagen.com/shop/libros-chicos-4-5', 'http://chicosimagen.com/shop/libros-chicos-6-7', 'http://chicosimagen.com/shop/libros-chicos-8-9', 'http://chicosimagen.com/shop/libros-chicos-10-12']"/>
         <t t-set="urls_portal" t-value="['/my/orders', '/my/home', '/my/account']"/>
 
         <t t-set="es_portal" t-value="0"/>
@@ -705,7 +770,7 @@
                 </div>
                 <style type="text/css">
                     main {
-                        margin-top: 80px !important;
+                    margin-top: 80px !important;
                     }
                 </style>
             </t>
