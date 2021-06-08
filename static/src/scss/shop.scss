@@ -396,7 +396,7 @@ main {
 }
 
 .shop-page {
-  padding-top: 17.5rem;
+  padding-top: 13.5rem;
 }
 
 .description-page {
@@ -747,7 +747,7 @@ main {
   width: 100%;
   height: 100%;
   z-index: -1;
-  padding-top: 12.5rem !important;
+  padding-top: 12rem !important;
 }
 
 .nav-cart.active {
@@ -777,7 +777,7 @@ main {
   padding: 0px !important;
   width: 25% !important;
   height: 100vh;
-  background-color: white !important;
+  background-color: #ffd00b !important;
   transition: all .5s;
   overflow: scroll;
 }
@@ -1377,3 +1377,15 @@ main {
     display:none;
 }
 
+.delivery-message {
+    font-family: 'Neris-SemiBold';
+    color: #007bff !important;
+}
+
+.bg-blue-website {
+    background-color: #1757F9 !important;
+}
+
+.border-radius125{
+    border-radius: 1.25rem !important;
+}
