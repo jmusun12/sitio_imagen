@@ -24,11 +24,12 @@ _logger = logging.getLogger(__name__)
 
 
 class WebSiteSaleInherit(WebsiteSale):
-    def _get_shop_values(self, category_code, page, url_get, svg, post):
+    def _get_shop_values(self, category_code, current_page, url_get, svg, post):
         Category = request.env['product.public.category']
         Product = request.env['product.template'].with_context(bin_size=True)
         item_x_page = 12
         offset = 0
+        page = int(current_page)
 
         if page == 0:
             page = 1
@@ -70,7 +71,8 @@ class WebSiteSaleInherit(WebsiteSale):
             'url_get': url_get,
             'id_svg': svg,
             'page': page,
-            'pages_count': pages_count
+            'pages_count': pages_count,
+            'product_count': products_count
         }
 
         if category:
