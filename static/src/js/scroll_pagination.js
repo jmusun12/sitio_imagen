@@ -35,7 +35,7 @@
                         type: 'GET',
                         url: url_get,
                         data: {
-                            'ppg': 9,
+                            'ppg': 12,
                             'page': current_page,
                             'xhr': 1
                         },
