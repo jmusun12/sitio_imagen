@@ -43,8 +43,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
         domain = [
             ('public_categ_ids', 'in', cat_ids),
-            ('website_id', '=', request.website.id),
-            ('company_id', '=', request.website.company_id.id)
+            ('website_id', '=', request.website.id)
         ]
 
         products_count = Product.search_count(domain)
