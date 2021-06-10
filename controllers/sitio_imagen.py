@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+import math
 import json
 import base64
 import io
@@ -23,97 +24,51 @@ _logger = logging.getLogger(__name__)
 
 
 class WebSiteSaleInherit(WebsiteSale):
-    @http.route()
-    def shop(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
+    def _get_shop_values(self, category_code, page, url_get, svg, post):
         Category = request.env['product.public.category']
+        Product = request.env['product.template'].with_context(bin_size=True)
+        item_x_page = 12
+        offset = 0
 
-        category = Category.search([('code', '=', 'cat_0_1')], limit=1)
+        if page == 0:
+            page = 1
 
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
+        if page > 1:
+            offset = item_x_page * page
 
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
+        category = Category.search([('code', '=', category_code)], limit=1)
+        cat_ids = category.child_id.ids
+        cat_ids.append(category.id)
 
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
+        domain = [
+            ('public_categ_ids', 'in', cat_ids),
+            ('website_id', '=', request.website.id),
+            ('company_id', '=', request.website.company_id.id)
+        ]
 
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
+        products_count = Product.search_count(domain)
+        pages_count = int(math.ceil(products_count / item_x_page))
+        products = Product.search(domain, offset=offset, limit=item_x_page)
 
         url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
         if category:
             url = "/shop/category/%s" % slug(category)
 
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
+        pager = request.website.pager(url=url, total=products_count, page=page, step=item_x_page, scope=pages_count,
+                                      url_args=post)
+        attrib_list = request.httprequest.args.getlist('attrib')
+        keep = QueryURL('/shop', category=category and int(category), search='', attrib=attrib_list,
+                        order=post.get('order'))
 
         values = {
-            'search': search,
+            'search': '',
             'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
             'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
+            'add_qty': 1,
             'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
             'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop',
-            'id_svg': 'green_cloud'
+            'url_get': url_get,
+            'id_svg': svg
         }
 
         if category:
@@ -124,6 +79,10 @@ class WebSiteSaleInherit(WebsiteSale):
                                   headers={'Cache-Control': 'no-cache'})
 
         return request.render("website_sale.products", values)
+
+    @http.route()
+    def shop(self, page=0, category=None, search='', ppg=False, **post):
+        return self._get_shop_values('cat_0_1', page, '/shop', 'green_cloud', post)
 
     @http.route(['''/shop/cart''', '''/shop/cart/<string:access_token>'''], type='http', auth="public",
                 website=True, sitemap=False)
@@ -223,517 +182,27 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['''/shop/libros-chicos-2-4''', '''/shop/libros-chicos-2-4/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_2_4(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
-        Category = request.env['product.public.category']
-
-        category = Category.search([('code', '=', 'cat_2_4')], limit=1)
-
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
-
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
-
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
-
-        url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
-        if category:
-            url = "/shop/category/%s" % slug(category)
-
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
-
-        values = {
-            'search': search,
-            'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
-            'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
-            'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-2-4',
-            'id_svg': 'yellow_cloud'
-        }
-
-        if category:
-            values['main_object'] = category
-
-        if post.get('xhr'):
-            return request.render("sitio_imagen.content_product_imagen", values,
-                                  headers={'Cache-Control': 'no-cache'})
-
-        return request.render("website_sale.products", values)
+        return self._get_shop_values('cat_2_4', page, '/shop/libros-chicos-2-4', 'yellow_cloud', post)
 
     @http.route(['''/shop/libros-chicos-4-5''', '''/shop/libros-chicos-4-5/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_4_5(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
-        Category = request.env['product.public.category']
-
-        category = Category.search([('code', '=', 'cat_4_5')], limit=1)
-
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
-
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
-
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
-
-        url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
-        if category:
-            url = "/shop/category/%s" % slug(category)
-
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
-
-        values = {
-            'search': search,
-            'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
-            'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
-            'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-4-5',
-            'id_svg': 'pink_cloud'
-        }
-
-        if category:
-            values['main_object'] = category
-
-        if post.get('xhr'):
-            return request.render("sitio_imagen.content_product_imagen", values,
-                                  headers={'Cache-Control': 'no-cache'})
-
-        return request.render("website_sale.products", values)
+        return self._get_shop_values('cat_4_5', page, '/shop/libros-chicos-4-5', 'pink_cloud', post)
 
     @http.route(['''/shop/libros-chicos-6-7''', '''/shop/libros-chicos-6-7/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_6_7(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
-        Category = request.env['product.public.category']
-
-        category = Category.search([('code', '=', 'cat_6_7')], limit=1)
-
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
-
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
-
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
-
-        url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
-        if category:
-            url = "/shop/category/%s" % slug(category)
-
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
-
-        values = {
-            'search': search,
-            'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
-            'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
-            'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-6-7',
-            'id_svg': 'violet_cloud'
-        }
-
-        if category:
-            values['main_object'] = category
-
-        if post.get('xhr'):
-            return request.render("sitio_imagen.content_product_imagen", values,
-                                  headers={'Cache-Control': 'no-cache'})
-
-        return request.render("website_sale.products", values)
+        return self._get_shop_values('cat_6_7', page, '/shop/libros-chicos-6-7', 'violet_cloud', post)
 
     @http.route(['''/shop/libros-chicos-8-9''', '''/shop/libros-chicos-8-9/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_8_9(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
-        Category = request.env['product.public.category']
-
-        category = Category.search([('code', '=', 'cat_8_9')], limit=1)
-
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
-
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
-
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
-
-        url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
-        if category:
-            url = "/shop/category/%s" % slug(category)
-
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
-
-        values = {
-            'search': search,
-            'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
-            'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
-            'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-8-9',
-            'id_svg': 'blue_cloud'
-        }
-
-        if category:
-            values['main_object'] = category
-
-        if post.get('xhr'):
-            return request.render("sitio_imagen.content_product_imagen", values,
-                                  headers={'Cache-Control': 'no-cache'})
-
-        return request.render("website_sale.products", values)
+        return self._get_shop_values('cat_8_9', page, '/shop/libros-chicos-8-9', 'blue_cloudd', post)
 
     @http.route(['''/shop/libros-chicos-10-12''', '''/shop/libros-chicos-10-12/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_10_12(self, page=0, category=None, search='', ppg=False, **post):
-        print('shop override')
-
-        add_qty = int(post.get('add_qty', 1))
-        Category = request.env['product.public.category']
-
-        category = Category.search([('code', '=', 'cat_10_12')], limit=1)
-
-        """
-        if ppg:
-            try:
-                ppg = int(ppg)
-                post['ppg'] = ppg
-            except ValueError:
-                ppg = False
-        if not ppg:
-            ppg = 3
-        """
-        ppg = 12
-
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
-
-        attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
-        attributes_ids = {v[0] for v in attrib_values}
-        attrib_set = {v[1] for v in attrib_values}
-
-        domain = self._get_search_domain(search, category, attrib_values)
-
-        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list,
-                        order=post.get('order'))
-
-        pricelist_context, pricelist = self._get_pricelist_context()
-
-        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
-
-        url = "/shop"
-        if search:
-            post["search"] = search
-        if attrib_list:
-            post['attrib'] = attrib_list
-
-        Product = request.env['product.template'].with_context(bin_size=True)
-
-        search_product = Product.search(domain, order=self._get_search_order(post))
-        website_domain = request.website.website_domain()
-        categs_domain = [('parent_id', '=', False)] + website_domain
-
-        if search:
-            search_categories = Category.search(
-                [('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
-            categs_domain.append(('id', 'in', search_categories.ids))
-        else:
-            search_categories = Category
-
-        categs = Category.search(categs_domain)
-
-        if category:
-            url = "/shop/category/%s" % slug(category)
-
-        product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
-        offset = pager['offset']
-        products = search_product[offset: offset + ppg]
-
-        ProductAttribute = request.env['product.attribute']
-        if products:
-            # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            attributes = ProductAttribute.browse(attributes_ids)
-
-        values = {
-            'search': search,
-            'category': category,
-            'attrib_values': attrib_values,
-            'attrib_set': attrib_set,
-            'pager': pager,
-            'pricelist': pricelist,
-            'add_qty': add_qty,
-            'products': products,
-            'search_count': product_count,  # common for all searchbox
-            'ppg': ppg,
-            'ppr': ppr,
-            'categories': categs,
-            'attributes': attributes,
-            'keep': keep,
-            'search_categories_ids': search_categories.ids,
-            'url_get': '/shop/libros-chicos-10-12',
-            'id_svg': 'orange_cloud'
-        }
-
-        if category:
-            values['main_object'] = category
-
-        if post.get('xhr'):
-            return request.render("sitio_imagen.content_product_imagen", values,
-                                  headers={'Cache-Control': 'no-cache'})
-
-        return request.render("website_sale.products", values)
+        return self._get_shop_values('cat_10_12', page, '/shop/libros-chicos-10-12', 'orange_cloud', post)
 
     @http.route()
     def print_saleorder(self, **kwargs):

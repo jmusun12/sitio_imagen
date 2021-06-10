@@ -28,119 +28,30 @@
         </div>
     </template>
 
-    <template id="product_imagen">
-        <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale ecom-zoomable zoomodoo-next ecom-zoomable zoomodoo-next" data-ecom-zoom-auto="1">
-            <div class="detail-product oe_website_sale">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <t t-call="website_sale.shop_product_carousel"/>
-                        </div>
-                        <div class="col-md-6">
+    <template id="product_imagen" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-if="website.code == 'IMG'">
+                <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale ecom-zoomable zoomodoo-next ecom-zoomable zoomodoo-next" data-ecom-zoom-auto="1">
+                    <div class="detail-product oe_website_sale">
+                        <div class="container">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="d-name-product text-capitalize">
-                                        <span t-field="product.name"/>
-                                    </h1>
-                                    <p class="mb-2 text-muted text-uppercase small">
-                                        <span t-esc="product.categ_id.name"/>
-                                    </p>
+                                <div class="col-md-6">
+                                    <t t-call="website_sale.shop_product_carousel"/>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="small-description text-justify" t-esc="product.intro_text"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-12 col-xl-12">
-                                    <span class="sr-only">Four out of Five Stars</span>
-                                    <i class="fas fa-star bg-start-span"></i>
-                                    <i class="fas fa-star bg-start-span"></i>
-                                    <i class="fas fa-star bg-start-span"></i>
-                                    <i class="fas fa-star bg-start-span"></i>
-                                    <i class="far fa-star bg-start-span"></i>
-                                    <span class="label label-success">(61)</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 bottom-rule">
-                                    <h2 class="product-price">
-                                        <span t-esc="combination_info['list_price']"
-                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
-                                        />
-                                    </h2>
-                                </div>
-                            </div>
-                            <form class="form-add-cart" t-if="product._is_add_to_cart_possible()"
-                                  action="/shop/cart/update_website" method="POST">
-                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                <input type="hidden" class="product_id" name="product_id"
-                                       t-att-value="product_variant.id"/>
-                                <input type="hidden" class="product_template_id" name="product_template_id"
-                                       t-att-value="product.id"/>
-
-                                <div class="row add-to-cart">
-                                    <div class="col-12 col-md-12 col-xl-6 product-qty mb-2 pl-3">
-                                        <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-minus">
-                                            <i class="fas fa-minus"></i>
-                                        </a>
-                                        <input type="number" class="btn btn-default btn-lg btn-qty input-qty quantity"
-                                               min="1" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
-                                        <a t-attf-href="#"
-                                           class="btn btn-default btn-lg btn-qty btn-qty-plus js_add_cart_json">
-                                            <i class="fas fa-plus"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-12 col-xl-6">
-                                        <a class="btn btn-warning a-btn-img btn-md mr-1 mb-2 hvr-pulse-grow add-cart-website">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            <span class="ml-2 text-button-buy">Agregar al carrito</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-12 col-md-12 col-xl-6">
-                                        <a href="#"
-                                           class="btn btn-primary-img btn-md mr-1 mb-2 hvr-buzz-out text-button-buy a-btn-img p-12 buy-now-website">
-                                            <i class="fa fa-bolt"/>
-                                            Comprar ahora
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <ul class="nav nav-tabs" id="tab-product" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active text-nav-tab" id="description-tab" data-toggle="tab"
-                                       href="#description" role="tab" aria-controls="description" aria-selected="false">
-                                        Descripción
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link text-nav-tab" id="info-tab" data-toggle="tab" href="#info"
-                                       role="tab" aria-controls="info" aria-selected="false">Información
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link text-nav-tab" id="reviews-tab" data-toggle="tab" href="#reviews"
-                                       role="tab" aria-controls="reviews" aria-selected="true">Comentarios
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tab-product-content">
-                                <div class="tab-pane fade p-3 active show" id="description" role="tabpanel"
-                                     aria-labelledby="description-tab">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h5 class="h-general-description">DESCRIPCION DEL PRODUCTO</h5>
+                                            <h1 class="d-name-product text-capitalize"><span t-field="product.name"/></h1>
+                                            <p class="mb-2 text-muted text-uppercase small"><span t-esc="product.categ_id.name"/></p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <p class="small-description text-justify" t-esc="product.intro_text"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 col-xl-12">
                                             <span class="sr-only">Four out of Five Stars</span>
                                             <i class="fas fa-star bg-start-span"></i>
                                             <i class="fas fa-star bg-start-span"></i>
@@ -151,77 +62,149 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-justify text-description-product"
-                                               t-esc="product.description">
-                                            </p>
+                                        <div class="col-md-12 bottom-rule">
+                                            <h2 class="product-price">
+                                                <span t-esc="combination_info['list_price']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                />
+                                            </h2>
                                         </div>
                                     </div>
+                                    <form class="form-add-cart" t-if="product._is_add_to_cart_possible()" action="/shop/cart/update_website" method="POST">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                        <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
+                                        <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
 
-                                    <!--
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h5 class="h-general-description">OBJETIVO DEL LIBRO</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-justify text-description-product">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a class="text-extra-info" data-toggle="collapse" href="#collapseExtra" role="button" aria-expanded="false" aria-controls="collapseExtra">
-                                                Mas..
-                                            </a>
-                                            <div class="collapse text-extra-info" id="collapseExtra">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        <div class="row add-to-cart">
+                                            <div class="col-12 col-md-12 col-xl-6 product-qty mb-2 pl-3">
+                                                <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-minus">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                                <input type="number" class="btn btn-default btn-lg btn-qty input-qty quantity" min="1" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+                                                <a t-attf-href="#" class="btn btn-default btn-lg btn-qty btn-qty-plus js_add_cart_json">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
                                             </div>
                                         </div>
-                                    </div>
-                                    -->
+                                        <div class="row">
+                                            <div class="col-12 col-md-12 col-xl-6">
+                                                <a class="btn btn-warning a-btn-img btn-md mr-1 mb-2 hvr-pulse-grow add-cart-website">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <span class="ml-2 text-button-buy">Agregar al carrito</span>
+                                                </a>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-xl-6">
+                                                <a href="#" class="btn btn-primary-img btn-md mr-1 mb-2 hvr-buzz-out text-button-buy a-btn-img p-12 buy-now-website">
+                                                    <i class="fa fa-bolt"/>
+                                                    Comprar ahora
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="tab-pane fade p-3" id="info" role="tabpanel" aria-labelledby="info-tab">
-                                    <t t-call="sitio_imagen.tab_features_product"/>
-                                </div>
-                                <div class="tab-pane fade pt-4 pl-4" id="reviews" role="tabpanel"
-                                     aria-labelledby="reviews-tab">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12 col-xl-12">
-                                            <t t-call="portal.message_thread">
-                                                <t t-set="object" t-value="product"/>
-                                                <t t-set="display_rating" t-value="True"/>
-                                            </t>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <ul class="nav nav-tabs" id="tab-product" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active text-nav-tab" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="false">Descripción</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link text-nav-tab" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Información</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link text-nav-tab" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="true">Comentarios</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="tab-product-content">
+                                        <div class="tab-pane fade p-3 active show" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5 class="h-general-description">DESCRIPCION DEL PRODUCTO</h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12"><span class="sr-only">Four out of Five Stars</span>
+                                                    <i class="fas fa-star bg-start-span"></i>
+                                                    <i class="fas fa-star bg-start-span"></i>
+                                                    <i class="fas fa-star bg-start-span"></i>
+                                                    <i class="fas fa-star bg-start-span"></i>
+                                                    <i class="far fa-star bg-start-span"></i>
+                                                    <span class="label label-success">(61)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-justify text-description-product" t-esc="product.description">
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!--
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5 class="h-general-description">OBJETIVO DEL LIBRO</h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-justify text-description-product">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <a class="text-extra-info" data-toggle="collapse" href="#collapseExtra" role="button" aria-expanded="false" aria-controls="collapseExtra">
+                                                        Mas..
+                                                    </a>
+                                                    <div class="collapse text-extra-info" id="collapseExtra">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                        <div class="tab-pane fade p-3" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                            <t t-call="sitio_imagen.tab_features_product"/>
+                                        </div>
+                                        <div class="tab-pane fade pt-4 pl-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-xl-12">
+                                                    <t t-call="portal.message_thread">
+                                                        <t t-set="object" t-value="product"/>
+                                                        <t t-set="display_rating" t-value="True"/>
+                                                    </t>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <t t-if="len(product.alternative_product_ids) &gt; 0">
+                            <t t-call="sitio_imagen.recommended_products_imagen"/>
+                        </t>
                     </div>
                 </div>
 
-                <t t-if="len(product.alternative_product_ids) &gt; 0">
-                    <t t-call="sitio_imagen.recommended_products_imagen"/>
-                </t>
-            </div>
-        </div>
+                <div id="loading_website" class="d-none">
+                    <div id="spinner_website" class="spinner-border text-warning" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
 
-        <div id="loading_website" class="d-none">
-            <div id="spinner_website" class="spinner-border text-warning" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-
-        <script type="text/javascript">
-            document.body.classList.add('page');
-        </script>
+                <script type="text/javascript">
+                    document.body.classList.add('page');
+                </script>
+            </t>
+        </xpath>
     </template>
 </odoo>
