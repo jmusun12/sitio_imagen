@@ -65,7 +65,7 @@ class WebSiteSaleInherit(WebsiteSale):
 
         Product = request.env['product.template'].with_context(bin_size=True)
 
-        search_product = Product.search(domain, order=self._get_search_order(post))
+        search_product = Product.search(domain, order='website_sequence ASC')
         website_domain = request.website.website_domain()
         categs_domain = [('parent_id', '=', False)] + website_domain
 
