@@ -114,8 +114,6 @@ class WebSiteSaleInherit(WebsiteSale):
             'search_categories_ids': search_categories.ids,
             'url_get': url_get,
             'id_svg': svg,
-            'products_count':  products_count,
-            'pages_count': pages_count
         }
 
         if category:
