@@ -77,7 +77,7 @@
 
                 <!--scrollpagination-->
                 <div id="scrollpagination">
-                    <input type="hidden" id="pages_number" t-att-value="pager['page_count']"/>
+                    <input type="hidden" id="pages_number" t-att-value="pages_count"/>
                     <input type="hidden" id="url_get" t-att-value="url_get"/>
                     <div id="list-products" class="list-products">
                         <t t-call="sitio_imagen.content_product_imagen"/>

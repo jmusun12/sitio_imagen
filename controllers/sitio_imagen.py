@@ -68,7 +68,9 @@ class WebSiteSaleInherit(WebsiteSale):
             'products': products,
             'keep': keep,
             'url_get': url_get,
-            'id_svg': svg
+            'id_svg': svg,
+            'page': page,
+            'pages_count': pages_count
         }
 
         if category:
@@ -197,7 +199,7 @@ class WebSiteSaleInherit(WebsiteSale):
     @http.route(['''/shop/libros-chicos-8-9''', '''/shop/libros-chicos-8-9/page/<int:page>'''], type='http',
                 auth="public", website=True)
     def libros_8_9(self, page=0, category=None, search='', ppg=False, **post):
-        return self._get_shop_values('cat_8_9', page, '/shop/libros-chicos-8-9', 'blue_cloudd', post)
+        return self._get_shop_values('cat_8_9', page, '/shop/libros-chicos-8-9', 'blue_cloud', post)
 
     @http.route(['''/shop/libros-chicos-10-12''', '''/shop/libros-chicos-10-12/page/<int:page>'''], type='http',
                 auth="public", website=True)
