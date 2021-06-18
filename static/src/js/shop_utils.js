@@ -256,10 +256,10 @@ odoo.define('sitio_imagen.product_imagen', function(require){
                 qty = 1;
             }
 
-            var selectVariant = $('.variant_attribute select');
             var variants = [];
 
-            if (selectVariant) {
+            if ($('.variant_attribute select').length > 0) {
+                var selectVariant = $('.variant_attribute select');
                 var value = $selectVariant.data('value_id');
                 var name = $selectVariant.data('value_name');
 
