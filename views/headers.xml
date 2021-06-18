@@ -283,7 +283,7 @@
     <!-- Barra de navegación efecto-libro -->
     <template id="nav_book_page">
         <div class="nav-book">
-            <div class="col-menu-book overflow-auto">
+            <div class="col-menu-book">
                 <div class="div-close">
                     <a class="a-close-book" href="#">
                         <img class="img-close-book" src="/sitio_imagen/static/src/img/close.png" alt="Cerrar libro"/>
