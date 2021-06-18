@@ -1389,3 +1389,13 @@ main {
 .border-radius125{
     border-radius: 1.25rem !important;
 }
+
+.detail-product .attribute_name {
+    font-family: 'Neris-SemiBold';
+    font-size: 15px !important;
+}
+
+.detail-product .variant_attribute > select {
+    font-family: 'Neris-SemiBold';
+    font-size: 15px !important;
+}

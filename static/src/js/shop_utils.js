@@ -256,13 +256,29 @@ odoo.define('sitio_imagen.product_imagen', function(require){
                 qty = 1;
             }
 
+            var selectVariant = $('.variant_attribute select');
+            var variants = [];
+
+            if (selectVariant) {
+                var value = $selectVariant.data('value_id');
+                var name = $selectVariant.data('value_name');
+
+                var data = {
+                    'name': name,
+                    'value': value
+                }
+
+                variants.push(data);
+            }
+
             $('div#loading_website').removeClass('d-none');
 
             this._rpc({
                 route: '/shop/cart/update_json_website',
                 params: {
                     product_id: product_id,
-                    set_qty: qty
+                    set_qty: qty,
+                    no_variant_attribute_values: variants
                 }
             }).then(function(res) {
                 var current_qty = parseInt($('input.input-qty').val());
