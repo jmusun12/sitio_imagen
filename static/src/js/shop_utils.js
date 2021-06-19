@@ -206,8 +206,12 @@ odoo.define('sitio_imagen.cart_imagen', function(require){
 
 odoo.define('sitio_imagen.product_imagen', function(require){
     'use strict';
+    var concurrency = require('web.concurrency');
+    var core = require('web.core');
+    var utils = require('web.utils');
     var ajax = require('web.ajax');
     var publicWidget = require('web.public.widget');
+    var _t = core._t;
 
     publicWidget.registry.websiteProductImagen = publicWidget.Widget.extend({
         selector: '.detail-product',
@@ -217,6 +221,7 @@ odoo.define('sitio_imagen.product_imagen', function(require){
             'click #a-plus-qty': '_onClickPlusQty',
             'click .buy-now-website': '_onClickBuyNowWebsite',
             'click .add-cart-website': '_onClickAddCartWebsite',
+            'change .variant_attribute select': '_onChangeAttributeSelect',
         },
 
         init: function () {
@@ -256,28 +261,13 @@ odoo.define('sitio_imagen.product_imagen', function(require){
                 qty = 1;
             }
 
-            var variants = [];
-
-            if ($('.variant_attribute select').length > 0) {
-                var value = $('.variant_attribute select').data('value_id');
-                var name = $('.variant_attribute select').data('value_name');
-
-                var data = {
-                    'name': name,
-                    'value': value
-                }
-
-                variants.push(data);
-            }
-
             $('div#loading_website').removeClass('d-none');
 
             this._rpc({
                 route: '/shop/cart/update_json_website',
                 params: {
                     product_id: product_id,
-                    set_qty: qty,
-                    no_variant_attribute_values: variants
+                    set_qty: qty
                 }
             }).then(function(res) {
                 var current_qty = parseInt($('input.input-qty').val());
@@ -288,7 +278,152 @@ odoo.define('sitio_imagen.product_imagen', function(require){
                 $('div#loading_website').addClass('d-none');
                 toastr.error('No se pudo procesar la petición');
             });
-        }
+        },
+
+        _onChangeAttributeSelect: function(ev) {
+            var self = this;
+
+            if ($(ev.target).hasClass('variant_custom_value')) {
+                return Promise.resolve();
+            }
+
+            var $parent = $(ev.target).closest('.form-add-cart');
+            var qty = $parent.find('input[name="add_qty"]').val();
+            var combination = this.getSelectedVariantValues($parent);
+            var parentCombination = $parent.find('ul[data-attribute_exclusions]').data('attribute_exclusions').parent_combination;
+            var productTemplateId = parseInt($parent.find('.product_template_id').val());
+
+            self._checkExclusions($parent, combination);
+
+            return ajax.jsonRpc(this._getUri('/sale/get_combination_info_website'), 'call', {
+                'product_template_id': productTemplateId,
+                'product_id': this._getProductId($parent),
+                'combination': combination,
+                'add_qty': parseInt(qty),
+                'pricelist_id': this.pricelistId || false,
+                'parent_combination': parentCombination,
+            }).then(function (combinationData) {
+                console.log(combinationData);
+                self._onChangeCombination(ev, $parent, combinationData);
+            });
+        },
+
+        getSelectedVariantValues: function ($container) {
+            var values = [];
+            var unchangedValues = $container
+                .find('div.oe_unchanged_value_ids')
+                .data('unchanged_value_ids') || [];
+
+            var variantsValuesSelectors = [
+                'input.js_variant_change:checked',
+                'select.js_variant_change'
+            ];
+            _.each($container.find(variantsValuesSelectors.join(', ')), function (el) {
+                values.push(+$(el).val());
+            });
+
+            return values.concat(unchangedValues);
+        },
+
+        _checkExclusions: function ($parent, combination) {
+            var self = this;
+            var combinationData = $parent
+                .find('ul[data-attribute_exclusions]')
+                .data('attribute_exclusions');
+
+            $parent
+                .find('option, input, label')
+                .removeClass('css_not_available')
+                .prop('disabled', false)
+                .attr('title', '')
+                .data('excluded-by', '');
+
+            // exclusion rules: array of ptav
+            // for each of them, contains array with the other ptav they exclude
+            if (combinationData.exclusions) {
+                // browse all the currently selected attributes
+                _.each(combination, function (current_ptav) {
+                    if (combinationData.exclusions.hasOwnProperty(current_ptav)) {
+                        // for each exclusion of the current attribute:
+                        _.each(combinationData.exclusions[current_ptav], function (excluded_ptav) {
+                            // disable the excluded input (even when not already selected)
+                            // to give a visual feedback before click
+                            self._disableInput(
+                                $parent,
+                                excluded_ptav,
+                                current_ptav,
+                                combinationData.mapped_attribute_names
+                            );
+                        });
+                    }
+                });
+            }
+
+            // parent exclusions (tell which attributes are excluded from parent)
+            _.each(combinationData.parent_exclusions, function (exclusions, excluded_by){
+                // check that the selected combination is in the parent exclusions
+                _.each(exclusions, function (ptav) {
+
+                    // disable the excluded input (even when not already selected)
+                    // to give a visual feedback before click
+                    self._disableInput(
+                        $parent,
+                        ptav,
+                        excluded_by,
+                        combinationData.mapped_attribute_names,
+                        combinationData.parent_product_name
+                    );
+                });
+            });
+        },
+
+        _getUri: function (uri) {
+            return uri;
+        },
+
+        _getProductId: function ($parent) {
+            return parseInt($parent.find('.product_id').val());
+        },
+
+        _onChangeCombination: function (ev, $parent, combination) {
+            var self = this;
+            var $price = $parent.find(".oe_currency_value");
+            var $default_price = $parent.find(".oe_currency_value");
+            var $optional_price = $parent.find(".oe_currency_value");
+            $price.text(self._priceToStr(combination.price));
+            $default_price.text(self._priceToStr(combination.list_price));
+
+            $parent
+                .find('.product_id')
+                .first()
+                .val(combination.product_id || 0)
+                .trigger('change');
+
+            $parent
+                .find('.d-name-product')
+                .first()
+                .text(combination.display_name);
+
+            /*
+            $parent
+                .find('.js_raw_price')
+                .first()
+                .text(combination.price)
+                .trigger('change');
+            */
+        },
+
+        _priceToStr: function (price) {
+            var l10n = _t.database.parameters;
+            var precision = 2;
+
+            if ($('.decimal_precision').length) {
+                precision = parseInt($('.decimal_precision').last().data('precision'));
+            }
+            var formatted = _.str.sprintf('%.' + precision + 'f', price).split('.');
+            formatted[0] = utils.insert_thousand_seps(formatted[0]);
+            return formatted.join(l10n.decimal_point);
+        },
     });
 });
 
