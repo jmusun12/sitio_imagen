@@ -267,7 +267,7 @@ odoo.define('sitio_imagen.product_imagen', function(require){
                 route: '/shop/cart/update_json_website',
                 params: {
                     product_id: product_id,
-                    set_qty: qty
+                    add_qty: qty
                 }
             }).then(function(res) {
                 var current_qty = parseInt($('input.input-qty').val());

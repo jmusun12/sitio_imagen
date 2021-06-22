@@ -590,18 +590,19 @@
                                     <a class="a-product-name" href="#description-product" data-toggle="collapse"
                                        aria-expanded="false" aria-controls="description-product">
                                         <span t-esc="line.name_short"/>
+<!--                                        (<span t-esc="line.product_uom_qty"/>)-->
                                     </a>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <span class="sr-only">Four out of Five Stars</span>
-                                    <i class="fas fa-star bg-start-span start-i"></i>
-                                    <i class="fas fa-star bg-start-span start-i"></i>
-                                    <i class="fas fa-star bg-start-span start-i"></i>
-                                    <i class="fas fa-star bg-start-span start-i"></i>
                                     <i class="far fa-star bg-start-span start-i"></i>
-                                    <span class="label label-success label-start-number">(61)</span>
+                                    <i class="far fa-star bg-start-span start-i"></i>
+                                    <i class="far fa-star bg-start-span start-i"></i>
+                                    <i class="far fa-star bg-start-span start-i"></i>
+                                    <i class="far fa-star bg-start-span start-i"></i>
+                                    <span class="label label-success label-start-number">(0)</span>
                                 </div>
                             </div>
                             <div class="row">
