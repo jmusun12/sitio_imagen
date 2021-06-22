@@ -380,9 +380,4 @@ $(document).ready(function () {
     event.preventDefault();
     $('form#form-payment-validate').submit();
   });
-
-  $(document).on('click', '.div-transparent', function(event) {
-    event.preventDefault();
-    $('div.nav-cart').removeClass('active');
-  });
 });

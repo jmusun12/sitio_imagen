@@ -10,6 +10,7 @@ odoo.define('sitio_imagen.header_imagen', function(require){
             'click .a-cart-top-fixed': '_onCartTopFixed',
             'click .cart-other-page': '_onCartOtherPage',
             'click .cart-mobil': '_onCartMobil',
+            'click .div-transparent': '_onCloseCartMobil',
         },
 
         //
@@ -78,7 +79,7 @@ odoo.define('sitio_imagen.header_imagen', function(require){
 
         _onCartMobil: function(ev) {
             if ($('.nav-cart').hasClass('active')) {
-                $('.nav-cart').removeClass('active')
+                $('.nav-cart').removeClass('active');
             } else {
                 var $divCart = $('.detail-cart');
 
@@ -90,6 +91,10 @@ odoo.define('sitio_imagen.header_imagen', function(require){
                     $('.nav-cart').addClass('active');
                 });
             }
+        },
+
+        _onCloseCartMobil: function(ev) {
+            $('.nav-cart').removeClass('active');
         },
     });
 });
